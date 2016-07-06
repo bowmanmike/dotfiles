@@ -1,0 +1,186 @@
+{
+  "main": "./index.coffee",
+  "name": "pretty-json",
+  "version": "1.4.1",
+  "description": "Format JSON",
+  "keywords": [
+    "JSON",
+    "format",
+    "pretty",
+    "prettify",
+    "minify",
+    "uglify"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/federomero/pretty-json.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {
+    "json-bigint": "^0.2.0",
+    "json-stable-stringify": "^1.0.1",
+    "jsonminify": "^0.4.1"
+  },
+  "scripts": {},
+  "readme": "# Pretty JSON\n\n[![apm package][apm-ver-link]][releases]\n[![][travis-ci-badge]][travis-ci]\n[![][david-badge]][david]\n[![][dl-badge]][apm-pkg-link]\n[![][mit-badge]][mit]\n\n[Atom](http://atom.io/) plugin to format JSON documents.\n\n![](http://i.imgur.com/Nd4GvtP.gif)\n\nSelect the text to format and then execute the Pretty JSON `prettify` command. For JSON files, format the entire file automatically without need to first select the text. Minify and sorting commands are available too.\n\nThis plugin will post a notification to Atom if there is a parse error in the JSON. Disable warnings in this plugin's settings panel if you do not desire this feature.\n\nTo proactively avoid JSON errors, consider using a linter for JSON, such as the delightful [linter-jsonlint](https://atom.io/packages/linter-jsonlint).\n\n---\n\n[MIT][mit] © [federomero][author] et [al][contributors]\n\n[mit]:              http://opensource.org/licenses/MIT\n[author]:           http://github.com/federomero\n[contributors]:     https://github.com/federomero/pretty-json/graphs/contributors\n[releases]:         https://github.com/federomero/pretty-json/releases\n[mit-badge]:        https://img.shields.io/apm/l/pretty-json.svg\n[apm-pkg-link]:     https://atom.io/packages/pretty-json\n[apm-ver-link]:     https://img.shields.io/apm/v/pretty-json.svg\n[dl-badge]:         http://img.shields.io/apm/dm/pretty-json.svg\n[travis-ci-badge]:  https://travis-ci.org/federomero/pretty-json.svg?branch=master\n[travis-ci]:        https://travis-ci.org/federomero/pretty-json\n[david-badge]:      https://david-dm.org/federomero/pretty-json.svg\n[david]:            https://david-dm.org/federomero/pretty-json\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/federomero/pretty-json/issues"
+  },
+  "homepage": "https://github.com/federomero/pretty-json#readme",
+  "_id": "pretty-json@1.4.1",
+  "_shasum": "4a19417acf4f5a74b55a52c8a450f8c56d408f12",
+  "_resolved": "file:../d-11657-56664-b2n7q7/package.tgz",
+  "_from": "../d-11657-56664-b2n7q7/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "json-bigint",
+        "version": "0.2.0",
+        "path": "node_modules/json-bigint/index.js"
+      },
+      {
+        "name": "bignumber.js",
+        "version": "1.1.1",
+        "path": "node_modules/json-bigint/node_modules/bignumber.js/bignumber.js"
+      },
+      {
+        "name": "json-stable-stringify",
+        "version": "1.0.1",
+        "path": "node_modules/json-stable-stringify/index.js"
+      },
+      {
+        "name": "jsonify",
+        "version": "0.0.0",
+        "path": "node_modules/json-stable-stringify/node_modules/jsonify/index.js"
+      },
+      {
+        "name": "jsonminify",
+        "version": "0.4.1",
+        "path": "node_modules/jsonminify/minify.json.js"
+      }
+    ],
+    "extensions": {
+      ".json": [
+        "coffeelint.json",
+        "node_modules/json-bigint/node_modules/bignumber.js/package.json",
+        "node_modules/json-bigint/package.json",
+        "node_modules/json-stable-stringify/node_modules/jsonify/package.json",
+        "node_modules/json-stable-stringify/package.json",
+        "node_modules/jsonminify/.jsdoc3.json",
+        "node_modules/jsonminify/package.json",
+        "node_modules/jsonminify/report/files/minify_json_js/report.history.json",
+        "node_modules/jsonminify/report/files/minify_json_js/report.json",
+        "node_modules/jsonminify/report/report.history.json",
+        "node_modules/jsonminify/report/report.json",
+        "package.json"
+      ],
+      ".coffee": [
+        "index.coffee"
+      ],
+      ".js": [
+        "node_modules/json-bigint/index.js",
+        "node_modules/json-bigint/lib/parse.js",
+        "node_modules/json-bigint/lib/stringify.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/bignumber.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/bignumber.min.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/bigtime-OOM.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/bigtime.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/lib/bigdecimal_GWT/bigdecimal.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/lib/bigdecimal_GWT/bugs.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/lib/bigdecimal_ICU4J/BigDecimal-all-last.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/lib/bigdecimal_ICU4J/BigDecimal-all-last.min.js",
+        "node_modules/json-stable-stringify/example/key_cmp.js",
+        "node_modules/json-stable-stringify/example/nested.js",
+        "node_modules/json-stable-stringify/example/str.js",
+        "node_modules/json-stable-stringify/example/value_cmp.js",
+        "node_modules/json-stable-stringify/index.js",
+        "node_modules/json-stable-stringify/node_modules/jsonify/index.js",
+        "node_modules/json-stable-stringify/node_modules/jsonify/lib/parse.js",
+        "node_modules/json-stable-stringify/node_modules/jsonify/lib/stringify.js",
+        "node_modules/jsonminify/docs/scripts/linenumber.js",
+        "node_modules/jsonminify/docs/scripts/prettify/lang-css.js",
+        "node_modules/jsonminify/docs/scripts/prettify/prettify.js",
+        "node_modules/jsonminify/minify.json.js",
+        "node_modules/jsonminify/report/assets/scripts/bundles/codemirror.js",
+        "node_modules/jsonminify/report/assets/scripts/bundles/core-bundle.js",
+        "node_modules/jsonminify/report/assets/scripts/codemirror.markpopovertext.js",
+        "node_modules/jsonminify/report/assets/scripts/plato-display.js",
+        "node_modules/jsonminify/report/assets/scripts/plato-file.js",
+        "node_modules/jsonminify/report/assets/scripts/plato-overview.js",
+        "node_modules/jsonminify/report/assets/scripts/plato-sortable-file-list.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/bootstrap-popover.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/bootstrap-tooltip.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/codemirror.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/javascript.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/closetag.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/colorize.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/continuecomment.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/continuelist.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/dialog.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/foldcode.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/formatting.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/javascript-hint.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/loadmode.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/match-highlighter.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/matchbrackets.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/multiplex.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/overlay.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/pig-hint.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/runmode-standalone.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/runmode.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/search.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/searchcursor.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/simple-hint.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/codemirror/util/xml-hint.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/jquery-1.8.3.min.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/jquery.fittext.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/lodash.min.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/morris.min.js",
+        "node_modules/jsonminify/report/assets/scripts/vendor/raphael-min.js",
+        "node_modules/jsonminify/report/files/minify_json_js/report.history.js",
+        "node_modules/jsonminify/report/files/minify_json_js/report.js",
+        "node_modules/jsonminify/report/report.history.js",
+        "node_modules/jsonminify/report/report.js"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "",
+          "spec/fixtures",
+          "spec"
+        ],
+        "dependencies": {
+          "json-bigint": "^0.2.0",
+          "json-stable-stringify": "^1.0.1",
+          "jsonminify": "^0.4.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/json-bigint",
+          "node_modules/json-bigint/lib",
+          "node_modules/json-bigint/test"
+        ],
+        "dependencies": {
+          "bignumber.js": "~1.1.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/json-stable-stringify/example",
+          "node_modules/json-stable-stringify",
+          "node_modules/json-stable-stringify/test"
+        ],
+        "dependencies": {
+          "jsonify": "~0.0.0"
+        }
+      }
+    ]
+  }
+}

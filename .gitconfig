@@ -1,0 +1,17 @@
+[user]
+	name = Mike Bowman
+	email = mbowman2@gmail.com
+[merge]
+	ff = only
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  last = log -1 HEAD
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[push]
+	default = simple

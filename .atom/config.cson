@@ -1,0 +1,27 @@
+"*":
+  core:
+    disabledPackages: [
+      "go-debug"
+    ]
+    excludeVcsIgnoredPaths: false
+  editor:
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "bdb3bb2d-ef86-c312-ffa1-12d86f249ea7"
+  "go-debug":
+    limitCommandsToGo: true
+    panelInitialVisible: false
+  linter:
+    showErrorPanel: false
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
+".go.source":
+  editor:
+    tabLength: 4
+".gotemplate.source":
+  editor:
+    tabLength: 4
