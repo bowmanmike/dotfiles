@@ -9,12 +9,15 @@ filetype plugin indent on
 
 " Set tab to 2 spaces
 set tabstop=2
-
-set smarttab
-
 set shiftwidth=2
+
+set expandtab
 
 set noerrorbells
 
+" Show invisible characters
 " set list
 " set listchars=tab:>-,trail:.
+
+" Color schemes
+colorscheme delek
