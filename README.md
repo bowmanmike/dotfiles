@@ -8,3 +8,4 @@ Dotfiles for gitconfig, bash_profile, atom config folder
 3. `brew install git` 
 4. `brew install rbenv` 
 5. `brew install bash-completion` 
+6. Add symlinks for .vimrc, .bash_profile, .gitconfig
