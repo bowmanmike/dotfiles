@@ -26,6 +26,10 @@ function parse_git_branch() {
 	fi
 }
 
+# quality of life tweaks
+# case-insensitive tab completion
+bind "set completion-ignore-case on"
+
 # get current status of git repo
 function parse_git_dirty {
 	status=`git status 2>&1 | tee`
