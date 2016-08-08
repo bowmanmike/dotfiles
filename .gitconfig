@@ -18,3 +18,5 @@
 	  default = simple
 [web]
 	browser = chrome
+[core]
+	excludesfile = ~/.gitignore
