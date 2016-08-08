@@ -10,3 +10,10 @@ Dotfiles for gitconfig, bash_profile, atom config folder
 5. `brew install bash-completion` 
 6. `brew install tmux`
 7. Add symlinks for .vimrc, .bash_profile, .gitconfig
+
+**Vim Plugin Config**
+cd ~/.vim
+git submodule init
+git submodule add git://github.com/tpope/vim-fugitive.git bundle/vim-fugitive
+git commit -m 'Added vim-fugitive'
+git push
