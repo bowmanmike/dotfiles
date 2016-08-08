@@ -12,8 +12,15 @@ Dotfiles for gitconfig, bash_profile, atom config folder
 7. Add symlinks for .vimrc, .bash_profile, .gitconfig
 
 **Vim Plugin Config**
+
+***Add New Plugins***
 cd ~/.vim
 git submodule init
 git submodule add git://github.com/tpope/vim-fugitive.git bundle/vim-fugitive
 git commit -m 'Added vim-fugitive'
 git push
+
+***Set up new machine***
+`cd ~/.vim`
+git submodule update --init
+http://usevim.com/2012/03/01/using-pathogen-with-git-submodules/
