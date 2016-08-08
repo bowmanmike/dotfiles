@@ -21,3 +21,7 @@ set noerrorbells
 
 " Color schemes
 colorscheme delek
+
+" set alternative swp directory
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
