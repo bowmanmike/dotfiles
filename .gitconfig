@@ -8,6 +8,7 @@
 	  br = branch
 	  ci = commit
 	  st = status
+    s = status -s
 	  last = log -1 HEAD
 [filter "lfs"]
 	  clean = git-lfs clean %f
