@@ -37,6 +37,6 @@
 [submodule ".vim/bundle/Apprentice"]
 	path = .vim/bundle/Apprentice
 	url = git://github.com/romainl/Apprentice.git
-[submodule "bundle/colorschemes"]
-	path = bundle/colorschemes
-	url = git://github.com/flazz/vim-colorschemes.git
+[submodule ".vim/bundle/vim-colorschemes"]
+	path = .vim/bundle/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
