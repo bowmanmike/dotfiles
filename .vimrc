@@ -20,7 +20,7 @@ set noerrorbells
 " set listchars=tab:>-,trail:.
 
 " Color schemes
-colorscheme delek
+colorscheme railscasts
 
 " set alternative swp directory
 set backupdir=~/.vim/backup//

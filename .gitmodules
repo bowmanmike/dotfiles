@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/vim-multiple-cursors"]
 	path = .vim/bundle/vim-multiple-cursors
 	url = git://github.com/terryma/vim-multiple-cursors.git
+[submodule ".vim/bundle/railscasts-theme"]
+	path = .vim/bundle/railscasts-theme
+	url = git@github.com:jpo/vim-railscasts-theme.git
