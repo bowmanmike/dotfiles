@@ -22,6 +22,10 @@ set noerrorbells
 syntax on
 colorscheme onedark
 
+" Highlight lines over 90 characters
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%91v.\+/
+
 " set alternative swp directory
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
