@@ -21,6 +21,9 @@ set noerrorbells
 
 " Color schemes
 colorscheme railscasts
+" let g:solarized_termcolors=256
+" set background=dark
+" colorscheme solarized
 
 " set alternative swp directory
 set backupdir=~/.vim/backup//
