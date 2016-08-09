@@ -20,7 +20,7 @@ set noerrorbells
 
 " Color schemes
 syntax on
-colorscheme railscasts
+colorscheme onedark
 
 " set alternative swp directory
 set backupdir=~/.vim/backup//
