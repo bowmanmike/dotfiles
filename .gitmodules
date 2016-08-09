@@ -34,3 +34,9 @@
 [submodule ".vim/bundle/onedark.vim"]
 	path = .vim/bundle/onedark.vim
 	url = git://github.com/joshdick/onedark.vim.git
+[submodule ".vim/bundle/Apprentice"]
+	path = .vim/bundle/Apprentice
+	url = git://github.com/romainl/Apprentice.git
+[submodule "bundle/colorschemes"]
+	path = bundle/colorschemes
+	url = git://github.com/flazz/vim-colorschemes.git
