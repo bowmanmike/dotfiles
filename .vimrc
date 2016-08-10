@@ -20,7 +20,7 @@ set noerrorbells
 
 " Color schemes
 syntax on
-colorscheme Monokai
+colorscheme onedark
 
 " Highlight lines over 90 characters
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
