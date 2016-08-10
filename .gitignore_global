@@ -7,7 +7,8 @@
 # git credential file
 .gitconfig.local
 
-
+# tmux log files
+tmux*.log
 
 
 # Folder view configuration files
