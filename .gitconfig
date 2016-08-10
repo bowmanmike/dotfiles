@@ -10,6 +10,7 @@
 	  st = status
     s = status -s
 	  last = log -1 HEAD
+    diffl = diff HEAD~1
 [filter "lfs"]
 	  clean = git-lfs clean %f
 	  smudge = git-lfs smudge %f
