@@ -1,4 +1,15 @@
-execute pathogen#infect()
+call plug#begin()
+
+Plug 'jiangmiao/auto-pairs'
+Plug 'mattn/emmet-vim'
+Plug 'Yggdroot/indentLine'
+Plug 'flazz/vim-colorschemes'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-surround'
+
+call plug#end()
 
 set number
 set ruler
