@@ -22,5 +22,4 @@ git push
 
 ***Set up new machine***
 `cd ~/.vim`
-git submodule update --init
-http://usevim.com/2012/03/01/using-pathogen-with-git-submodules/
+Open vim,run `:PlugInstall`
