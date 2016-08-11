@@ -6,3 +6,5 @@
 
 *.swp
 .DS_Store
+
+.vim/plugged/**
