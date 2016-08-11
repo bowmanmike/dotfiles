@@ -32,7 +32,7 @@ set noerrorbells
 
 " Color schemes
 syntax on
-colorscheme onedark
+colorscheme evening
 
 " Highlight lines over 90 characters
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
