@@ -1,17 +1,17 @@
 " ----- Vim-plug -----
 call plug#begin()
 
-Plug 'jiangmiao/auto-pairs'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mattn/emmet-vim'
-Plug 'Yggdroot/indentLine'
-Plug 'flazz/vim-colorschemes'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
+Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
+Plug 'mattn/emmet-vim' " Emmet for awesome HTML
+Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
+Plug 'flazz/vim-colorschemes' " Massive library of colorschemes. Could be replaced with a few smaller ones
+Plug 'tpope/vim-fugitive' " Sweet git integration
+Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
+Plug 'sheerun/vim-polyglot' " Multi language support for vim
+Plug 'tpope/vim-commentary' " Easily comment and uncomment text
+Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
+Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
 
 call plug#end()
 
@@ -19,6 +19,7 @@ call plug#end()
 set number " Show line numbers
 set ruler " Not sure what these ones do
 set hls is " Not sure what these ones do
+set nocompatible " Don't worry about compatibility with old vim
 
 " Set tab to 2 spaces
 set tabstop=2
@@ -32,7 +33,7 @@ set noerrorbells "Try to turn off error bells, might need more config
 syntax on
 colorscheme onedark
 
-set scrolloff=5 " Always show 5 lines below cursor
+set scrolloff=5 " Always show 5 lines below cursor, seems to be not working.
 
 " Highlight lines over 90 characters
 " Change the value below from 91 to adjust highlighting.
@@ -52,6 +53,10 @@ set directory=~/.vim/swp//
 " Set default values in `.agignore`
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
+
+" ----- Normal Mode Bindings -----
+nmap j gj
+nmap k gk
 
 " ----- Insert Mode Bindings ----- 
 " Easy escape from insert mode
