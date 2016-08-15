@@ -20,6 +20,7 @@ set number " Show line numbers
 set ruler " Not sure what these ones do
 set hls is " Not sure what these ones do
 set nocompatible " Don't worry about compatibility with old vim
+let mapleader = "\<space>" " Set leader to spacebar
 
 " Set tab to 2 spaces
 set tabstop=2
@@ -57,6 +58,7 @@ let g:ctrlp_use_caching = 0
 " ----- Normal Mode Bindings -----
 nmap j gj
 nmap k gk
+nmap 0 ^
 
 " ----- Insert Mode Bindings ----- 
 " Easy escape from insert mode
@@ -64,8 +66,7 @@ imap jk <esc>
 imap kj <esc>
 
 " ----- Leader Mode Bindings -----
-let mapleader = "\<space>"
-
+nmap <leader>pr obinding.pry<esc>
 
 " ----- Command Bindings -----
 command! Q q
