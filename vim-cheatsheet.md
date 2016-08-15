@@ -9,3 +9,8 @@
 - `ysiw [delimiter]` => Surround the current word with [delimiter]
 - `ys[number]w [delimiter]` => surround [number] words with [delimiter]
 - `S[delimiter]` => surround a visual mode selection with [delimiter]
+
+*vim-fugitive*
+- `:Gstatus` to see the status of the current directory
+- In the status window, navigate to the file you want to add and press `-`
+- `cc` To begin a commit, write a commit message in the status window, then `:wq`

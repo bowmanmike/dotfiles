@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/mikebowman/Work/importer-ruby'
-let g:netrw_dirhist_2='/Users/mikebowman/Work/importer-ruby/data/listings/toronto-data'
-let g:netrw_dirhist_3='/Users/mikebowman/Work/importer-ruby/lib'

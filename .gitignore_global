@@ -7,6 +7,9 @@
 # git credential file
 .gitconfig.local
 
+# Vim netrwhist file
+.netrwhist
+
 # tmux log files
 tmux*.log
 
