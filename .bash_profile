@@ -15,6 +15,7 @@ export PATH=$PATH:$GOROOT/bin
 alias ll="ls -ahlG"
 alias be="bundle exec"
 alias gitl="git log --oneline -15 --decorate"
+alias cl='clear'
 
 # get current branch in git repo
 function parse_git_branch() {
