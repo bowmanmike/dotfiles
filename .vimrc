@@ -66,7 +66,7 @@ imap jk <esc>
 imap kj <esc>
 
 " ----- Leader Mode Bindings -----
-nmap <leader>pr obinding.pry<esc>
+nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
 
 " ----- Command Bindings -----
 command! Q q
