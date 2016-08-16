@@ -32,7 +32,7 @@ set noerrorbells "Try to turn off error bells, might need more config
 
 " Color schemes
 syntax on
-colorscheme jellybeans
+colorscheme evening
 
 set scrolloff=5 " Always show 5 lines below cursor, seems to be not working.
 
