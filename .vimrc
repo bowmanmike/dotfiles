@@ -21,6 +21,8 @@ set ruler " Not sure what these ones do
 set hls is " Not sure what these ones do
 set nocompatible " Don't worry about compatibility with old vim
 let mapleader = "\<space>" " Set leader to spacebar
+set ignorecase " Searches are by default case insensitive
+set smartcase " Searches with all lower-case are case insensitive, searches with and capitals are case-sensitive
 
 " Set tab to 2 spaces
 set tabstop=2
