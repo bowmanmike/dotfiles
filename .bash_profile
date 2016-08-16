@@ -1,7 +1,7 @@
 # Initialize rbenv => more at bottom
 export PATH=/usr/local/bin:$PATH
 
-export EDITOR="atom -w"
+export EDITOR="vi"
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
 # Configure golang
