@@ -6,12 +6,13 @@ Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
 Plug 'flazz/vim-colorschemes' " Massive library of colorschemes. Could be replaced with a few smaller ones
+Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
 Plug 'sheerun/vim-polyglot' " Multi language support for vim
-Plug 'tpope/vim-commentary' " Easily comment and uncomment text
-Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
+Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
+Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 
 call plug#end()
 
@@ -69,6 +70,10 @@ imap kj <esc>
 
 " ----- Leader Mode Bindings -----
 nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
+
+" RSpec-vim shortcuts
+nmap <leader>s :call RunNearestSpec()<cr>
+nmap <leader>a :call RunAllSpecs()<cr>
 
 " ----- Command Bindings -----
 command! Q q
