@@ -74,6 +74,7 @@ nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
 " RSpec-vim shortcuts
 nmap <leader>s :call RunNearestSpec()<cr>
 nmap <leader>a :call RunAllSpecs()<cr>
+nmap <leader>f :call RunCurrentSpecFile()<cr>
 
 " ----- Command Bindings -----
 command! Q q
