@@ -79,3 +79,7 @@ nmap <leader>f :call RunCurrentSpecFile()<cr>
 " ----- Command Bindings -----
 command! Q q
 command! W w
+command! Wq wq
+command! WQ wq
+command! Qw wq
+command! QW wq
