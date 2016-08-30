@@ -4,11 +4,13 @@ call plug#begin()
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
+Plug 'fatih/vim-go' " Go language support
 Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
 Plug 'flazz/vim-colorschemes' " Massive library of colorschemes. Could be replaced with a few smaller ones
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
+Plug 'pangloss/vim-javascript' " Javascript language support
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'vim-ruby/vim-ruby' " Ruby language support
@@ -57,6 +59,21 @@ set directory=~/.vim/swp//
 " Set default values in `.agignore`
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
+
+" Remove trailing whitespace in certain filetypes on save
+au BufWritePre *.rb :%s/\s\+$//e
+au BufWritePre *.go :%s/\s\+$//e
+
+" Normal backspace in normal mode
+set backspace=indent,eol,start
+
+" ----- Language Specific Settings ----- 
+" Go
+" Set tabs to 4 space tabs
+autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
+
+" Run goimports as well as gofmt on save
+let g:go_fmt_command = "goimports"
 
 " ----- Normal Mode Bindings -----
 nmap j gj
