@@ -70,7 +70,7 @@ set backspace=indent,eol,start
 " ----- Language Specific Settings ----- 
 " Go
 " Set tabs to 4 space tabs
-autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
+autocmd FileType go set tabstop=8|set shiftwidth=8|set noexpandtab
 
 " Run goimports as well as gofmt on save
 let g:go_fmt_command = "goimports"
