@@ -9,9 +9,9 @@ Plug 'flazz/vim-colorschemes' " Massive library of colorschemes. Could be replac
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
-Plug 'sheerun/vim-polyglot' " Multi language support for vim
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
+Plug 'vim-ruby/vim-ruby' " Ruby language support
 Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 
 call plug#end()
