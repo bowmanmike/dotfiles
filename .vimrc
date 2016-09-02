@@ -4,9 +4,9 @@ call plug#begin()
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
+Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
 Plug 'fatih/vim-go' " Go language support
 Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
-Plug 'flazz/vim-colorschemes' " Massive library of colorschemes. Could be replaced with a few smaller ones
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
@@ -33,6 +33,7 @@ set shiftwidth=2
 set expandtab
 
 filetype plugin indent on " Automatically read filetype
+set visualbell " No bells, apparently
 set noerrorbells "Try to turn off error bells, might need more config
 
 " Color schemes
@@ -63,6 +64,7 @@ let g:ctrlp_use_caching = 0
 " Remove trailing whitespace in certain filetypes on save
 au BufWritePre *.rb :%s/\s\+$//e
 au BufWritePre *.go :%s/\s\+$//e
+au BufWritePre *.js :%s/\s\+$//e
 
 " Normal backspace in normal mode
 set backspace=indent,eol,start
