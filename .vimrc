@@ -106,3 +106,9 @@ command! Wq wq
 command! WQ wq
 command! Qw wq
 command! QW wq
+
+" ----- Navigation Shortcuts -----
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
