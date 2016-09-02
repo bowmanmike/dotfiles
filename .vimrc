@@ -93,7 +93,6 @@ vnoremap // y/<C-R>"<CR>
 
 " ----- Leader Mode Bindings -----
 nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
-nmap <leader>gb :GoBuild<cr>
 
 " RSpec-vim shortcuts
 nmap <leader>s :call RunNearestSpec()<cr>
