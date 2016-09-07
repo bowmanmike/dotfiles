@@ -44,8 +44,8 @@ set scrolloff=5 " Always show 5 lines below cursor, seems to be not working.
 
 " Highlight lines over 90 characters
 " Change the value below from 91 to adjust highlighting.
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%91v.\+/
+autocmd FileType ruby highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+autocmd FileType ruby match OverLength /\%91v.\+/
 
 " Show invisible characters
 " set list
