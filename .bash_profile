@@ -18,6 +18,7 @@ alias cl='clear'
 alias tns='tmux new -s'
 alias tat='tmux attach -t'
 alias tls='tmux ls'
+alias git='hub'
 
 # get current branch in git repo
 function parse_git_branch() {
