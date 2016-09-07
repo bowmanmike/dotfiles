@@ -99,6 +99,12 @@ nmap <leader>s :call RunNearestSpec()<cr>
 nmap <leader>a :call RunAllSpecs()<cr>
 nmap <leader>f :call RunCurrentSpecFile()<cr>
 
+" GoVim Shortcuts
+nmap <leader>l <Plug>(go-lint)
+au FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
 " ----- Command Bindings -----
 command! Q q
 command! W w
@@ -106,6 +112,7 @@ command! Wq wq
 command! WQ wq
 command! Qw wq
 command! QW wq
+command! SO source $MYVIMRC
 
 " ----- Navigation Shortcuts -----
 map <C-h> <C-w>h

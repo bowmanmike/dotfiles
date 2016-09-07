@@ -2,6 +2,7 @@
 export PATH=/usr/local/bin:$PATH
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+export EDITOR='vim'
 
 # Configure golang
 export GOPATH=$HOME/golang
