@@ -15,6 +15,9 @@ alias ll="ls -ahlG"
 alias be="bundle exec"
 alias gitl="git log --oneline -15 --decorate"
 alias cl='clear'
+alias tns='tmux new -s'
+alias tat='tmux attach -t'
+alias tls='tmux ls'
 
 # get current branch in git repo
 function parse_git_branch() {
