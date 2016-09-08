@@ -14,7 +14,7 @@ export PATH=$PATH:$GOROOT/bin
 # Aliases
 alias ll="ls -ahlG"
 alias be="bundle exec"
-alias gitl="git log --oneline -15 --decorate"
+alias gitl="git log --oneline -15 --decorate --graph"
 alias cl='clear'
 alias tns='tmux new -s'
 alias tat='tmux attach -t'
