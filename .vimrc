@@ -73,7 +73,6 @@ set backspace=indent,eol,start
 " Go
 " Set tabs to 4 space tabs
 autocmd FileType go set tabstop=8|set shiftwidth=8|set noexpandtab
-autocmd BufWritePre *.go :GoMetaLinter
 
 " Run goimports as well as gofmt on save
 let g:go_fmt_command = "goimports"
