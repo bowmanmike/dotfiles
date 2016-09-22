@@ -6,6 +6,8 @@ Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
 Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
+Plug 'vim-airline/vim-airline' " Airline status bar
+Plug 'vim-airline/vim-airline-themes' " Airline color schemes
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
@@ -68,6 +70,13 @@ au BufWritePre *.js :%s/\s\+$//e
 
 " Normal backspace in normal mode
 set backspace=indent,eol,start
+
+" Airline Settings
+" Always display airline status bar
+set laststatus=2
+
+" Better Tab Bar
+let g:airline#extensions#tabline#enabled = 1
 
 " ----- Language Specific Settings ----- 
 " Go
