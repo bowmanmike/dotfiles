@@ -6,6 +6,7 @@ Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
 Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
+Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
 Plug 'vim-airline/vim-airline' " Airline status bar
 Plug 'vim-airline/vim-airline-themes' " Airline color schemes
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
