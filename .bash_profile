@@ -10,6 +10,7 @@ export GOROOT=/usr/local/opt/go/libexec
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # Aliases
 alias ll="ls -ahlG"
