@@ -17,6 +17,7 @@ Plug 'pangloss/vim-javascript' " Javascript language support
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'vim-ruby/vim-ruby' " Ruby language support
+Plug 'ngmy/vim-rubocop' " Rubocop for vim
 Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 
 call plug#end()
