@@ -6,6 +6,7 @@ Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
 Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
+Plug 'joshdick/onedark.vim' " Onedark colorscheme
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
 Plug 'vim-airline/vim-airline' " Airline status bar
 Plug 'vim-airline/vim-airline-themes' " Airline color schemes
@@ -43,6 +44,7 @@ set noerrorbells "Try to turn off error bells, might need more config
 " Color schemes
 syntax on
 colorscheme jellybeans
+" colorscheme onedark
 
 set scrolloff=5 " Always show 5 lines below cursor, seems to be not working.
 
