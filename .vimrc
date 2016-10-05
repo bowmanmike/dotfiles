@@ -100,10 +100,6 @@ nmap 0 ^
 imap jk <esc>
 imap kj <esc>
 
-" ----- Visual Mode Bindings -----
-" Use // to search for visual mode selection
-vnoremap // y/<C-R>"<CR>
-
 " ----- Leader Mode Bindings -----
 nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
 

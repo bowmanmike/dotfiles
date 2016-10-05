@@ -4,7 +4,7 @@
 - `ctrl + n` => Jump to next cursor position
 - `f[character]` => Jump forward to next [character] in the line
 - `t[character]` => Jump forward to one character before [character] in the line
-- `gd` => Search for the word under the cursor
+- `gd` or `*` or `#` => Search for the word under the cursor
 
 *vim-surround*
 - `ysiw [delimiter]` => Surround the current word with [delimiter]
