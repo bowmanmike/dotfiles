@@ -66,6 +66,10 @@ set directory=~/.vim/swp//
 " Set default values in `.agignore`
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](doc|tmp|node_modules|bower_components)',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " Remove trailing whitespace in certain filetypes on save
 au BufWritePre *.rb :%s/\s\+$//e
