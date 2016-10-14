@@ -1,6 +1,7 @@
 " ----- Vim-plug -----
 call plug#begin()
 
+Plug 'romainl/Apprentice' " Apprentice colorscheme
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
@@ -15,6 +16,7 @@ Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
 Plug 'fatih/vim-go' " Go language support
 Plug 'pangloss/vim-javascript' " Javascript language support
+Plug 'sickill/vim-monokai' " Monokai color scheme
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'vim-ruby/vim-ruby' " Ruby language support
