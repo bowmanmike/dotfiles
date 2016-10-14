@@ -96,6 +96,16 @@ autocmd FileType go set tabstop=8|set shiftwidth=8|set noexpandtab
 " Run goimports as well as gofmt on save
 let g:go_fmt_command = "goimports"
 
+" Improve syntax highlighting for go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1 " Disable if things get slow
+let g:go_highlight_structs = 1 " Disable if things get slow
+let g:go_highlight_interfaces = 1 " Disable if things get slow
+let g:go_highlight_build_constraints = 1
+
 " ----- Normal Mode Bindings -----
 nmap j gj
 nmap k gk
