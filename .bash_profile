@@ -21,7 +21,7 @@ alias tns='tmux new -s'
 alias tat='tmux attach -t'
 alias tls='tmux ls'
 alias git='hub'
-alias ag='ag --path-to-agignore ~/.agignore'
+alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.agignore'
 
 # get current branch in git repo
 function parse_git_branch() {
