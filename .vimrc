@@ -16,6 +16,7 @@ Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
 Plug 'fatih/vim-go' " Go language support
 Plug 'pangloss/vim-javascript' " Javascript language support
+Plug 'elzr/vim-json' " Better JSON support
 Plug 'sickill/vim-monokai' " Monokai color scheme
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
@@ -105,6 +106,9 @@ let g:go_highlight_operators = 1 " Disable if things get slow
 let g:go_highlight_structs = 1 " Disable if things get slow
 let g:go_highlight_interfaces = 1 " Disable if things get slow
 let g:go_highlight_build_constraints = 1
+
+" JSON
+let g:vim_json_syntax_conceal = 0
 
 " ----- Normal Mode Bindings -----
 nmap j gj
