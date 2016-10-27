@@ -23,6 +23,7 @@ Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'vim-ruby/vim-ruby' " Ruby language support
 Plug 'ngmy/vim-rubocop' " Rubocop for vim
 Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
+Plug 'cespare/vim-toml' " TOML syntax highlighting
 Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
 
 call plug#end()
