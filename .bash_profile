@@ -78,8 +78,11 @@ function parse_git_dirty {
 export PS1="\[\e[36m\]\t\[\e[m\]\[\e[36m\]-\[\e[m\]\[\e[36m\]\W\[\e[m\]\[\e[32m\]\`parse_git_branch\`\[\e[m\] "
 
 # Git branch tab completion
-if [ -f `brew --prefix`/etc/bash_completion ]; then
+if [[ $(uname -s) != Linux ]]
+then
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
+  fi
 fi
 
 # Run rbenv init last. Was broken at top.
