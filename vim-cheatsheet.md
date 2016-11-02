@@ -5,6 +5,7 @@
 - `f[character]` => Jump forward to next [character] in the line
 - `t[character]` => Jump forward to one character before [character] in the line
 - `gd` or `*` or `#` => Search for the word under the cursor
+- `ctrl + v` then `c` to select a visual block and change every line at once, like in `git rebase -i`
 
 *vim-surround*
 - `ysiw [delimiter]` => Surround the current word with [delimiter]
