@@ -6,6 +6,7 @@
 - `t[character]` => Jump forward to one character before [character] in the line
 - `gd` or `*` or `#` => Search for the word under the cursor
 - `ctrl + v` then `c` to select a visual block and change every line at once, like in `git rebase -i`
+- `ctrl + a` to increment numbers, `ctrl + x` to decrement
 
 *vim-surround*
 - `ysiw [delimiter]` => Surround the current word with [delimiter]
