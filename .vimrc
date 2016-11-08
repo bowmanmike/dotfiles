@@ -29,8 +29,8 @@ Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
 call plug#end()
 
 " ----- Default Configs -----
-" set number " Show line numbers
 set relativenumber " Show line number relative to cursor
+set number " Show current line number
 set ruler " Not sure what these ones do
 set hls is " Not sure what these ones do
 set nocompatible " Don't worry about compatibility with old vim
