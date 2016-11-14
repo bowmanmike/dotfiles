@@ -18,3 +18,6 @@
 - `:Gstatus` to see the status of the current directory
 - In the status window, navigate to the file you want to add and press `-`
 - `cc` To begin a commit, write a commit message in the status window, then `:wq`
+
+*resources*
+- http://blog.superuser.com/2012/03/06/understanding-the-improved-in-vim/
