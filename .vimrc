@@ -80,7 +80,7 @@ let g:ctrlp_custom_ignore = {
 
 " Use AG instead of Ack
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep -i'
 endif
 
 " Map leader-g to ack and don't automatically jump to results
