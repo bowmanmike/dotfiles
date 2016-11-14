@@ -1,6 +1,7 @@
 " ----- Vim-plug -----
 call plug#begin()
 
+Plug 'mileszs/ack.vim'  " Code search with AG
 Plug 'romainl/Apprentice' " Apprentice colorscheme
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
@@ -76,6 +77,15 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](doc|tmp|node_modules|bower_components|vendor)',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
+
+" Use AG instead of Ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" Map leader-g to ack and don't automatically jump to results
+cnoreabbrev Ack Ack!
+nnoremap <Leader>g :Ack!<Space>
 
 " Remove trailing whitespace in certain filetypes on save
 au BufWritePre *.rb :%s/\s\+$//e
