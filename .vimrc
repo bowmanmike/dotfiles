@@ -43,6 +43,8 @@ set smartcase " Searches with all lower-case are case insensitive, searches with
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set softtabstop=0
+set smarttab
 
 filetype plugin indent on " Automatically read filetype
 set visualbell " No bells, apparently
@@ -105,8 +107,13 @@ let g:airline#extensions#tabline#enabled = 1
 
 " ----- Language Specific Settings ----- 
 " Go
-" Set tabs to 4 space tabs
+" Set tabs to 8 space tabs
 autocmd FileType go set tabstop=8|set shiftwidth=8|set noexpandtab
+
+"JSON
+"Set tabs to 4 spaces
+autocmd FileType json set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+let g:vim_json_syntax_conceal = 0
 
 " Run goimports as well as gofmt on save
 let g:go_fmt_command = "goimports"
@@ -120,9 +127,6 @@ let g:go_highlight_operators = 1 " Disable if things get slow
 let g:go_highlight_structs = 1 " Disable if things get slow
 let g:go_highlight_interfaces = 1 " Disable if things get slow
 let g:go_highlight_build_constraints = 1
-
-" JSON
-let g:vim_json_syntax_conceal = 0
 
 " ----- Normal Mode Bindings -----
 nmap j gj
