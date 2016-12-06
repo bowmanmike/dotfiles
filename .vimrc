@@ -2,23 +2,18 @@
 call plug#begin()
 
 Plug 'mileszs/ack.vim'  " Code search with AG
-Plug 'romainl/Apprentice' " Apprentice colorscheme
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
-Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
 Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
-Plug 'joshdick/onedark.vim' " Onedark colorscheme
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
 Plug 'vim-airline/vim-airline' " Airline status bar
-Plug 'vim-airline/vim-airline-themes' " Airline color schemes
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
 Plug 'fatih/vim-go' " Go language support
 Plug 'pangloss/vim-javascript' " Javascript language support
 Plug 'elzr/vim-json' " Better JSON support
-Plug 'sickill/vim-monokai' " Monokai color scheme
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'vim-ruby/vim-ruby' " Ruby language support
@@ -26,6 +21,14 @@ Plug 'ngmy/vim-rubocop' " Rubocop for vim
 Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 Plug 'cespare/vim-toml' " TOML syntax highlighting
 Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
+
+" Colorschemes
+Plug 'fatih/molokai' " Vim Molokai
+Plug 'joshdick/onedark.vim' " Onedark colorscheme
+Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
+Plug 'romainl/Apprentice' " Apprentice colorscheme
+Plug 'sickill/vim-monokai' " Monokai color scheme
+Plug 'vim-airline/vim-airline-themes' " Airline color schemes
 
 call plug#end()
 
@@ -54,6 +57,8 @@ set noerrorbells "Try to turn off error bells, might need more config
 syntax on
 colorscheme jellybeans
 " colorscheme onedark
+let g:rehash256=1
+
 
 set scrolloff=5 " Always show 5 lines below cursor, seems to be not working.
 
