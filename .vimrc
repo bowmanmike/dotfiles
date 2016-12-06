@@ -152,11 +152,11 @@ nmap <leader>a :call RunAllSpecs()<cr>
 nmap <leader>f :call RunCurrentSpecFile()<cr>
 
 " GoVim Shortcuts
-nmap <leader>l <Plug>(go-lint)
 au FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 autocmd FileType go nmap <Leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>dc :GoDoc<cr>
 
 " ----- Command Bindings -----
 command! Q q
