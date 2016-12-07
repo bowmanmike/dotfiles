@@ -1,14 +1,10 @@
 "use babel";
 
-import { React, ReactDOM } from "react-for-atom";
+import { React } from "react-for-atom";
 import { connect } from "react-redux";
-import { copyToClipboard } from "./utils";
 import * as Delve from "./delve";
 
 class Variables extends React.Component {
-	componentDidMount() {
-		copyToClipboard(ReactDOM.findDOMNode(this));
-	}
 	render() {
 		return <div onClick={this.onToggleClick.bind(this)}>
 			<Children variables={this.props.variables} path={""} expanded={this.props.expanded} />
@@ -58,14 +54,16 @@ const Variable = (props) => {
 	toggleClassName += " icon icon-chevron-" + (isExpanded ? "down" : "right");
 	return <li>
 		<span className={toggleClassName} data-path={path} />
-		{variable.value ? <span tabIndex={-1}>{name}: {renderValue(variable.value)}</span> : <span>{name}</span>}
+		{variable.value ?
+			<span tabIndex={-1} className="native-key-bindings">{name}: {renderValue(variable.value)}</span> :
+			<span tabIndex={-1} className="native-key-bindings">{name}</span>}
 		{isExpanded ? <Children variables={variables} path={path} expanded={expanded} /> : null}
 	</li>;
 };
 
 const Children = (props) => {
 	const { variables, path, expanded } = props;
-	const children = Object.keys(variables || {}).filter((p) => parentPath(p) === path).sort();
+	const children = Object.keys(variables || {}).filter((p) => variables[p].parentPath === path).sort();
 	if (!children.length) {
 		return <div />;
 	}
@@ -84,8 +82,4 @@ function renderValue(value) {
 		return value.className ? <span className={value.className}>{v}</span> : v;
 	}
 	return (value === undefined || value === null) ? "" : value;
-}
-
-function parentPath(p) {
-	return p.split(".").slice(0,-1).join(".");
 }

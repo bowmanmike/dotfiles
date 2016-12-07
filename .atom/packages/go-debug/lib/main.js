@@ -17,7 +17,7 @@ export default {
 			this.start();
 			return true;
 		}).catch((e) => {
-			console.log(e);
+			console.warn("go-debug", e);
 		});
 	},
 	deactivate() {
@@ -27,6 +27,7 @@ export default {
 		}
 		dependenciesInstalled = false;
 		path = null;
+		goget = goconfig = null;
 	},
 	serialize() {
 		return store ? store.serialize() : initialState;
@@ -45,18 +46,14 @@ export default {
 			return;
 		}
 
-		goconfig.locator.findTool("dlv").then((p) => {
-			let prom = Promise.resolve(p);
+		Delve.get(goget, goconfig).then((p) => {
 			if (!p) {
-				prom = Delve.get(goget, goconfig);
+				return;
 			}
-			prom.then((p) => {
-				if (!p) {
-					return;
-				}
-				path = p;
-				this.start();
-			}).catch(() => {});
+			path = p;
+			this.start();
+		}).catch((e) => {
+			console.warn("go-debug", e);
 		});
 	},
 
@@ -85,10 +82,11 @@ export default {
 			atom.commands.add("atom-workspace", {
 				"go-debug:toggle-panel": commands.get("toggle-panel").action
 			}),
-			store,
+			output,
 			editors,
 			panel,
-			output
+			Delve,
+			store
 		);
 
 		// start observing config values

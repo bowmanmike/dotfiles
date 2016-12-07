@@ -1,7 +1,7 @@
 {
   "name": "go-debug",
   "main": "./lib/main",
-  "version": "0.1.13",
+  "version": "0.1.16",
   "description": "go debugger using delve for atom",
   "keywords": [
     "go",
@@ -68,10 +68,10 @@
   "readme": "# [go-debug](https://atom.io/packages/go-debug)\n\nA go debugger for atom using [delve](https://github.com/derekparker/delve).\n\n![Demo](https://raw.githubusercontent.com/lloiser/go-debug/master/resources/demo.gif)\n\n## Install\n\nEither `apm install go-debug` or search for `go-debug` in the settings.\n\n### Install delve\n\nsee https://github.com/derekparker/delve/tree/master/Documentation/installation\n\n## Key bindings\n\n* `f5` runs the current package (`dlv debug`)\n* `ctrl-f5` runs the current package tests (`dlv test`)\n* `shift-f5` restarts the current delve session (`r / restart`)\n* `f6` stops delve (`exit / quit / q`)\n* `f8` continue the execution (`c / continue`)\n* `f9` toggle breakpoint\n* `f10` step over to next source line (`n / next`)\n* `f11` step into functions (`s / step`)\n* `cmd-k cmd-g` (mac) / `ctrl-k ctrl-g` (others) toggles the main panel\n\n## Links\n\n* Gopher community on slack: [![Slack](https://img.shields.io/badge/gophers_slack-%23go--plus-blue.svg?style=flat)](https://gophersinvite.herokuapp.com) <br />Questions? Use the `go-plus` channel or send me direct messages\n",
   "readmeFilename": "README.md",
   "homepage": "https://github.com/lloiser/go-debug#readme",
-  "_id": "go-debug@0.1.13",
-  "_shasum": "e4b46e39cc7b567ff4f6a72786a76a9fd370133e",
-  "_resolved": "file:../d-116515-83532-nuf4sw/package.tgz",
-  "_from": "../d-116515-83532-nuf4sw/package.tgz",
+  "_id": "go-debug@0.1.16",
+  "_shasum": "28cc97615948dfea04d48510193e4985c7a16a5d",
+  "_resolved": "file:../d-116619-3594-wjxeg/package.tgz",
+  "_from": "../d-116619-3594-wjxeg/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -157,7 +157,7 @@
       },
       {
         "name": "react",
-        "version": "15.1.0",
+        "version": "15.2.1",
         "path": "node_modules/react/react.js"
       },
       {
@@ -167,7 +167,7 @@
       },
       {
         "name": "core-js",
-        "version": "1.2.6",
+        "version": "1.2.7",
         "path": "node_modules/react/node_modules/fbjs/node_modules/core-js/index.js"
       },
       {
@@ -252,7 +252,7 @@
       },
       {
         "name": "core-js",
-        "version": "1.2.6",
+        "version": "1.2.7",
         "path": "node_modules/react-for-atom/node_modules/react/node_modules/fbjs/node_modules/core-js/index.js"
       },
       {
@@ -377,7 +377,7 @@
       },
       {
         "name": "hoist-non-react-statics",
-        "version": "1.1.0",
+        "version": "1.2.0",
         "path": "node_modules/react-redux/node_modules/hoist-non-react-statics/index.js"
       },
       {
@@ -432,7 +432,7 @@
       },
       {
         "name": "request",
-        "version": "2.72.0",
+        "version": "2.73.0",
         "path": "node_modules/request/index.js"
       },
       {
@@ -652,7 +652,7 @@
       },
       {
         "name": "jsprim",
-        "version": "1.2.2",
+        "version": "1.3.0",
         "path": "node_modules/request/node_modules/http-signature/node_modules/jsprim/lib/jsprim.js"
       },
       {
@@ -752,7 +752,7 @@
       },
       {
         "name": "qs",
-        "version": "6.1.0",
+        "version": "6.2.0",
         "path": "node_modules/request/node_modules/qs/lib/index.js"
       },
       {
@@ -1323,7 +1323,6 @@
         "node_modules/react/lib/KeyEscapeUtils.js",
         "node_modules/react/lib/LinkedStateMixin.js",
         "node_modules/react/lib/LinkedValueUtils.js",
-        "node_modules/react/lib/MetaMatchers.js",
         "node_modules/react/lib/NativeMethodsMixin.js",
         "node_modules/react/lib/PooledClass.js",
         "node_modules/react/lib/React.js",
@@ -1337,6 +1336,7 @@
         "node_modules/react/lib/ReactComponentBrowserEnvironment.js",
         "node_modules/react/lib/ReactComponentEnvironment.js",
         "node_modules/react/lib/ReactComponentTreeDevtool.js",
+        "node_modules/react/lib/ReactComponentTreeTestUtils.js",
         "node_modules/react/lib/ReactComponentWithPureRenderMixin.js",
         "node_modules/react/lib/ReactCompositeComponent.js",
         "node_modules/react/lib/ReactCurrentOwner.js",
@@ -1350,9 +1350,11 @@
         "node_modules/react/lib/ReactDOMEmptyComponent.js",
         "node_modules/react/lib/ReactDOMFactories.js",
         "node_modules/react/lib/ReactDOMFeatureFlags.js",
+        "node_modules/react/lib/ReactDOMFiber.js",
         "node_modules/react/lib/ReactDOMIDOperations.js",
         "node_modules/react/lib/ReactDOMInput.js",
         "node_modules/react/lib/ReactDOMInstrumentation.js",
+        "node_modules/react/lib/ReactDOMNullInputValuePropDevtool.js",
         "node_modules/react/lib/ReactDOMOption.js",
         "node_modules/react/lib/ReactDOMSelect.js",
         "node_modules/react/lib/ReactDOMSelection.js",
@@ -1372,6 +1374,8 @@
         "node_modules/react/lib/ReactEventListener.js",
         "node_modules/react/lib/ReactFeatureFlags.js",
         "node_modules/react/lib/ReactFragment.js",
+        "node_modules/react/lib/ReactHostComponent.js",
+        "node_modules/react/lib/ReactHostOperationHistoryDevtool.js",
         "node_modules/react/lib/ReactInjection.js",
         "node_modules/react/lib/ReactInputSelection.js",
         "node_modules/react/lib/ReactInstanceHandles.js",
@@ -1387,7 +1391,6 @@
         "node_modules/react/lib/ReactNativeAttributePayload.js",
         "node_modules/react/lib/ReactNativeBaseComponent.js",
         "node_modules/react/lib/ReactNativeBridgeEventPlugin.js",
-        "node_modules/react/lib/ReactNativeComponent.js",
         "node_modules/react/lib/ReactNativeComponentEnvironment.js",
         "node_modules/react/lib/ReactNativeComponentTree.js",
         "node_modules/react/lib/ReactNativeContainerInfo.js",
@@ -1397,13 +1400,13 @@
         "node_modules/react/lib/ReactNativeEventPluginOrder.js",
         "node_modules/react/lib/ReactNativeGlobalResponderHandler.js",
         "node_modules/react/lib/ReactNativeMount.js",
-        "node_modules/react/lib/ReactNativeOperationHistoryDevtool.js",
         "node_modules/react/lib/ReactNativePropRegistry.js",
         "node_modules/react/lib/ReactNativeReconcileTransaction.js",
         "node_modules/react/lib/ReactNativeTagHandles.js",
         "node_modules/react/lib/ReactNativeTextComponent.js",
         "node_modules/react/lib/ReactNativeTreeTraversal.js",
         "node_modules/react/lib/ReactNodeTypes.js",
+        "node_modules/react/lib/ReactNoop.js",
         "node_modules/react/lib/ReactNoopUpdateQueue.js",
         "node_modules/react/lib/ReactOwner.js",
         "node_modules/react/lib/ReactPerf.js",
@@ -1416,8 +1419,12 @@
         "node_modules/react/lib/ReactServerBatchingStrategy.js",
         "node_modules/react/lib/ReactServerRendering.js",
         "node_modules/react/lib/ReactServerRenderingTransaction.js",
+        "node_modules/react/lib/ReactServerUpdateQueue.js",
         "node_modules/react/lib/ReactSimpleEmptyComponent.js",
         "node_modules/react/lib/ReactStateSetters.js",
+        "node_modules/react/lib/ReactTestMount.js",
+        "node_modules/react/lib/ReactTestReconcileTransaction.js",
+        "node_modules/react/lib/ReactTestRenderer.js",
         "node_modules/react/lib/ReactTestUtils.js",
         "node_modules/react/lib/ReactTransitionChildMapping.js",
         "node_modules/react/lib/ReactTransitionEvents.js",
@@ -1455,6 +1462,7 @@
         "node_modules/react/lib/accumulateInto.js",
         "node_modules/react/lib/adler32.js",
         "node_modules/react/lib/canDefineProperty.js",
+        "node_modules/react/lib/checkReactTypeSpec.js",
         "node_modules/react/lib/createHierarchyRenderer.js",
         "node_modules/react/lib/createMicrosoftUnsafeLocalFunction.js",
         "node_modules/react/lib/createReactNativeComponentClass.js",
@@ -1469,8 +1477,8 @@
         "node_modules/react/lib/getEventKey.js",
         "node_modules/react/lib/getEventModifierState.js",
         "node_modules/react/lib/getEventTarget.js",
+        "node_modules/react/lib/getHostComponentFromComposite.js",
         "node_modules/react/lib/getIteratorFn.js",
-        "node_modules/react/lib/getNativeComponentFromComposite.js",
         "node_modules/react/lib/getNodeForCharacterOffset.js",
         "node_modules/react/lib/getTestDocument.js",
         "node_modules/react/lib/getTextContentAccessor.js",
@@ -1481,6 +1489,7 @@
         "node_modules/react/lib/onlyChild.js",
         "node_modules/react/lib/quoteAttributeValueForBrowser.js",
         "node_modules/react/lib/reactComponentExpect.js",
+        "node_modules/react/lib/reactProdInvariant.js",
         "node_modules/react/lib/renderSubtreeIntoContainer.js",
         "node_modules/react/lib/setInnerHTML.js",
         "node_modules/react/lib/setTextContent.js",
@@ -6766,8 +6775,7 @@
         "node_modules/request/node_modules/node-uuid/component.json",
         "node_modules/request/node_modules/node-uuid/package.json",
         "node_modules/request/node_modules/oauth-sign/package.json",
-        "node_modules/request/node_modules/qs/bower.json",
-        "node_modules/request/node_modules/qs/component.json",
+        "node_modules/request/node_modules/qs/.jscs.json",
         "node_modules/request/node_modules/qs/package.json",
         "node_modules/request/node_modules/stringstream/package.json",
         "node_modules/request/node_modules/tough-cookie/package.json",
@@ -6881,7 +6889,7 @@
           "node_modules/react"
         ],
         "dependencies": {
-          "fbjs": "^0.8.0",
+          "fbjs": "^0.8.1",
           "loose-envify": "^1.1.0",
           "object-assign": "^4.1.0"
         }
@@ -7125,7 +7133,7 @@
           "combined-stream": "~1.0.5",
           "extend": "~3.0.0",
           "forever-agent": "~0.6.1",
-          "form-data": "~1.0.0-rc3",
+          "form-data": "~1.0.0-rc4",
           "har-validator": "~2.0.6",
           "hawk": "~3.1.3",
           "http-signature": "~1.1.0",
@@ -7135,7 +7143,7 @@
           "mime-types": "~2.1.7",
           "node-uuid": "~1.4.7",
           "oauth-sign": "~0.8.1",
-          "qs": "~6.1.0",
+          "qs": "~6.2.0",
           "stringstream": "~0.0.4",
           "tough-cookie": "~2.2.0",
           "tunnel-agent": "~0.4.1"

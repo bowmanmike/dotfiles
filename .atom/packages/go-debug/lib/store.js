@@ -157,9 +157,12 @@ function editors(state = {}, action) {
 	void action;
 	return state;
 }
+const getDefaultPanel = () => {
+	return { visible: atom.config.get("go-debug.panelInitialVisible") };
+};
 function panel(state, action) {
 	if (!state) {
-		state = { visible: atom.config.get("go-debug.panelInitialVisible") };
+		state = getDefaultPanel();
 	}
 	switch (action.type) {
 		case "TOGGLE_PANEL":
@@ -170,7 +173,12 @@ function panel(state, action) {
 	}
 	return state;
 }
-function output(state = { messages: [], visible: false }, action) {
+const defaultOutput = {
+	messages: [],
+	visible: false,
+	filters: { delve: true, output: true }
+};
+function output(state = defaultOutput, action) {
 	switch (action.type) {
 		case "TOGGLE_OUTPUT":
 			return assign(state, { visible: "visible" in action ? action.visible : !state.visible });
@@ -182,6 +190,13 @@ function output(state = { messages: [], visible: false }, action) {
 			const messages = state.messages.concat({ message: action.message, type: action.messageType });
 			return assign(state, { messages: messages });
 		}
+
+		case "TOGGLE_OUTPUT_FILTER":
+			return assign(state, {
+				filters: assign(state.filters, {
+					[action.filter]: !state.filters[action.filter]
+				})
+			});
 	}
 	return state;
 }
@@ -203,6 +218,7 @@ export function init(state) {
 		state.delve = { breakpoints: state.breakpoints };
 		delete state.breakpoints;
 	}
+	state.panel = assign(getDefaultPanel(), state.panel);
 
 	store = createStore(combineReducers({
 		editors,

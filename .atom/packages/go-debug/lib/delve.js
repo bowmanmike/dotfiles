@@ -21,8 +21,8 @@ export function runPackage(file) {
 	return run(file, "debug");
 }
 
-function addOutputMessage(messageType, message, args) {
-	store.dispatch({ type: "ADD_OUTPUT_MESSAGE", messageType, message, args });
+function addOutputMessage(messageType, message) {
+	store.dispatch({ type: "ADD_OUTPUT_MESSAGE", messageType, message });
 }
 
 function run(file, method) {
@@ -30,6 +30,12 @@ function run(file, method) {
 	if (!dlvPath || dlvProcess || !file) {
 		return;
 	}
+
+	const panelState = store.getState().panel;
+	if (!panelState.visible) {
+		store.dispatch({ type: "TOGGLE_PANEL" });
+	}
+
 	store.dispatch({ type: "SET_STATE", state: "starting" });
 
 	let dlvArgs = [method, "--headless=true", `--listen=${SERVER_URL}:${SERVER_PORT}`, "--log"];
@@ -37,24 +43,24 @@ function run(file, method) {
 		dlvArgs = dlvArgs.concat("--", splitArgs(args));
 	}
 
-	addOutputMessage("go-debug", `Starting delve with "${file}" with "${method}"`);
+	addOutputMessage("delve", `Starting delve with "${file}" with "${method}"`);
 	dlvProcess = spawn(dlvPath, dlvArgs, {
 		cwd: path.dirname(file)
 	});
 
 	let rpcClient;
 	dlvProcess.stderr.on("data", (chunk) => {
-		addOutputMessage("go-debug", "Delve output: " + chunk.toString());
+		addOutputMessage("delve", "Delve output: " + chunk.toString());
 		if (!rpcClient) {
 			rpcClient = rpc.Client.$create(SERVER_PORT, SERVER_URL);
 			rpcClient.connectSocket((err, conn) => {
 				if (err) {
-					addOutputMessage("go-debug", `Failed to start delve\n\terror: ${err}`);
+					addOutputMessage("delve", `Failed to start delve\n\terror: ${err}`);
 					stop();
 					return;
 				}
 				dlvConnection = conn;
-				addOutputMessage("go-debug", `Started delve with "${file}" with "${method}"`);
+				addOutputMessage("delve", `Started delve with "${file}" with "${method}"`);
 				store.dispatch({ type: "SET_STATE", state: "started" });
 
 				getBreakpoints().forEach((bp) => {
@@ -69,11 +75,11 @@ function run(file, method) {
 	});
 
 	dlvProcess.on("close", (code) => {
-		addOutputMessage("go-debug", "delve closed with code " + code);
+		addOutputMessage("delve", "delve closed with code " + code);
 		stop();
 	});
 	dlvProcess.on("error", (err) => {
-		addOutputMessage("go-debug", "error: " + err);
+		addOutputMessage("delve", "error: " + err);
 		stop();
 	});
 }
@@ -105,15 +111,15 @@ export function addBreakpoint(file, line) {
 
 	// note: delve requires 1 indexed line numbers whereas atom has 0 indexed
 	const fileAndLine = `${file}:${line + 1}`;
-	addOutputMessage("go-debug", `Adding breakpoint: ${fileAndLine}`);
+	addOutputMessage("delve", `Adding breakpoint: ${fileAndLine}`);
 	store.dispatch({ type: "ADD_BREAKPOINT", bp: { file, line } });
 	return _addBreakpoint(file, line + 1)
 		.then((response) => {
-			addOutputMessage("go-debug", `Added breakpoint: ${fileAndLine}`);
+			addOutputMessage("delve", `Added breakpoint: ${fileAndLine}`);
 			store.dispatch({ type: "ADD_BREAKPOINT", bp: { file, line, id: response.id, state: "valid" } });
 		})
 		.catch((err) => {
-			addOutputMessage("go-debug", `Adding breakpoint failed: ${fileAndLine}\n\terror: ${err}`);
+			addOutputMessage("delve", `Adding breakpoint failed: ${fileAndLine}\n\terror: ${err}`);
 			store.dispatch({ type: "ADD_BREAKPOINT", bp: { file, line, state: "invalid", message: err } });
 		});
 }
@@ -136,10 +142,10 @@ export function removeBreakpoint(file, line) {
 	}
 
 	const fileAndLine = `${file}:${line + 1}`;
-	addOutputMessage("go-debug", `Removing breakpoint: ${fileAndLine}`);
+	addOutputMessage("delve", `Removing breakpoint: ${fileAndLine}`);
 	store.dispatch({ type: "REMOVE_BREAKPOINT", bp: { file, line, state: "busy" } });
 	return _removeBreakpoint(bp.id)
-		.then(() => addOutputMessage("go-debug", `Removed breakpoint: ${fileAndLine}`))
+		.then(() => addOutputMessage("delve", `Removed breakpoint: ${fileAndLine}`))
 		.then(done);
 }
 function _removeBreakpoint(id) {
@@ -171,7 +177,7 @@ export function command(name) {
 	if (!isStarted()) {
 		return;
 	}
-	addOutputMessage("go-debug", `Executing command ${name}`);
+	addOutputMessage("delve", `Executing command ${name}`);
 	store.dispatch({ type: "SET_STATE", state: "busy" });
 	call("Command", { name }).then((newState) => {
 		if (newState.exited) {
@@ -254,7 +260,7 @@ function call(method, ...args) {
 		const endpoint = RPC_ENDPOINT + method;
 		dlvConnection.call(endpoint, args, (err, result) => {
 			if (err) {
-				addOutputMessage("go-debug", `Failed to call ${method}\n\terror: ${err}`);
+				addOutputMessage("delve", `Failed to call ${method}\n\terror: ${err}`);
 				reject(err);
 				return;
 			}
@@ -303,51 +309,78 @@ function splitArgs(argString) {
 	return args;
 }
 
+export function dispose() {
+	stop();
+}
+
+function locate(goconfig) {
+	return goconfig.locator.findTool("dlv");
+}
+
 export function get(goget, goconfig) {
-	return new Promise(function(resolve, reject) {
-		if (process.platform === "darwin") {
-			getOnOSX(goconfig, resolve);
-			return;
+	return locate(goconfig).then((p) => {
+		if (p) {
+			return p;
 		}
 
-		goget.get({
+		// check if GOPATH is actually available in goconfig!
+		if (!assertGOPATH(goconfig)) {
+			return Promise.reject("Environment variable \"GOPATH\" is not available!");
+		}
+
+		if (process.platform === "darwin") {
+			return getOnOSX(goconfig);
+		}
+
+		return goget.get({
 			name: "go-debug",
 			packageName: "dlv",
 			packagePath: "github.com/derekparker/delve/cmd/dlv",
 			type: "missing"
 		}).then((r) => {
 			if (!r.success) {
-				console.log("Failed to install \"dlv\" via \"go get -u github.com/derekparker/delve/cmd/dlv\"; please install it manually.");
-				return;
+				return Promise.reject("Failed to install \"dlv\" via \"go get -u github.com/derekparker/delve/cmd/dlv\". Please install it manually.\n" + r.result.stderr);
 			}
-			goconfig.locator.findTool("dlv").then(resolve);
-		}).catch((e) => {
-			console.log(e);
-			reject();
+			return locate(goconfig);
 		});
 	});
 }
-function getOnOSX(goconfig, resolve) {
+function getOnOSX(goconfig) {
 	// delve is not "go get"-able on OSX yet as it needs to be signed to use it...
 	// alternative: use an prebuilt dlv executable -> https://bintray.com/jetbrains/golang/delve
+
+	let resolve, reject;
+	const prom = new Promise((res, rej) => {
+		resolve = res;
+		reject = rej;
+	});
 
 	const request = require("request");
 	const AdmZip = require("adm-zip");
 	const path = require("path");
 	const fs = require("fs");
 
+	function start() {
+		Promise.all([
+			getVersion().then(download),
+			getGoPath()
+		])
+		.then((results) => extract(results[0], results[1]))
+		.catch(reject);
+	}
+
 	// get latest version
 	function getVersion() {
-		noti.dismiss(); // eslint-disable-line
-
-		request("https://api.bintray.com/packages/jetbrains/golang/delve/versions/_latest",
-			function(error, response, body) {
+		return new Promise(function(resolve, reject) {
+			const url = "https://api.bintray.com/packages/jetbrains/golang/delve/versions/_latest";
+			request(url, (error, response, body) => {
 				if (error || response.statusCode !== 200) {
-					console.log(error);
+					reject(error || "Failed to determine the latest version from bintray!");
 					return;
 				}
-				download(JSON.parse(body).name);
+				resolve(JSON.parse(body).name);
 			});
+		});
 	}
 
 	// download the latest version
@@ -356,57 +389,94 @@ function getOnOSX(goconfig, resolve) {
 			url: "https://dl.bintray.com/jetbrains/golang/com/jetbrains/delve/" + version + "/delve-" + version + ".zip",
 			encoding: null
 		};
-		request(o, function (error, response, body) {
-			if (error || response.statusCode !== 200) {
-				console.log(error);
+		return new Promise(function(resolve, reject) {
+			request(o, (error, response, body) => {
+				if (error || response.statusCode !== 200) {
+					reject(error || "Failed to download the latest dlv executable from bintray!");
+					return;
+				}
+				resolve(body);
+			});
+		});
+	}
+
+	function getGoPath() {
+		return new Promise(function(resolve) {
+			const paths = goconfig.environment().GOPATH.split(path.delimiter);
+			if (paths.length === 1) {
+				resolve(paths[0]);
 				return;
 			}
-			extract(body);
+			const options = paths.map((p, i) => `<option value="${i}">${p}</option>`).join("");
+
+			// poor mans modal as the notification is not customizable ... I will not put
+			// too much effort into this as it will (hopefully) not be needed in the future
+			var item = document.createElement("div");
+			item.innerHTML = `<p>Multiple GOPATHs detected, where do you want to put the "dlv" executable?</p>
+				<select class="go-debug-mutliple-gopath-selector btn">
+					<option value="">Select a path ...</option>
+					${options}
+				</select>
+				<button type="button" class="go-debug-mutliple-gopath-btn btn">OK</button>`;
+
+			const panel = atom.workspace.addModalPanel({ item });
+
+			item.querySelector(".go-debug-mutliple-gopath-btn").addEventListener("click", () => {
+				const { value } = item.querySelector(".go-debug-mutliple-gopath-selector");
+				resolve(value ? paths[value] : null);
+				panel.destroy();
+			});
 		});
 	}
 
 	// extract zip
-	function extract(body) {
+	function extract(body, gopath) {
+		if (!gopath) {
+			resolve(null);
+			return;
+		}
 		const zip = new AdmZip(body);
 
 		// copy mac/dlv to $GOPATH/bin
-		const binPath = path.join(goconfig.environment().GOPATH, "bin");
-		zip.extractEntryTo("dlv/mac/dlv", binPath, false, true);
+		try {
+			const binPath = path.join(gopath, "bin");
+			zip.extractEntryTo("dlv/mac/dlv", binPath, false, true);
+		} catch (e) {
+			reject(e);
+			return;
+		}
 
-		locate();
-	}
-
-	// locate dlv again
-	function locate() {
-		goconfig.locator.findTool("dlv").then(updatePermission);
+		locate(goconfig).then(updatePermission).catch(reject);
 	}
 
 	// update the file permissions to be able to execute dlv
 	function updatePermission(path) {
-		fs.chmod(path, 0o777, () => resolve(path));
-	}
-
-	// check if GOPATH is actually available in goconfig!
-	if (!goconfig.environment().GOPATH) {
-		atom.notifications.addWarning(
-			"The environment variable \"GOPATH\" is not set!",
-			{
-				dismissable: true,
-				detail: "Starting atom via a desktop icon might not pass \"GOPATH\" to atom!\nTry starting atom from the command line instead."
+		if (!path) {
+			reject("Failed to find delve executable \"dlv\" in your GOPATH");
+			return;
+		}
+		fs.chmod(path, 0o777, (err) => {
+			if (err) {
+				reject(err);
+				return;
 			}
-		);
-		return;
+			resolve(path);
+		});
 	}
 
 	const noti = atom.notifications.addWarning(
 		"Could not find delve executable \"dlv\" in your GOPATH!",
 		{
 			dismissable: true,
-			detail: "Do you want to install a prebuilt/signed dlv executable from \"https://bintray.com/jetbrains/golang/delve\"?",
+			onDidDismiss: () => resolve(null),
+			description: "Do you want to install a prebuilt/signed dlv executable from https://bintray.com/jetbrains/golang/delve ?",
 			buttons: [
 				{
 					text: "Yes",
-					onDidClick: getVersion
+					onDidClick: () => {
+						noti.dismiss();
+						start();
+					}
 				},
 				{
 					text: "No",
@@ -418,4 +488,20 @@ function getOnOSX(goconfig, resolve) {
 			]
 		}
 	);
+
+	return prom;
+}
+function assertGOPATH(goconfig) {
+	if (goconfig.environment().GOPATH) {
+		return true;
+	}
+
+	atom.notifications.addWarning(
+		"The environment variable \"GOPATH\" is not set!",
+		{
+			dismissable: true,
+			description: "Starting atom via a desktop icon might not pass \"GOPATH\" to atom!\nTry starting atom from the command line instead."
+		}
+	);
+	return false;
 }

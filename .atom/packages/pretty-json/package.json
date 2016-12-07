@@ -1,7 +1,7 @@
 {
   "main": "./index.coffee",
   "name": "pretty-json",
-  "version": "1.4.1",
+  "version": "1.4.4",
   "description": "Format JSON",
   "keywords": [
     "JSON",
@@ -20,6 +20,7 @@
     "atom": "*"
   },
   "dependencies": {
+    "bignumber.js": "^2.3.0",
     "json-bigint": "^0.2.0",
     "json-stable-stringify": "^1.0.1",
     "jsonminify": "^0.4.1"
@@ -31,13 +32,18 @@
     "url": "https://github.com/federomero/pretty-json/issues"
   },
   "homepage": "https://github.com/federomero/pretty-json#readme",
-  "_id": "pretty-json@1.4.1",
-  "_shasum": "4a19417acf4f5a74b55a52c8a450f8c56d408f12",
-  "_resolved": "file:../d-11657-56664-b2n7q7/package.tgz",
-  "_from": "../d-11657-56664-b2n7q7/package.tgz",
+  "_id": "pretty-json@1.4.4",
+  "_shasum": "1433fac5a5a39bc61b4c54286aca23e2af09dfd1",
+  "_resolved": "file:../d-116619-3597-19kk1dj/package.tgz",
+  "_from": "../d-116619-3597-19kk1dj/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
+      {
+        "name": "bignumber.js",
+        "version": "2.4.0",
+        "path": "node_modules/bignumber.js/bignumber.js"
+      },
       {
         "name": "json-bigint",
         "version": "0.2.0",
@@ -67,6 +73,8 @@
     "extensions": {
       ".json": [
         "coffeelint.json",
+        "node_modules/bignumber.js/bower.json",
+        "node_modules/bignumber.js/package.json",
         "node_modules/json-bigint/node_modules/bignumber.js/package.json",
         "node_modules/json-bigint/package.json",
         "node_modules/json-stable-stringify/node_modules/jsonify/package.json",
@@ -83,6 +91,8 @@
         "index.coffee"
       ],
       ".js": [
+        "node_modules/bignumber.js/bignumber.js",
+        "node_modules/bignumber.js/bignumber.min.js",
         "node_modules/json-bigint/index.js",
         "node_modules/json-bigint/lib/parse.js",
         "node_modules/json-bigint/lib/stringify.js",
@@ -156,6 +166,7 @@
           "spec"
         ],
         "dependencies": {
+          "bignumber.js": "^2.3.0",
           "json-bigint": "^0.2.0",
           "json-stable-stringify": "^1.0.1",
           "jsonminify": "^0.4.1"

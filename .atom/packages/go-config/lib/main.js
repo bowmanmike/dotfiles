@@ -1,27 +1,21 @@
 'use babel'
 
 import {CompositeDisposable} from 'atom'
-import {isTruthy, isFalsy} from './check'
+import {isTruthy} from './check'
 import {Executor} from './executor'
 import semver from 'semver'
 
 export default {
-  environment: null,
   locator: null,
   subscriptions: null,
-  dependenciesInstalled: null,
 
   activate () {
-    this.dependenciesInstalled = false
     this.subscriptions = new CompositeDisposable()
-    if (semver.satisfies(this.version(), '<1.7.0')) {
-      require('atom-package-deps').install('go-config').then(() => {
-        this.dependenciesInstalled = true
-      }).catch((e) => {
-        console.log(e)
+    if (semver.satisfies(this.version(), '<1.8.0')) {
+      atom.notifications.addError('Please Update Atom', {
+        detail: 'You are running an old version of Atom. Please update Atom to the latest version or a version >= v1.8.0.',
+        dismissable: true
       })
-    } else {
-      this.dependenciesInstalled = true
     }
   },
 
@@ -34,9 +28,7 @@ export default {
       this.subscriptions.dispose()
     }
     this.subscriptions = null
-    this.environment = null
     this.locator = null
-    this.dependenciesInstalled = null
   },
 
   getExecutor (options) {
@@ -59,30 +51,11 @@ export default {
   },
 
   ready () {
-    if (isFalsy(this.dependenciesInstalled)) {
-      return false
-    }
-    if (semver.satisfies(this.version(), '>=1.7.0')) {
-      return true
-    } else {
-      if (isTruthy(this.environment)) {
-        return true
-      } else {
-        return false
-      }
-    }
+    return true
   },
 
   getEnvironment () {
-    if (semver.satisfies(this.version(), '>=1.7.0')) {
-      return process.env
-    }
-
-    if (this.ready()) {
-      return this.environment
-    }
-
-    return process.env
+    return Object.assign({}, process.env)
   },
 
   version () {
@@ -123,9 +96,5 @@ export default {
       locator: locator,
       environment: this.getEnvironment.bind(this)
     }
-  },
-
-  consumeEnvironment (environment) {
-    this.environment = environment
   }
 }

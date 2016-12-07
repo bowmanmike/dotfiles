@@ -2,7 +2,6 @@
 helpers = require('./helpers')
 
 module.exports = Validate =
-
   linter: (linter, indie = false) ->
     unless indie
       unless linter.grammarScopes instanceof Array
@@ -50,7 +49,7 @@ module.exports = Validate =
       else
         result.filePath = null
       result.range = Range.fromObject result.range if result.range?
-      result.key = JSON.stringify(result)
+      result.key = helpers.messageKey(result)
       result.linter = linter.name
       Validate.messages(result.trace, linter) if result.trace and result.trace.length
     return

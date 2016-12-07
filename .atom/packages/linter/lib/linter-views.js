@@ -1,6 +1,6 @@
 'use babel'
 
-import {Emitter, CompositeDisposable} from 'atom'
+import {Emitter, CompositeDisposable, Range} from 'atom'
 import BottomPanel from './ui/bottom-panel'
 import BottomContainer from './ui/bottom-container'
 import {Message} from './ui/message-element'
@@ -16,7 +16,6 @@ export default class LinterViews {
     this.editors = editorRegistry
     this.bottomBar = null // To be added when status-bar service is consumed
     this.bubble = null
-    this.bubbleRange = null
 
     this.subscriptions.add(this.bottomPanel)
     this.subscriptions.add(this.bottomContainer)
@@ -70,27 +69,35 @@ export default class LinterViews {
   }
   renderBubble(editorLinter) {
     if (!this.showBubble || !editorLinter.messages.size) {
+      this.removeBubble()
       return
     }
     const point = editorLinter.editor.getCursorBufferPosition()
-    if (this.bubbleRange && this.bubbleRange.containsPoint(point)) {
+    if (this.bubble && editorLinter.messages.has(this.bubble.message) && this.bubble.range.containsPoint(point)) {
       return // The marker remains the same
-    } else if (this.bubble) {
-      this.bubble.destroy()
-      this.bubble = null
     }
-    for (let entry of editorLinter.markers) {
-      const bubbleRange = entry[1].getBufferRange()
-      if (bubbleRange.containsPoint(point)) {
-        this.bubbleRange = bubbleRange
-        this.bubble = editorLinter.editor.decorateMarker(entry[1], {
-          type: 'overlay',
-          item: createBubble(entry[0])
+    this.removeBubble()
+    for (let message of editorLinter.messages) {
+      if (message.range && message.range.containsPoint(point)) {
+        const range = Range.fromObject([point, point])
+        const marker = editorLinter.editor.markBufferRange(range, {invalidate: 'inside'})
+        this.bubble = {message, range, marker}
+        marker.onDidDestroy(() => {
+          this.bubble = null
         })
-        return
+        editorLinter.editor.decorateMarker(marker, {
+          type: 'overlay',
+          item: createBubble(message)
+        })
+        break
       }
     }
-    this.bubbleRange = null
+  }
+  removeBubble() {
+    if (this.bubble) {
+      this.bubble.marker.destroy()
+      this.bubble = null
+    }
   }
   notifyEditorLinters({added, removed}) {
     let editorLinter
@@ -108,6 +115,8 @@ export default class LinterViews {
     if (editorLinter) {
       editorLinter.calculateLineMessages(null)
       this.renderBubble(editorLinter)
+    } else {
+      this.removeBubble()
     }
   }
   notifyEditorLinter(editorLinter) {
@@ -141,9 +150,6 @@ export default class LinterViews {
     if (this.bottomBar) {
       this.bottomBar.destroy()
     }
-    if (this.bubble) {
-      this.bubble.destroy()
-      this.bubbleRange = null
-    }
+    this.removeBubble()
   }
 }

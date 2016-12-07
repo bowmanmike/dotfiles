@@ -47,7 +47,13 @@ export default class EditorLinter {
       if (!this.underlineIssues && !this.gutterEnabled && !this.showBubble || !message.range) {
         return // No-Op
       }
-      const marker = this.editor.markBufferRange(message.range, {invalidate: 'inside'})
+      const marker = this.editor.getBuffer().markRange(message.range, {invalidate: 'inside'})
+      marker.onDidChange(({ oldHeadPosition, newHeadPosition, isValid }) => {
+        if (isValid && (oldHeadPosition.row !== 0 || newHeadPosition.row === 0)) {
+          message.range = marker.previousEventState.range
+          message.key = Helpers.messageKey(message)
+        }
+      })
       this.markers.set(message, marker)
       if (this.underlineIssues) {
         this.editor.decorateMarker(marker, {

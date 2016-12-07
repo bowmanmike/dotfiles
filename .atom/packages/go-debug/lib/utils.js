@@ -35,30 +35,15 @@ export function debounce(func, wait) {
 		return func;
 	}
 	let timeout;
-	return function() {
+	const fn = function() {
 		const context = this;
 		const args = arguments;
-		clearTimeout(timeout);
+		fn.cancel();
 		timeout = setTimeout(() => {
 			timeout = null;
 			func.apply(context, args);
 		}, wait);
 	};
-}
-
-const Clipboard = (() => {
-	try {
-		return require("electron").clipboard;
-	} catch (_) {
-		return require("clipboard");
-	}
-})();
-function onKeyDown(ev) {
-	if (ev.which === 67 && ev.ctrlKey) {
-		Clipboard.writeText(getSelection().toString());
-	}
-}
-export function copyToClipboard(el) {
-	// catch the keydown so we can "copy" the current selection
-	el.addEventListener("keydown", onKeyDown, false);
+	fn.cancel = () => clearTimeout(timeout);
+	return fn;
 }

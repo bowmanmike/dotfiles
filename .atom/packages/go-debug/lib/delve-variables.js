@@ -12,7 +12,8 @@ export function create(rawVariables) {
 			name: variable.name,
 			loaded: true,
 			hasChildren: children ? !!children.length : false,
-			value: variable.value
+			value: variable.value,
+			parentPath
 		};
 		if (children) {
 			children.forEach((v) => {
@@ -263,6 +264,9 @@ const KINDS = [
 ];
 
 function shortType(type) {
+	if (!type) {
+		return "";
+	}
 	if (type.startsWith("map[")) {
 		// does not work maps with maps:
 		// map[map[int]string]float32

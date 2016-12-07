@@ -2,8 +2,10 @@
   core:
     disabledPackages: [
       "go-debug"
+      "vim-mode"
     ]
     excludeVcsIgnoredPaths: false
+    telemetryConsent: "limited"
   editor:
     scrollPastEnd: true
     showIndentGuide: true
@@ -16,6 +18,8 @@
     panelInitialVisible: false
   linter:
     showErrorPanel: false
+  "one-dark-ui":
+    tabSizing: "Even"
   "tree-view": {}
   welcome:
     showOnStartup: false

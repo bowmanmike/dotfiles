@@ -12,11 +12,19 @@ formatter.stringify = (obj, scope, sorted) ->
   # lazy load requirements
   JSONbig = require 'json-bigint'
   stringify = require 'json-stable-stringify'
+  BigNumber = require 'bignumber.js'
 
   space = formatter.space scope
   if sorted
     return stringify obj,
       space: space
+      replacer: (key, value) ->
+        try
+          if value.constructor.name is 'BigNumber'
+            return JSONbig.stringify value
+        catch
+          # ignore
+        return value
   else
     return JSONbig.stringify obj, null, space
 
