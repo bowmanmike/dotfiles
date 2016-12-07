@@ -8,6 +8,7 @@ Dotfiles for gitconfig, bash_profile, atom config folder
 - `.agignore`
 - `gitignore` -> `/dotfiles/.gitignore_global`
 - `.vim` -> Vim directory
+- `.atom`
 
 #### Things to Install
 *Homebrew*
