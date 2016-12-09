@@ -3,6 +3,7 @@
 /* @flow */
 
 import Path from 'path'
+// eslint-disable-next-line import/extensions
 import { CompositeDisposable } from 'atom'
 
 type Linter$Provider = Object
@@ -24,11 +25,6 @@ module.exports = {
       default: false,
       description: 'Disable linter when no `.jshintrc` is found in project.'
     },
-    lintJSXFiles: {
-      title: 'Lint JSX Files',
-      type: 'boolean',
-      default: false
-    },
     jshintFileName: {
       type: 'string',
       default: '.jshintrc',
@@ -38,45 +34,32 @@ module.exports = {
 
   activate() {
     require('atom-package-deps').install('linter-jshint')
+
     this.scopes = ['source.js', 'source.js-semantic']
     this.subscriptions = new CompositeDisposable()
-    this.subscriptions.add(atom.config.observe('linter-jshint.executablePath', executablePath => {
+    this.subscriptions.add(atom.config.observe('linter-jshint.executablePath', (executablePath) => {
       this.executablePath = executablePath
     }))
     this.subscriptions.add(
       atom.config.observe('linter-jshint.disableWhenNoJshintrcFileInPath',
-        disableWhenNoJshintrcFileInPath => {
+        (disableWhenNoJshintrcFileInPath) => {
           this.disableWhenNoJshintrcFileInPath = disableWhenNoJshintrcFileInPath
         }
       )
     )
 
-    this.subscriptions.add(atom.config.observe('linter-jshint.jshintFileName', jshintFileName => {
+    this.subscriptions.add(atom.config.observe('linter-jshint.jshintFileName', (jshintFileName) => {
       this.jshintFileName = jshintFileName
-    }))
-
-    const scopeJSX = 'source.js.jsx'
-    this.subscriptions.add(atom.config.observe('linter-jshint.lintJSXFiles', lintJSXFiles => {
-      this.lintJSXFiles = lintJSXFiles
-      if (lintJSXFiles) {
-        this.scopes.push(scopeJSX)
-      } else {
-        if (this.scopes.indexOf(scopeJSX) !== -1) {
-          this.scopes.splice(this.scopes.indexOf(scopeJSX), 1)
-        }
-      }
     }))
 
     const scopeEmbedded = 'source.js.embedded.html'
     this.subscriptions.add(atom.config.observe('linter-jshint.lintInlineJavaScript',
-      lintInlineJavaScript => {
+      (lintInlineJavaScript) => {
         this.lintInlineJavaScript = lintInlineJavaScript
         if (lintInlineJavaScript) {
           this.scopes.push(scopeEmbedded)
-        } else {
-          if (this.scopes.indexOf(scopeEmbedded) !== -1) {
-            this.scopes.splice(this.scopes.indexOf(scopeEmbedded), 1)
-          }
+        } else if (this.scopes.indexOf(scopeEmbedded) !== -1) {
+          this.scopes.splice(this.scopes.indexOf(scopeEmbedded), 1)
         }
       }
     ))
@@ -101,7 +84,9 @@ module.exports = {
         const fileContents = textEditor.getText()
         const parameters = ['--reporter', Reporter, '--filename', filePath]
 
-        let configFile = await Helpers.findCachedAsync(Path.dirname(filePath), this.jshintFileName)
+        const configFile = await Helpers.findCachedAsync(
+          Path.dirname(filePath), this.jshintFileName
+        )
 
         if (configFile) {
           parameters.push('--config', configFile)
@@ -116,9 +101,16 @@ module.exports = {
         }
         parameters.push('-')
 
+        const execOpts = { stdin: fileContents, ignoreExitCode: true }
         const result = await Helpers.execNode(
-          this.executablePath, parameters, { stdin: fileContents }
+          this.executablePath, parameters, execOpts
         )
+
+        if (textEditor.getText() !== fileContents) {
+          // File has changed since the lint was triggered, tell Linter not to update
+          return null
+        }
+
         let parsed
         try {
           parsed = JSON.parse(result)
@@ -162,7 +154,7 @@ module.exports = {
 
           results.push({
             type: errorType === 'E' ? 'Error' : errorType === 'W' ? 'Warning' : 'Info',
-            html: `<a href="http://jslinterrors.com/${error.code}">${error.code}</a> - ${error.reason}`,
+            text: `${error.code} - ${error.reason}`,
             filePath,
             range
           })

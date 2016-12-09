@@ -30,27 +30,43 @@ export default {
   },
 
   provide () {
-    return this.getProvider()
+    return this.provide200()
   },
 
   getManager () {
     if (this.manager) {
       return this.manager
     }
+    if (!this.subscriptions) {
+      return
+    }
     this.manager = new Manager(() => { return this.getGoconfig() })
     this.subscriptions.add(this.manager)
     return this.manager
   },
 
-  getProvider () {
+  provide200 () {
+    let m = this.getManager()
+    if (!m) {
+      return
+    }
     return {
       get: (options) => {
-        return this.getManager().get(options)
+        return m.get(options)
       },
-      check: (options) => {
-        return this.getManager().check(options)
+      register: (pack, callback) => {
+        return m.register(pack, callback)
       }
     }
+  },
+
+  provide100 () {
+    let provider = this.provide200()
+    provider.check = () => {
+      return Promise.resolve(true)
+    }
+    delete provider.register
+    return provider
   },
 
   getGoconfig () {

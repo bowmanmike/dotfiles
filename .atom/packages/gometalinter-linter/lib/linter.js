@@ -4,6 +4,13 @@ import {CompositeDisposable} from 'atom'
 import os from 'os'
 import path from 'path'
 
+function capitalizeFirstLetter (str) {
+  if (!str) {
+    return str
+  }
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 class GometalinterLinter {
   constructor (goconfigFunc, gogetFunc) {
     this.goget = gogetFunc
@@ -18,6 +25,7 @@ class GometalinterLinter {
     this.subscriptions.add(atom.commands.add('atom-workspace', 'golang:updatelinters', () => {
       this.updateTools()
     }))
+    this.registered = false
   }
 
   dispose () {
@@ -31,6 +39,25 @@ class GometalinterLinter {
     this.grammarScopes = null
     this.lintOnFly = null
     this.toolCheckComplete = null
+  }
+
+  registerTool () {
+    if (this.registered) {
+      return
+    }
+
+    let g = this.goget()
+    if (!g) {
+      return
+    }
+
+    this.subscriptions.add(g.register('github.com/alecthomas/gometalinter', (outcome) => {
+      if (!outcome.success) {
+        return
+      }
+      this.updateTools()
+    }))
+    this.registered = true
   }
 
   ready () {
@@ -49,6 +76,7 @@ class GometalinterLinter {
     if (!this.ready() || !editor) {
       return []
     }
+
     let buffer = editor.getBuffer()
     if (!buffer) {
       return []
@@ -120,10 +148,15 @@ class GometalinterLinter {
     let options = {}
     if (editor) {
       options.file = editor.getPath()
-      options.directory = path.dirname(editor.getPath())
+      if (options.file) {
+        options.directory = path.dirname(options.file)
+      }
     }
-    if (!options.directory && atom.project.paths.length) {
-      options.directory = atom.project.paths[0]
+    if (!options.directory) {
+      let paths = atom.project.getPaths()
+      if (paths.length) {
+        options.directory = paths[0]
+      }
     }
 
     return options
@@ -156,11 +189,11 @@ class GometalinterLinter {
         return false
       }
 
-      let args = ['--install', '--update']
+      let args = ['--install']
       let notification = atom.notifications.addInfo('gometalinter', {
-        dismissable: false,
+        dismissable: true,
         icon: 'cloud-download',
-        description: 'Running `gometalinter --install --update` to install and update tools.'
+        description: 'Running `gometalinter --install` to install tools.'
       })
       let options = this.getExecutorOptions(editor)
       return config.executor.exec(cmd, args, options).then((r) => {
@@ -182,7 +215,7 @@ class GometalinterLinter {
           dismissable: true,
           icon: 'cloud-download',
           detail: detail.trim(),
-          description: 'The tools were installed and updated.'
+          description: 'The tools were installed.'
         })
         return r
       })
@@ -236,7 +269,7 @@ class GometalinterLinter {
       } else {
         range = [[message.line - 1, 0], [message.line - 1, 1000]]
       }
-      results.push({name: message.linter, type: message.severity, row: message.line, column: message.col, text: message.message + ' (' + message.linter + ')', filePath: path.join(cwd, message.path), range: range})
+      results.push({name: message.linter, type: capitalizeFirstLetter(message.severity), row: message.line, column: message.col, text: message.message + ' (' + message.linter + ')', filePath: path.join(cwd, message.path), range: range})
     }
 
     return results

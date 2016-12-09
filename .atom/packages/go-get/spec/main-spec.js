@@ -1,4 +1,5 @@
 'use babel'
+/* eslint-env jasmine */
 
 describe('go-get', () => {
   let mainModule = null
@@ -21,13 +22,11 @@ describe('go-get', () => {
     it('activates successfully', () => {
       expect(mainModule).toBeDefined()
       expect(mainModule).toBeTruthy()
-      expect(mainModule.getProvider).toBeDefined()
+      expect(mainModule.provide).toBeDefined()
       expect(mainModule.getGoconfig).toBeDefined()
       expect(mainModule.consumeGoconfig).toBeDefined()
       expect(mainModule.getGoconfig()).toBeTruthy()
-      expect(mainModule.getProvider()).toBeTruthy()
-      expect(mainModule.getProvider().get).toBeDefined()
-      expect(mainModule.getProvider().check).toBeDefined()
+      expect(mainModule.provide()).toBeTruthy()
     })
   })
 })

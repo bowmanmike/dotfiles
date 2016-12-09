@@ -3,21 +3,23 @@
 import {CompositeDisposable} from 'atom'
 import _ from 'lodash'
 import fs from 'fs'
+import os from 'os'
 import parser from './gocover-parser'
 import path from 'path'
 import rimraf from 'rimraf'
 import temp from 'temp'
 
 class Tester {
-  constructor (goconfigFunc, gogetFunc) {
+  constructor (goconfigFunc, gogetFunc, testPanelManagerFunc) {
     this.goget = gogetFunc
     this.goconfig = goconfigFunc
+    this.testPanelManager = testPanelManagerFunc
     this.subscriptions = new CompositeDisposable()
     this.saveSubscriptions = new CompositeDisposable()
     this.observeConfig()
     this.observeTextEditors()
     this.handleCommands()
-    this.subscribeToSaveEvents()
+    this.markedEditors = new Map()
     this.running = false
     temp.track()
   }
@@ -25,6 +27,11 @@ class Tester {
   dispose () {
     this.running = true
     this.removeTempDir()
+    this.clearMarkersFromEditors()
+    if (this.markedEditors) {
+      this.markedEditors.clear()
+    }
+    this.markedEditors = null
     if (this.subscriptions) {
       this.subscriptions.dispose()
     }
@@ -35,17 +42,18 @@ class Tester {
     this.saveSubscriptions = null
     this.goget = null
     this.goconfig = null
+    this.testPanelManager = null
     this.running = null
   }
 
   handleCommands () {
-    this.subscriptions.add(atom.commands.add('atom-workspace', 'golang:gocover', () => {
+    this.subscriptions.add(atom.commands.add('atom-workspace', 'golang:run-tests', () => {
       if (!this.ready() || !this.getEditor()) {
         return
       }
-      this.runCoverage()
+      this.runTests()
     }))
-    this.subscriptions.add(atom.commands.add('atom-workspace', 'golang:cleargocover', () => {
+    this.subscriptions.add(atom.commands.add('atom-workspace', 'golang:hide-coverage', () => {
       if (!this.ready() || !this.getEditor()) {
         return
       }
@@ -60,14 +68,17 @@ class Tester {
   }
 
   observeConfig () {
-    this.subscriptions.add(atom.config.observe('tester-go.runCoverageOnSave', (runCoverageOnSave) => {
+    this.subscriptions.add(atom.config.observe('tester-go.runTestsOnSave', (runTestsOnSave) => {
       if (this.saveSubscriptions) {
         this.saveSubscriptions.dispose()
       }
       this.saveSubscriptions = new CompositeDisposable()
-      if (runCoverageOnSave) {
+      if (runTestsOnSave) {
         this.subscribeToSaveEvents()
       }
+    }))
+    this.subscriptions.add(atom.config.observe('tester-go.coverageHighlightMode', (coverageHighlightMode) => {
+      this.coverageHighlightMode = coverageHighlightMode
     }))
   }
 
@@ -79,8 +90,8 @@ class Tester {
 
       let bufferSubscriptions = new CompositeDisposable()
       bufferSubscriptions.add(editor.getBuffer().onDidSave((filePath) => {
-        if (atom.config.get('tester-go.runCoverageOnSave')) {
-          this.runCoverage(editor)
+        if (atom.config.get('tester-go.runTestsOnSave')) {
+          this.runTests(editor)
           return
         }
       }))
@@ -130,12 +141,18 @@ class Tester {
       return
     }
     let file = editor.getPath()
-    let buffer = editor.getBuffer()
-    if (!file || !buffer) {
+    if (!editor.id) {
+      return
+    }
+
+    if (!file) {
       return
     }
     this.clearMarkers(editor)
     if (!this.ranges || this.ranges.length <= 0) {
+      return
+    }
+    if (this.coverageHighlightMode === 'disabled') {
       return
     }
 
@@ -146,32 +163,50 @@ class Tester {
     }
 
     try {
+      let coveredLayer = editor.addMarkerLayer()
+      let uncoveredLayer = editor.addMarkerLayer()
+      this.markedEditors.set(editor.id, coveredLayer.id + ',' + uncoveredLayer.id)
       for (let range of editorRanges) {
-        let marker = buffer.markRange(range.range, {class: 'gocover', gocovercount: range.count, invalidate: 'touch'})
-        let c = 'uncovered'
         if (range.count > 0) {
-          c = 'covered'
+          if (this.coverageHighlightMode === 'covered-and-uncovered' || this.coverageHighlightMode === 'covered') {
+            coveredLayer.markBufferRange(range.range, {invalidate: 'touch'})
+          }
+        } else {
+          if (this.coverageHighlightMode === 'covered-and-uncovered' || this.coverageHighlightMode === 'uncovered') {
+            uncoveredLayer.markBufferRange(range.range, {invalidate: 'touch'})
+          }
         }
-        editor.decorateMarker(marker, {type: 'highlight', class: c, onlyNonEmpty: true})
       }
+      editor.decorateMarkerLayer(coveredLayer, {type: 'highlight', class: 'covered', onlyNonEmpty: true})
+      editor.decorateMarkerLayer(uncoveredLayer, {type: 'highlight', class: 'uncovered', onlyNonEmpty: true})
     } catch (e) {
       console.log(e)
     }
   }
 
   clearMarkers (editor) {
-    if (!editor || !editor.getBuffer()) {
+    if (!editor || !editor.id || !editor.getBuffer() || !this.markedEditors) {
+      return
+    }
+
+    if (!this.markedEditors.has(editor.id)) {
       return
     }
 
     try {
-      let markers = editor.getBuffer().findMarkers({class: 'gocover'})
-      if (!markers || markers.length <= 0) {
+      let layersid = this.markedEditors.get(editor.id)
+      if (!layersid) {
         return
       }
-      for (let marker of markers) {
-        marker.destroy()
+
+      for (let layerid of layersid.split(',')) {
+        let layer = editor.getMarkerLayer(layerid)
+        if (layer) {
+          layer.destroy()
+        }
       }
+
+      this.markedEditors.delete(editor.id)
     } catch (e) {
       console.log(e)
     }
@@ -239,7 +274,7 @@ class Tester {
     return this.goconfig && this.goconfig()
   }
 
-  runCoverage (editor = this.getEditor()) {
+  runTests (editor = this.getEditor()) {
     if (!this.isValidEditor(editor)) {
       return Promise.resolve()
     }
@@ -278,18 +313,23 @@ class Tester {
 
         let cmd = go
         let args = ['test', '-coverprofile=' + this.coverageFile]
-        if (atom.config.get('tester-go.runCoverageWithShortFlag')) {
+        if (atom.config.get('tester-go.runTestsWithShortFlag')) {
           args.push('-short')
         }
         let executorOptions = this.getExecutorOptions(editor)
+        this.testPanelManager().update({output: 'Running go ' + args.join(' '), state: 'pending', exitcode: 0})
         return config.executor.exec(cmd, args, executorOptions).then((r) => {
           if (r.stderr && r.stderr.trim() !== '') {
-            console.log('tester-go: (stderr) ' + r.stderr)
+            let output = r.stderr + os.EOL + r.stdout
+            this.testPanelManager().update({exitcode: r.exitcode, output: output.trim(), state: 'fail'})
           }
 
           if (r.exitcode === 0) {
             this.ranges = parser.ranges(this.coverageFile)
             this.addMarkersToEditors()
+            this.testPanelManager().update({exitcode: r.exitcode, output: r.stdout, state: 'success'})
+          } else {
+            this.testPanelManager().update({exitcode: r.exitcode, output: r.stdout, state: 'fail'})
           }
 
           this.running = false

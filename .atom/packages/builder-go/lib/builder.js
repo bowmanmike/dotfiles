@@ -196,7 +196,7 @@ class Builder {
         } else {
           range = [[row - 1, 0], [row - 1, 1000]]
         }
-        messages.push({name: linterName, type: 'error', row: row, column: column, text: text + ' (' + linterName + ')', filePath: file, range: range})
+        messages.push({name: linterName, type: 'Error', row: row, column: column, text: text + ' (' + linterName + ')', filePath: file, range: range})
       }
     }
     let match

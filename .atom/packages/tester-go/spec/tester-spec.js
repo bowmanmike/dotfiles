@@ -15,6 +15,7 @@ describe('tester', () => {
       if (process.env.GOPATH) {
         oldGopath = process.env.GOPATH
       }
+      atom.config.set('tester-go.coverageHighlightMode', 'covered-and-uncovered')
       gopath = temp.mkdirSync()
       process.env.GOPATH = gopath
       atom.project.setPaths(gopath)
@@ -49,7 +50,7 @@ describe('tester', () => {
     let testEditor
 
     beforeEach(() => {
-      atom.config.set('tester-go.runCoverageOnSave', false)
+      atom.config.set('tester-go.runTestsOnSave', false)
       filePath = path.join(gopath, 'src', 'github.com', 'testuser', 'example', 'go-plus.go')
       testFilePath = path.join(gopath, 'src', 'github.com', 'testuser', 'example', 'go-plus_test.go')
       fs.writeFileSync(filePath, '')
@@ -74,29 +75,72 @@ describe('tester', () => {
       let testBuffer = testEditor.getBuffer()
       testBuffer.setText('package main\n\nimport "testing"\n\nfunc TestHello(t *testing.T) {\n\tresult := Hello()\n\tif result != "Hello, 世界" {\n\t\tt.Errorf("Expected %s - got %s", "Hello, 世界", result)\n\t}\n}')
       testBuffer.save()
-      let p = mainModule.getTester().runCoverage(editor)
+      let p = mainModule.getTester().runTests(editor)
 
       waitsForPromise(() => { return p })
 
       runs(() => {
-        let markers = buffer.findMarkers({class: 'gocover'})
-        expect(markers).toBeDefined()
-        expect(markers.length).toBe(2)
-        expect(markers[0]).toBeDefined()
-        let range = markers[0].getRange()
-        expect(range.start.row).toBe(4)
-        expect(range.start.column).toBe(13)
-        expect(range.end.row).toBe(6)
-        expect(range.end.column).toBe(1)
+        let layerids = mainModule.getTester().markedEditors.get(editor.id).split(',')
+        let coveredLayer = editor.getMarkerLayer(layerids[0])
+        let uncoveredLayer = editor.getMarkerLayer(layerids[1])
+        expect(coveredLayer).toBeTruthy()
+        expect(uncoveredLayer).toBeTruthy()
 
-        expect(markers[1]).toBeDefined()
-        range = markers[1].getRange()
-        expect(range).toBeDefined()
+        let coveredmarkers = coveredLayer.getMarkers()
+        expect(coveredmarkers).toBeDefined()
+        expect(coveredmarkers.length).toBe(1)
+        expect(coveredmarkers[0]).toBeDefined()
+        let range = coveredmarkers[0].getBufferRange()
         expect(range.start.row).toBe(8)
         expect(range.start.column).toBe(20)
         expect(range.end.row).toBe(10)
         expect(range.end.column).toBe(1)
+
+        let uncoveredmarkers = uncoveredLayer.getMarkers()
+        expect(uncoveredmarkers).toBeDefined()
+        expect(uncoveredmarkers.length).toBe(1)
+        expect(uncoveredmarkers[0]).toBeDefined()
+        range = uncoveredmarkers[0].getBufferRange()
+        expect(range).toBeDefined()
+        expect(range.start.row).toBe(4)
+        expect(range.start.column).toBe(13)
+        expect(range.end.row).toBe(6)
+        expect(range.end.column).toBe(1)
       })
+
+      p = mainModule.getTester().runTests(editor)
+
+      waitsForPromise(() => { return p })
+
+      runs(() => {
+        let layerids = mainModule.getTester().markedEditors.get(editor.id).split(',')
+        let coveredLayer = editor.getMarkerLayer(layerids[0])
+        let uncoveredLayer = editor.getMarkerLayer(layerids[1])
+        expect(coveredLayer).toBeTruthy()
+        expect(uncoveredLayer).toBeTruthy()
+
+        let coveredmarkers = coveredLayer.getMarkers()
+        expect(coveredmarkers).toBeDefined()
+        expect(coveredmarkers.length).toBe(1)
+        expect(coveredmarkers[0]).toBeDefined()
+        let range = coveredmarkers[0].getBufferRange()
+        expect(range.start.row).toBe(8)
+        expect(range.start.column).toBe(20)
+        expect(range.end.row).toBe(10)
+        expect(range.end.column).toBe(1)
+
+        let uncoveredmarkers = uncoveredLayer.getMarkers()
+        expect(uncoveredmarkers).toBeDefined()
+        expect(uncoveredmarkers.length).toBe(1)
+        expect(uncoveredmarkers[0]).toBeDefined()
+        range = uncoveredmarkers[0].getBufferRange()
+        expect(range).toBeDefined()
+        expect(range.start.row).toBe(4)
+        expect(range.start.column).toBe(13)
+        expect(range.end.row).toBe(6)
+        expect(range.end.column).toBe(1)
+      })
+
       expect(mainModule).toBeDefined()
       expect(mainModule).toBeTruthy()
       expect(mainModule.getGoconfig).toBeDefined()
@@ -104,6 +148,51 @@ describe('tester', () => {
       expect(mainModule.getGoconfig()).toBeTruthy()
       expect(mainModule.tester).toBeDefined()
       expect(mainModule.tester).toBeTruthy()
+    })
+
+    it('clears coverage for go source', () => {
+      let buffer = editor.getBuffer()
+      buffer.setText('package main\n\nimport "fmt"\n\nfunc main()  {\n\tfmt.Println(Hello())\n}\n\nfunc Hello() string {\n\treturn "Hello, 世界"\n}\n')
+      buffer.save()
+      let testBuffer = testEditor.getBuffer()
+      testBuffer.setText('package main\n\nimport "testing"\n\nfunc TestHello(t *testing.T) {\n\tresult := Hello()\n\tif result != "Hello, 世界" {\n\t\tt.Errorf("Expected %s - got %s", "Hello, 世界", result)\n\t}\n}')
+      testBuffer.save()
+      let p = mainModule.getTester().runTests(editor)
+
+      waitsForPromise(() => { return p })
+
+      runs(() => {
+        let layerids = mainModule.getTester().markedEditors.get(editor.id).split(',')
+        let coveredLayer = editor.getMarkerLayer(layerids[0])
+        let uncoveredLayer = editor.getMarkerLayer(layerids[1])
+        expect(coveredLayer).toBeTruthy()
+        expect(uncoveredLayer).toBeTruthy()
+
+        let coveredmarkers = coveredLayer.getMarkers()
+        expect(coveredmarkers).toBeDefined()
+        expect(coveredmarkers.length).toBe(1)
+        expect(coveredmarkers[0]).toBeDefined()
+        let range = coveredmarkers[0].getBufferRange()
+        expect(range.start.row).toBe(8)
+        expect(range.start.column).toBe(20)
+        expect(range.end.row).toBe(10)
+        expect(range.end.column).toBe(1)
+
+        let uncoveredmarkers = uncoveredLayer.getMarkers()
+        expect(uncoveredmarkers).toBeDefined()
+        expect(uncoveredmarkers.length).toBe(1)
+        expect(uncoveredmarkers[0]).toBeDefined()
+        range = uncoveredmarkers[0].getBufferRange()
+        expect(range).toBeDefined()
+        expect(range.start.row).toBe(4)
+        expect(range.start.column).toBe(13)
+        expect(range.end.row).toBe(6)
+        expect(range.end.column).toBe(1)
+
+        mainModule.getTester().clearMarkers(editor)
+        expect(coveredLayer.getMarkers().length).toBe(0)
+        expect(uncoveredLayer.getMarkers().length).toBe(0)
+      })
     })
   })
 })
