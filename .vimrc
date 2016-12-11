@@ -1,26 +1,28 @@
 " ----- Vim-plug -----
 call plug#begin()
 
-Plug 'mileszs/ack.vim'  " Code search with AG
-Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
-Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
-Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
+Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
+Plug 'cespare/vim-toml' " TOML syntax highlighting
+Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
+Plug 'elzr/vim-json' " Better JSON support
+Plug 'fatih/vim-go' " Go language support
+Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
+Plug 'mattn/emmet-vim' " Emmet for awesome HTML
+Plug 'mileszs/ack.vim'  " Code search with AG
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
-Plug 'vim-airline/vim-airline' " Airline status bar
+Plug 'ngmy/vim-rubocop' " Rubocop for vim
+" Plug 'othree/html5.vim' " Enable this if more html tweaks needed
+Plug 'othree/html5-syntax.vim' " HTML syntax improvement
+Plug 'pangloss/vim-javascript' " Javascript language support
+Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
+Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
-Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
-Plug 'fatih/vim-go' " Go language support
-Plug 'pangloss/vim-javascript' " Javascript language support
-Plug 'elzr/vim-json' " Better JSON support
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
-Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
-Plug 'vim-ruby/vim-ruby' " Ruby language support
-Plug 'ngmy/vim-rubocop' " Rubocop for vim
 Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
-Plug 'cespare/vim-toml' " TOML syntax highlighting
-Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
+Plug 'vim-airline/vim-airline' " Airline status bar
+Plug 'vim-ruby/vim-ruby' " Ruby language support
 
 " Colorschemes
 Plug 'fatih/molokai' " Vim Molokai
