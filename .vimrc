@@ -99,6 +99,9 @@ au BufWritePre *.rb :%s/\s\+$//e
 au BufWritePre *.go :%s/\s\+$//e
 au BufWritePre *.js :%s/\s\+$//e
 au BufWritePre *.vue :%s/\s\+$//e
+au BufWritePre *.html :%s/\s\+$//e
+au BufWritePre *.css :%s/\s\+$//e
+au BufWritePre *.scss :%s/\s\+$//e
 
 " Normal backspace in normal mode
 set backspace=indent,eol,start
