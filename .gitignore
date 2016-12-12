@@ -5,6 +5,7 @@
 .atom/.node-gyp
 
 *.swp
+.vim/swp
 .DS_Store
 
 .vim/plugged/**
