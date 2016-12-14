@@ -3,6 +3,7 @@
 .atom/dev
 .atom/.npm
 .atom/.node-gyp
+.atom/blob-store
 
 *.swp
 *.swo
