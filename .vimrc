@@ -163,6 +163,8 @@ autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 autocmd FileType go nmap <Leader>t <Plug>(go-test)
 autocmd FileType go nmap <Leader>dc :GoDoc<cr>
+autocmd FileType go nmap <Leader>c :GoCoverage<cr>
+autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
 
 " ----- Command Bindings -----
 command! Q q
