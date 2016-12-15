@@ -20,5 +20,11 @@
 - In the status window, navigate to the file you want to add and press `-`
 - `cc` To begin a commit, write a commit message in the status window, then `:wq`
 
+*vim-go*
+- `<leader>c` highlight test coverage
+- `<leader>cl` clear test coverage highlighting
+- `gd` jump to function/variable definition
+- `ctrl + t` jump to previous location
+
 *resources*
 - http://blog.superuser.com/2012/03/06/understanding-the-improved-in-vim/
