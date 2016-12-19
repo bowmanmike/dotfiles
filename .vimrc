@@ -16,6 +16,7 @@ Plug 'ngmy/vim-rubocop' " Rubocop for vim
 Plug 'othree/html5-syntax.vim' " HTML syntax improvement
 Plug 'pangloss/vim-javascript' " Javascript language support
 Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
+Plug 'shougo/neocomplete' " Autocompletion
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
@@ -44,6 +45,7 @@ let mapleader = "\<space>" " Set leader to spacebar
 set ignorecase " Searches are by default case insensitive
 set smartcase " Searches with all lower-case are case insensitive, searches with and capitals are case-sensitive
 set showcmd " show commands as they're typed
+let g:neocomplete#enable_at_startup=1 
 
 " Set tab to 2 spaces
 set tabstop=2
