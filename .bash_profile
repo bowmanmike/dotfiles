@@ -10,7 +10,12 @@ export GOROOT=/usr/local/opt/go/libexec
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
+
+# Add Rust to path
 export PATH=$PATH:$HOME/.cargo/bin
+
+# Add Haskell to PATH
+export PATH=$PATH:$HOME/.local/bin
 
 # Aliases
 alias ll="ls -ahlG"
