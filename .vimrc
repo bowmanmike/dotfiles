@@ -31,6 +31,7 @@ Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
 Plug 'romainl/Apprentice' " Apprentice colorscheme
 Plug 'sickill/vim-monokai' " Monokai color scheme
 Plug 'vim-airline/vim-airline-themes' " Airline color schemes
+Plug 'jpo/vim-railscasts-theme' " Railscasts colors
 
 call plug#end()
 
