@@ -60,8 +60,10 @@ set noerrorbells "Try to turn off error bells, might need more config
 " Color schemes
 syntax on
 colorscheme jellybeans
+" colorscheme molokai
 " colorscheme onedark
-let g:rehash256=1
+" let g:molokai_original=1
+" let g:rehash256=1
 
 
 set scrolloff=5 " Always show 5 lines below cursor, seems to be not working.
