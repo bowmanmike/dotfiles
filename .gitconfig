@@ -1,24 +1,24 @@
 [user]
-	  name = Mike Bowman
-	  email = mbowman2@gmail.com
+    name = Mike Bowman
+    email = mbowman2@gmail.com
 [merge]
-	  ff = only
+    ff = only
 [alias]
-	  co = checkout
+    co = checkout
     br = branch --sort=-committerdate
-	  ci = commit
-	  st = status
+    ci = commit
+    st = status
     s = status -s
-	  last = log -1 HEAD
+    last = log -1 HEAD
     diffl = diff HEAD~1
 [filter "lfs"]
-	  clean = git-lfs clean %f
-	  smudge = git-lfs smudge %f
-	  required = true
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
 [push]
-	  default = simple
+    default = simple
 [web]
-	browser = chrome
+  browser = chrome
 [core]
-	excludesfile = ~/.gitignore
-	editor = /usr/bin/vim
+  excludesfile = ~/.gitignore
+  editor = /usr/bin/vim
