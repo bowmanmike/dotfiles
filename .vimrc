@@ -108,6 +108,7 @@ au BufWritePre *.vue :%s/\s\+$//e
 au BufWritePre *.html :%s/\s\+$//e
 au BufWritePre *.css :%s/\s\+$//e
 au BufWritePre *.scss :%s/\s\+$//e
+au BufWritePre *.yaml :%s/\s\+$//e
 
 " Normal backspace in normal mode
 set backspace=indent,eol,start
@@ -128,6 +129,10 @@ autocmd FileType go set tabstop=8|set shiftwidth=8|set noexpandtab
 "Set tabs to 4 spaces
 autocmd FileType json set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 let g:vim_json_syntax_conceal = 0
+
+" YAML
+" set tabs to 2 spaces
+autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
 " Run goimports as well as gofmt on save
 let g:go_fmt_command = "goimports"
