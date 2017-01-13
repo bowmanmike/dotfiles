@@ -1,22 +1,23 @@
 [user]
-    name = Mike Bowman
-    email = mbowman2@gmail.com
+  name = Mike Bowman
+  email = mbowman2@gmail.com
 [merge]
-    ff = only
+  ff = only
 [alias]
-    co = checkout
-    br = branch --sort=-committerdate
-    ci = commit
-    st = status
-    s = status -s
-    last = log -1 HEAD
-    diffl = diff HEAD~1
+  co = checkout
+  br = branch --sort=-committerdate
+  ci = commit
+  st = status
+  s = status -s
+  last = log -1 HEAD
+  diffl = diff HEAD~1
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
-    required = true
+  required = true
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  clean = git-lfs clean -- %f
 [push]
-    default = simple
+  default = simple
 [web]
   browser = chrome
 [core]
