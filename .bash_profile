@@ -91,6 +91,9 @@ then
   fi
 fi
 
+# Autojump config
+[ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh
+
 # Run rbenv init last. Was broken at top.
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
