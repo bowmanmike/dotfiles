@@ -22,4 +22,4 @@
   browser = chrome
 [core]
   excludesfile = ~/.gitignore
-  editor = /usr/bin/vim
+  editor = /usr/local/bin/vim
