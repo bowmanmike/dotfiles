@@ -35,3 +35,9 @@ Dotfiles for gitconfig, bash_profile, atom config folder
 `cd ~/.vim`
 Open vim,run `:PlugInstall`
 
+#### Notes
+##### YouCompleteMe
+Need to compile the python portion of the plugin. Need to have a version of python compiled with the following env var set:
+  `PYTHON_CONFIGURE_OPTS="--enable-framewor"`
+Then `cd` to the `YouCompleteMe` directory (`~/dotfiles/.vim/plugged/YouCompleteMe`) and run
+  `./install.py --gocode-completer --clang-completer --tern-completer --racer-completer`

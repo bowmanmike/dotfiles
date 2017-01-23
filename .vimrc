@@ -21,6 +21,7 @@ Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
 Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
+Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 Plug 'vim-airline/vim-airline' " Airline status bar
 Plug 'vim-ruby/vim-ruby' " Ruby language support
 
