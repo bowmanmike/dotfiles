@@ -5,6 +5,7 @@ Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
 Plug 'cespare/vim-toml' " TOML syntax highlighting
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
+Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
 Plug 'elzr/vim-json' " Better JSON support
 Plug 'fatih/vim-go' " Go language support
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
@@ -16,6 +17,7 @@ Plug 'ngmy/vim-rubocop' " Rubocop for vim
 Plug 'othree/html5-syntax.vim' " HTML syntax improvement
 Plug 'pangloss/vim-javascript' " Javascript language support
 Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
+Plug 'slashmili/alchemist.vim' " Elixir utilities
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
@@ -110,6 +112,8 @@ au BufWritePre *.html :%s/\s\+$//e
 au BufWritePre *.css :%s/\s\+$//e
 au BufWritePre *.scss :%s/\s\+$//e
 au BufWritePre *.yaml :%s/\s\+$//e
+au BufWritePre *.ex :%s/\s\+$//e
+au BufWritePre *.exs :%s/\s\+$//e
 
 " Normal backspace in normal mode
 set backspace=indent,eol,start
