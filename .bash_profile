@@ -94,6 +94,9 @@ fi
 # Autojump config
 [ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh
 
+# Add ssh passphrases to keychain
+ssh-add -K
+
 # Run rbenv init last. Was broken at top.
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
