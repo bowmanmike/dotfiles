@@ -114,6 +114,7 @@ au BufWritePre *.scss :%s/\s\+$//e
 au BufWritePre *.yaml :%s/\s\+$//e
 au BufWritePre *.ex :%s/\s\+$//e
 au BufWritePre *.exs :%s/\s\+$//e
+au BufWritePre *.c :%s/\s\+$//e
 
 " Normal backspace in normal mode
 set backspace=indent,eol,start
