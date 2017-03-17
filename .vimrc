@@ -5,6 +5,7 @@ Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
 Plug 'cespare/vim-toml' " TOML syntax highlighting
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
+Plug 'editorconfig/editorconfig-vim' " Allows .editorconfig files
 Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
 Plug 'elzr/vim-json' " Better JSON support
 Plug 'fatih/vim-go' " Go language support
