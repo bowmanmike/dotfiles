@@ -11,6 +11,8 @@ Plug 'elzr/vim-json' " Better JSON support
 Plug 'fatih/vim-go' " Go language support
 Plug 'jceb/vim-orgmode' " Orgmode for vim
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
+Plug 'majutsushi/tagbar' " Tagbar browsing
+Plug 'mattn/calendar-vim' " Calendar for datepicker
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'mileszs/ack.vim'  " Code search with AG
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
@@ -29,6 +31,8 @@ Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 Plug 'vim-airline/vim-airline' " Airline status bar
 Plug 'vim-ruby/vim-ruby' " Ruby language support
+Plug 'vim-scripts/taglist.vim' " Tag browsing
+Plug 'vim-scripts/SyntaxRange' " Syntax highlighting within range
 
 " Colorschemes
 Plug 'fatih/molokai' " Vim Molokai
@@ -170,9 +174,9 @@ imap kj <esc>
 nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
 
 " RSpec-vim shortcuts
-nmap <leader>s :call RunNearestSpec()<cr>
-nmap <leader>a :call RunAllSpecs()<cr>
-nmap <leader>f :call RunCurrentSpecFile()<cr>
+autocmd FileType ruby nmap <leader>s :call RunNearestSpec()<cr>
+autocmd FileType ruby nmap <leader>a :call RunAllSpecs()<cr>
+autocmd FileType ruby nmap <leader>f :call RunCurrentSpecFile()<cr>
 
 " GoVim Shortcuts
 au FileType go nmap <leader>r <Plug>(go-run)
