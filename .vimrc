@@ -9,6 +9,7 @@ Plug 'editorconfig/editorconfig-vim' " Allows .editorconfig files
 Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
 Plug 'elzr/vim-json' " Better JSON support
 Plug 'fatih/vim-go' " Go language support
+Plug 'jceb/vim-orgmode' " Orgmode for vim
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'mileszs/ack.vim'  " Code search with AG
@@ -23,6 +24,7 @@ Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
+Plug 'tpope/vim-speeddating' " Quick modification of dates
 Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 Plug 'vim-airline/vim-airline' " Airline status bar
