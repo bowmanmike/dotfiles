@@ -147,6 +147,10 @@ let g:vim_json_syntax_conceal = 0
 " set tabs to 2 spaces
 autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
+" Org
+" Set tabs to 2 spaces
+autocmd FileType org set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+
 " Run goimports as well as gofmt on save
 let g:go_fmt_command = "goimports"
 
