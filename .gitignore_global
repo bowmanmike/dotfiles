@@ -30,3 +30,6 @@ Thumbs.db
 .idea/
 .vscode/
 .metadata/
+
+# Ignore GIN hot-reload
+gin-bin
