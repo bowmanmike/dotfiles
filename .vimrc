@@ -9,7 +9,6 @@ Plug 'editorconfig/editorconfig-vim' " Allows .editorconfig files
 Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
 Plug 'elzr/vim-json' " Better JSON support
 Plug 'fatih/vim-go' " Go language support
-Plug 'jceb/vim-orgmode' " Orgmode for vim
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
 Plug 'majutsushi/tagbar' " Tagbar browsing
 Plug 'mattn/calendar-vim' " Calendar for datepicker
@@ -46,7 +45,6 @@ Plug 'jpo/vim-railscasts-theme' " Railscasts colors
 call plug#end()
 
 " ----- Default Configs -----
-set relativenumber " Show line number relative to cursor
 set number " Show current line number
 set ruler " Not sure what these ones do
 set hls is " Not sure what these ones do
