@@ -28,6 +28,7 @@ alias tls='tmux ls'
 alias git='hub'
 alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.agignore'
 alias weather='curl -4 wttr.in/Toronto'
+alias mux='tmuxinator'
 
 # get current branch in git repo
 function parse_git_branch() {
