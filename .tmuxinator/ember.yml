@@ -1,7 +1,7 @@
-# ~/.tmuxinator/importer.yml
+# ~/.tmuxinator/ember.yml
 
-name: importer
-root: ~/Work/importer-ruby
+name: ember
+root: ~/Work/zoocasa-ember
 
 # Optional tmux socket
 # socket_name: foo
@@ -19,7 +19,7 @@ root: ~/Work/importer-ruby
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-startup_window: main
+# startup_window: editor
 
 # Specitifes (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
 # startup_pane: 1
@@ -28,18 +28,11 @@ startup_window: main
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t importer
+# post: tmux -CC attach -t ember
 
 windows:
   - main:
       layout: even-vertical
       panes:
-        - top: 
-        - bottom:
-  - misc:
-  - db:
-      layout: even-vertical
-      panes:
-        - rethinkdb
-        - rethinkdb --port-offset 1 --join localhost:29015 --directory rethinkdb_data2
-        - rethinkdb --port-offset 2 --join localhost:29015 --directory rethinkdb_data3
+        - top:
+        - bottom: ember s --proxy=https://www.zoocasa.com
