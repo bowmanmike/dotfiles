@@ -46,6 +46,9 @@ function parse_git_branch() {
 # case-insensitive tab completion
 bind "set completion-ignore-case on"
 
+# tmuxinator completion
+source ~/.tmuxinator/completion.bash
+
 # get current status of git repo
 function parse_git_dirty {
 	status=`git status 2>&1 | tee`
