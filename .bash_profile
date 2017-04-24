@@ -101,3 +101,4 @@ fi
 # Run rbenv init last. Was broken at top.
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
+eval "$(direnv hook bash)"
