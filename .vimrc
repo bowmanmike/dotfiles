@@ -149,6 +149,10 @@ autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 " Set tabs to 2 spaces
 autocmd FileType org set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
+" Markdown
+" 2 space tabs
+" autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+
 " Run goimports as well as gofmt on save
 let g:go_fmt_command = "goimports"
 
