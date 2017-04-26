@@ -61,6 +61,9 @@ set expandtab
 set softtabstop=0
 set smarttab
 
+" Show whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+
 filetype plugin indent on " Automatically read filetype
 set visualbell " No bells, apparently
 set noerrorbells "Try to turn off error bells, might need more config
