@@ -13,7 +13,6 @@
 # tmux log files
 tmux*.log
 
-
 # Folder view configuration files
 .DS_Store
 Desktop.ini
@@ -33,3 +32,6 @@ Thumbs.db
 
 # Ignore GIN hot-reload
 gin-bin
+
+# Golang debugging files
+debug
