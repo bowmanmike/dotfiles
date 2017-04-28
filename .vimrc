@@ -1,7 +1,6 @@
 " ----- Vim-plug -----
 call plug#begin()
 
-Plug 'Yggdroot/indentLine' " Display vertical lines to guide indentation
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
 Plug 'cespare/vim-toml' " TOML syntax highlighting
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
@@ -10,8 +9,6 @@ Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
 Plug 'elzr/vim-json' " Better JSON support
 Plug 'fatih/vim-go' " Go language support
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
-Plug 'majutsushi/tagbar' " Tagbar browsing
-Plug 'mattn/calendar-vim' " Calendar for datepicker
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'mileszs/ack.vim'  " Code search with AG
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
@@ -30,17 +27,16 @@ Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 Plug 'vim-airline/vim-airline' " Airline status bar
 Plug 'vim-ruby/vim-ruby' " Ruby language support
-Plug 'vim-scripts/taglist.vim' " Tag browsing
 Plug 'vim-scripts/SyntaxRange' " Syntax highlighting within range
 
 " Colorschemes
-Plug 'fatih/molokai' " Vim Molokai
-Plug 'joshdick/onedark.vim' " Onedark colorscheme
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
-Plug 'romainl/Apprentice' " Apprentice colorscheme
-Plug 'sickill/vim-monokai' " Monokai color scheme
 Plug 'vim-airline/vim-airline-themes' " Airline color schemes
-Plug 'jpo/vim-railscasts-theme' " Railscasts colors
+" Plug 'fatih/molokai' " Vim Molokai
+" Plug 'joshdick/onedark.vim' " Onedark colorscheme
+" Plug 'romainl/Apprentice' " Apprentice colorscheme
+" Plug 'sickill/vim-monokai' " Monokai color scheme
+" Plug 'jpo/vim-railscasts-theme' " Railscasts colors
 
 call plug#end()
 
@@ -137,7 +133,7 @@ let g:airline#extensions#tabline#enabled = 1
 " ----- Language Specific Settings ----- 
 " Go
 " Set tabs to 8 space tabs
-autocmd FileType go set tabstop=8|set shiftwidth=8|set noexpandtab
+autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
 
 "JSON
 "Set tabs to 4 spaces
@@ -148,13 +144,13 @@ let g:vim_json_syntax_conceal = 0
 " set tabs to 2 spaces
 autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
-" Org
-" Set tabs to 2 spaces
-autocmd FileType org set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
-
 " Markdown
 " 2 space tabs
 " autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+
+" HTML
+" Remap emmet trigger to <C-Z>
+let g:user_emmet_leader_key='<C-Z>'
 
 " Run goimports as well as gofmt on save
 let g:go_fmt_command = "goimports"
