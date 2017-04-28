@@ -84,10 +84,15 @@ autocmd FileType ruby match OverLength /\%91v.\+/
 " set list
 " set listchars=tab:>-,trail:.
 
+" Don't use swap or backup directories
+set nobackup
+set nowritebackup
+set noswapfile
+
 " Set backup and swp directory to not add files to project directories, but
 " `.vim` instead
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
+" set backupdir=~/.vim/backup//
+" set directory=~/.vim/swp//
 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Set default values in `.agignore`
