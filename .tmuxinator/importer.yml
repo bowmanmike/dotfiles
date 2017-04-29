@@ -37,9 +37,3 @@ windows:
         - top: 
         - bottom:
   - misc:
-  - db:
-      layout: even-vertical
-      panes:
-        - rethinkdb
-        - rethinkdb --port-offset 1 --join localhost:29015 --directory rethinkdb_data2
-        - rethinkdb --port-offset 2 --join localhost:29015 --directory rethinkdb_data3
