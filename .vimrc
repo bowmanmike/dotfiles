@@ -210,6 +210,19 @@ autocmd FileType go nmap <Leader>dc :GoDoc<cr>
 autocmd FileType go nmap <Leader>c :GoCoverage<cr>
 autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
 
+" ----- JSON Modification -----
+" Use JQ to pretty print or compact json
+function! PrettyPrintJSON()
+  :%!jq '.' -M
+endfunction
+
+function! MinifyJSON()
+  :%!jq '.' -cM
+endfunction
+
+nmap <leader>pj :call PrettyPrintJSON()<cr>
+nmap <leader>mj :call MinifyJSON()<cr>
+
 " ----- Command Bindings -----
 command! Q q
 command! W w
