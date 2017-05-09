@@ -26,7 +26,7 @@ alias tns='tmux new -s'
 alias tat='tmux attach -t'
 alias tls='tmux ls'
 alias git='hub'
-alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.agignore'
+alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.ignore'
 alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
 
