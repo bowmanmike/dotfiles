@@ -221,8 +221,8 @@ function! MinifyJSON()
   :%!jq '.' -cM
 endfunction
 
-nmap <leader>pj :call PrettyPrintJSON()<cr>
-nmap <leader>mj :call MinifyJSON()<cr>
+autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
+autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
 
 " ----- Command Bindings -----
 command! Q q
