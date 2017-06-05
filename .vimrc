@@ -139,7 +139,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " ----- Language Specific Settings ----- 
 " Go
-" Set tabs to 8 space tabs
+" Set tabs to 4 space tabs
 autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
 
 "JSON
@@ -210,6 +210,7 @@ autocmd FileType go nmap <Leader>t <Plug>(go-test)
 autocmd FileType go nmap <Leader>dc :GoDoc<cr>
 autocmd FileType go nmap <Leader>c :GoCoverage<cr>
 autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
+autocmd FileType go nmap <Leader>df :GoDef<cr>
 
 " ----- JSON Modification -----
 " Use JQ to pretty print or compact json
