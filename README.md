@@ -8,7 +8,6 @@ Dotfiles for gitconfig, bash_profile, atom config folder
 - `.agignore`
 - `gitignore` -> `/dotfiles/.gitignore_global`
 - `.vim` -> Vim directory
-- `.atom`
 
 #### Things to Install
 *Homebrew*
@@ -27,15 +26,19 @@ Dotfiles for gitconfig, bash_profile, atom config folder
 - `tree`
 - `wget`
 
-*Other*
-- `docker`
+*Cask*
 - `atom`
+- `vscode`
+- `iterm2`
 
 #### Set up new machine
 `cd ~/.vim`
 Open vim,run `:PlugInstall`
 
 #### Notes
+##### Terminal
+Download iTerm2, download Meslo font from Dropbox, set font size to 14
+
 ##### YouCompleteMe
 Need to compile the python portion of the plugin. Need to have a version of python compiled with the following env var set:
   `PYTHON_CONFIGURE_OPTS="--enable-framewor"`
