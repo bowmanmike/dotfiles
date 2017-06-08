@@ -30,6 +30,12 @@ alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.ignore'
 alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
 alias fv='vim $(fzf)'
+alias cj=count_json_file
+
+# count objects in json file
+function count_json_file() {
+  cat $1 | jq '. | length'
+}
 
 # get current branch in git repo
 function parse_git_branch() {
