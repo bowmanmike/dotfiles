@@ -29,6 +29,7 @@ alias git='hub'
 alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.ignore'
 alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
+alias fv='vim $(fzf)'
 
 # get current branch in git repo
 function parse_git_branch() {
