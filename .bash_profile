@@ -38,10 +38,19 @@ alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
 alias fv='vim $(fzf)'
 alias cj=count_json_file
+alias cjd=count_json_directory
 
 # count objects in json file
 function count_json_file() {
   cat $1 | jq '. | length'
+}
+
+function count_json_directory() {
+  DIRECTORY="$1*.json"
+  for i in $DIRECTORY
+  do
+    echo "$(count_json_file $i) -> $i"
+  done
 }
 
 # get current branch in git repo
