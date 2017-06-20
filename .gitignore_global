@@ -35,3 +35,6 @@ gin-bin
 
 # Golang debugging files
 debug
+
+# Haskell stack-work directory
+.stack-work
