@@ -232,6 +232,7 @@ autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
 
 " ALE linter settings
 autocmd FileType go let g:ale_enabled = 0
+autocmd FileType vue let g:ale_enabled = 0
 " Choose specific linters for each language
 " let g:ale_linters = {
 "       \}
