@@ -215,7 +215,7 @@ autocmd FileType go nmap <Leader>dc :GoDoc<cr>
 autocmd FileType go nmap <Leader>c :GoCoverage<cr>
 autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
 autocmd FileType go nmap <Leader>i :GoInfo<cr>
-" autocmd FileType go nmap <Leader>df :GoDef<cr> " => Unnecessary, `gd` does this already
+autocmd FileType go nmap <Leader>d <Plug>(go-def-vertical)
 
 " ----- JSON Modification -----
 " Use JQ to pretty print or compact json
