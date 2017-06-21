@@ -9,6 +9,7 @@ Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
 Plug 'elzr/vim-json' " Better JSON support
 Plug 'fatih/vim-go' " Go language support
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
+Plug 'leafgarland/typescript-vim' " Typescript support
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'mileszs/ack.vim'  " Code search with AG
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
@@ -28,6 +29,7 @@ Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 Plug 'vim-airline/vim-airline' " Airline status bar
 Plug 'vim-ruby/vim-ruby' " Ruby language support
 Plug 'vim-scripts/SyntaxRange' " Syntax highlighting within range
+Plug 'w0rp/ale' " Async linting, alternative to syntastic
 " Plug 'vim-syntastic/syntastic' " Async linting
 
 " Colorschemes
@@ -225,6 +227,16 @@ endfunction
 
 autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
 autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
+
+" ALE linter settings
+autocmd FileType go let g:ale_enabled = 0
+" Choose specific linters for each language
+" let g:ale_linters = {
+"       \}
+
+" Lint only on save, rather than after every keystroke
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_save = 1
 
 " ----- Command Bindings -----
 command! Q q
