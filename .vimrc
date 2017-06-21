@@ -55,6 +55,7 @@ set showcmd " show commands as they're typed
 set clipboard=unnamed " Yank to system clipboard
 set autoread " Automatically update vim buffer when file changes
 set shortmess+=c " Fix for YCM bug -> https://github.com/Valloric/YouCompleteMe/issues/1562
+set splitright " Open vertical splits to the right by default
 
 " Set tab to 2 spaces
 set tabstop=2
