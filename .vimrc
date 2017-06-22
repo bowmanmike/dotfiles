@@ -1,25 +1,15 @@
 " ----- Vim-plug -----
 call plug#begin()
 
+" Utilities
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
-Plug 'cespare/vim-toml' " TOML syntax highlighting
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'editorconfig/editorconfig-vim' " Allows .editorconfig files
-Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
-Plug 'elzr/vim-json' " Better JSON support
-Plug 'fatih/vim-go' " Go language support
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
-Plug 'leafgarland/typescript-vim' " Typescript support
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'mileszs/ack.vim'  " Code search with AG
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
 Plug 'ngmy/vim-rubocop' " Rubocop for vim
-" Plug 'othree/html5.vim' " Enable this if more html tweaks needed
-Plug 'othree/html5-syntax.vim' " HTML syntax improvement
-Plug 'pangloss/vim-javascript' " Javascript language support
-Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
-Plug 'slashmili/alchemist.vim' " Elixir utilities
-Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
@@ -27,10 +17,23 @@ Plug 'tpope/vim-speeddating' " Quick modification of dates
 Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 Plug 'vim-airline/vim-airline' " Airline status bar
-Plug 'vim-ruby/vim-ruby' " Ruby language support
 Plug 'vim-scripts/SyntaxRange' " Syntax highlighting within range
 Plug 'w0rp/ale' " Async linting, alternative to syntastic
 " Plug 'vim-syntastic/syntastic' " Async linting
+
+" Language Plugins
+Plug 'slashmili/alchemist.vim' " Elixir utilities
+Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
+Plug 'fatih/vim-go' " Go language support
+" Plug 'othree/html5.vim' " Enable this if more html tweaks needed
+Plug 'othree/html5-syntax.vim' " HTML syntax improvement
+Plug 'pangloss/vim-javascript' " Javascript language support
+Plug 'elzr/vim-json' " Better JSON support
+Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
+Plug 'vim-ruby/vim-ruby' " Ruby language support
+Plug 'cespare/vim-toml' " TOML syntax highlighting
+Plug 'leafgarland/typescript-vim' " Typescript support
+Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
 
 " Colorschemes
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
