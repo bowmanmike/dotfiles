@@ -7,3 +7,7 @@ end
 def pbpaste
   `pbpaste`
 end
+
+def show_instance_methods(object)
+  object.methods - Object.methods
+end
