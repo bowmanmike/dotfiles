@@ -222,6 +222,7 @@ autocmd FileType go nmap <Leader>c :GoCoverage<cr>
 autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
 autocmd FileType go nmap <Leader>i :GoInfo<cr>
 autocmd FileType go nmap <Leader>d <Plug>(go-def-vertical)
+autocmd FileType go nmap <Leader>b <Plug>(go-def-tab)
 
 " ----- JSON Modification -----
 " Use JQ to pretty print or compact json
