@@ -11,6 +11,7 @@
   s = status -s
   last = log -1 HEAD
   amend = commit --amend --no-edit
+  diffs = diff --staged
 [filter "lfs"]
   required = true
   smudge = git-lfs smudge -- %f

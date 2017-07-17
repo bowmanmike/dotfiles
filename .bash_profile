@@ -39,6 +39,7 @@ alias mux='tmuxinator'
 alias fv='vim $(fzf)'
 alias cj=count_json_file
 alias cjd=count_json_directory
+alias gp='go-pry run'
 
 # count objects in json file
 function count_json_file() {
