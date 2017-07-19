@@ -41,6 +41,11 @@ alias cj=count_json_file
 alias cjd=count_json_directory
 alias gp='go-pry run'
 
+# alias vim to nvim if nvim executable is present
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
 # count objects in json file
 function count_json_file() {
   cat $1 | jq '. | length'
