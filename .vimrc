@@ -238,14 +238,14 @@ autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
 autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
 
 " ALE linter settings
-autocmd FileType go let g:ale_enabled = 0
 autocmd FileType vue let g:ale_enabled = 0
 " Choose specific linters for each language
-" let g:ale_linters = {
-"       \}
+let g:ale_linters = {
+      \ 'go': ['gometalinter']
+      \}
 
 " Lint only on save, rather than after every keystroke
-let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_text_changed = 'never' 
 let g:ale_lint_on_save = 1
 
 " ----- Command Bindings -----
