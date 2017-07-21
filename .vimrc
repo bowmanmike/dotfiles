@@ -244,6 +244,16 @@ let g:ale_linters = {
       \ 'go': ['gometalinter']
       \}
 
+" Disable for vendor, node_modules
+let g:ale_pattern_options = {
+      \  '.*/vendor/*.go': {
+      \    'ale_enabled': 0
+      \  },
+      \  '.*/node_modules/*.js': {
+      \    'ale_enabled': 0
+      \  }
+      \}
+
 " Lint only on save, rather than after every keystroke
 let g:ale_lint_on_text_changed = 'never' 
 let g:ale_lint_on_enter = 0
