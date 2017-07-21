@@ -246,6 +246,7 @@ let g:ale_linters = {
 
 " Lint only on save, rather than after every keystroke
 let g:ale_lint_on_text_changed = 'never' 
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 
 " ----- Command Bindings -----
