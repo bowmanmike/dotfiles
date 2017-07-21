@@ -108,12 +108,16 @@ set noswapfile
 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Set default values in `.agignore`
-let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](doc|tmp|node_modules|bower_components|vendor)',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --hidden --path-to-ignore ~/.ignore --skip-vcs-ignores --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/](doc\|tmp\|node_modules\|bower_components\|vendor\|.git)',
+"   \ 'file': '\v\.(exe|so|dll|DS_Store)$',
+"   \ }
+" let g:ctrlp_custom_ignore = '\v[\/](node_modules|vendor)|(\.(git))$'
+" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
 
 " Use AG instead of Ack
 if executable('ag')
