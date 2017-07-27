@@ -228,6 +228,19 @@ autocmd FileType go nmap <Leader>i :GoInfo<cr>
 autocmd FileType go nmap <Leader>d <Plug>(go-def-vertical)
 autocmd FileType go nmap <Leader>b <Plug>(go-def-tab)
 
+" Neovim Terminal Shortcuts
+" Enable if using nvim
+if executable('nvim')
+  " Open terminal in new tab
+  nmap <leader>tt :tabnew term://bash<cr>i
+  " Open terminal in vsplit
+  nmap <leader>tv :vsplit term://bash<cr>i
+  " Open terminal in hsplit
+  nmap <leader>th :split term://bash<cr>i
+  " Map esc to exit terminal input mode
+  tnoremap <Esc> <C-\><C-N>
+endif
+
 " ----- JSON Modification -----
 " Use JQ to pretty print or compact json
 function! PrettyPrintJSON()
