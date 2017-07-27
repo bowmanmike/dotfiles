@@ -228,6 +228,11 @@ autocmd FileType go nmap <Leader>i :GoInfo<cr>
 autocmd FileType go nmap <Leader>d <Plug>(go-def-vertical)
 autocmd FileType go nmap <Leader>b <Plug>(go-def-tab)
 
+" Fugitive Shortcuts
+nmap <Leader>gs :Gstatus<cr>
+nmap <Leader>gd :Gdiff<cr>
+nmap <Leader>gb :Gblame<cr>
+
 " Neovim Terminal Shortcuts
 " Enable if using nvim
 if executable('nvim')
