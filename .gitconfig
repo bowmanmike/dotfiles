@@ -23,7 +23,7 @@
   browser = chrome
 [core]
 	excludesfile = /Users/mikebowman/.gitignore
-  editor = /usr/local/bin/vim
+  editor = /usr/local/bin/nvim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

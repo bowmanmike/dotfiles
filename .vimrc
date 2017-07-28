@@ -235,7 +235,7 @@ nmap <Leader>gb :Gblame<cr>
 
 " Neovim Terminal Shortcuts
 " Enable if using nvim
-if executable('nvim')
+if has('nvim')
   " Open terminal in new tab
   nmap <leader>tt :tabnew term://bash<cr>i
   " Open terminal in vsplit
