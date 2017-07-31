@@ -9,6 +9,7 @@
 - `ctrl + a` to increment numbers, `ctrl + x` to decrement
 - `m[character]` => set a mark at the cursor location named by [character]. Type `\`[character]` to jump back to the specific mark, or `\'[character]` to jump the line where the mark is
 - `<space>dc` => run godoc on the cursor location
+- `<C-W>R` Swap top/bottom or left/right vim splits
 
 *vim-surround*
 - `ysiw [delimiter]` => Surround the current word with [delimiter]
