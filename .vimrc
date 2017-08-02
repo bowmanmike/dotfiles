@@ -61,6 +61,7 @@ set shortmess+=c " Fix for YCM bug -> https://github.com/Valloric/YouCompleteMe/
 set splitright " Open vertical splits to the right by default
 set splitbelow " Open horizontal splits below by default
 set mouse=a " Enable mouse for all modes
+set cursorline " Highlight line cursor is on
 
 " Set tab to 2 spaces
 set tabstop=2
