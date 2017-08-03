@@ -269,6 +269,10 @@ autocmd FileType go let g:ale_enabled = 0
 let g:ale_linters = {
       \ 'go': ['gometalinter']
       \}
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+autocmd FileType javascript let g:ale_fix_on_save = 1
+autocmd FileType javascript let g:ale_javascript_prettier_options = '--single-quote --trailing-comma'
 
 " Disable for vendor, node_modules
 let g:ale_pattern_options = {
