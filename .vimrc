@@ -205,6 +205,7 @@ let g:go_highlight_build_constraints = 1
 nmap j gj
 nmap k gk
 nmap 0 ^
+nmap <leader>z :tabnew %<cr>
 
 " ----- Insert Mode Bindings ----- 
 " Easy escape from insert mode
