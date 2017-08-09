@@ -271,6 +271,7 @@ let g:ale_linters = {
       \}
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['scss'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
 autocmd FileType javascript let g:ale_fix_on_save = 1
