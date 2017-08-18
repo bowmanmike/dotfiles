@@ -143,6 +143,7 @@ au BufWritePre *.yaml :%s/\s\+$//e
 au BufWritePre *.ex :%s/\s\+$//e
 au BufWritePre *.exs :%s/\s\+$//e
 au BufWritePre *.c :%s/\s\+$//e
+au BufWritePre *.json :%s/\s\+$//e
 
 " Normal backspace in normal mode
 set backspace=indent,eol,start
@@ -158,6 +159,11 @@ let g:airline#extensions#tabline#enabled = 1
 " Go
 " Set tabs to 4 space tabs
 autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
+
+" Elixir
+if has('nvim')
+  autocmd FileType elixir nnoremap <leader>ti :IEx<cr>
+endif
 
 "JSON
 "Set tabs to 4 spaces
