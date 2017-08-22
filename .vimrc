@@ -271,11 +271,12 @@ autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
 
 " ALE linter settings
 autocmd FileType vue let g:ale_enabled = 0
-autocmd FileType go let g:ale_enabled = 0
+
 " Choose specific linters for each language
-let g:ale_linters = {
-      \ 'go': ['gometalinter']
-      \}
+let g:ale_linters = {}
+let g:ale_linters['go'] = ['golint', 'go vet']
+
+" Automatic fixers for specific languages
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['typescript'] = ['prettier']
@@ -297,8 +298,9 @@ let g:ale_pattern_options = {
       \}
 
 " Lint only on save, rather than after every keystroke
-let g:ale_lint_on_text_changed = 'never' 
-let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_text_changed = 'never'  => Keep in since it was
+" gometalinter that was slowing things down
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 
 " ----- Command Bindings -----
