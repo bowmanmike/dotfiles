@@ -274,7 +274,7 @@ autocmd FileType vue let g:ale_enabled = 0
 
 " Choose specific linters for each language
 let g:ale_linters = {}
-let g:ale_linters['go'] = ['golint', 'go vet']
+let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
 " let g:ale_linters['vue'] = ['eslint']
 
 " Automatic fixers for specific languages
@@ -283,6 +283,7 @@ let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['scss'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
+let g:ale_fixers['html'] = ['tidy']
 
 " Vue filetype aliases
 " let g:ale_linter_aliases = {'vue': 'javascript'}
