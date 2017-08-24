@@ -176,7 +176,7 @@ autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
 " Markdown
 " 2 space tabs
-" autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
 " HTML
 " Remap emmet trigger to <C-Z>
