@@ -272,6 +272,9 @@ autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
 " ALE linter settings
 autocmd FileType vue let g:ale_enabled = 0
 
+" Leave gutter open all the time
+let g:ale_sign_column_always = 1
+
 " Choose specific linters for each language
 let g:ale_linters = {}
 let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
