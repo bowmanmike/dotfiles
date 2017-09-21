@@ -132,6 +132,8 @@ fi
 
 
 eval $(thefuck --alias)
+# alias thefuck to oops in case I don't feel like swearing
+alias oops="fuck"
 # Run rbenv init last. Was broken at top.
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
