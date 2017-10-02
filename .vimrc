@@ -34,6 +34,7 @@ Plug 'vim-ruby/vim-ruby' " Ruby language support
 Plug 'cespare/vim-toml' " TOML syntax highlighting
 Plug 'leafgarland/typescript-vim' " Typescript support
 Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
+Plug 'jceb/vim-orgmode'
 
 " Colorschemes
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
