@@ -3,9 +3,10 @@ call plug#begin()
 
 " Utilities
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
-Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
+" Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'editorconfig/editorconfig-vim' " Allows .editorconfig files
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " FZF in vim instead of ctrl-p
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'mileszs/ack.vim'  " Code search with AG
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
@@ -19,7 +20,6 @@ Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 Plug 'vim-airline/vim-airline' " Airline status bar
 Plug 'vim-scripts/SyntaxRange' " Syntax highlighting within range
 Plug 'w0rp/ale' " Async linting, alternative to syntastic
-" Plug 'vim-syntastic/syntastic' " Async linting
 
 " Language Plugins
 Plug 'slashmili/alchemist.vim' " Elixir utilities
@@ -112,16 +112,19 @@ set noswapfile
 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Set default values in `.agignore`
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --hidden --path-to-ignore ~/.ignore --skip-vcs-ignores --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
-endif
+" if executable('ag')
+"   let g:ctrlp_user_command = 'ag %s -l --hidden --path-to-ignore ~/.ignore --skip-vcs-ignores --nocolor -g ""'
+"   let g:ctrlp_use_caching = 0
+" endif
 " let g:ctrlp_custom_ignore = {
 "   \ 'dir':  '\v[\/](doc\|tmp\|node_modules\|bower_components\|vendor\|.git)',
 "   \ 'file': '\v\.(exe|so|dll|DS_Store)$',
 "   \ }
 " let g:ctrlp_custom_ignore = '\v[\/](node_modules|vendor)|(\.(git))$'
 " let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
+
+" FZF Settings
+nnoremap <silent> <C-p> :Files<cr>
 
 " Use AG instead of Ack
 if executable('ag')
