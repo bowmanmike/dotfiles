@@ -25,6 +25,7 @@ Plug 'w0rp/ale' " Async linting, alternative to syntastic
 Plug 'slashmili/alchemist.vim' " Elixir utilities
 Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
 Plug 'fatih/vim-go' " Go language support
+Plug 'junegunn/goyo.vim' " Writing prose in vim
 " Plug 'othree/html5.vim' " Enable this if more html tweaks needed
 Plug 'othree/html5-syntax.vim' " HTML syntax improvement
 Plug 'pangloss/vim-javascript' " Javascript language support
@@ -259,6 +260,16 @@ if has('nvim')
   " Map esc to exit terminal input mode
   tnoremap <Esc> <C-\><C-N>
 endif
+
+" ----- Prose Mode ------
+function! ProseMode()
+  call goyo#execute(0, [])
+  set spell noci nosi noai nolist noshowmode noshowcmd
+  set complete+=s
+endfunction
+
+command! ProseMode call ProseMode()
+nmap \p :ProseMode<cr>
 
 " ----- JSON Modification -----
 " Use JQ to pretty print or compact json
