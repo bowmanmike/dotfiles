@@ -126,6 +126,7 @@ set noswapfile
 
 " FZF Settings
 nnoremap <silent> <C-p> :Files<cr>
+nnoremap <silent> <C-b> :Buffers<cr>
 
 " Use AG instead of Ack
 if executable('ag')
