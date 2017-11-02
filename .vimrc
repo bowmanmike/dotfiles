@@ -75,6 +75,7 @@ set showcmd " show commands as they're typed
 set clipboard=unnamed " Yank to system clipboard
 set autoread " Automatically update vim buffer when file changes
 set shortmess+=c " Fix for YCM bug -> https://github.com/Valloric/YouCompleteMe/issues/1562
+set completeopt-=preview
 set splitright " Open vertical splits to the right by default
 set splitbelow " Open horizontal splits below by default
 set mouse=a " Enable mouse for all modes
