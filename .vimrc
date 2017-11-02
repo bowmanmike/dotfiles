@@ -46,6 +46,21 @@ Plug 'vim-airline/vim-airline-themes' " Airline color schemes
 " Plug 'sickill/vim-monokai' " Monokai color scheme
 " Plug 'jpo/vim-railscasts-theme' " Railscasts colors
 
+" Experimental
+" if has('nvim')
+  " Plug 'roxma/nvim-completion-manager'
+  " Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+  " Plug 'roxma/ncm-rct-complete'
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Valloric/YouCompleteMe' " YouCompleteMe
+" endif
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-x>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 call plug#end()
 
 " ----- Default Configs -----
