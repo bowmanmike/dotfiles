@@ -47,6 +47,9 @@ Plug 'vim-airline/vim-airline-themes' " Airline color schemes
 " Plug 'jpo/vim-railscasts-theme' " Railscasts colors
 
 " Experimental
+Plug 'sebdah/vim-delve'
+let g:delve_backend = "native"
+
 " if has('nvim')
   " Plug 'roxma/nvim-completion-manager'
   " Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
