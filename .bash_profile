@@ -40,6 +40,8 @@ alias fv='vim $(fzf)'
 alias cj=count_json_file
 alias cjd=count_json_directory
 alias gp='go-pry run'
+alias mjc=minify_json_from_clipboard
+alias pjc=prettify_json_from_clipboard
 
 # alias vim to nvim if nvim executable is present
 if type nvim > /dev/null 2>&1; then
@@ -57,6 +59,15 @@ function count_json_directory() {
   do
     echo "$(count_json_file $i) -> $i"
   done
+}
+
+# minify and prettify json from clipboard
+function minify_json_from_clipboard() {
+  pbpaste | jq -cM '.' | pbcopy
+}
+
+function prettify_json_from_clipboard() {
+  pbpaste | jq -M '.' | pbcopy
 }
 
 # get current branch in git repo

@@ -326,7 +326,7 @@ let g:ale_fixers['html'] = ['tidy']
 " Vue filetype aliases
 " let g:ale_linter_aliases = {'vue': 'javascript'}
 
-autocmd FileType javascript let g:ale_fix_on_save = 1
+" autocmd FileType javascript let g:ale_fix_on_save = 1
 autocmd FileType scss let g:ale_fix_on_save = 1
 autocmd FileType css let g:ale_fix_on_save = 1
 autocmd FileType javascript let g:ale_javascript_prettier_options = '--single-quote --trailing-comma'
