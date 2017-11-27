@@ -57,6 +57,10 @@ if has('nvim')
   Plug 'Shougo/deoplete-rct' " Deoplete implementaton for ruby
   Plug 'mhartington/nvim-typescript' " Typescript support with deoplete
   Plug 'carlitux/deoplete-ternjs' " Deoplete for javascript
+  Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#auto_complete_start_length=1
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
