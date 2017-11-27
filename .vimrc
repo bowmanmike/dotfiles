@@ -16,7 +16,6 @@ Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
 Plug 'tpope/vim-speeddating' " Quick modification of dates
 Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
-Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 Plug 'vim-airline/vim-airline' " Airline status bar
 Plug 'vim-scripts/SyntaxRange' " Syntax highlighting within range
 Plug 'w0rp/ale' " Async linting, alternative to syntastic
@@ -50,14 +49,20 @@ Plug 'vim-airline/vim-airline-themes' " Airline color schemes
 Plug 'sebdah/vim-delve'
 let g:delve_backend = "native"
 
-" if has('nvim')
-  " Plug 'roxma/nvim-completion-manager'
-  " Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-  " Plug 'roxma/ncm-rct-complete'
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Valloric/YouCompleteMe' " YouCompleteMe
-" endif
+" Neovim specific plugins
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " replacement for YouCompleteMe
+  Plug 'zchee/deoplete-go' " Deoplete implementaiton for go
+  Plug 'fishbullet/deoplete-ruby' " Deoplete implementaton for ruby
+  Plug 'Shougo/deoplete-rct' " Deoplete implementaton for ruby
+  Plug 'mhartington/nvim-typescript' " Typescript support with deoplete
+  Plug 'carlitux/deoplete-ternjs' " Deoplete for javascript
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#auto_complete_start_length=1
+  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+else
+  Plug 'Valloric/YouCompleteMe' " YouCompleteMe
+endif
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 " let g:UltiSnipsExpandTrigger="<tab>"
@@ -219,6 +224,11 @@ let g:go_highlight_operators = 1 " Disable if things get slow
 let g:go_highlight_structs = 1 " Disable if things get slow
 let g:go_highlight_interfaces = 1 " Disable if things get slow
 let g:go_highlight_build_constraints = 1
+
+" Highlight identifier under cursor
+let g:go_auto_sameids = 1
+" Show type info on hover
+let g:go_auto_type_info = 1
 
 " ----- Syntastic -----
 " set statusline+=%#warningmsg#
