@@ -232,7 +232,8 @@ let g:go_highlight_build_constraints = 1
 " Highlight identifier under cursor
 let g:go_auto_sameids = 1
 " Show type info on hover
-let g:go_auto_type_info = 1
+" Don't need because <leader> i does the same thing
+" let g:go_auto_type_info = 1
 
 " ----- Syntastic -----
 " set statusline+=%#warningmsg#
