@@ -39,3 +39,6 @@ debug.test
 
 # Haskell stack-work directory
 .stack-work
+
+# Tern files
+.tern-port
