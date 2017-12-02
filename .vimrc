@@ -6,7 +6,12 @@ Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
 " Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'editorconfig/editorconfig-vim' " Allows .editorconfig files
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " FZF in vim instead of ctrl-p
+if has('macunix')
+  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " FZF in vim instead of ctrl-p
+else
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+endif
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'mileszs/ack.vim'  " Code search with AG
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
