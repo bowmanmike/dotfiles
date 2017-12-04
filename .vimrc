@@ -62,6 +62,7 @@ if has('nvim')
   Plug 'Shougo/deoplete-rct' " Deoplete implementaton for ruby
   Plug 'mhartington/nvim-typescript' " Typescript support with deoplete
   Plug 'carlitux/deoplete-ternjs' " Deoplete for javascript
+  Plug 'eagletmt/neco-ghc' " Deoplete for haskell
   Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
