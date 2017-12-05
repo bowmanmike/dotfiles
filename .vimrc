@@ -162,9 +162,9 @@ set noswapfile
 nnoremap <silent> <C-p> :Files<cr>
 nnoremap <silent> <C-b> :Buffers<cr>
 
-" Use AG instead of Ack
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep -i'
+" Use RG instead of Ack
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep -i'
 endif
 
 " Map leader-g to ack and don't automatically jump to results
