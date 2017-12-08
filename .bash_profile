@@ -128,7 +128,10 @@ function parse_git_dirty {
 # Style command prompt
 export PS1="\[\e[36m\]\t\[\e[m\]\[\e[36m\]-\[\e[m\]\[\e[36m\]\W\[\e[m\]\[\e[32m\]\`parse_git_branch\`\[\e[m\] "
 
-# Git branch tab completion
+# Custom ls -l colours
+export LSCOLORS="Exfxcxdxcxegedabagacad"
+
+ #Git branch tab completion
 if [[ $(uname -s) != Linux ]]
 then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
