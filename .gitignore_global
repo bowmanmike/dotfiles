@@ -42,3 +42,6 @@ debug.test
 
 # Tern files
 .tern-port
+
+# Tags files
+tags
