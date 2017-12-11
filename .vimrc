@@ -71,15 +71,14 @@ if has('nvim')
   let g:deoplete#auto_complete_start_length=1
   let g:deoplete#sources#go#sort_class = ['package', 'func', 'var', 'type', 'const']
   let g:neosnippet#enable_completed_snippet = 1
+  let g:neosnippet#scope_aliases = {}
+  let g:neosnippet#scope_aliases['css'] = 'vue'
+  let g:neosnippet#scope_aliases['html'] = 'vue'
+  let g:neosnippet#scope_aliases['javascript'] = 'vue'
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 else
   Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 endif
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-x>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 call plug#end()
 
