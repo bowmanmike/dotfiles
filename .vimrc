@@ -242,6 +242,9 @@ let g:go_auto_sameids = 1
 " Don't need because <leader> i does the same thing
 " let g:go_auto_type_info = 1
 
+" Only use quickfix
+let g:go_list_type = "quickfix"
+
 " ----- Syntastic -----
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -284,6 +287,10 @@ autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
 autocmd FileType go nmap <Leader>i :GoInfo<cr>
 autocmd FileType go nmap <Leader>d <Plug>(go-def-vertical)
 autocmd FileType go nmap <Leader>b <Plug>(go-def-tab)
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 " Fugitive Shortcuts
 nmap <Leader>gs :Gstatus<cr>
