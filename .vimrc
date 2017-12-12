@@ -125,39 +125,10 @@ colorscheme jellybeans
 
 set scrolloff=5 " Always show 5 lines below cursor, seems to be not working.
 
-" Highlight lines over 90 characters
-" Change the value below from 91 to adjust highlighting.
-" Don't need right now because Ale runs rubocop and tells me when lines are
-" too long
-" autocmd FileType ruby highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" autocmd FileType ruby match OverLength /\%91v.\+/
-
-" Show invisible characters
-" set list
-" set listchars=tab:>-,trail:.
-
 " Don't use swap or backup directories
 set nobackup
 set nowritebackup
 set noswapfile
-
-" Set backup and swp directory to not add files to project directories, but
-" `.vim` instead
-" set backupdir=~/.vim/backup//
-" set directory=~/.vim/swp//
-
-" Make CtrlP use ag for listing the files. Way faster and no useless files.
-" Set default values in `.agignore`
-" if executable('ag')
-"   let g:ctrlp_user_command = 'ag %s -l --hidden --path-to-ignore ~/.ignore --skip-vcs-ignores --nocolor -g ""'
-"   let g:ctrlp_use_caching = 0
-" endif
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/](doc\|tmp\|node_modules\|bower_components\|vendor\|.git)',
-"   \ 'file': '\v\.(exe|so|dll|DS_Store)$',
-"   \ }
-" let g:ctrlp_custom_ignore = '\v[\/](node_modules|vendor)|(\.(git))$'
-" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
 
 " FZF Settings
 nnoremap <silent> <C-p> :Files<cr>
@@ -197,31 +168,9 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 
 " ----- Language Specific Settings ----- 
-" Go
+" --- Go ---
 " Set tabs to 4 space tabs
 autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
-
-" Elixir
-if has('nvim')
-  autocmd FileType elixir nnoremap <leader>ti :IEx<cr>
-endif
-
-"JSON
-"Set tabs to 4 spaces
-autocmd FileType json set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
-let g:vim_json_syntax_conceal = 0
-
-" YAML
-" set tabs to 2 spaces
-autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
-
-" Markdown
-" 2 space tabs
-autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
-
-" HTML
-" Remap emmet trigger to <C-Z>
-let g:user_emmet_leader_key='<C-Z>'
 
 " Run goimports as well as gofmt on save
 let g:go_fmt_command = "goimports"
@@ -245,38 +194,6 @@ let g:go_auto_sameids = 1
 " Only use quickfix
 let g:go_list_type = "quickfix"
 
-" ----- Syntastic -----
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 0
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_go_checkers=['gometalinter']
-" let g:syntastic_javascript_checkers=['eslint']
-
-" ----- Normal Mode Bindings -----
-nmap j gj
-nmap k gk
-nmap 0 ^
-nmap <leader>z :tabnew %<cr>
-
-" ----- Insert Mode Bindings ----- 
-" Easy escape from insert mode
-" imap jk <esc>
-" imap kj <esc>
-
-" ----- Leader Mode Bindings -----
-nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
-
-" RSpec-vim shortcuts
-autocmd FileType ruby nmap <leader>s :call RunNearestSpec()<cr>
-autocmd FileType ruby nmap <leader>a :call RunAllSpecs()<cr>
-autocmd FileType ruby nmap <leader>f :call RunCurrentSpecFile()<cr>
-
-" GoVim Shortcuts
 au FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
 au FileType go nmap <Leader>e <Plug>(go-rename)
@@ -291,6 +208,52 @@ autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+" --- Elixir ---
+if has('nvim')
+  autocmd FileType elixir nnoremap <leader>ti :IEx<cr>
+endif
+
+" --- JSON ---
+"Set tabs to 4 spaces
+autocmd FileType json set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+let g:vim_json_syntax_conceal = 0
+" Use JQ to pretty print or compact json
+function! PrettyPrintJSON()
+  :%!jq '.' -M
+endfunction
+
+function! MinifyJSON()
+  :%!jq '.' -cM
+endfunction
+
+autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
+autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
+
+" --- YAML ---
+" set tabs to 2 spaces
+autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+
+" --- Markdown ---
+" 2 space tabs
+autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+
+" --- HTML ---
+" Remap emmet trigger to <C-Z>
+let g:user_emmet_leader_key='<C-Z>'
+
+" --- Ruby ---
+nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
+autocmd FileType ruby nmap <leader>s :call RunNearestSpec()<cr>
+autocmd FileType ruby nmap <leader>a :call RunAllSpecs()<cr>
+autocmd FileType ruby nmap <leader>f :call RunCurrentSpecFile()<cr>
+
+
+" ----- Normal Mode Bindings -----
+nmap j gj
+nmap k gk
+nmap 0 ^
+nmap <leader>z :tabnew %<cr>
 
 " Fugitive Shortcuts
 nmap <Leader>gs :Gstatus<cr>
@@ -319,19 +282,6 @@ endfunction
 
 command! ProseMode call ProseMode()
 nmap \p :ProseMode<cr>
-
-" ----- JSON Modification -----
-" Use JQ to pretty print or compact json
-function! PrettyPrintJSON()
-  :%!jq '.' -M
-endfunction
-
-function! MinifyJSON()
-  :%!jq '.' -cM
-endfunction
-
-autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
-autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
 
 " ALE linter settings
 autocmd FileType vue let g:ale_enabled = 0
