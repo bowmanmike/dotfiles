@@ -141,7 +141,7 @@ endif
 
 " Map leader-g to ack and don't automatically jump to results
 cnoreabbrev Ack Ack!
-nnoremap <Leader>g :Ack! --ignore vendor<Space>
+nnoremap <Leader>g :Ack! <Space>
 
 " Remove trailing whitespace in certain filetypes on save
 au BufWritePre *.rb :%s/\s\+$//e
