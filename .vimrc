@@ -73,7 +73,7 @@ if has('nvim')
   let g:neosnippet#enable_completed_snippet = 1
   let g:neosnippet#scope_aliases = {}
   let g:neosnippet#scope_aliases['css'] = 'vue'
-  let g:neosnippet#scope_aliases['html'] = 'vue'
+  let g:neosnippet#scope_aliases['html'] = 'vue,gohtml'
   let g:neosnippet#scope_aliases['javascript'] = 'vue'
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 else
@@ -241,6 +241,9 @@ autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 " --- HTML ---
 " Remap emmet trigger to <C-Z>
 let g:user_emmet_leader_key='<C-Z>'
+
+" --- Go Templates ---
+autocmd FileType gohtmltmpl set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
 " --- Ruby ---
 nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
