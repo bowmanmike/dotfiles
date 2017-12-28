@@ -134,6 +134,11 @@ set noswapfile
 nnoremap <silent> <C-p> :Files<cr>
 nnoremap <silent> <C-b> :Buffers<cr>
 
+" Quickfix improvements
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
 " Use RG instead of Ack
 if executable('rg')
   let g:ackprg = 'rg --vimgrep -i'
