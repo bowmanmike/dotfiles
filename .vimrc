@@ -40,6 +40,7 @@ Plug 'cespare/vim-toml' " TOML syntax highlighting
 Plug 'leafgarland/typescript-vim' " Typescript support
 Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
 Plug 'jceb/vim-orgmode'
+Plug 'elmcast/elm-vim'
 
 " Colorschemes
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
@@ -63,6 +64,7 @@ if has('nvim')
   Plug 'mhartington/nvim-typescript' " Typescript support with deoplete
   Plug 'carlitux/deoplete-ternjs' " Deoplete for javascript
   Plug 'eagletmt/neco-ghc' " Deoplete for haskell
+  Plug 'pbogut/deoplete-elm' " Deoplete for elm
   Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -218,6 +220,10 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 if has('nvim')
   autocmd FileType elixir nnoremap <leader>ti :IEx<cr>
 endif
+
+" --- Elm ---
+autocmd FileType elm let g:elm_format_autosave = 1
+autocmd FileType elm let g:elm_format_fail_silently = 1
 
 " --- JSON ---
 "Set tabs to 4 spaces
