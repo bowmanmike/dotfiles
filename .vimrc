@@ -65,6 +65,7 @@ if has('nvim')
   Plug 'carlitux/deoplete-ternjs' " Deoplete for javascript
   Plug 'eagletmt/neco-ghc' " Deoplete for haskell
   Plug 'pbogut/deoplete-elm' " Deoplete for elm
+  Plug 'zchee/deoplete-jedi' " Deoplete for python
   Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -215,6 +216,9 @@ autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+" --- Python ---
+autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 
 " --- Elixir ---
 if has('nvim')
