@@ -67,6 +67,7 @@ if has('nvim')
   Plug 'pbogut/deoplete-elm' " Deoplete for elm
   Plug 'zchee/deoplete-jedi' " Deoplete for python
   Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
+  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh'} " Language server integration
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   xmap <C-k> <Plug>(neosnippet_expand_target)

@@ -29,6 +29,7 @@ Thumbs.db
 .idea/
 .vscode/
 .metadata/
+.elixir_ls/
 
 # Ignore GIN hot-reload
 gin-bin
