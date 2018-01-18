@@ -1,8 +1,9 @@
 [user]
-	name = Mike Bowman
-	email = mbowman2@gmail.com
+  name = Mike Bowman
+  email = mbowman2@gmail.com
 [merge]
   ff = only
+  tool = vimdiff
 [alias]
   co = checkout
   br = branch --sort=-committerdate
@@ -22,13 +23,11 @@
 [web]
   browser = chrome
 [core]
-	excludesfile = /Users/mikebowman/.gitignore
+  excludesfile = /Users/mikebowman/.gitignore
   editor = /usr/local/bin/nvim
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
+[diff]
+  tool = vimdiff
+[diftool]
+  prompt = 0

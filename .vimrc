@@ -28,6 +28,7 @@ Plug 'w0rp/ale' " Async linting, alternative to syntastic
 " Language Plugins
 Plug 'slashmili/alchemist.vim' " Elixir utilities
 Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
+Plug 'mhinz/vim-mix-format' " Code formatting for Elixir
 Plug 'fatih/vim-go' " Go language support
 Plug 'junegunn/goyo.vim' " Writing prose in vim
 " Plug 'othree/html5.vim' " Enable this if more html tweaks needed
@@ -225,6 +226,7 @@ autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 if has('nvim')
   autocmd FileType elixir nnoremap <leader>ti :IEx<cr>
 endif
+let g:mix_format_on_save = 1
 
 " --- Elm ---
 autocmd FileType elm let g:elm_format_autosave = 1
