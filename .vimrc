@@ -187,7 +187,7 @@ let g:go_fmt_command = "goimports"
 
 " Improve syntax highlighting for go
 let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 " let g:go_highlight_operators = 1 " Disable if things get slow
