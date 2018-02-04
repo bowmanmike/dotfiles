@@ -42,6 +42,7 @@ Plug 'leafgarland/typescript-vim' " Typescript support
 Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
 Plug 'jceb/vim-orgmode'
 Plug 'elmcast/elm-vim'
+Plug 'tpope/vim-rails'
 
 " Colorschemes
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
