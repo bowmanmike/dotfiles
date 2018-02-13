@@ -34,6 +34,7 @@ Plug 'junegunn/goyo.vim' " Writing prose in vim
 " Plug 'othree/html5.vim' " Enable this if more html tweaks needed
 Plug 'othree/html5-syntax.vim' " HTML syntax improvement
 Plug 'pangloss/vim-javascript' " Javascript language support
+Plug 'mxw/vim-jsx' " JSX highlighting
 Plug 'elzr/vim-json' " Better JSON support
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'vim-ruby/vim-ruby' " Ruby language support
@@ -81,6 +82,7 @@ if has('nvim')
   let g:neosnippet#scope_aliases['css'] = 'vue'
   let g:neosnippet#scope_aliases['html'] = 'vue,gohtml'
   let g:neosnippet#scope_aliases['javascript'] = 'vue'
+  let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 else
   Plug 'Valloric/YouCompleteMe' " YouCompleteMe
@@ -260,6 +262,15 @@ autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 " --- HTML ---
 " Remap emmet trigger to <C-Z>
 let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_settings = {
+        \'javascript.jsx': {
+          \'extends': 'jsx',
+          \'quote_char': "'",
+          \},
+      \}
+
+" --- Javascript ---
+let g:jsx_ext_required = 0
 
 " --- Go Templates ---
 autocmd FileType gohtmltmpl set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
