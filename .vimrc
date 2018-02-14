@@ -325,6 +325,8 @@ let g:ale_sign_column_always = 1
 " Choose specific linters for each language
 let g:ale_linters = {}
 let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
+let g:ale_linters['scss'] = ['scsslint']
+let g:ale_linters['css'] = ['scsslint']
 " let g:ale_linters['vue'] = ['eslint']
 
 " Automatic fixers for specific languages
