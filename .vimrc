@@ -217,6 +217,7 @@ autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
 autocmd FileType go nmap <Leader>i :GoInfo<cr>
 autocmd FileType go nmap <Leader>d <Plug>(go-def-vertical)
 autocmd FileType go nmap <Leader>b <Plug>(go-def-tab)
+autocmd FileType go nmap <Leader>dd :GoDeclsDir<cr>
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
