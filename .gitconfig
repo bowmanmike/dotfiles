@@ -3,7 +3,6 @@
   email = mbowman2@gmail.com
 [merge]
   ff = only
-  tool = vimdiff
 [alias]
   co = checkout
   br = branch --sort=-committerdate
@@ -28,6 +27,6 @@
 [url "git@github.com:"]
   insteadOf = https://github.com/
 [diff]
-  tool = vimdiff
-[diftool]
-  prompt = 0
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
