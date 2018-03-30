@@ -133,5 +133,8 @@ fi
 if [ -f ~/.bash_profile ]; then
     . ~/.bash_profile
 fi
+<<<<<<< ee3d117861375ac67624f6a06e5cacbd94f65e59
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+=======
+>>>>>>> Add bashrc
