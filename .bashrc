@@ -8,6 +8,10 @@ case $- in
       *) return;;
 esac
 
+# ENVIRONMENT VARIABLES
+export GOROOT=/usr/local/go
+export PATH=$PATH:/usr/local/go/bin:$GOROOT/bin
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
