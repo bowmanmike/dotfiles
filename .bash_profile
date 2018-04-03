@@ -90,7 +90,7 @@ function parse_git_branch() {
 bind "set completion-ignore-case on"
 
 # tmuxinator completion
-source ~/.tmuxinator/completion.bash
+# source ~/.tmuxinator/completion.bash
 
 # get current status of git repo
 function parse_git_dirty {
@@ -148,14 +148,10 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-
-eval $(thefuck --alias)
-# alias thefuck to oops in case I don't feel like swearing
-alias oops="fuck"
 # Run rbenv init last. Was broken at top.
 eval "$(rbenv init -)"
 # eval "$(pyenv init -)"
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
