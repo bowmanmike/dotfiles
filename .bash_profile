@@ -12,17 +12,17 @@ export NVM_DIR="$HOME/.nvm"
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Configure golang
-export GOPATH=$HOME/golang
-export GOROOT=/usr/local/opt/go/libexec
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+# export GOPATH=$HOME/golang
+# export GOROOT=/usr/local/opt/go/libexec
+# export GOBIN=$GOPATH/bin
+# export PATH=$PATH:$GOPATH/bin
+# export PATH=$PATH:$GOROOT/bin
 
 # Add Rust to path
-export PATH=$PATH:$HOME/.cargo/bin
+# export PATH=$PATH:$HOME/.cargo/bin
 
 # Add Haskell to PATH
-export PATH=$PATH:$HOME/.local/bin
+# export PATH=$PATH:$HOME/.local/bin
 
 # Aliases
 alias ll="ls -ahlG"
@@ -40,7 +40,7 @@ alias mux='tmuxinator'
 alias fv='vim $(fzf)'
 alias cj=count_json_file
 alias cjd=count_json_directory
-alias gp='go-pry run'
+# alias gp='go-pry run'
 alias mjc=minify_json_from_clipboard
 alias pjc=prettify_json_from_clipboard
 
