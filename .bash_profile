@@ -1,4 +1,5 @@
 # Initialize rbenv => more at bottom
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
