@@ -12,11 +12,11 @@ export NVM_DIR="$HOME/.nvm"
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Configure golang
-# export GOPATH=$HOME/golang
-# export GOROOT=/usr/local/opt/go/libexec
-# export GOBIN=$GOPATH/bin
-# export PATH=$PATH:$GOPATH/bin
-# export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 # Add Rust to path
 # export PATH=$PATH:$HOME/.cargo/bin
