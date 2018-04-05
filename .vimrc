@@ -44,7 +44,7 @@ Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
 Plug 'jceb/vim-orgmode'
 Plug 'elmcast/elm-vim'
 Plug 'tpope/vim-rails'
-Plug 'python-mode/python-mode'
+" Plug 'python-mode/python-mode'
 
 " Colorschemes
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
