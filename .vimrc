@@ -283,6 +283,9 @@ autocmd FileType ruby nmap <leader>s :call RunNearestSpec()<cr>
 autocmd FileType ruby nmap <leader>a :call RunAllSpecs()<cr>
 autocmd FileType ruby nmap <leader>f :call RunCurrentSpecFile()<cr>
 
+" RSPEC
+let g:rspec_command = '!bundle exec rspec {spec}'
+
 
 " ----- Normal Mode Bindings -----
 nmap j gj
