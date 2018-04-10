@@ -287,7 +287,6 @@ autocmd FileType ruby nmap <leader>f :call RunCurrentSpecFile()<cr>
 " RSPEC
 let g:rspec_command = '!bundle exec rspec {spec}'
 
-
 " ----- Normal Mode Bindings -----
 nmap j gj
 nmap k gk
@@ -324,6 +323,9 @@ nmap \p :ProseMode<cr>
 
 " ALE linter settings
 autocmd FileType vue let g:ale_enabled = 0
+
+" Set rubocop command
+let g:ale_ruby_rubocop_executable = 'bundle'
 
 " Leave gutter open all the time
 let g:ale_sign_column_always = 1
