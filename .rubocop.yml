@@ -1,0 +1,124 @@
+require: rubocop-rspec
+
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - "*/bin/**/*"
+    - "**/*/db/schema.rb"
+    - "*/tmp/**/*"
+    - "*/vendor/**/*"
+    - "thescore-api/spec/endpoints/**/*data.rb"
+  Include:
+    - "**/*.gemspec"
+    - "**/*.jbuilder"
+    - "**/*.rake"
+    - "**/Gemfile"
+    - "**/Rakefile"
+  TargetRubyVersion: 2.3
+
+Rails:
+  Enabled: true
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/ConditionalAssignment:
+  SingleLineConditionsOnly: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/Encoding:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  MaxLineLength: 120
+
+Style/IndentArray:
+  EnforcedStyle: consistent
+
+Style/MultilineAssignmentLayout:
+  EnforcedStyle: same_line
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/ParenthesesAroundCondition:
+  AllowSafeAssignment: false
+
+Style/PercentQLiterals:
+  EnforcedStyle: upper_case_q
+
+Style/RaiseArgs:
+  EnforcedStyle: compact
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: true
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Lint/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Performance/Casecmp:
+  Enabled: false
+
+Performance/RedundantMerge:
+  MaxKeyValuePairs: 1
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/ExpectActual:
+  Exclude:
+    - 'spec/routing/**/*'
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: false
