@@ -22,7 +22,7 @@
 [web]
   browser = chrome
 [core]
-  excludesfile = /Users/mikebowman/.gitignore
+  excludesfile = /Users/mbowman/.gitignore
   editor = /usr/local/bin/nvim
 [url "git@github.com:"]
   insteadOf = https://github.com/
