@@ -385,3 +385,8 @@ map <C-l> <C-w>l
 
 " ----- GitGutter Settings -----
 set updatetime=100
+
+" Update edited files in real-ish time
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+autocmd FileChangedShellPost *
+      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
