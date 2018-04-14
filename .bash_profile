@@ -152,7 +152,7 @@ eval $(thefuck --alias)
 alias oops="fuck"
 # Run rbenv init last. Was broken at top.
 eval "$(rbenv init -)"
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 eval "$(direnv hook bash)"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
