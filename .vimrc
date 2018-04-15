@@ -57,7 +57,7 @@ Plug 'vim-airline/vim-airline-themes' " Airline color schemes
 
 " Experimental
 Plug 'sebdah/vim-delve'
-let g:delve_backend = "native"
+let g:delve_backend = 'native'
 
 " Neovim specific plugins
 if has('nvim')
