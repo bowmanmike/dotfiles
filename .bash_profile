@@ -20,7 +20,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 # Add Rust to path
-# export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # Add Haskell to PATH
 # export PATH=$PATH:$HOME/.local/bin
