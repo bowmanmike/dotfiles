@@ -100,7 +100,7 @@ set nocompatible " Don't worry about compatibility with old vim
 let mapleader = "\<space>" " Set leader to spacebar
 set ignorecase " Searches are by default case insensitive
 set smartcase " Searches with all lower-case are case insensitive, searches with and capitals are case-sensitive
-set showcmd " show commands as they're typed
+" set showcmd " show commands as they're typed -> Slows down rendering
 set clipboard=unnamed " Yank to system clipboard
 set autoread " Automatically update vim buffer when file changes
 set shortmess+=c " Fix for YCM bug -> https://github.com/Valloric/YouCompleteMe/issues/1562
