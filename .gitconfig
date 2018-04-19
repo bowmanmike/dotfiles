@@ -2,7 +2,7 @@
   name = Mike Bowman
   email = mbowman2@gmail.com
 [merge]
-  ff = only
+  ; ff = only
 [alias]
   co = checkout
   br = branch --sort=-committerdate

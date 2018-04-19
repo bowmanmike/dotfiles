@@ -52,6 +52,9 @@ fi
 alias vimr='vimr -n'
 alias fvr='vimr -n $(fzf)'
 
+# theScore Aliases
+alias finv='./run filter-inventory'
+
 # count objects in json file
 function count_json_file() {
   cat $1 | jq '. | length'
