@@ -86,6 +86,10 @@ if has('nvim')
   let g:neosnippet#scope_aliases['javascript'] = 'vue'
   let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+  let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'stable', 'rls']
+    \ }
 else
   Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 endif
