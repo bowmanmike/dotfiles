@@ -158,7 +158,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # Run rbenv init last. Was broken at top.
 eval "$(rbenv init -)"
 # eval "$(pyenv init -)"
-# eval "$(direnv hook bash)"
+eval "$(direnv hook bash)"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
