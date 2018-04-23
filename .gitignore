@@ -12,3 +12,5 @@
 .vim/plugged/**
 
 .vim/.netrwhist
+
+.thescore_deploy_key
