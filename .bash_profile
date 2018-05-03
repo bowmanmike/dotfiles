@@ -20,7 +20,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 # Add score deploy key
-[[ -f .thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
+[[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
 
 # Add Rust to path
 export PATH=$PATH:$HOME/.cargo/bin
