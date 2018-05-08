@@ -61,7 +61,7 @@ if has('nvim')
   Plug 'zchee/deoplete-go' " Deoplete implementaiton for go
   Plug 'fishbullet/deoplete-ruby' " Deoplete implementaton for ruby
   " Plug 'Shougo/deoplete-rct' " Deoplete implementaton for ruby **DEPRECATED**
-  Plug 'uplus/deoplete-solargraph' " Deoplete for ruby
+  " Plug 'uplus/deoplete-solargraph' " Deoplete for ruby
   Plug 'mhartington/nvim-typescript' " Typescript support with deoplete
   Plug 'carlitux/deoplete-ternjs' " Deoplete for javascript
   Plug 'eagletmt/neco-ghc' " Deoplete for haskell
