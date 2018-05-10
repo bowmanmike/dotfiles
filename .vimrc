@@ -45,7 +45,7 @@ Plug 'tpope/vim-rails'
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
 Plug 'vim-airline/vim-airline-themes' " Airline color schemes
 " Plug 'fatih/molokai' " Vim Molokai
-" Plug 'joshdick/onedark.vim' " Onedark colorscheme
+Plug 'joshdick/onedark.vim' " Onedark colorscheme
 " Plug 'romainl/Apprentice' " Apprentice colorscheme
 " Plug 'sickill/vim-monokai' " Monokai color scheme
 " Plug 'jpo/vim-railscasts-theme' " Railscasts colors
@@ -125,12 +125,11 @@ set noerrorbells "Try to turn off error bells, might need more config
 
 " Color schemes
 syntax on
-colorscheme jellybeans
-" colorscheme molokai
-" colorscheme onedark
-" let g:molokai_original=1
-" let g:rehash256=1
-
+if has('gui_vimr') " Set colorscheme based on GUI or not
+    colorscheme onedark
+else
+    colorscheme jellybeans
+end
 
 set scrolloff=5 " Always show 5 lines below cursor, seems to be not working.
 
