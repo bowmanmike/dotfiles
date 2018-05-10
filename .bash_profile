@@ -48,6 +48,7 @@ alias pjc=prettify_json_from_clipboard
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
+alias vimr='vimr -n'
 
 # count objects in json file
 function count_json_file() {
