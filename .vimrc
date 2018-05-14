@@ -169,6 +169,7 @@ au BufWritePre *.ex :%s/\s\+$//e
 au BufWritePre *.exs :%s/\s\+$//e
 au BufWritePre *.c :%s/\s\+$//e
 au BufWritePre *.json :%s/\s\+$//e
+au BufWritePre *.py :%s/\s\+$//e
 
 " Normal backspace in normal mode
 set backspace=indent,eol,start
