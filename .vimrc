@@ -19,6 +19,7 @@ Plug 'tpope/vim-surround' " Add, change, or delete surrounding characters
 Plug 'vim-airline/vim-airline' " Airline status bar
 Plug 'vim-scripts/SyntaxRange' " Syntax highlighting within range
 Plug 'w0rp/ale' " Async linting, alternative to syntastic
+Plug 'justinmk/vim-sneak' " Better motions for f/F
 
 " Language Plugins
 Plug 'slashmili/alchemist.vim' " Elixir utilities

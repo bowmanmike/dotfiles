@@ -1,0 +1,128 @@
+wtf:
+  colors:
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+  grid:
+    columns: [40, 40, 40, 40]
+    rows: [13, 13, 13, 13, 8]
+  refreshInterval: 1
+  mods:
+    clocks:
+      colors:
+        rows:
+          even: "lightblue"
+          odd: "white"
+      enabled: true
+      locations:
+        Toronto: "America/Toronto"
+        UTC: "UTC"
+      position:
+        top: 4
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 15
+      sort: "alphabetical"
+    security:
+      enabled: false
+      position:
+        top: 0
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 3600
+    status:
+      enabled: false
+      position:
+        top: 2
+        left: 1
+        height: 1
+        width: 2
+      refreshInterval: 1
+    system:
+      enabled: true
+      position:
+        top: 4
+        left: 2
+        height: 1
+        width: 1
+      refreshInterval: 3600
+    textfile:
+      enabled: false
+      filePath: "~/.wtf/config.yml"
+      position:
+        top: 0
+        left: 2
+        height: 1
+        width: 1
+      refreshInterval: 30
+    git:
+      enabled: true
+      position:
+        top: 0
+        left: 2
+        height: 1
+        width: 2
+      refreshInterval: 300
+      repositories:
+        - "/Users/mbowman/thescore/sports"
+        - "/Users/mbowman/thescore/zing"
+    github:
+      enabled: true
+      position:
+        top: 1
+        left: 2
+        height: 1
+        width: 2
+      refreshInterval: 300
+      repositories:
+        sports: "scoremedia"
+        zing: "scoremedia"
+      username: "bowmanmike"
+      secretFile: "~/.wtf_secrets"
+    gcal:
+      colors:
+        title: "red"
+        description: "lightblue"
+        past: "gray"
+      displayResponseStatus: true
+      enabled: true
+      email: "mbowman2@gmail.com"
+      position:
+        top: 0
+        left: 0
+        height: 4
+        witdh: 1
+      secretFile: "~/.wtf/gcal/client_secret.json"
+    power:
+      enabled: true
+      position:
+        top: 4
+        left: 0
+        height: 1
+        width: 1
+    todo:
+      checkedIcon: "X"
+      colors:
+        checked: "gray"
+        highlight:
+          fore: "black"
+          back: "orange"
+      enabled: true
+      fileName: "~/.wtf/todo.yml"
+      position:
+        top: 0
+        left: 1
+        height: 2
+        width: 1
+    weather:
+      enabled: false
+      cityids:
+        - 6167865
+      position:
+        top: 3
+        left: 1
+        height: 1
+        width: 1
