@@ -1,5 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# ~/.bashrc: executed by bash(1) for non-login shells.  # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
 # If not running interactively, don't do anything
@@ -11,6 +10,10 @@ esac
 # ENVIRONMENT VARIABLES
 export GOROOT=/usr/local/go
 export PATH=$PATH:/usr/local/go/bin:$GOROOT/bin
+export GOPATH="$HOME/golang"
+export GOBIN="$GOPATH/bin"
+export PATH=$PATH:$GOBIN
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
