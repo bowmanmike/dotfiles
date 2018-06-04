@@ -75,6 +75,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # User configuration
 
@@ -83,29 +84,49 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-export EDITOR="nvim"
+# Initialize rbenv => more at bottom
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH=/usr/local/bin:$PATH
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+export EDITOR='nvim'
+
+# Configure nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+# nvm tab completion
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
+# Configure golang
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
+# Unset $PAGER
+export PAGER=""
+
+# Add score deploy key
+[[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
+
+# Add Rust to path
+export PATH=$PATH:$HOME/.cargo/bin
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim"
+
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+alias vimr='vimr -n'
+alias fvr='vimr -n $(fzf)'
 alias vimr="vimr -n"
 alias ll="ls -lahG"
 alias cl="clear"
@@ -118,3 +139,16 @@ alias rg='rg -i'
 alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
 alias fv='vim $(fzf)'
+
+# Better git log
+alias glog="git log --oneline --decorate --graph -15"
+
+# theScore Aliases
+alias finv='./run filter-inventory'
+
+# FZF config
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Direnv
+eval "$(direnv hook zsh)"

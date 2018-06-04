@@ -302,11 +302,11 @@ nmap <Leader>gb :Gblame<cr>
 " Enable if using nvim
 if has('nvim')
   " Open terminal in new tab
-  nmap <leader>tt :tabnew term://bash<cr>i
+  nmap <leader>tt :tabnew term://zsh<cr>i
   " Open terminal in vsplit
-  nmap <leader>tv :vsplit term://bash<cr>i
+  nmap <leader>tv :vsplit term://zsh<cr>i
   " Open terminal in hsplit
-  nmap <leader>th :split term://bash<cr>i
+  nmap <leader>th :split term://zsh<cr>i
   " Map esc to exit terminal input mode
   tnoremap <Esc> <C-\><C-N>
 endif
