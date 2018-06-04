@@ -141,6 +141,7 @@ alias rg='rg -i'
 alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
 alias fv='vim $(fzf)'
+alias be='bundle exec'
 alias als='alias | rg'
 
 # Better git shortcuts
@@ -157,6 +158,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # Direnv
 eval "$(direnv hook zsh)"
 
+# Rbenv
 eval "$(rbenv init -)"
 
 # ASDF
