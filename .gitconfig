@@ -1,8 +1,6 @@
 [user]
-	name = Mike Bowman
-	email = mbowman2@gmail.com
-[merge]
-  ; ff = only
+  name = Mike Bowman
+  email = mbowman2@gmail.com
 [alias]
   co = checkout
   br = branch --sort=-committerdate
@@ -22,7 +20,7 @@
 [web]
   browser = chrome
 [core]
-  excludesfile = /Users/mbowman/.gitignore
+  excludesfile = /Users/mikebowman/.gitignore
   editor = /usr/local/bin/nvim
 [url "git@github.com:"]
   insteadOf = https://github.com/
