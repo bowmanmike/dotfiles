@@ -51,7 +51,7 @@ wtf:
       refreshInterval: 3600
     textfile:
       enabled: false
-      filePath: "~/.wtf/config.yml"
+      filePath: "~/notes.md"
       position:
         top: 0
         left: 2
@@ -81,21 +81,52 @@ wtf:
         sports: "scoremedia"
         zing: "scoremedia"
       username: "bowmanmike"
-      secretFile: "~/.wtf_secrets"
+      secretFile: "~/.wtf_secrets.json"
     gcal:
       colors:
         title: "red"
         description: "lightblue"
+        highlights:
+          - ['1on1|1\/11', 'green']
+          - ['apple|google|aws', 'blue']
+          - ['interview|meet', 'magenta']
+          - ['lunch', 'yellow']
         past: "gray"
-      displayResponseStatus: true
-      enabled: true
-      email: "mbowman2@gmail.com"
-      position:
-        top: 0
-        left: 0
-        height: 4
-        witdh: 1
-      secretFile: "~/.wtf/gcal/client_secret.json"
+        conflictIcon: "🚨"
+        currentIcon: "💥"
+        displayResponseStatus: true
+        email: "chriscummer@me.com"
+        enabled: true
+        eventCount: 12
+        position:
+          top: 0
+          left: 0
+          height: 4
+          width: 1
+          refreshInterval: 300
+          secretFile: "~/.wtf/gcal/client_secret.json"
+          withLocation: true
+    # gcal:
+    #   colors:
+    #     title: "red"
+    #     description: "lightblue"
+    #     past: "gray"
+    #     highlights:
+    #       - ['1on1|1\/11', 'green']
+    #       - ['apple|google|aws', 'blue']
+    #       - ['interview|meet\ ', 'lightseagreen']
+    #       - ['lunch', 'yellow']
+    #   conflictIcon: "🚨"
+    #   currentIcon: "💥"
+    #   displayResponseStatus: true
+    #   enabled: true
+    #   email: "mbowman2@gmail.com"
+    #   position:
+    #     top: 0
+    #     left: 0
+    #     height: 4
+    #     witdh: 1
+    #   secretFile: "~/.wtf_secrets.json"
     power:
       enabled: true
       position:

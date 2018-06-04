@@ -1,4 +1,5 @@
 # Initialize rbenv => more at bottom
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
@@ -18,11 +19,14 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
+# Add score deploy key
+[[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
+
 # Add Rust to path
 export PATH=$PATH:$HOME/.cargo/bin
 
 # Add Haskell to PATH
-export PATH=$PATH:$HOME/.local/bin
+# export PATH=$PATH:$HOME/.local/bin
 
 # Aliases
 alias ll="ls -ahlG"
@@ -40,7 +44,7 @@ alias mux='tmuxinator'
 alias fv='vim $(fzf)'
 alias cj=count_json_file
 alias cjd=count_json_directory
-alias gp='go-pry run'
+# alias gp='go-pry run'
 alias mjc=minify_json_from_clipboard
 alias pjc=prettify_json_from_clipboard
 
@@ -50,6 +54,9 @@ if type nvim > /dev/null 2>&1; then
 fi
 alias vimr='vimr -n'
 alias fvr='vimr -n $(fzf)'
+
+# theScore Aliases
+alias finv='./run filter-inventory'
 
 # count objects in json file
 function count_json_file() {
@@ -90,7 +97,7 @@ function parse_git_branch() {
 bind "set completion-ignore-case on"
 
 # tmuxinator completion
-source ~/.tmuxinator/completion.bash
+# source ~/.tmuxinator/completion.bash
 
 # get current status of git repo
 function parse_git_dirty {
@@ -148,10 +155,6 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-
-eval $(thefuck --alias)
-# alias thefuck to oops in case I don't feel like swearing
-alias oops="fuck"
 # Run rbenv init last. Was broken at top.
 eval "$(rbenv init -)"
 # eval "$(pyenv init -)"
