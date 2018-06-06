@@ -140,8 +140,9 @@ alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
 alias fv='vim $(fzf)'
 
-# Better git log
+# Better git shortcuts
 alias glog="git log --oneline --decorate --graph -15"
+alias gcos="git checkout staging"
 
 # theScore Aliases
 alias finv='./run filter-inventory'
