@@ -139,6 +139,7 @@ alias rg='rg -i'
 alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
 alias fv='vim $(fzf)'
+alias als='alias | rg'
 
 # Better git shortcuts
 alias glog="git log --oneline --decorate --graph -15"
