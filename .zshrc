@@ -120,10 +120,10 @@ export PATH=$PATH:$HOME/.cargo/bin
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 # Android emulator settings
-echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> ~/.zshrc
-echo 'export PATH=${PATH}:${ANDROID_SDK_ROOT}/emulator' >> ~/.zshrc
-echo 'export PATH=${PATH}:${ANDROID_SDK_ROOT}/tools' >> ~/.zshrc
-echo 'export PATH=${PATH}:${ANDROID_SDK_ROOT}/platform-tools' >> ~/.zshrc
+export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+export PATH=${PATH}:${ANDROID_SDK_ROOT}/emulator
+export PATH=${PATH}:${ANDROID_SDK_ROOT}/tools
+export PATH=${PATH}:${ANDROID_SDK_ROOT}/platform-tools
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
