@@ -28,3 +28,7 @@
     tool = default-difftool
 [difftool "default-difftool"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[pager]
+	status = false
+	log = false
+	diff = false
