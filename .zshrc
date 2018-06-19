@@ -63,16 +63,16 @@ plugins=(
   brew
   git
   github
-  httpie
-  jira
-  pip
-  python
+  # httpie
+  # jira
+  # pip
+  # python
   rails
   ruby
   taskwarrior
   thefuck
   tmux
-  yarn
+  # yarn
   z
 )
 
