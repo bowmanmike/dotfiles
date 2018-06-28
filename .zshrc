@@ -87,6 +87,11 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# Initialize rbenv => more at bottom
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH=/usr/local/bin:$PATH
+
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR='nvim --noplugin'
 
