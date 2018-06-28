@@ -91,16 +91,15 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
+export PATH="$PATH:/usr/local/go/bin"
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR='nvim --noplugin'
 
 # Configure golang
 export GOPATH=$HOME/golang
-export GOROOT=/usr/local/opt/go/libexec
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOBIN
 
 # Unset $PAGER
 export PAGER="less"
@@ -133,7 +132,7 @@ alias fvr='vimr -n $(fzf)'
 alias vimr="vimr -n"
 alias ll="ls -lahG"
 alias cl="clear"
-alias tns='tmux new -s'
+alias tns='tmux -2 new -s'
 alias tat='tmux attach -t'
 alias tls='tmux ls'
 alias git='hub'
