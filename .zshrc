@@ -95,6 +95,15 @@ export PATH="$PATH:/usr/local/go/bin"
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR='nvim --noplugin'
+export ZSH_TMUX_TERM="xterm-256color"
+export TERM="xterm-256color"
+
+# Configure nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+# nvm tab completion
+# [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Configure golang
 export GOPATH=$HOME/golang
