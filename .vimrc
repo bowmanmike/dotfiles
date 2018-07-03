@@ -40,6 +40,8 @@ Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
 Plug 'jceb/vim-orgmode'
 Plug 'elmcast/elm-vim'
 Plug 'tpope/vim-rails'
+Plug 'rust-lang/rust.vim'
+Plug 'rhysd/vim-crystal'
 " Plug 'python-mode/python-mode'
 
 " Colorschemes
@@ -69,6 +71,7 @@ if has('nvim')
   Plug 'zchee/deoplete-jedi' " Deoplete for python
   Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
   Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh'} " Language server integration
+  " Plug 'sebastianmarkow/deoplete-rust'
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   xmap <C-k> <Plug>(neosnippet_expand_target)
@@ -287,6 +290,13 @@ autocmd FileType ruby nmap <leader>f :call RunCurrentSpecFile()<cr>
 " RSPEC
 let g:rspec_command = '!bundle exec rspec {spec}'
 
+" ----- Rust -----
+autocmd FileType rust set tabstop=4|set shiftwidth=4|set expandtab
+" let g:rustfmt_autosave = 0
+" let g:rustfmt_fail_silently = 1
+" let g:rustfmt_command = 'rustfmt'
+" let g:rustfmt_options = '-f'
+
 " ----- Normal Mode Bindings -----
 nmap j gj
 nmap k gk
@@ -335,6 +345,7 @@ let g:ale_linters = {}
 let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
 let g:ale_linters['scss'] = ['scsslint']
 let g:ale_linters['css'] = ['scsslint']
+let g:ale_linters['rust'] = ['rustc', 'cargo', 'rls']
 " let g:ale_linters['vue'] = ['eslint']
 
 " Automatic fixers for specific languages
@@ -342,6 +353,7 @@ let g:ale_fixers = {}
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['scss'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
+let g:ale_fixers['rust'] = ['rustfmt -f', 'remove_trailing_lines', 'trim_whitespace']
 " let g:ale_fixers['html'] = ['tidy']
 
 " Vue filetype aliases
