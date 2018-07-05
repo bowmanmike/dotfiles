@@ -49,3 +49,6 @@ tags
 
 # Solargraph config files
 .solargraph.yml
+
+# Environment variables
+.envrc
