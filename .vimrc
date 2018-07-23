@@ -42,6 +42,7 @@ Plug 'elmcast/elm-vim'
 Plug 'tpope/vim-rails'
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/vim-crystal'
+Plug 'jparise/vim-graphql'
 " Plug 'python-mode/python-mode'
 
 " Colorschemes
