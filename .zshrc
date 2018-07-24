@@ -157,3 +157,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 eval "$(direnv hook zsh)"
 
 eval "$(rbenv init -)"
+
+# ASDF
+# . /usr/local/opt/asdf/asdf.sh
+# . /usr/local/etc/bash_completion.d/asdf.bash
