@@ -86,10 +86,6 @@ if has('nvim')
   let g:neosnippet#scope_aliases['javascript'] = 'vue'
   let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-  let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls']
-    \ }
 else
   Plug 'Valloric/YouCompleteMe' " YouCompleteMe
 endif
@@ -186,7 +182,15 @@ set laststatus=2
 " Better Tab Bar
 let g:airline#extensions#tabline#enabled = 1
 
-" ----- Language Specific Settings ----- 
+" ----- Language Server Settings -----
+let g:LanguageClient_serverCommands = {
+      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+      \ 'ruby': ['solargraph', 'stdio']
+      \ }
+
+nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
+
+" ----- Language Specific Settings -----
 " --- Go ---
 " Set tabs to 4 space tabs
 autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
