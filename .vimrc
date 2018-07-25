@@ -184,6 +184,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " ----- Language Server Settings -----
 let g:LanguageClient_serverCommands = {
+      \ 'python': ['pyls'],
       \ 'rust': ['rustup', 'run', 'stable', 'rls'],
       \ 'ruby': ['solargraph', 'stdio']
       \ }
