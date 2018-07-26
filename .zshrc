@@ -70,6 +70,7 @@ plugins=(
   rails
   ruby
   taskwarrior
+  thefuck
   tmux
   yarn
   z
