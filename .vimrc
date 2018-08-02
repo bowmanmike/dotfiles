@@ -190,6 +190,7 @@ let g:LanguageClient_serverCommands = {
       \ }
 
 nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " ----- Language Specific Settings -----
 " --- Go ---
