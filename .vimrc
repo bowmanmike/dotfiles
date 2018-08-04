@@ -245,6 +245,7 @@ endif
 let g:mix_format_on_save = 1
 
 " --- Elm ---
+autocmd FileType elm set tabstop=4|set shiftwidth=4|set expandtab|set smarttab
 autocmd FileType elm let g:elm_format_autosave = 1
 autocmd FileType elm let g:elm_format_fail_silently = 1
 
