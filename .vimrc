@@ -305,6 +305,9 @@ autocmd FileType rust set tabstop=4|set shiftwidth=4|set expandtab
 " let g:rustfmt_command = 'rustfmt'
 " let g:rustfmt_options = '-f'
 
+" ----- Crystal -----
+let g:crystal_auto_format = 1
+
 " ----- Normal Mode Bindings -----
 nmap j gj
 nmap k gk
