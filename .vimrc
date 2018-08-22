@@ -62,7 +62,7 @@ let g:delve_backend = 'native'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " replacement for YouCompleteMe
   Plug 'zchee/deoplete-go' " Deoplete implementaiton for go
-  Plug 'fishbullet/deoplete-ruby' " Deoplete implementaton for ruby
+  " Plug 'fishbullet/deoplete-ruby' " Deoplete implementaton for ruby
   " Plug 'Shougo/deoplete-rct' " Deoplete implementaton for ruby **DEPRECATED**
   " Plug 'uplus/deoplete-solargraph' " Deoplete for ruby
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh' } " Typescript support with deoplete
