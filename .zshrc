@@ -155,7 +155,7 @@ alias glog="git log --oneline --decorate --graph -15"
 alias gcos="git checkout staging"
 
 # theScore Aliases
-alias finv='./run filter-inventory'
+alias finv='./$ run filter-inventory'
 
 # FZF config
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
