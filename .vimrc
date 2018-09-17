@@ -21,7 +21,6 @@ Plug 'tpope/vim-vinegar' " Improve netrw for file explorer
 Plug 'ludovicchabant/vim-gutentags'
 
 " Language Plugins
-<<<<<<< HEAD
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' } " Elixir utilities
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' } " Elixir syntax highlighting
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' } " Code formatting for Elixir
