@@ -3,14 +3,11 @@ call plug#begin()
 
 " Utilities
 Plug 'airblade/vim-gitgutter' " Show git information in linenumbers
-" Plug 'ctrlpvim/ctrlp.vim' " Fuzzy finder
 Plug 'editorconfig/editorconfig-vim' " Allows .editorconfig files
 Plug 'jiangmiao/auto-pairs' " Automatically fill in closing delimiters
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " FZF in vim instead of ctrl-p
 Plug 'mattn/emmet-vim' " Emmet for awesome HTML
 Plug 'mileszs/ack.vim'  " Code search with AG
-Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
-Plug 'ngmy/vim-rubocop' " Rubocop for vim
 Plug 'tpope/vim-commentary' " Easily comment and uncomment text
 Plug 'tpope/vim-fugitive' " Sweet git integration
 Plug 'tpope/vim-repeat' " Allow other plugins to hook into the . command
@@ -27,33 +24,25 @@ Plug 'slashmili/alchemist.vim' " Elixir utilities
 Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
 Plug 'mhinz/vim-mix-format' " Code formatting for Elixir
 Plug 'fatih/vim-go' " Go language support
-Plug 'junegunn/goyo.vim' " Writing prose in vim
-" Plug 'othree/html5.vim' " Enable this if more html tweaks needed
 Plug 'othree/html5-syntax.vim' " HTML syntax improvement
 Plug 'pangloss/vim-javascript' " Javascript language support
 Plug 'mxw/vim-jsx' " JSX highlighting
 Plug 'elzr/vim-json' " Better JSON support
 Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
 Plug 'vim-ruby/vim-ruby' " Ruby language support
+Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
 Plug 'cespare/vim-toml' " TOML syntax highlighting
 Plug 'leafgarland/typescript-vim' " Typescript support
 Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
-Plug 'jceb/vim-orgmode'
 Plug 'elmcast/elm-vim'
 Plug 'tpope/vim-rails'
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/vim-crystal'
 Plug 'jparise/vim-graphql'
-" Plug 'python-mode/python-mode'
 
 " Colorschemes
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
 Plug 'vim-airline/vim-airline-themes' " Airline color schemes
-" Plug 'fatih/molokai' " Vim Molokai
-Plug 'joshdick/onedark.vim' " Onedark colorscheme
-" Plug 'romainl/Apprentice' " Apprentice colorscheme
-" Plug 'sickill/vim-monokai' " Monokai color scheme
-" Plug 'jpo/vim-railscasts-theme' " Railscasts colors
 
 " Experimental
 Plug 'sebdah/vim-delve'
@@ -63,17 +52,12 @@ let g:delve_backend = 'native'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " replacement for YouCompleteMe
   Plug 'zchee/deoplete-go' " Deoplete implementaiton for go
-  " Plug 'fishbullet/deoplete-ruby' " Deoplete implementaton for ruby
-  " Plug 'Shougo/deoplete-rct' " Deoplete implementaton for ruby **DEPRECATED**
-  " Plug 'uplus/deoplete-solargraph' " Deoplete for ruby
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh' } " Typescript support with deoplete
   Plug 'carlitux/deoplete-ternjs' " Deoplete for javascript
   Plug 'eagletmt/neco-ghc' " Deoplete for haskell
   Plug 'pbogut/deoplete-elm' " Deoplete for elm
-  Plug 'zchee/deoplete-jedi' " Deoplete for python
   Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
   Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh'} " Language server integration
-  " Plug 'sebastianmarkow/deoplete-rust'
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   xmap <C-k> <Plug>(neosnippet_expand_target)
@@ -101,7 +85,6 @@ set nocompatible " Don't worry about compatibility with old vim
 let mapleader = "\<space>" " Set leader to spacebar
 set ignorecase " Searches are by default case insensitive
 set smartcase " Searches with all lower-case are case insensitive, searches with and capitals are case-sensitive
-" set showcmd " show commands as they're typed -> Slows down rendering
 set clipboard=unnamed " Yank to system clipboard
 set autoread " Automatically update vim buffer when file changes
 set shortmess+=c " Fix for YCM bug -> https://github.com/Valloric/YouCompleteMe/issues/1562
@@ -110,6 +93,7 @@ set splitright " Open vertical splits to the right by default
 set splitbelow " Open horizontal splits below by default
 set mouse=a " Enable mouse for all modes
 set cursorline " Highlight line cursor is on
+set noshowcmd
 
 " Set tab to 2 spaces
 set tabstop=2
@@ -127,11 +111,7 @@ set noerrorbells "Try to turn off error bells, might need more config
 
 " Color schemes
 syntax on
-if has('gui_vimr') " Set colorscheme based on GUI or not
-    colorscheme onedark
-else
-    colorscheme jellybeans
-end
+colorscheme jellybeans
 
 set scrolloff=5 " Always show 5 lines below cursor, seems to be not working.
 
@@ -206,16 +186,12 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
-" let g:go_highlight_operators = 1 " Disable if things get slow
-" let g:go_highlight_structs = 1 " Disable if things get slow
-" let g:go_highlight_interfaces = 1 " Disable if things get slow
 let g:go_highlight_build_constraints = 1
+
+let g:go_fmt_fail_silently = 0
 
 " Highlight identifier under cursor
 let g:go_auto_sameids = 1
-" Show type info on hover
-" Don't need because <leader> i does the same thing
-" let g:go_auto_type_info = 1
 
 " Only use quickfix
 let g:go_list_type = "quickfix"
@@ -275,7 +251,6 @@ autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
 " --- HTML ---
-" Remap emmet trigger to <C-Z>
 let g:user_emmet_leader_key='<C-Z>'
 let g:user_emmet_settings = {
         \'javascript.jsx': {
@@ -301,10 +276,6 @@ let g:rspec_command = '!bundle exec rspec {spec}'
 
 " ----- Rust -----
 autocmd FileType rust set tabstop=4|set shiftwidth=4|set expandtab
-" let g:rustfmt_autosave = 0
-" let g:rustfmt_fail_silently = 1
-" let g:rustfmt_command = 'rustfmt'
-" let g:rustfmt_options = '-f'
 
 " ----- Crystal -----
 let g:crystal_auto_format = 1
@@ -333,16 +304,6 @@ if has('nvim')
   tnoremap <Esc> <C-\><C-N>
 endif
 
-" ----- Prose Mode ------
-function! ProseMode()
-  call goyo#execute(0, [])
-  set spell noci nosi noai nolist noshowmode noshowcmd
-  set complete+=s
-endfunction
-
-command! ProseMode call ProseMode()
-nmap \p :ProseMode<cr>
-
 " ALE linter settings
 autocmd FileType vue let g:ale_enabled = 0
 
@@ -366,14 +327,7 @@ let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['scss'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
 let g:ale_fixers['rust'] = ['rustfmt -f', 'remove_trailing_lines', 'trim_whitespace']
-" let g:ale_fixers['html'] = ['tidy']
 
-" Vue filetype aliases
-" let g:ale_linter_aliases = {'vue': 'javascript'}
-
-" autocmd FileType javascript let g:ale_fix_on_save = 0
-" autocmd FileType scss let g:ale_fix_on_save = 0
-" autocmd FileType css let g:ale_fix_on_save = 0
 autocmd FileType javascript let g:ale_javascript_prettier_options = '--single-quote --trailing-comma'
 
 " Disable for vendor, node_modules
@@ -387,8 +341,6 @@ let g:ale_pattern_options = {
       \}
 
 " Lint only on save, rather than after every keystroke
-" let g:ale_lint_on_text_changed = 'never'  => Keep in since it was
-" gometalinter that was slowing things down
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 
