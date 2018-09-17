@@ -156,6 +156,8 @@ alias gcos="git checkout staging"
 
 # theScore Aliases
 alias finv='./$ run filter-inventory'
+alias ars='cd thescore-api && rs'
+alias arc='cd thescore-api && rc'
 
 # FZF config
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
