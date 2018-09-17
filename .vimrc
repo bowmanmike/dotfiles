@@ -20,25 +20,25 @@ Plug 'justinmk/vim-sneak' " Better motions for f/F
 Plug 'tpope/vim-vinegar' " Improve netrw for file explorer
 
 " Language Plugins
-Plug 'slashmili/alchemist.vim' " Elixir utilities
-Plug 'elixir-lang/vim-elixir' " Elixir syntax highlighting
-Plug 'mhinz/vim-mix-format' " Code formatting for Elixir
-Plug 'fatih/vim-go' " Go language support
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' } " Elixir utilities
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' } " Elixir syntax highlighting
+Plug 'mhinz/vim-mix-format', { 'for': 'elixir' } " Code formatting for Elixir
+Plug 'fatih/vim-go', { 'for': 'go' } " Go language support
 Plug 'othree/html5-syntax.vim' " HTML syntax improvement
 Plug 'pangloss/vim-javascript' " Javascript language support
 Plug 'mxw/vim-jsx' " JSX highlighting
 Plug 'elzr/vim-json' " Better JSON support
-Plug 'thoughtbot/vim-rspec' " Run RSpec tests from vim
-Plug 'vim-ruby/vim-ruby' " Ruby language support
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' } " Run RSpec tests from vim
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' } " Ruby language support
 Plug 'mustache/vim-mustache-handlebars' " Mustache and Handlebars support
-Plug 'cespare/vim-toml' " TOML syntax highlighting
+Plug 'cespare/vim-toml', { 'for': 'toml' } " TOML syntax highlighting
 Plug 'leafgarland/typescript-vim' " Typescript support
 Plug 'posva/vim-vue' " Syntax highlighting for VueJS components
-Plug 'elmcast/elm-vim'
-Plug 'tpope/vim-rails'
-Plug 'rust-lang/rust.vim'
-Plug 'rhysd/vim-crystal'
-Plug 'jparise/vim-graphql'
+Plug 'elmcast/elm-vim', { 'for': 'elm' }
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
+Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 
 " Colorschemes
 Plug 'nanotech/jellybeans.vim' " Jellybeans colorscheme
