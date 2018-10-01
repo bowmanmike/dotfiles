@@ -18,6 +18,7 @@ Plug 'vim-scripts/SyntaxRange' " Syntax highlighting within range
 Plug 'w0rp/ale' " Async linting, alternative to syntastic
 Plug 'justinmk/vim-sneak' " Better motions for f/F
 Plug 'tpope/vim-vinegar' " Improve netrw for file explorer
+Plug 'ludovicchabant/vim-gutentags'
 
 " Language Plugins
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' } " Elixir utilities
