@@ -94,11 +94,11 @@ export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR='nvim'
 
 # Configure nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # nvm tab completion
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+# [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Configure golang
 export GOPATH=$HOME/golang
