@@ -47,6 +47,7 @@ debug.test
 
 # Tags files
 tags
+tags.*
 
 # Solargraph config files
 .solargraph.yml
