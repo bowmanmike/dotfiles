@@ -20,10 +20,10 @@
 [web]
   browser = chrome
 [core]
-  excludesfile = /Users/mikebowman/.gitignore
-  editor = /usr/local/bin/nvim
-[url "git@github.com:"]
-  insteadOf = https://github.com/
+  excludesfile = /Users/mbowman/.gitignore
+  editor = /usr/local/bin/nvim --noplugin
+; [url "git@github.com:"]
+;   insteadOf = https://github.com/
 [diff]
     tool = default-difftool
 [difftool "default-difftool"]
