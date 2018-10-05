@@ -161,6 +161,17 @@ nnoremap <silent> <C-t> :Tags<cr>
 nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
+" Deoplete
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length=1
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'var', 'type', 'const']
+let g:neosnippet#enable_completed_snippet = 1
+let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 " ----- Language Specific Settings -----
 
 " Go
