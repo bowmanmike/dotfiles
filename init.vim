@@ -9,7 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
 Plug 'justinmk/vim-sneak'
 Plug 'ludovicchabant/vim-gutentags'
@@ -39,8 +39,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 
 " Other
 Plug 'nanotech/jellybeans.vim'
-Plug 'vim-airline/vim-airline-themes'
- 
+
 call plug#end()
 
 " ----- Basic Settings -----
@@ -66,7 +65,6 @@ set noswapfile
 set scrolloff=5
 set backspace=indent,eol,start
 set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
 set noshowcmd
 
 " Default tab settings
@@ -123,6 +121,26 @@ let g:ale_lint_on_save = 1
 
 " GitGutter
 set updatetime=100
+
+" Lightline
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+
+let g:lightline.tabline = {
+  \   'left': [ ['tabs'] ],
+  \   'right': [ ['close'] ]
+  \ }
+
+set showtabline=2
+set guioptions-=e
 
 " ----- Keymappings -----
 
