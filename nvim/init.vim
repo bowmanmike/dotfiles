@@ -106,6 +106,7 @@ au BufWritePre *.exs :%s/\s\+$//e
 au BufWritePre *.json :%s/\s\+$//e
 au BufWritePre *.py :%s/\s\+$//e
 au BufWritePre *.vimwiki :%s/\s\+$//e
+au BufWritePre *.vim :%s/\s\+$//e
 
 " ----- Keymappings -----
 
