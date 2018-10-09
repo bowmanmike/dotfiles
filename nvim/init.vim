@@ -3,7 +3,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Utilities
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
