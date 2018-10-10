@@ -12,7 +12,7 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
 Plug 'justinmk/vim-sneak'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 " Language Plugins
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
@@ -130,7 +130,8 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'fugitive#head',
+      \   'filename': 'LightLineFilename'
       \ },
       \ }
 
@@ -138,6 +139,10 @@ let g:lightline.tabline = {
   \   'left': [ ['tabs'] ],
   \   'right': [ ['close'] ]
   \ }
+
+function! LightLineFilename()
+  return expand('%')
+endfunction
 
 set showtabline=2
 set guioptions-=e
