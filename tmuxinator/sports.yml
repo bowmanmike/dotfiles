@@ -1,0 +1,14 @@
+# /Users/mbowman/.config/tmuxinator/sports.yml
+
+name: sports
+root: ~/thescore/sports/
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - editor:
+          - fv
+        - console:
+          - cd thescore-api
+          - rails console
+        - misc:
