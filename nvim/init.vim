@@ -12,7 +12,6 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
 Plug 'justinmk/vim-sneak'
-" Plug 'ludovicchabant/vim-gutentags'
 
 " Language Plugins
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
@@ -28,6 +27,7 @@ Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'leafgarland/typescript-vim'
 Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
+Plug 'mattn/emmet-vim'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
