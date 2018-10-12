@@ -285,7 +285,7 @@ augroup end
 
 " Ruby
 augroup settings_ruby
-  nmap <leader>pr obinding.pry<esc> " Add binding.pry to the next line down
+  nmap <leader>pr orequire "pry-byebug"; binding.pry<esc> " Add binding.pry to the next line down
 augroup end
 
 " Crystal
