@@ -26,7 +26,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'tpope/vim-rails'
 Plug 'leafgarland/typescript-vim'
 Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
@@ -121,6 +121,10 @@ let g:ale_pattern_options = {
 
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
+
+" Nerdtree
+let g:NERDTreeShowHidden=1
+map <C-n> :NERDTreeToggle<CR>
 
 " GitGutter
 set updatetime=100
