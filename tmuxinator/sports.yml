@@ -3,7 +3,7 @@
 name: sports
 root: ~/thescore/sports/
 windows:
-  - main:
+  - terminal:
       layout: main-vertical
       panes:
         - editor:
@@ -12,3 +12,9 @@ windows:
           - cd thescore-api
           - rails console
         - misc:
+  - vscode:
+      layout: even-vertical
+      panes:
+        - top:
+        - mid:
+        - bottom:
