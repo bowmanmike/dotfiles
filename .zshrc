@@ -59,6 +59,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  asdf
   aws
   brew
   git
@@ -86,19 +87,8 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Initialize rbenv => more at bottom
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH=/usr/local/bin:$PATH
-
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR='nvim'
-
-# Configure nvm
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
-# nvm tab completion
-# [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Configure golang
 export GOPATH=$HOME/golang
@@ -166,9 +156,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # Direnv
 eval "$(direnv hook zsh)"
 
-# Rbenv
-eval "$(rbenv init -)"
-
 # ASDF
-# . /usr/local/opt/asdf/asdf.sh
-# . /usr/local/etc/bash_completion.d/asdf.bash
+source /usr/local/opt/asdf/asdf.sh
