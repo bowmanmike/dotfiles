@@ -71,7 +71,7 @@ plugins=(
   rails
   ruby
   taskwarrior
-  thefuck
+  # thefuck
   tmux
   # yarn
   z
