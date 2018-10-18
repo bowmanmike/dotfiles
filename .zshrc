@@ -88,7 +88,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # export LANG=en_US.UTF-8
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
-export EDITOR='nvim'
+export EDITOR='nvim --noplugin'
 
 # Configure golang
 export GOPATH=$HOME/golang
