@@ -136,7 +136,7 @@ alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.ignore'
 alias rg='rg -i'
 alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
-alias fv='vim $(fzf)'
+alias fv='vim -O $(fzf -m)'
 alias be='bundle exec'
 alias als='alias | rg'
 
