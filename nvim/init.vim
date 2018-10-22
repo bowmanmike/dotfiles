@@ -292,3 +292,10 @@ augroup end
 augroup settings_crystal
   let g:crystal_auto_format = 1
 augroup end
+
+" Elixir
+augroup settings_elixir
+  autocmd FileType elixir set formatprg=mix\ format\ -
+  let g:mix_format_on_save = 1
+  let g:mix_format_silent_errors = 1
+augroup end
