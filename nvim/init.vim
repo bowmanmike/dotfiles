@@ -31,6 +31,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'mattn/emmet-vim'
+" Plug 'zxqfl/tabnine-vim' " Cool alternative to LangServer. Free version only indexes 200kb, need more
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
