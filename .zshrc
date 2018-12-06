@@ -104,7 +104,7 @@ export PAGER="less"
 [[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
 
 # Add Rust to path
-export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$HOME/.cargo/bin:$PATH
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
