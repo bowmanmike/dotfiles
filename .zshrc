@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/mikebowman/.oh-my-zsh
+export ZSH=/Users/mike/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -61,7 +61,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
   # asdf
   aws
-  brew
+  # brew
   git
   github
   # httpie
@@ -72,7 +72,7 @@ plugins=(
   ruby
   taskwarrior
   # thefuck
-  tmux
+  # tmux
   # yarn
   z
 )
@@ -87,6 +87,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+<<<<<<< Updated upstream
 # Initialize rbenv => more at bottom
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
@@ -94,6 +95,9 @@ export PATH=/usr/local/bin:$PATH
 export PATH="$PATH:/usr/local/go/bin"
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+=======
+# export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+>>>>>>> Stashed changes
 export EDITOR='nvim --noplugin'
 export ZSH_TMUX_TERM="xterm-256color"
 export TERM="xterm-256color"
@@ -114,19 +118,13 @@ export PATH=$PATH:$GOBIN
 export PAGER="less"
 
 # Add score deploy key
-[[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
+# [[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
 
 # Add Rust to path
 export PATH=$HOME/.cargo/bin:$PATH
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
-
-# Android emulator settings
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-export PATH=$PATH:${ANDROID_SDK_ROOT}/emulator
-export PATH=$PATH:${ANDROID_SDK_ROOT}/tools
-export PATH=$PATH:${ANDROID_SDK_ROOT}/platform-tools
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
