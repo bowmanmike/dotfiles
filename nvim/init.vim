@@ -188,9 +188,9 @@ nmap <Leader>gb :Gblame<cr>
 " FZF
 nnoremap <silent> <C-p> :Files<cr>
 nnoremap <silent> <C-b> :Buffers<cr>
-nnoremap <silent> <C-t> :Tags<cr>
 let g:fzf_nvim_statusline = 0
 nnoremap <C-t> :Rg<cr>
+nnoremap <C-h> :Helptags<cr>
 
 " Language Server
 nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
