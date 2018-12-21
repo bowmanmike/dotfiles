@@ -158,3 +158,6 @@ eval "$(direnv hook zsh)"
 
 # ASDF
 source /usr/local/opt/asdf/asdf.sh
+
+# ZSH Autocomplete
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
