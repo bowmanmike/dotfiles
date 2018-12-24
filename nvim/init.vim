@@ -41,7 +41,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'for': 'go' }
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
 Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
-Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Shougo/deoplete-clangx'
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }

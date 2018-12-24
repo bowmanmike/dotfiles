@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/mike/.oh-my-zsh
+export ZSH=/home/mike/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -75,6 +75,7 @@ plugins=(
   # tmux
   # yarn
   z
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -87,17 +88,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-<<<<<<< Updated upstream
-# Initialize rbenv => more at bottom
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH=/usr/local/bin:$PATH
-export PATH="$PATH:/usr/local/go/bin"
-
-export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
-=======
 # export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
->>>>>>> Stashed changes
 export EDITOR='nvim --noplugin'
 export ZSH_TMUX_TERM="xterm-256color"
 export TERM="xterm-256color"
@@ -150,6 +141,7 @@ alias mux='tmuxinator'
 alias fv='vim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes' --color always {}")'
 alias be='bundle exec'
 alias als='alias | rg'
+alias pbcopy="xclip -sel clip"
 
 # Better git shortcuts
 alias glog="git log --oneline --decorate --graph -15"
@@ -165,7 +157,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Direnv
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 
 # ASDF
 . /usr/local/opt/asdf/asdf.sh
