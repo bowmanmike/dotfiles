@@ -73,6 +73,8 @@ set backspace=indent,eol,start
 set laststatus=2
 set noshowcmd
 
+hi ColorColumn ctermbg=red guibg=red
+
 " Default tab settings
 set tabstop=2
 set shiftwidth=2
