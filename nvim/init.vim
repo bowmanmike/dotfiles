@@ -102,6 +102,7 @@ au BufWritePre *.ex :%s/\s\+$//e
 au BufWritePre *.exs :%s/\s\+$//e
 au BufWritePre *.json :%s/\s\+$//e
 au BufWritePre *.py :%s/\s\+$//e
+au BufWritePre *.vimwiki :%s/\s\+$//e
 
 " Language Server
 set hidden
