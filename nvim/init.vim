@@ -312,11 +312,12 @@ augroup end
 
 " Vimwiki
 let g:vimwiki_list = [
-      \{'path': '~/wiki/main.wiki'}
+      \{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.md'},
       \]
+let g:vimwiki_autowriteall=1
 
 au BufRead,BufNewFile *.wiki set filetype=vimwiki
-:autocmd FileType vimwiki map <leader>d :VimWikiMakeDiaryNote
+:autocmd FileType vimwiki map <leader>d :VimwikiMakeDiaryNote
 function! ToggleCalendar()
   execute ":Calendar"
   if exists("g:calendar_open")
