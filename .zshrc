@@ -59,7 +59,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  asdf
+  # asdf
   aws
   brew
   git
@@ -111,9 +111,9 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 # Android emulator settings
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-export PATH=${PATH}:${ANDROID_SDK_ROOT}/emulator
-export PATH=${PATH}:${ANDROID_SDK_ROOT}/tools
-export PATH=${PATH}:${ANDROID_SDK_ROOT}/platform-tools
+export PATH=$PATH:${ANDROID_SDK_ROOT}/emulator
+export PATH=$PATH:${ANDROID_SDK_ROOT}/tools
+export PATH=$PATH:${ANDROID_SDK_ROOT}/platform-tools
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -157,7 +157,13 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 eval "$(direnv hook zsh)"
 
 # ASDF
-source /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/asdf.sh
+# . /usr/local/opt/asdf/etc/bash_completion.d
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
 
 # ZSH Autocomplete
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Rbenv
+# eval "$(rbenv init -)"

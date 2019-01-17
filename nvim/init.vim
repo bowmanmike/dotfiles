@@ -133,6 +133,7 @@ let g:ale_lint_on_save = 1
 " Nerdtree
 let g:NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeFind<CR>
 
 " GitGutter
 set updatetime=100
