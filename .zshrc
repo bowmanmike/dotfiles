@@ -167,3 +167,4 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Rbenv
 # eval "$(rbenv init -)"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
