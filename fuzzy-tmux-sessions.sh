@@ -11,6 +11,6 @@ tmux_switch_to_session() {
 }
 
 choice=$(sort -rfu <<< "$tmuxsessions" \
-	| fzf-tmux \
+	| fzf-tmux -d 20% \
 	| tr -d '\n')
 tmux_switch_to_session "$choice"
