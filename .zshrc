@@ -159,6 +159,9 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # Direnv
 # eval "$(direnv hook zsh)"
 
+# Background Image
+eval `cat ~/.fehbg`
+
 # ASDF
 . /usr/local/opt/asdf/asdf.sh
 # . /usr/local/opt/asdf/etc/bash_completion.d
