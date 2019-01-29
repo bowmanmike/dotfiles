@@ -163,14 +163,11 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 eval `cat ~/.fehbg`
 
 # ASDF
-. /usr/local/opt/asdf/asdf.sh
-# . /usr/local/opt/asdf/etc/bash_completion.d
-# . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 
 # ZSH Autocomplete
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Rbenv
-# eval "$(rbenv init -)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
