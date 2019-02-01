@@ -158,7 +158,7 @@ eval "$(direnv hook zsh)"
 
 # ASDF
 . /usr/local/opt/asdf/asdf.sh
-# . /usr/local/opt/asdf/etc/bash_completion.d
+. /usr/local/opt/asdf/etc/bash_completion.d
 # . $HOME/.asdf/asdf.sh
 # . $HOME/.asdf/completions/asdf.bash
 
