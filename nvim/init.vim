@@ -137,6 +137,7 @@ nmap <leader>n :NERDTreeFind<CR>
 
 " GitGutter
 set updatetime=100
+set signcolumn=yes
 
 " Lightline
 let g:lightline = {
