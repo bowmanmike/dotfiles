@@ -74,6 +74,7 @@ set scrolloff=5
 set backspace=indent,eol,start
 set laststatus=2
 set noshowcmd
+set lazyredraw
 
 hi ColorColumn ctermbg=red guibg=red
 
