@@ -47,12 +47,13 @@ Plug 'Shougo/deoplete-clangx'
 
 " Other
 Plug 'nanotech/jellybeans.vim'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
 " ----- Basic Settings -----
 syntax on
-colorscheme jellybeans
+colorscheme gruvbox
 let mapleader = "\<space>"
 
 set number
@@ -142,7 +143,7 @@ set signcolumn=yes
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
