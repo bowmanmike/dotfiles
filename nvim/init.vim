@@ -46,8 +46,8 @@ Plug 'mattn/emmet-vim'
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': { -> coc#util#install() } }
 " Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
-Plug 'sirver/UltiSnips'
-Plug 'honza/vim-snippets'
+" Plug 'sirver/UltiSnips'
+" Plug 'honza/vim-snippets'
 
 " Other
 Plug 'nanotech/jellybeans.vim'
