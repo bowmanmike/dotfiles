@@ -46,6 +46,8 @@ Plug 'mattn/emmet-vim'
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': { -> coc#util#install() } }
 " Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
+Plug 'sirver/UltiSnips'
+Plug 'honza/vim-snippets'
 
 " Other
 Plug 'nanotech/jellybeans.vim'
@@ -248,13 +250,15 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if &filetype == 'vim'
-    execute 'h '.expant('<cword>')
+    execute 'h '.expand('<cword>')
   else
     call CocAction('doHover')
   endif
 endfunction
 
 nmap <leader>e <Plug>(coc-rename)
+" let g:coc_snippet_next = '<TAB>'
+" let g:coc_snippet_prev = '<S-TAB>'
 
 " ----- Language Specific Settings -----
 
