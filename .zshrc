@@ -153,6 +153,18 @@ alias arc='cd thescore-api && rc'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+function fco {
+  local filter
+  if ! which fzf > /dev/null 2>&1; then
+    echo "FZF not installed!"
+    return 1
+  fi
+
+  branch=`git branch --list | fzf --height=7 --min-height=5 --reverse --query="$1" --select-1 | sed -e 's/^[[:space:]\*]*//'`
+
+  [[ -n "$branch" ]] && git checkout "$branch"
+}
+
 # Direnv
 eval "$(direnv hook zsh)"
 
@@ -170,4 +182,4 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/mbowman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=/Users/mikebowman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
