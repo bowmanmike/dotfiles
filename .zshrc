@@ -183,4 +183,4 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/mikebowman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=/Users/mbowman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
