@@ -184,3 +184,6 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/mbowman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+# The next line updates PATH for Netlify's Git Credential Helper.
+if [ -f '/Users/mbowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mbowman/.netlify/helper/path.zsh.inc'; fi
