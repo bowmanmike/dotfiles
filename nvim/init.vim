@@ -36,15 +36,15 @@ Plug 'mattn/emmet-vim'
 " Plug 'zxqfl/tabnine-vim' " Cool alternative to LangServer. Free version only indexes 200kb, need more
 
 " Completion
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-go', { 'for': 'go' }
-" Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
-" Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
-" Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
-" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-" Plug 'Shougo/deoplete-clangx'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go', { 'for': 'go' }
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
+Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
+Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'Shougo/deoplete-clangx'
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': { -> coc#util#install() } }
+" Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': { -> coc#util#install() } }
 " Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 " Plug 'sirver/UltiSnips'
 " Plug 'honza/vim-snippets'
@@ -206,57 +206,57 @@ nnoremap <C-t> :Rg<cr>
 " nnoremap <C-h> :Helptags<cr>
 
 " Language Server
-" nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " Deoplete
-" imap <C-k> <Plug>(neosnippet_expand_or_jump)
-" smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k> <Plug>(neosnippet_expand_target)
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#auto_complete_start_length=1
-" let g:deoplete#sources#go#sort_class = ['package', 'func', 'var', 'type', 'const']
-" let g:neosnippet#enable_completed_snippet = 1
-" let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length=1
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'var', 'type', 'const']
+let g:neosnippet#enable_completed_snippet = 1
+let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Coc
-set hidden
-set cmdheight=2
-set shortmess+=c
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" set hidden
+" set cmdheight=2
+" set shortmess+=c
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline(".")[col - 1] =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline(".")[col - 1] =~# '\s'
+" endfunction
 
-inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
 
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" nmap <silent> [c <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" function! s:show_documentation()
+"   if &filetype == 'vim'
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
 
-nmap <leader>e <Plug>(coc-rename)
+" nmap <leader>e <Plug>(coc-rename)
 " let g:coc_snippet_next = '<TAB>'
 " let g:coc_snippet_prev = '<S-TAB>'
 
