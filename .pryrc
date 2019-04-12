@@ -9,5 +9,5 @@ def pbpaste
 end
 
 def show_instance_methods(object)
-  object.methods - Object.methods
-end.sort
+  (object.methods - Object.methods).sort
+end
