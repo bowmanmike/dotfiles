@@ -1,0 +1,70 @@
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'itchyny/lightline.vim'
+Plug 'w0rp/ale'
+Plug 'scrooloose/nerdtree'
+
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'othree/html5-syntax.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'tpope/vim-rails'
+Plug 'leafgarland/typescript-vim'
+Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
+Plug 'jparise/vim-graphql', { 'for': 'graphql' }
+Plug 'mattn/emmet-vim'
+
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
+" ----- Basic Settings -----
+syntax on
+colorscheme gruvbox
+" colorscheme desert
+let mapleader = "\<space>"
+
+set number
+set nohls
+set ignorecase
+set smartcase
+set clipboard=unnamed
+set completeopt-=preview
+set splitright
+set splitbelow
+set cursorline
+set mouse=a
+set list listchars=tab:»·,trail:·,nbsp:·
+filetype plugin indent on
+set nobackup
+set nowritebackup
+set noswapfile
+set scrolloff=5
+set backspace=indent,eol,start
+set laststatus=2
+set noshowcmd
+set lazyredraw
+
+" Default tab settings
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set softtabstop=0
+set smarttab
+
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --ignore-case
+  set grepformat=%f:%l:%c:%m:%f:%l:%m
+endif
