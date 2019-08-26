@@ -12,38 +12,34 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
-" Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdtree'
+" Plug 'justinmk/vim-sneak'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'tpope/vim-vinegar'
-Plug 'mattn/calendar-vim'
-Plug 'vimwiki/vimwiki'
+" Plug 'mattn/calendar-vim'
+" Plug 'vimwiki/vimwiki'
 
-" Language Plugins
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
-Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'othree/html5-syntax.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+" Languages
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-rails'
-Plug 'leafgarland/typescript-vim'
-Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
+Plug 'othree/html5-syntax.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'mattn/emmet-vim'
-" Plug 'zxqfl/tabnine-vim' " Cool alternative to LangServer. Free version only indexes 200kb, need more
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 " Completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'for': 'go' }
-Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
-Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-go', { 'for': 'go' }
+" Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
+" Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
 " Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'Shougo/deoplete-clangx'
+" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+" Plug 'Shougo/deoplete-clangx'
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': { -> coc#util#install() } }
 " Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
@@ -60,7 +56,6 @@ call plug#end()
 syntax on
 colorscheme gruvbox
 let mapleader = "\<space>"
-
 set number
 set nohls
 set ignorecase
@@ -111,66 +106,6 @@ au BufWritePre *.json :%s/\s\+$//e
 au BufWritePre *.py :%s/\s\+$//e
 au BufWritePre *.vimwiki :%s/\s\+$//e
 
-" Language Server
-set hidden
-let g:LanguageClient_serverCommands = {
-      \ 'python': ['pyls'],
-      \ 'ruby': ['solargraph', 'stdio']
-      \}
-
-" ALE
-let g:ale_ruby_rubocop_executable = 'bundle'
-let g:ale_sign_column_always = 1
-let g:ale_linters = {}
-let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
-let g:ale_linters['scss'] = ['scsslint']
-let g:ale_linters['css'] = ['scsslint']
-let g:ale_pattern_options = {
-      \ '.*/node_modules/*.js': {
-      \ 'ale_enabled': 0
-      \},
-      \ '.*/schema.rb': {
-      \ 'ale_enabled': 0
-      \}
-    \}
-
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_save = 1
-
-" Nerdtree
-let g:NERDTreeShowHidden=1
-map <C-n> :NERDTreeToggle<CR>
-nmap <leader>n :NERDTreeFind<CR>
-
-" GitGutter
-set updatetime=100
-set signcolumn=yes
-
-" Lightline
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'filename': 'LightLineFilename'
-      \ },
-      \ }
-
-let g:lightline.tabline = {
-  \   'left': [ ['tabs'] ],
-  \   'right': [ ['close'] ]
-  \ }
-
-function! LightLineFilename()
-  return expand('%')
-endfunction
-
-set showtabline=2
-set guioptions-=e
-
 " ----- Keymappings -----
 
 " Normal Mode
@@ -206,20 +141,37 @@ let g:fzf_nvim_statusline = 0
 nnoremap <C-t> :Rg<cr>
 " nnoremap <C-h> :Helptags<cr>
 
+" GitGutter
+set updatetime=100
+set signcolumn=yes
+
+" Lightline
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'filename': 'LightLineFilename'
+      \ },
+      \ }
+
 " Language Server
-nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " Deoplete
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length=1
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'var', 'type', 'const']
-let g:neosnippet#enable_completed_snippet = 1
-let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+" smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k> <Plug>(neosnippet_expand_target)
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#auto_complete_start_length=1
+" let g:deoplete#sources#go#sort_class = ['package', 'func', 'var', 'type', 'const']
+" let g:neosnippet#enable_completed_snippet = 1
+" let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Coc
 " set hidden
@@ -264,125 +216,79 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " ----- Language Specific Settings -----
 
 " Go
-augroup settings_go
-  autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
-  autocmd FileType gohtmltmpl set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
-  let g:go_fmt_command = "goimports"
-  let g:go_highlight_functions = 1
-  let g:go_highlight_function_calls = 1
-  let g:go_highlight_fields = 1
-  let g:go_highlight_types = 1
-  let g:go_highlight_build_constraints = 1
-  let g:go_fmt_fail_silently = 1
-  let g:go_auto_sameids = 1
-  let g:go_list_type = "quickfix"
+autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
+autocmd FileType gohtmltmpl set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_fail_silently = 1
+let g:go_auto_sameids = 1
+let g:go_list_type = "quickfix"
 
-  au FileType go nmap <leader>r <Plug>(go-run)
-  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
-  au FileType go nmap <Leader>e <Plug>(go-rename)
-  autocmd FileType go nmap <Leader>t <Plug>(go-test)
-  autocmd FileType go nmap <Leader>dc :GoDoc<cr>
-  autocmd FileType go nmap <Leader>c :GoCoverage<cr>
-  autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
-  autocmd FileType go nmap <Leader>i :GoInfo<cr>
-  autocmd FileType go nmap <Leader>d <Plug>(go-def-vertical)
-  autocmd FileType go nmap <Leader>b <Plug>(go-def-tab)
-  autocmd FileType go nmap <Leader>dd :GoDeclsDir<cr>
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-augroup end
+au FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+autocmd FileType go nmap <Leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>dc :GoDoc<cr>
+autocmd FileType go nmap <Leader>c :GoCoverage<cr>
+autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
+autocmd FileType go nmap <Leader>i :GoInfo<cr>
+autocmd FileType go nmap <Leader>d <Plug>(go-def-vertical)
+autocmd FileType go nmap <Leader>b <Plug>(go-def-tab)
+autocmd FileType go nmap <Leader>dd :GoDeclsDir<cr>
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 " Python
-augroup settings_python
-  autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
-augroup end
+autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 
 " JSON
-augroup settings_json
-  autocmd FileType json set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
-  let g:vim_json_syntax_conceal = 0
+autocmd FileType json set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+let g:vim_json_syntax_conceal = 0
 
-  function! PrettyPrintJSON()
-    :%!jq '.' -M
-  endfunction
+function! PrettyPrintJSON()
+  :%!jq '.' -M
+endfunction
 
-  function! MinifyJSON()
-    :%!jq '.' -cM
-  endfunction
+function! MinifyJSON()
+  :%!jq '.' -cM
+endfunction
 
-  autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
-  autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
-augroup end
+autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
+autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
 
 " YAML
-augroup settings_yaml
-  autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
-augroup end
+autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
 " Markdown
-augroup settings_markdown
-  autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
-augroup end
+autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
 
 " HTML
-augroup settings_html
-  let g:user_emmet_leader_key='<C-Z>'
-  let g:user_emmet_settings = {
-        \'javascript.jsx': {
-          \'extends': 'jsx',
-          \'quote_char': "'",
-          \}
+let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_settings = {
+      \'javascript.jsx': {
+        \'extends': 'jsx',
+        \'quote_char': "'",
         \}
-augroup end
+      \}
 
 " Javascript
-augroup settings_javascript
-  let g:jsx_ext_required = 0
-augroup end
+let g:jsx_ext_required = 0
 
 " Ruby
-augroup settings_ruby
-  nmap <leader>pr orequire "pry-byebug"; binding.pry<esc> " Add binding.pry to the next line down
-  nmap <leader>ss :call DispatchRspec()<cr>
+nmap <leader>pr orequire "pry-byebug"; binding.pry<esc> " Add binding.pry to the next line down
+nmap <leader>ss :call DispatchRspec()<cr>
 
-  function! DispatchRspec()
-    execute ":Dispatch bundle exec rspec --no-color --no-profile -f p %"
-  endfunction
-augroup end
-
-" Crystal
-augroup settings_crystal
-  let g:crystal_auto_format = 1
-augroup end
+function! DispatchRspec()
+  execute ":Dispatch bundle exec rspec --no-color --no-profile -f p %"
+endfunction
 
 " Elixir
-augroup settings_elixir
-  autocmd FileType elixir set formatprg=mix\ format\ -
-  let g:mix_format_on_save = 1
-  let g:mix_format_silent_errors = 1
-augroup end
-
-" Vimwiki
-let g:vimwiki_list = [
-      \{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.md'},
-      \]
-let g:vimwiki_autowriteall=1
-
-au BufRead,BufNewFile *.wiki set filetype=vimwiki
-:autocmd FileType vimwiki map <leader>d :VimwikiMakeDiaryNote
-function! ToggleCalendar()
-  execute ":Calendar"
-  if exists("g:calendar_open")
-    if g:calendar_open == 1
-      execute "q"
-      unlet g:calendar_open
-    else
-      g:calendar_open = 1
-    end
-  else
-    let g:calendar_open = 1
-  end
-endfunction
-:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<cr>
+autocmd FileType elixir set formatprg=mix\ format\ -
+let g:mix_format_on_save = 1
+let g:mix_format_silent_errors = 1
