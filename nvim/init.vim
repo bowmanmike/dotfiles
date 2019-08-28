@@ -33,15 +33,15 @@ Plug 'mattn/emmet-vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
 
 " Completion
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-go', { 'for': 'go' }
-" Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
-" Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
-" Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
-" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-" Plug 'Shougo/deoplete-clangx'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go', { 'for': 'go' }
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
+Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'Shougo/deoplete-clangx'
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': { -> coc#util#install() } }
+" Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 " Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 " Plug 'sirver/UltiSnips'
 " Plug 'honza/vim-snippets'
@@ -64,7 +64,7 @@ set clipboard=unnamed
 set completeopt-=preview
 set splitright
 set splitbelow
-set cursorline
+set cursorline " this is slow, try to disable
 set mouse=a
 set list listchars=tab:»·,trail:·,nbsp:·
 filetype plugin indent on
@@ -158,20 +158,64 @@ let g:lightline = {
       \ },
       \ }
 
+let g:lightline.tabline = {
+      \'left': [ ['tabs'] ],
+      \'right': [ ['close'] ]
+      \}
+
+function! LightLineFilename()
+  return expand('%')
+endfunction
+
+set showtabline=2
+set guioptions-=e
+
+" ALE
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_sign_column_always = 1
+let g:ale_linters = {}
+let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
+let g:ale_linters['scss'] = ['scsslint']
+let g:ale_linters['css'] = ['scsslint']
+let g:ale_pattern_options = {
+      \ '.*/node_modules/*.js': {
+      \ 'ale_enabled': 0
+      \},
+      \ '.*/schema.rb': {
+      \ 'ale_enabled': 0
+      \}
+    \}
+
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
+
+" NERDTree
+let g:NERDTreeShowHidden=1
+map <C-n> :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeFind<CR>
+
 " Language Server
-" nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+set hidden
+let g:LanguageClient_serverCommands = {
+      \ 'python': ['pyls'],
+      \}
+call deoplete#custom#option('refresh-always', v:false)
+call deoplete#custom#option('prev_completion_mode', 'other')
+
+" 'ruby': ['solargraph', 'stdio']
 
 " Deoplete
-" imap <C-k> <Plug>(neosnippet_expand_or_jump)
-" smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k> <Plug>(neosnippet_expand_target)
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#auto_complete_start_length=1
-" let g:deoplete#sources#go#sort_class = ['package', 'func', 'var', 'type', 'const']
-" let g:neosnippet#enable_completed_snippet = 1
-" let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length=1
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'var', 'type', 'const']
+let g:neosnippet#enable_completed_snippet = 1
+let g:deoplete#sources#ternjs#filetypes = ['javascript', 'jsx', 'javascript.jsx', 'vue']
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Coc
 " set hidden
