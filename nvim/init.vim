@@ -54,7 +54,8 @@ call plug#end()
 
 " ----- Basic Settings -----
 syntax on
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme jellybeans
 let mapleader = "\<space>"
 set number
 set nohls
@@ -147,7 +148,7 @@ set signcolumn=yes
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -200,11 +201,11 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 set hidden
 let g:LanguageClient_serverCommands = {
       \ 'python': ['pyls'],
+      \ 'ruby': ['solargraph', 'stdio']
       \}
 call deoplete#custom#option('refresh-always', v:false)
 call deoplete#custom#option('prev_completion_mode', 'other')
 
-" 'ruby': ['solargraph', 'stdio']
 
 " Deoplete
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
