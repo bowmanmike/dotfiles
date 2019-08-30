@@ -130,6 +130,12 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Terminal commands
+tnoremap <Esc> <C-\><C-n>
+nmap <leader>th :split term://zsh<cr>
+nmap <leader>tv :vsplit term://zsh<cr>
+
+
 " Fugitive
 nmap <Leader>gs :Gstatus<cr>
 nmap <Leader>gd :Gdiff<cr>
