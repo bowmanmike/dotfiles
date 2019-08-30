@@ -141,6 +141,10 @@ alias fv='vim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes
 alias be='bundle exec'
 alias als='alias | rg'
 alias t='todo.sh'
+alias k='kubectl'
+alias cat='bat'
+alias kc='kubectx'
+alias kns='kubens'
 
 # Better git shortcuts
 alias glog="git log --oneline --decorate --graph -15"
@@ -173,14 +177,10 @@ eval "$(direnv hook zsh)"
 # ASDF
 . /usr/local/opt/asdf/asdf.sh
 . /usr/local/opt/asdf/etc/bash_completion.d
-# . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
 
 # ZSH Autocomplete
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Rbenv
-# eval "$(rbenv init -)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # heroku autocomplete setup
