@@ -1,7 +1,1 @@
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-# Source bash_profile
-[ -r ${HOME}/.bash_profile ] && source ${HOME}/.bash_profile
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source ~/dotfiles/.thescore_deploy_key

@@ -1,7 +1,7 @@
 {
   "languageserver": {
     "elixir": {
-      "command": "/Users/mikebowman/coding/elixir/elixir-ls/release/language_server.sh",
+      "command": "/Users/mbowman/coding/elixir/elixir-ls/release/language_server.sh",
       "filetypes": ["elixir", "eelixer"]
     }
   }
