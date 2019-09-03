@@ -297,6 +297,7 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 " Python
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add pdb to the next line down
 
 " JSON
 autocmd FileType json set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
