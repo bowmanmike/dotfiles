@@ -37,7 +37,7 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 " Plug 'zchee/deoplete-go', { 'for': 'go' }
 " Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
 " Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript' }
-" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 " Plug 'Shougo/deoplete-clangx'
 " Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': { -> coc#util#install() } }
@@ -209,13 +209,20 @@ function! UpdateTags()
 endfunction
 
 " Language Server
-" nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" set hidden
+nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+set hidden
 " let g:LanguageClient_serverCommands = {
 "       \ 'python': ['pyls'],
 "       \ 'ruby': ['solargraph', 'stdio']
 "       \}
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {}
+let g:LanguageClient_serverCommands.ruby = ["solargraph", "stdio"]
+let g:LanguageClient_serverCommands.python = ["pyls"]
+let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+let g:LanguageClient_serverCommands.go = ['gopls']
+
 " call deoplete#custom#option('refresh-always', v:false)
 " call deoplete#custom#option('prev_completion_mode', 'other')
 
