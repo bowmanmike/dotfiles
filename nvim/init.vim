@@ -203,7 +203,9 @@ nmap <leader>n :NERDTreeFind<CR>
 
 " ----- COMPLETION -----
 " Vanilla Omnicomplete
-set omnifunc=syntaxcomplete#Complete
+set omnifunc=LanguageClient#complete
+set completefunc=LanguageClient#complete
+" set omnifunc=syntaxcomplete#Complete
 function! UpdateTags()
   :Dispatch ctags -R --exclude="./**/*.json"
 endfunction
