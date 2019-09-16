@@ -132,7 +132,7 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " Terminal commands
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n> " This causes issues with FZF. Keep in mind
 nmap <leader>th :split term://zsh<cr>
 nmap <leader>tv :vsplit term://zsh<cr>
 
