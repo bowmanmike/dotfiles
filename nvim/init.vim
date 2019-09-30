@@ -12,7 +12,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'justinmk/vim-sneak'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'tpope/vim-vinegar'
