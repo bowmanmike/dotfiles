@@ -149,6 +149,7 @@ alias kns='kubens'
 # Better git shortcuts
 alias glog="git log --oneline --decorate --graph -15"
 alias gcos="git checkout staging"
+alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 
 # theScore Aliases
 alias finv='./$ run filter-inventory'
@@ -188,3 +189,38 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/mbowman/Library/Caches/heroku/autocomplete/zsh_s
 
 # The next line updates PATH for Netlify's Git Credential Helper.
 if [ -f '/Users/mbowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mbowman/.netlify/helper/path.zsh.inc'; fi
+
+# # Vi mode
+# # bindkey -v
+# export KEYTIMEOUT=1
+
+# # Use vim keys in tab complete menu:
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -v '^?' backward-delete-char
+
+# # Change cursor shape for different vi modes.
+# function zle-keymap-select {
+#   if [[ ${KEYMAP} == vicmd ]] ||
+#      [[ $1 = 'block' ]]; then
+#     echo -ne '\e[1 q'
+#   elif [[ ${KEYMAP} == main ]] ||
+#        [[ ${KEYMAP} == viins ]] ||
+#        [[ ${KEYMAP} = '' ]] ||
+#        [[ $1 = 'beam' ]]; then
+#     echo -ne '\e[5 q'
+#   fi
+# }
+# zle -N zle-keymap-select
+# zle-line-init() {
+#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+#     echo -ne "\e[5 q"
+# }
+# zle -N zle-line-init
+# echo -ne '\e[5 q' # Use beam shape cursor on startup.
+# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# autoload edit-command-line; zle -N edit-command-line
+# bindkey '^e' edit-command-line
