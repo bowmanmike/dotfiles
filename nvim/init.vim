@@ -21,6 +21,11 @@ Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'elixir-lang/vim-elixir'
 Plug 'mhinz/vim-mix-format'
+Plug 'mattn/emmet-vim'
+Plug 'othree/html5-syntax.vim'
+Plug 'jparise/vim-graphql', { 'for': 'graphql' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
 call plug#end()
 
@@ -74,7 +79,6 @@ au BufWritePre *.ex :%s/\s\+$//e
 au BufWritePre *.exs :%s/\s\+$//e
 au BufWritePre *.json :%s/\s\+$//e
 au BufWritePre *.py :%s/\s\+$//e
-au BufWritePre *.vimwiki :%s/\s\+$//e
 au BufWritePre *.vim :%s/\s\+$//e
 
 " ----- Keymappings -----
@@ -148,8 +152,101 @@ endfunction
 set showtabline=2
 set guioptions-=e
 
+" ALE
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_sign_column_always = 1
+let g:ale_linters = {}
+let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
+let g:ale_linters['scss'] = ['scsslint']
+let g:ale_linters['css'] = ['scsslint']
+let g:ale_pattern_options = {
+      \ '.*/node_modules/*.js': {
+      \ 'ale_enabled': 0
+      \},
+      \ '.*/schema.rb': {
+      \ 'ale_enabled': 0
+      \}
+    \}
+
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
+
+" NERDTree
+let g:NERDTreeShowHidden=1
+map <C-n> :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeFind<CR>
+
+" ------ Language Settings ------
+
+" Elixir
+autocmd FileType elixir set formatprg=mix\ format\ -
 let g:mix_format_on_save = 1
 let g:mix_format_silent_errors = 1
 
 nnoremap <leader>mt :Dispatch mix test %<cr>
 nmap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
+
+" HTML
+let g:user_emmet_leader_key='<C-Z>'
+
+" Ruby
+autocmd FileType ruby nnoremap <leader>pr orequire "pry-byebug"; binding.pry<esc>
+nmap <leader>ss :call DispatchRspec()<cr>
+
+function! DispatchRspec()
+  execute ":Dispatch bundle exec rspec --no-color --no-profile -f p %"
+endfunction
+
+" JSON
+autocmd FileType json set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+let g:vim_json_syntax_conceal = 0
+
+function! PrettyPrintJSON()
+  :%!jq '.' -M
+endfunction
+
+function! MinifyJSON()
+  :%!jq '.' -cM
+endfunction
+
+autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
+autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
+
+" YAML
+autocmd FileType yaml set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+
+" Markdown
+autocmd FileType md set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+
+" Go
+autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab
+autocmd FileType gohtmltmpl set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_fail_silently = 1
+let g:go_auto_sameids = 1
+let g:go_list_type = "quickfix"
+
+au FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+autocmd FileType go nmap <Leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>dc :GoDoc<cr>
+autocmd FileType go nmap <Leader>c :GoCoverage<cr>
+autocmd FileType go nmap <Leader>cl :GoCoverageClear<cr>
+autocmd FileType go nmap <Leader>i :GoInfo<cr>
+autocmd FileType go nmap <Leader>d <Plug>(go-def-vertical)
+autocmd FileType go nmap <Leader>b <Plug>(go-def-tab)
+autocmd FileType go nmap <Leader>dd :GoDeclsDir<cr>
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+" Python
+autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add pdb to the next line down
