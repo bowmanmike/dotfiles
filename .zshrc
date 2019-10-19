@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/mikebowman/.oh-my-zsh
+export ZSH=/home/mike/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -92,7 +92,7 @@ export EDITOR='nvim --noplugin'
 
 # Configure golang
 export GOPATH=$HOME/golang
-export GOROOT=/usr/local/opt/go/libexec
+export GOROOT=/usr/lib/go-1.13/
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
@@ -126,9 +126,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-if type nvim > /dev/null 2>&1; then
-  alias vim='nvim'
-fi
+alias vim='nvim'
 alias vimr='vimr -n'
 alias fvr='vimr -n $(fzf)'
 alias vimr="vimr -n"
@@ -197,8 +195,8 @@ function fco {
 eval "$(direnv hook zsh)"
 
 # ASDF
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d
+.  ~/.asdf/asdf.sh
+.  ~/.asdf/completions/asdf.bash
 
 # ZSH Autocomplete
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
