@@ -27,6 +27,8 @@ Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
 call plug#end()
 
 " Basic Settings
@@ -49,6 +51,7 @@ set nohls
 set noshowcmd
 set noswapfile
 set number
+set relativenumber
 set scrolloff=5
 set smartcase
 set splitbelow
@@ -186,6 +189,10 @@ let g:mix_format_silent_errors = 1
 nnoremap <leader>mt :Dispatch mix test %<cr>
 nmap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
 
+autocmd FileType elixir nnoremap <leader>d odef  do<cr>end<esc>kla
+autocmd FileType elixir nnoremap <leader>p odefp  do<cr>end<esc>kella
+autocmd FileType elxiir nnoremap <leader>m odefmodule  do<cr>end<esc>kela
+
 " HTML
 let g:user_emmet_leader_key='<C-Z>'
 
@@ -250,3 +257,17 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 " Python
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add pdb to the next line down
+
+" ----- Testing Stuff -----
+" COC
+" set shortmess+=c
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_backspace() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" function! s:check_backspace() abort
+"   let col = col(".") - 1
+"   return !col || getline(".")[col - 1] =~# '\s'
+" endfunction

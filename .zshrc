@@ -115,6 +115,9 @@ export PATH=$PATH:${ANDROID_SDK_ROOT}/emulator
 export PATH=$PATH:${ANDROID_SDK_ROOT}/tools
 export PATH=$PATH:${ANDROID_SDK_ROOT}/platform-tools
 
+# Set GPG stuff
+export GPG_TTY=$(tty)
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -155,6 +158,8 @@ alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 alias finv='./$ run filter-inventory'
 alias ars='cd thescore-api && rs'
 alias arc='cd thescore-api && rc'
+
+alias dc='docker-compose'
 
 # FZF config
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'

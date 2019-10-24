@@ -1,6 +1,7 @@
 [user]
   name = Mike Bowman
   email = mbowman2@gmail.com
+	signingkey = B50D67EACD725134
 [alias]
   co = checkout
   br = branch --sort=-committerdate
@@ -36,3 +37,5 @@
 # This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
 [include]
   path = /Users/mbowman/.netlify/helper/git-config
+[gpg]
+	program = /usr/local/bin/gpg
