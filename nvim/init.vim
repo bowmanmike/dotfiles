@@ -189,10 +189,6 @@ let g:mix_format_silent_errors = 1
 nnoremap <leader>mt :Dispatch mix test %<cr>
 nmap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
 
-autocmd FileType elixir nnoremap <leader>d odef  do<cr>end<esc>kla
-autocmd FileType elixir nnoremap <leader>p odefp  do<cr>end<esc>kella
-autocmd FileType elxiir nnoremap <leader>m odefmodule  do<cr>end<esc>kela
-
 " HTML
 let g:user_emmet_leader_key='<C-Z>'
 
