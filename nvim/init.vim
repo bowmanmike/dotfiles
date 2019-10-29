@@ -362,3 +362,4 @@ let g:mix_format_on_save = 1
 let g:mix_format_silent_errors = 1
 
 nnoremap <leader>mt :Dispatch mix test %<cr>
+nmap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
