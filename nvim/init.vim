@@ -20,7 +20,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'elixir-lang/vim-elixir'
-Plug 'mhinz/vim-mix-format'
+" Plug 'mhinz/vim-mix-format'
 Plug 'mattn/emmet-vim'
 Plug 'othree/html5-syntax.vim'
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
@@ -51,7 +51,7 @@ set nohls
 set noshowcmd
 set noswapfile
 set number
-set relativenumber
+" set relativenumber
 set scrolloff=5
 set smartcase
 set splitbelow
@@ -183,11 +183,12 @@ nmap <leader>n :NERDTreeFind<CR>
 
 " Elixir
 autocmd FileType elixir set formatprg=mix\ format\ -
-let g:mix_format_on_save = 1
-let g:mix_format_silent_errors = 1
+" let g:mix_format_on_save = 1
+" let g:mix_format_silent_errors = 1
 
+nnoremap <leader>mf :Mix format<cr>
 nnoremap <leader>mt :Dispatch mix test %<cr>
-nmap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
+nnoremap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
 
 " HTML
 let g:user_emmet_leader_key='<C-Z>'
