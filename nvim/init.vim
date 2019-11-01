@@ -183,12 +183,15 @@ nmap <leader>n :NERDTreeFind<CR>
 
 " Elixir
 autocmd FileType elixir set formatprg=mix\ format\ -
+" autocmd FileType elixir set foldmethod=syntax
+" autocmd FileType elixir set foldlevel=20
 " let g:mix_format_on_save = 1
 " let g:mix_format_silent_errors = 1
 
-nnoremap <leader>mf :Mix format<cr>
-nnoremap <leader>mt :Dispatch mix test %<cr>
-nnoremap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
+autocmd FileType elixir nnoremap <leader>mf :Mix format<cr>
+autocmd FileType elixir nnoremap <leader>mt :Dispatch mix test %<cr>
+autocmd FileType elixir nnoremap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
+autocmd FileType elixir nnoremap <leader>ie :IEx<cr>
 
 " HTML
 let g:user_emmet_leader_key='<C-Z>'
