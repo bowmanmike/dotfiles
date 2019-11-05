@@ -23,6 +23,7 @@
 [core]
   excludesfile = /Users/mbowman/.gitignore
   editor = /usr/local/bin/nvim --noplugin
+	pager = diff-so-fancy | less --tabs=4 -RFX
 ; [url "git@github.com:"]
 ;   insteadOf = https://github.com/
 [diff]
@@ -32,10 +33,24 @@
 [pager]
 	status = false
 	log = false
-	diff = false
+	; diff = false
 
 # This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
 [include]
   path = /Users/mbowman/.netlify/helper/git-config
 [gpg]
 	program = /usr/local/bin/gpg
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

@@ -7,6 +7,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 " Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
@@ -64,6 +65,9 @@ set expandtab
 set softtabstop=0
 set smarttab
 set shiftround
+
+" Live Previews for Substitutions
+set inccommand=nosplit
 
 " File Reloading
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
