@@ -54,3 +54,6 @@ tags.*
 
 # Environment variables
 .envrc
+
+# Python bytecode
+*.pyc

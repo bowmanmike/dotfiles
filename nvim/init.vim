@@ -28,6 +28,12 @@ Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
+Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh'
+      \ }
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 call plug#end()
@@ -262,6 +268,25 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add pdb to the next line down
 
+" ----- Language Server/Completion -----
+let g:deoplete#enable_at_startup = 1
+
+let g:LanguageClient_serverCommands = {
+      \ 'go': ['~/golang/bin/gopls'],
+      \ 'javascript': ['~/.asdf/shims/javascript-typescript-stdio'],
+      \ 'python': ['/usr/local/bin/pyls'],
+      \ 'ruby': ['~/.asdf/shims/solargraph', 'stdio'],
+      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
+      \ }
+
+" \ 'elixir': ['~/coding/elixir/elixir-ls/release/language_server.sh'],
+let g:LanguageClient_textDocument_hover = 1
+let g:LanguageClient_useFloatingHover = 1
+" let g:LanguageClient_hoverPreview = 'Never'
+let g:LanguageClient_useVirtualText = 0
+set completefunc=LanguageClient#complete
+set completeopt-=preview
+
 " ----- Testing Stuff -----
 " COC
 " set shortmess+=c
@@ -275,3 +300,8 @@ autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add 
 "   let col = col(".") - 1
 "   return !col || getline(".")[col - 1] =~# '\s'
 " endfunction
+
+" let g:fzf_commits_log_options = '--graph --color=always
+"   \ --format="%C(yellow)%h%C(red)%d%C(reset)
+"   \ - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)"'
+

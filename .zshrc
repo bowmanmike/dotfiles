@@ -136,6 +136,7 @@ alias ll="ls -lahG"
 alias cl="clear"
 alias tns='tmux new -s'
 alias tat='tmux attach -t'
+# alias tns='tmux -CC new -A -s'
 # alias tat='tmux -CC attach -t'
 alias tls='tmux ls'
 alias git='hub'
@@ -179,6 +180,10 @@ function fco {
 
   [[ -n "$branch" ]] && git checkout "$branch"
 }
+
+# Gcloud
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 # Direnv
 eval "$(direnv hook zsh)"
