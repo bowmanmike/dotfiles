@@ -57,3 +57,6 @@ tags.*
 
 # Python bytecode
 *.pyc
+
+# vim-projectionist configs
+.projections.json

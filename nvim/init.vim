@@ -13,6 +13,7 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-projectionist'
 
 Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
