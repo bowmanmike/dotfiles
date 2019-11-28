@@ -204,6 +204,7 @@ autocmd FileType elixir nnoremap <leader>mt :Dispatch mix test %<cr>
 autocmd FileType elixir nnoremap <leader>ml :Dispatch mix lint %<cr>
 autocmd FileType elixir nnoremap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
 autocmd FileType elixir nnoremap <leader>ie :IEx<cr>
+autocmd FileType elixir nnoremap <leader>in oIO.inspect()<esc>i
 
 " HTML
 let g:user_emmet_leader_key='<C-Z>'
