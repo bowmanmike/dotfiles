@@ -152,6 +152,8 @@ alias k='kubectl'
 alias cat='bat'
 alias kc='kubectx'
 alias kns='kubens'
+alias repry='fc -e - mix\ test=iex\ -S\ mix\ test\ --trace mix\ test'
+alias mtt="mix test --trace"
 
 # Better git shortcuts
 alias glog="git log --oneline --decorate --graph -15"
