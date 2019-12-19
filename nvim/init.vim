@@ -37,6 +37,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
+" Experiments
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 " Basic Settings
@@ -293,6 +296,9 @@ set completefunc=LanguageClient#complete
 set completeopt-=preview
 
 " ----- Testing Stuff -----
+
+let g:rustfmt_autosave = 1
+
 " COC
 " set shortmess+=c
 " inoremap <silent><expr> <TAB>
