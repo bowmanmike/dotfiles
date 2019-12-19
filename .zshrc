@@ -68,13 +68,14 @@ plugins=(
   # jira
   # pip
   # python
-  rails
+  # rails
   ruby
   # taskwarrior
   # thefuck
   tmux
   # yarn
   z
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -199,7 +200,6 @@ eval "$(direnv hook zsh)"
 .  ~/.asdf/completions/asdf.bash
 
 # ZSH Autocomplete
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
