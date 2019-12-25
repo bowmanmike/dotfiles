@@ -27,7 +27,7 @@ Plug 'mattn/emmet-vim'
 Plug 'othree/html5-syntax.vim'
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+" Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
@@ -280,6 +280,7 @@ autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add 
 let g:deoplete#enable_at_startup = 1
 
 let g:LanguageClient_serverCommands = {
+      \ 'elixir': ['~/coding/elixir/elixir-ls/release/language_server.sh'],
       \ 'go': ['~/golang/bin/gopls'],
       \ 'javascript': ['~/.asdf/shims/javascript-typescript-stdio'],
       \ 'python': ['/usr/local/bin/pyls'],
@@ -287,7 +288,6 @@ let g:LanguageClient_serverCommands = {
       \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
       \ }
 
-" \ 'elixir': ['~/coding/elixir/elixir-ls/release/language_server.sh'],
 let g:LanguageClient_textDocument_hover = 1
 let g:LanguageClient_useFloatingHover = 1
 " let g:LanguageClient_hoverPreview = 'Never'
