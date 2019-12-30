@@ -202,7 +202,7 @@ autocmd FileType elixir set formatprg=mix\ format\ -
 " let g:mix_format_on_save = 1
 " let g:mix_format_silent_errors = 1
 
-autocmd FileType elixir nnoremap <leader>mf :Mix format<cr>
+autocmd FileType elixir nnoremap <leader>mf :!mix format<cr>
 autocmd FileType elixir nnoremap <leader>mt :Dispatch mix test %<cr>
 autocmd FileType elixir nnoremap <leader>ml :Dispatch mix lint %<cr>
 autocmd FileType elixir nnoremap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
