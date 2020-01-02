@@ -198,6 +198,7 @@ let g:ale_linters = {}
 let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
 let g:ale_linters['scss'] = ['scsslint']
 let g:ale_linters['css'] = ['scsslint']
+let g:ale_linters['elixir'] = ['credo', 'mix', 'dialyxir', 'dogma']
 let g:ale_pattern_options = {
       \ '.*/node_modules/*.js': {
       \ 'ale_enabled': 0
