@@ -295,6 +295,9 @@ let g:LanguageClient_useVirtualText = 0
 set completefunc=LanguageClient#complete
 set completeopt-=preview
 
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
 " Use homebrew installs of python 2 and 3, I think ASDF versions are super
 " slow to startup
 let g:python3_host_prog = '/usr/local/bin/python3'
