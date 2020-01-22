@@ -106,6 +106,7 @@ nnoremap k gk
 nnoremap 0 ^
 nnoremap <leader>z :tabnew %<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>cf :let @+ = expand("%")<cr>
 
 " Command Mode
 command! Q q
@@ -285,7 +286,8 @@ let g:LanguageClient_serverCommands = {
       \ 'javascript': ['~/.asdf/shims/javascript-typescript-stdio'],
       \ 'python': ['/usr/local/bin/pyls'],
       \ 'ruby': ['~/.asdf/shims/solargraph', 'stdio'],
-      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
+      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+      \ 'typescript': ['~/.asdf/shims/javascript-typescript-stdio'],
       \ }
 
 let g:LanguageClient_textDocument_hover = 1
