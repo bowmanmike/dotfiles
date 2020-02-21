@@ -14,6 +14,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-projectionist'
+Plug 'janko/vim-test'
 
 Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
@@ -195,6 +196,11 @@ let g:NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeFind<CR>
 
+" VimTest
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
+let test#strategy = "neovim"
+
 " ------ Language Settings ------
 
 " Elixir
@@ -297,6 +303,7 @@ let g:LanguageClient_useFloatingHover = 1
 let g:LanguageClient_useVirtualText = "No"
 set completefunc=LanguageClient#complete
 set completeopt-=preview
+set omnifunc=LanguageClient#complete
 
 " Enable to debug LanguageServer issues
 " let g:LanguageClient_loggingFile="/Users/mbowman/Desktop/lc.log"
