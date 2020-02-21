@@ -27,6 +27,7 @@ Plug 'mattn/emmet-vim'
 Plug 'othree/html5-syntax.vim'
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'cespare/vim-toml'
 " Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
 Plug 'autozimu/LanguageClient-neovim', {
@@ -34,7 +35,7 @@ Plug 'autozimu/LanguageClient-neovim', {
       \ 'do': 'bash install.sh'
       \ }
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Experiments
@@ -278,7 +279,7 @@ autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add pdb to the next line down
 
 " ----- Language Server/Completion -----
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 0
 
 let g:LanguageClient_serverCommands = {
       \ 'elixir': ['~/coding/elixir/elixir-ls/release/language_server.sh'],
@@ -293,12 +294,17 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_textDocument_hover = 1
 let g:LanguageClient_useFloatingHover = 1
 " let g:LanguageClient_hoverPreview = 'Never'
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useVirtualText = "No"
 set completefunc=LanguageClient#complete
 set completeopt-=preview
 
+" Enable to debug LanguageServer issues
+" let g:LanguageClient_loggingFile="/Users/mbowman/Desktop/lc.log"
+" let g:LanguageClient_loggingLevel="DEBUG"
+
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
 
 " Use homebrew installs of python 2 and 3, I think ASDF versions are super
 " slow to startup
