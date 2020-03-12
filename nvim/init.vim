@@ -11,7 +11,7 @@ Plug 'tpope/vim-rhubarb'
 " Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-projectionist'
 Plug 'janko/vim-test'
@@ -22,7 +22,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 " Plug 'mhinz/vim-mix-format'
 Plug 'mattn/emmet-vim'
 Plug 'othree/html5-syntax.vim'
@@ -126,7 +126,7 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " Terminal commands
-tnoremap <Esc> <C-\><C-n> " This causes issues with FZF. Keep in mind
+tnoremap <C-o> <C-\><C-n>
 nnoremap <leader>th :split term://zsh<cr>
 nnoremap <leader>tv :vsplit term://zsh<cr>
 
@@ -297,6 +297,7 @@ let g:LanguageClient_serverCommands = {
       \ 'typescript': ['~/.asdf/shims/javascript-typescript-stdio'],
       \ }
 
+let g:LanguageClient_loggingFile = expand("/tmp/nvim-LanguageClient.log")
 let g:LanguageClient_textDocument_hover = 1
 let g:LanguageClient_useFloatingHover = 1
 " let g:LanguageClient_hoverPreview = 'Never'

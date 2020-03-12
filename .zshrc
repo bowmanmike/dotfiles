@@ -159,6 +159,7 @@ alias ml="mix lint"
 alias mf="mix format"
 alias mc="mix compile"
 alias tf="mix test `pbpaste`"
+alias mflt="mix format && mix lint && mix test"
 
 # Better git shortcuts
 alias glog="git log --oneline --decorate --graph -15"
