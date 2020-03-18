@@ -132,9 +132,9 @@ nnoremap <leader>tv :vsplit term://zsh<cr>
 
 
 " Fugitive
-nnoremap <Leader>gs :Gstatus<cr>
-nnoremap <Leader>gd :Gdiff<cr>
-nnoremap <Leader>gb :Gblame<cr>
+nnoremap <Leader>gs :Git<cr>
+nnoremap <Leader>gd :Git diff<cr>
+nnoremap <Leader>gb :Git blame<cr>
 
 " FZF
 nnoremap <silent> <C-p> :Files<cr>
