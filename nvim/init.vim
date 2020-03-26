@@ -313,6 +313,7 @@ set omnifunc=LanguageClient#complete
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
+nnoremap <silent> <leader>R :call LanguageClient#textDocument_rename()<CR>
 
 " Use homebrew installs of python 2 and 3, I think ASDF versions are super
 " slow to startup
