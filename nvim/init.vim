@@ -31,13 +31,13 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'cespare/vim-toml'
 " Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh'
-      \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"       \ 'branch': 'next',
+"       \ 'do': 'bash install.sh'
+"       \ }
 
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Experiments
 Plug 'rust-lang/rust.vim'
@@ -287,33 +287,33 @@ autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add 
 " ----- Language Server/Completion -----
 " let g:deoplete#enable_at_startup = 0
 
-let g:LanguageClient_serverCommands = {
-      \ 'elixir': ['~/coding/elixir/elixir-ls/release/language_server.sh'],
-      \ 'go': ['~/golang/bin/gopls'],
-      \ 'javascript': ['~/.asdf/shims/javascript-typescript-stdio'],
-      \ 'python': ['/usr/local/bin/pyls'],
-      \ 'ruby': ['~/.asdf/shims/solargraph', 'stdio'],
-      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-      \ 'typescript': ['~/.asdf/shims/javascript-typescript-stdio'],
-      \ }
+" let g:LanguageClient_serverCommands = {
+"       \ 'elixir': ['~/coding/elixir/elixir-ls/release/language_server.sh'],
+"       \ 'go': ['~/golang/bin/gopls'],
+"       \ 'javascript': ['~/.asdf/shims/javascript-typescript-stdio'],
+"       \ 'python': ['/usr/local/bin/pyls'],
+"       \ 'ruby': ['~/.asdf/shims/solargraph', 'stdio'],
+"       \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+"       \ 'typescript': ['~/.asdf/shims/javascript-typescript-stdio'],
+"       \ }
 
-let g:LanguageClient_loggingFile = expand("/tmp/nvim-LanguageClient.log")
-let g:LanguageClient_textDocument_hover = 1
-let g:LanguageClient_useFloatingHover = 1
+" let g:LanguageClient_loggingFile = expand("/tmp/nvim-LanguageClient.log")
+" let g:LanguageClient_textDocument_hover = 1
+" let g:LanguageClient_useFloatingHover = 1
 " let g:LanguageClient_hoverPreview = 'Never'
-let g:LanguageClient_useVirtualText = "No"
-set completefunc=LanguageClient#complete
-set completeopt-=preview
-set omnifunc=LanguageClient#complete
+" let g:LanguageClient_useVirtualText = "No"
+" set completefunc=LanguageClient#complete
+" set completeopt-=preview
+" set omnifunc=LanguageClient#complete
 
 " Enable to debug LanguageServer issues
 " let g:LanguageClient_loggingFile="/Users/mbowman/Desktop/lc.log"
 " let g:LanguageClient_loggingLevel="DEBUG"
 
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
-nnoremap <silent> <leader>R :call LanguageClient#textDocument_rename()<CR>
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
+" nnoremap <silent> <leader>R :call LanguageClient#textDocument_rename()<CR>
 
 " Use homebrew installs of python 2 and 3, I think ASDF versions are super
 " slow to startup
@@ -326,6 +326,42 @@ let g:python_host_prog = '/usr/local/bin/python2'
 let g:rustfmt_autosave = 1
 
 " COC
+
+set cmdheight=2
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col-1] =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+if has('patch8.1.1068')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nmap <leader>rn <Plug>(coc-rename)
+
 " set shortmess+=c
 " inoremap <silent><expr> <TAB>
 "       \ pumvisible() ? "\<C-n>" :
