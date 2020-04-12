@@ -157,7 +157,7 @@ alias mtt="mix test --trace"
 alias ml="mix lint"
 alias mf="mix format"
 alias mc="mix compile"
-alias tf="mix test `pbpaste`"
+# alias tf="mix test `pbpaste`"
 alias mflt="mix format && mix lint && mix test"
 
 # Better git shortcuts
