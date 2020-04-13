@@ -345,6 +345,11 @@ let g:python_host_prog = '/usr/local/bin/python2'
 
 " Projectionist
 let g:projectionist_heuristics = {
+      \   "lib/scorepay/": {
+      \     "lib/**/schema/*.ex": {"type": "ecto"},
+      \     "lib/scorepay_web/schema/types/*.ex": {"type": "type", "related": "lib/scorepay_web/schema/resolvers/{basename}.ex", "template": ["defmodule ScorePayWeb.Schema.Types.NAME do", "  use ScorePayWeb.Schema.Notation", "", "  DEFINITION", "", "end"]},
+      \     "lib/scorepay_web/schema/resolvers/*.ex": {"type": "res"}
+      \   },
       \   "mix.exs": {
       \     "lib/*.ex": {
       \       "alternate": "test/{}_test.exs",
