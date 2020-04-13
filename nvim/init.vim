@@ -186,7 +186,7 @@ let g:ale_pattern_options = {
       \ '.*/schema.rb': {
       \ 'ale_enabled': 0
       \}
-    \}
+      \}
 
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
@@ -319,6 +319,49 @@ autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add 
 " slow to startup
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python2'
+
+" Projectionist
+let g:projectionist_heuristics = {
+      \   "mix.exs": {
+      \     "lib/*.ex": {
+      \       "alternate": "test/{}_test.exs",
+      \       "type": "source",
+      \       "template": [
+      \         "defmodule {camelcase|capitalize|dot} do",
+      \         "end"
+      \       ]
+      \     },
+      \     "test/*_test.exs": {
+      \       "alternate": "lib/{}.ex",
+      \       "type": "test",
+      \       "template": [
+      \         "defmodule {camelcase|capitalize|dot}Test do",
+      \         "  use ScorePay.DataCase, async: true",
+      \         "",
+      \         "  alias {camelcase|capitalize|dot}",
+      \         "end"
+      \       ]
+      \     },
+      \     "lib/**/controllers/*_controller.ex": {
+      \       "type": "controller",
+      \       "alternate": "test/{dirname}/controllers/{basename}_controller_test.exs",
+      \       "template": [
+      \         "defmodule {dirname|camelcase|capitalize}.{basename|camelcase|capitalize}Controller do",
+      \         "  use {dirname|camelcase|capitalize}, :controller",
+      \         "end"
+      \       ]
+      \     },
+      \     "test/**/controllers/*_controller_test.exs": {
+      \       "alternate": "lib/{dirname}/controllers/{basename}_controller.ex",
+      \       "type": "test",
+      \       "template": [
+      \         "defmodule {dirname|camelcase|capitalize}.{basename|camelcase|capitalize}ControllerTest do",
+      \         "  use {dirname|camelcase|capitalize}.ConnCase, async: true",
+      \         "end"
+      \       ]
+      \     }
+      \   }
+      \ }
 
 
 " ----- Testing Stuff -----
