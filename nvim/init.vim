@@ -391,6 +391,8 @@ else
 endif
 
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD :call CocAction('jumpDefinition', 'split')<cr>
+nmap <silent> gB :call CocAction('jumpDefinition', 'tabe')<cr>
 nmap <silent> gy <Plug>(coc-type-definition)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
