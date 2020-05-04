@@ -200,6 +200,7 @@ function fco {
 eval "$(direnv hook zsh)"
 
 # ASDF
+# export ASDF_DATA_DIR=$HOME/Projects/asdf
 . /usr/local/opt/asdf/asdf.sh
 . /usr/local/opt/asdf/etc/bash_completion.d
 

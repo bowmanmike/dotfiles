@@ -124,7 +124,7 @@ au BufWritePre *.vim :%s/\s\+$//e
 " Normal Mode
 nnoremap j gj
 nnoremap k gk
-nnoremap 0 ^
+" nnoremap 0 ^
 nnoremap <leader>z :tabnew %<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>cf :let @+ = expand("%")<cr>
@@ -198,7 +198,8 @@ let g:ale_linters = {}
 let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
 let g:ale_linters['scss'] = ['scsslint']
 let g:ale_linters['css'] = ['scsslint']
-let g:ale_linters['elixir'] = ['credo', 'mix', 'dialyxir', 'dogma']
+" let g:ale_linters['elixir'] = ['credo', 'mix', 'dialyxir', 'dogma']
+let g:ale_linters['elixir'] = ['credo', 'elixir-ls']
 let g:ale_pattern_options = {
       \ '.*/node_modules/*.js': {
       \ 'ale_enabled': 0
@@ -208,7 +209,7 @@ let g:ale_pattern_options = {
       \}
       \}
 
-let g:ale_lint_on_enter = 1
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 
 " NERDTree
