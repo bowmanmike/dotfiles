@@ -53,7 +53,7 @@ filetype plugin indent on
 
 set backspace=indent,eol,start
 set clipboard=unnamed
-set cursorline
+" set cursorline
 set ignorecase
 set laststatus=2
 set lazyredraw
@@ -199,6 +199,8 @@ nmap <leader>n :NERDTreeFind<CR>
 " VimTest
 nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>tl :TestLast<CR>
+nnoremap <silent> <leader>tv :TestVisit<CR>
 let test#strategy = "neovim"
 
 " ------ Language Settings ------

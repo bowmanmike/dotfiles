@@ -72,7 +72,7 @@ plugins=(
   ruby
   # taskwarrior
   # thefuck
-  tmux
+  # tmux
   # yarn
   z
 )
@@ -160,6 +160,8 @@ alias mf="mix format"
 alias mc="mix compile"
 alias tf="mix test `pbpaste`"
 alias mflt="mix format && mix lint && mix test"
+alias mps="iex -S mix phx.server"
+alias mil='mix identity_login mike.bowman+2@thescore.com 12345678b! | sed -n '\''6p'\'' | jq '\''.["Authorization"] | split(" ")[1]'\'''
 
 # Better git shortcuts
 alias glog="git log --oneline --decorate --graph -15"
