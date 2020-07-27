@@ -18,6 +18,7 @@ Plug 'janko/vim-test'
 
 Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
+Plug 'skbolton/embark'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -41,13 +42,16 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Experiments
 Plug 'rust-lang/rust.vim'
+Plug 'mbbill/undotree'
 
 call plug#end()
 
 " Basic Settings
 
 syntax on
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme embark
+set termguicolors
 let mapleader = "\<space>"
 filetype plugin indent on
 
@@ -80,6 +84,20 @@ set shiftround
 
 " Live Previews for Substitutions
 set inccommand=nosplit
+
+" Let's save undo info!
+if !isdirectory($HOME."/.undodir")
+    call mkdir($HOME."/.undodir", "", 0770)
+endif
+if !isdirectory($HOME."/.undodir")
+    call mkdir($HOME."/.undodir", "", 0700)
+endif
+set undodir=~/.undodir
+set undofile
+" if has("persistent_undo")
+"     set undodir=$HOME."/.undodir"
+"     set undofile
+" endif
 
 " File Reloading
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
@@ -149,7 +167,7 @@ set signcolumn=yes
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'embark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],

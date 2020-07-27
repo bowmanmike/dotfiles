@@ -1,5 +1,13 @@
 {
   "elixir.pathToElixirLS": "~/coding/elixir/elixir-ls/release/language_server.sh",
   "elixirLS.dialyzerEnabled": false,
-  "elixirLS.fetchDeps": false
+  "elixirLS.fetchDeps": false,
+  "elixirLS.suggestSpecs": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "elixir",
+    "ruby",
+    "html",
+    "css",
+    "javascript"
+  ]
 }
