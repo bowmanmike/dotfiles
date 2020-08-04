@@ -1,5 +1,4 @@
 {
-  "elixir.pathToElixirLS": "~/coding/elixir/elixir-ls/release/language_server.sh",
   "elixirLS.dialyzerEnabled": false,
   "elixirLS.fetchDeps": false,
   "elixirLS.suggestSpecs": false,
