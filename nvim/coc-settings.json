@@ -8,6 +8,19 @@
     "ruby",
     "html",
     "css",
-    "javascript"
-  ]
+    "javascript",
+    "terraform"
+  ],
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  }
 }

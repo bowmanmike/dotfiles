@@ -102,6 +102,7 @@ export PAGER="less"
 
 # Add score deploy key
 [[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
+[[ -f ~/dotfiles/.digital_ocean_token ]] && source ~/dotfiles/.digital_ocean_token
 
 # Add Rust to path
 export PATH=$HOME/.cargo/bin:$PATH

@@ -30,6 +30,7 @@ Plug 'othree/html5-syntax.vim'
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'cespare/vim-toml'
+Plug 'hashivim/vim-terraform'
 " Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
 " Plug 'autozimu/LanguageClient-neovim', {
