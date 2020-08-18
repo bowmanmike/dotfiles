@@ -170,7 +170,7 @@ alias gcos="git checkout staging"
 alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 
 # theScore Aliases
-alias finv='./$ run filter-inventory'
+alias finv='./run filter-inventory'
 alias ars='cd thescore-api && rs'
 alias arc='cd thescore-api && rc'
 
