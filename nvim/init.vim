@@ -253,6 +253,7 @@ endfunction
 
 " JSON
 autocmd FileType json set tabstop=2|set shiftwidth=2|set expandtab|set smarttab
+autocmd FileType json set foldmethod=syntax
 let g:vim_json_syntax_conceal = 0
 
 function! PrettyPrintJSON()
