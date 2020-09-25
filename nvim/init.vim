@@ -223,6 +223,23 @@ nnoremap <silent> <leader>tf :TestFile<CR>
 nnoremap <silent> <leader>tl :TestLast<CR>
 nnoremap <silent> <leader>tv :TestVisit<CR>
 let test#strategy = "neovim"
+" let b:in_sports_reop = split(execute("pwd"), "/")[-1] == sports
+"   let b:current_proj = split(expand("%"), "/")[0]
+" endif
+" function! SetCWDForTest()
+"     let b:cwd = execute("pwd")
+"     let b:current_proj = split(expand("%"), "/")[0]
+"     let b:sports_repo = split(b:cwd, "/")
+
+"     if b:sports_repo[-1] == "sports"
+"       let test#project_root = join([b:cwd, b:current_proj], "/")
+"       echo test#project_root
+"     endif
+
+"     " echo b:sports_repo[-1]
+"     " echo b:current_proj
+" endfunction
+
 
 " ------ Language Settings ------
 
