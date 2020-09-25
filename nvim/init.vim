@@ -8,7 +8,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
-" Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'dense-analysis/ale'
@@ -24,26 +23,22 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'elixir-editors/vim-elixir'
-" Plug 'mhinz/vim-mix-format'
 Plug 'mattn/emmet-vim'
 Plug 'othree/html5-syntax.vim'
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
-" Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-
-" Plug 'autozimu/LanguageClient-neovim', {
-"       \ 'branch': 'next',
-"       \ 'do': 'bash install.sh'
-"       \ }
-
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Experiments
 Plug 'rust-lang/rust.vim'
 Plug 'mbbill/undotree'
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
 
 call plug#end()
 
@@ -95,10 +90,6 @@ if !isdirectory($HOME."/.undodir")
 endif
 set undodir=~/.undodir
 set undofile
-" if has("persistent_undo")
-"     set undodir=$HOME."/.undodir"
-"     set undofile
-" endif
 
 " File Reloading
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
@@ -160,7 +151,6 @@ nnoremap <silent> <C-p> :Files<cr>
 nnoremap <silent> <C-b> :Buffers<cr>
 let g:fzf_nvim_statusline = 0
 nnoremap <C-t> :Rg<cr>
-" nnoremap <C-h> :Helptags<cr>
 
 " GitGutter
 set updatetime=100
@@ -198,6 +188,8 @@ let g:ale_linters = {}
 let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
 let g:ale_linters['scss'] = ['scsslint']
 let g:ale_linters['css'] = ['scsslint']
+let g:ale_linters['elixir'] = []
+" let g:ale_linters['elixir'] = ['elixir-ls']
 let g:ale_pattern_options = {
       \ '.*/node_modules/*.js': {
       \ 'ale_enabled': 0
@@ -206,9 +198,13 @@ let g:ale_pattern_options = {
       \ 'ale_enabled': 0
       \}
       \}
+let g:ale_fixers = {}
+" let g:ale_fixers['elixir'] = ['mix_format']
 
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
+
+let g:ale_elixir_elixir_ls_release='~/.cache/nvim/nvim_lsp/elixirls/elixir-ls/release/language_server.sh'
 
 " NERDTree
 let g:NERDTreeShowHidden=1
@@ -225,15 +221,7 @@ let test#strategy = "neovim"
 " ------ Language Settings ------
 
 " Elixir
-autocmd FileType elixir set formatprg=mix\ format\ -
-" autocmd FileType elixir set foldmethod=syntax
-" autocmd FileType elixir set foldlevel=20
-" let g:mix_format_on_save = 1
-" let g:mix_format_silent_errors = 1
-
 autocmd FileType elixir nnoremap <leader>mf :!mix format<cr>
-autocmd FileType elixir nnoremap <leader>mt :Dispatch mix test %<cr>
-autocmd FileType elixir nnoremap <leader>ml :Dispatch mix lint %<cr>
 autocmd FileType elixir nnoremap <leader>pr orequire IEx; IEx.pry()<esc> " Add IEx.pry() to the next line down
 autocmd FileType elixir nnoremap <leader>ie :IEx<cr>
 autocmd FileType elixir nnoremap <leader>in oIO.inspect()<esc>i
@@ -306,37 +294,6 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add pdb to the next line down
 
-" ----- Language Server/Completion -----
-" let g:deoplete#enable_at_startup = 0
-
-" let g:LanguageClient_serverCommands = {
-"       \ 'elixir': ['~/coding/elixir/elixir-ls/release/language_server.sh'],
-"       \ 'go': ['~/golang/bin/gopls'],
-"       \ 'javascript': ['~/.asdf/shims/javascript-typescript-stdio'],
-"       \ 'python': ['/usr/local/bin/pyls'],
-"       \ 'ruby': ['~/.asdf/shims/solargraph', 'stdio'],
-"       \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-"       \ 'typescript': ['~/.asdf/shims/javascript-typescript-stdio'],
-"       \ }
-
-" let g:LanguageClient_loggingFile = expand("/tmp/nvim-LanguageClient.log")
-" let g:LanguageClient_textDocument_hover = 1
-" let g:LanguageClient_useFloatingHover = 1
-" let g:LanguageClient_hoverPreview = 'Never'
-" let g:LanguageClient_useVirtualText = "No"
-" set completefunc=LanguageClient#complete
-" set completeopt-=preview
-" set omnifunc=LanguageClient#complete
-
-" Enable to debug LanguageServer issues
-" let g:LanguageClient_loggingFile="/Users/mbowman/Desktop/lc.log"
-" let g:LanguageClient_loggingLevel="DEBUG"
-
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
-" nnoremap <silent> <leader>R :call LanguageClient#textDocument_rename()<CR>
-
 " Use homebrew installs of python 2 and 3, I think ASDF versions are super
 " slow to startup
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -358,7 +315,7 @@ let g:projectionist_heuristics = {
       \       "type": "test",
       \       "template": [
       \         "defmodule {camelcase|capitalize|dot}Test do",
-      \         "  use ScorePay.DataCase, async: true",
+      \         "  use {camelcase|capitalize|dot}.DataCase, async: true",
       \         "",
       \         "  alias {camelcase|capitalize|dot}",
       \         "end"
@@ -388,60 +345,75 @@ let g:projectionist_heuristics = {
 
 " ----- Testing Stuff -----
 
-let g:rustfmt_autosave = 1
+" === LSP ===
+" Set completeopt to have a better completion experience
+" :help completeopt
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to select one from the menu
+set completeopt=menuone,noinsert,noselect
 
-" COC
+" Avoid showing extra messages when using completion
+set shortmess+=c
 
-set cmdheight=2
+" Configure LSP
+" https://github.com/neovim/nvim-lspconfig#rust_analyzer
+lua <<EOF
+
+-- nvim_lsp object
+local nvim_lsp = require'nvim_lsp'
+
+-- function to attach completion and diagnostics
+-- when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+    require'diagnostic'.on_attach(client)
+end
+
+-- Enable lang servers
+nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+nvim_lsp.elixirls.setup({ on_attach=on_attach })
+
+EOF
+
+" Visualize diagnostics
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_trimmed_virtual_text = '40'
+" Don't show diagnostics while in insert mode
+let g:diagnostic_insert_delay = 1
+
+" Show diagnostic popup on cursor hover
+autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+
+" Goto previous/next diagnostic warning/error
+nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
+nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+
+" Enable type inlay hints
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
+
+" Trigger completion with <Tab>
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ completion#trigger_completion()
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col-1] =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <c-space> coc#refresh()
+" Code navigation shortcuts
+  nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> gy <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+" nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+" nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
-if has('patch8.1.1068')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gD :call CocAction('jumpDefinition', 'split')<cr>
-nmap <silent> gB :call CocAction('jumpDefinition', 'tabe')<cr>
-nmap <silent> gy <Plug>(coc-type-definition)
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-nmap <leader>rn <Plug>(coc-rename)
-
-" set shortmess+=c
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_backspace() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" function! s:check_backspace() abort
-"   let col = col(".") - 1
-"   return !col || getline(".")[col - 1] =~# '\s'
-" endfunction
-
-" let g:fzf_commits_log_options = '--graph --color=always
-"   \ --format="%C(yellow)%h%C(red)%d%C(reset)
-"   \ - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)"'
-
+let g:rustfmt_autosave = 1
