@@ -55,6 +55,6 @@
 	new = green bold
 	whitespace = red reverse
 [pull]
-	ff = only
+	rebase = false
 ; [commit]
 ; 	gpgsign = true
