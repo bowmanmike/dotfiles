@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/mikebowman/.oh-my-zsh
+export ZSH=/home/mike/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -68,7 +68,7 @@ plugins=(
   # jira
   # pip
   # python
-  rails
+  # rails
   ruby
   # taskwarrior
   # thefuck
@@ -76,6 +76,8 @@ plugins=(
   # yarn
   z
 )
+
+export RPROMPT="DIGITAL OCEAN"
 
 source $ZSH/oh-my-zsh.sh
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -91,10 +93,10 @@ export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR='nvim --noplugin'
 
 # Configure golang
-export GOPATH=$HOME/golang
-export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/go
+# export GOROOT=/usr/local/opt/go/libexec
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOBIN
 export PATH=$PATH:$GOROOT/bin
 
 # Unset $PAGER
@@ -111,10 +113,10 @@ export PATH=$HOME/.cargo/bin:$PATH
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 # Android emulator settings
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-export PATH=$PATH:${ANDROID_SDK_ROOT}/emulator
-export PATH=$PATH:${ANDROID_SDK_ROOT}/tools
-export PATH=$PATH:${ANDROID_SDK_ROOT}/platform-tools
+# export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+# export PATH=$PATH:${ANDROID_SDK_ROOT}/emulator
+# export PATH=$PATH:${ANDROID_SDK_ROOT}/tools
+# export PATH=$PATH:${ANDROID_SDK_ROOT}/platform-tools
 
 # Set GPG stuff
 export GPG_TTY=$(tty)
@@ -170,9 +172,9 @@ alias gcos="git checkout staging"
 alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 
 # theScore Aliases
-alias finv='./$ run filter-inventory'
-alias ars='cd thescore-api && rs'
-alias arc='cd thescore-api && rc'
+# alias finv='./$ run filter-inventory'
+# alias ars='cd thescore-api && rs'
+# alias arc='cd thescore-api && rc'
 
 alias dc='docker-compose'
 
@@ -200,19 +202,19 @@ function fco {
 eval "$(direnv hook zsh)"
 
 # ASDF
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d
+. ~/.asdf/asdf.sh
+. ~/.asdf/completions/asdf.bash
 
 # ZSH Autocomplete
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/mikebowman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=/Users/mike/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 # The next line updates PATH for Netlify's Git Credential Helper.
-if [ -f '/Users/mikebowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mikebowman/.netlify/helper/path.zsh.inc'; fi
+if [ -f '/Users/mike/.netlify/helper/path.zsh.inc' ]; then source '/Users/mike/.netlify/helper/path.zsh.inc'; fi
 
 # # Vi mode
 # # bindkey -v
