@@ -2,7 +2,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -140,6 +141,8 @@ tnoremap <C-o> <C-\><C-n>
 nnoremap <leader>th :split term://zsh<cr>
 nnoremap <leader>tv :vsplit term://zsh<cr>
 
+" Visual
+vnoremap <leader>P "_dP
 
 " Fugitive
 nnoremap <Leader>gs :Git<cr>
@@ -148,6 +151,7 @@ nnoremap <Leader>gb :Git blame<cr>
 
 " FZF
 nnoremap <silent> <C-p> :Files<cr>
+" nnoremap <silent> <C-p> :FZF<cr>
 nnoremap <silent> <C-b> :Buffers<cr>
 let g:fzf_nvim_statusline = 0
 nnoremap <C-t> :Rg<cr>
