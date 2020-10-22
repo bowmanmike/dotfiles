@@ -70,7 +70,7 @@ plugins=(
   # python
   rails
   ruby
-  # taskwarrior
+  taskwarrior
   # thefuck
   # tmux
   # yarn
@@ -148,7 +148,7 @@ alias mux='tmuxinator'
 alias fv='vim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes' --color always {}")'
 alias be='bundle exec'
 alias als='alias | rg'
-alias t='todo.sh'
+# alias t='todo.sh'
 alias k='kubectl'
 alias cat='bat'
 alias kc='kubectx'

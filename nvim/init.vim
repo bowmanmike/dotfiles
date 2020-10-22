@@ -41,6 +41,9 @@ Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter'
+
 call plug#end()
 
 " Basic Settings
@@ -405,7 +408,7 @@ local on_attach = function(client)
 end
 
 -- Enable lang servers
-nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+nvim_lsp.rust_analyzer.setup({ on_attach=on_attach, cmd={'/usr/local/bin/rust-analyzer'} })
 nvim_lsp.elixirls.setup({ on_attach=on_attach })
 nvim_lsp.tsserver.setup({ on_attach=on_attach })
 -- nvim_lsp.solargraph.setup({ on_attach=on_attach })
@@ -453,3 +456,17 @@ nnoremap <silent> gy <cmd>lua vim.lsp.buf.type_definition()<CR>
 " nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 let g:rustfmt_autosave = 1
+
+" ===== Treesitter =====
+lua <<EOF
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  },
+  indent = {
+    enable = true
+  }
+}
+
+EOF
