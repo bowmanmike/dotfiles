@@ -21,7 +21,7 @@
 [web]
   browser = chrome
 [core]
-  excludesfile = /Users/mikebowman/.gitignore
+  excludesfile = /Users/mbowman/.gitignore
   editor = /usr/local/bin/nvim --noplugin
 	; pager = diff-so-fancy | less --tabs=4 -RFX
 ; [url "git@github.com:"]
@@ -37,7 +37,7 @@
 
 # This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
 [include]
-  path = /Users/mikebowman/.netlify/helper/git-config
+  path = /Users/mbowman/.netlify/helper/git-config
 [gpg]
 	program = /usr/local/bin/gpg
 [color]
