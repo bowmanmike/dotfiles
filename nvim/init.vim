@@ -48,42 +48,7 @@ call plug#end()
 
 " Basic Settings
 
-syntax on
-" colorscheme jellybeans
-colorscheme embark
-set termguicolors
 let mapleader = "\<space>"
-filetype plugin indent on
-
-set backspace=indent,eol,start
-set clipboard=unnamed
-" set cursorline
-set ignorecase
-set laststatus=2
-set lazyredraw
-set list listchars=tab:»·,trail:·,nbsp:·
-set mouse=a
-set nobackup
-set nohls
-set noshowcmd
-set noswapfile
-set number
-" set relativenumber
-set scrolloff=5
-set smartcase
-set splitbelow
-set splitright
-
-" Tab Settings
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set softtabstop=0
-set smarttab
-set shiftround
-
-" Live Previews for Substitutions
-set inccommand=nosplit
 
 " Let's save undo info!
 if !isdirectory($HOME."/.undodir")
@@ -92,8 +57,6 @@ endif
 if !isdirectory($HOME."/.undodir")
     call mkdir($HOME."/.undodir", "", 0700)
 endif
-set undodir=~/.undodir
-set undofile
 
 " File Reloading
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
@@ -116,14 +79,6 @@ au BufWritePre *.vim :%s/\s\+$//e
 
 " ----- Keymappings -----
 
-" Normal Mode
-nnoremap j gj
-nnoremap k gk
-" nnoremap 0 ^
-nnoremap <leader>z :tabnew %<cr>
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>cf :let @+ = expand("%")<cr>
-
 " Command Mode
 command! Q q
 command! W w
@@ -133,35 +88,10 @@ command! Qw wq
 command! QW wq
 command! SO source $MYVIMRC
 
-" Window Navigation
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-
-" Terminal commands
-tnoremap <C-o> <C-\><C-n>
-nnoremap <leader>th :split term://zsh<cr>
-nnoremap <leader>tv :vsplit term://zsh<cr>
-
-" Visual
-vnoremap <leader>P "_dP
-
-" Fugitive
-nnoremap <Leader>gs :Git<cr>
-nnoremap <Leader>gd :Git diff<cr>
-nnoremap <Leader>gb :Git blame<cr>
-
 " FZF
-nnoremap <silent> <C-p> :Files<cr>
-" nnoremap <silent> <C-p> :FZF<cr>
-nnoremap <silent> <C-b> :Buffers<cr>
 let g:fzf_nvim_statusline = 0
-nnoremap <C-t> :Rg<cr>
 
 " GitGutter
-set updatetime=100
-set signcolumn=yes
 
 " Lightline
 let g:lightline = {
@@ -185,7 +115,7 @@ function! LightLineFilename()
   return expand('%')
 endfunction
 
-set showtabline=2
+" set showtabline=2
 set guioptions-=e
 
 " ALE
@@ -219,18 +149,11 @@ let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 0
 
 " let g:ale_elixir_elixir_ls_release='~/.cache/nvim/nvim_lsp/elixirls/elixir-ls/release/language_server.sh'
-" nnoremap <leader>af <Plug>(ale_fix)
 
 " NERDTree
 let g:NERDTreeShowHidden=1
-map <C-n> :NERDTreeToggle<CR>
-nmap <leader>n :NERDTreeFind<CR>
 
 " VimTest
-nnoremap <silent> <leader>tn :TestNearest<CR>
-nnoremap <silent> <leader>tf :TestFile<CR>
-nnoremap <silent> <leader>tl :TestLast<CR>
-nnoremap <silent> <leader>tv :TestVisit<CR>
 let test#strategy = "neovim"
 " let b:in_sports_reop = split(execute("pwd"), "/")[-1] == sports
 "   let b:current_proj = split(expand("%"), "/")[0]
@@ -265,7 +188,6 @@ let g:user_emmet_leader_key='<C-Z>'
 
 " Ruby
 autocmd FileType ruby nnoremap <leader>pr orequire "pry-byebug"; binding.pry<esc>
-nmap <leader>ss :call DispatchRspec()<cr>
 
 function! DispatchRspec()
   execute ":Dispatch bundle exec rspec --no-color --no-profile -f p %"
@@ -388,7 +310,6 @@ let g:projectionist_heuristics = {
 " menuone: popup even when there's only one match
 " noinsert: Do not insert text until a selection is made
 " noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
@@ -404,10 +325,6 @@ let g:diagnostic_insert_delay = 1
 
 " Show diagnostic popup on cursor hover
 autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
-
-" Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
-nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
 
 " Enable type inlay hints
 " autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
@@ -425,9 +342,10 @@ function! s:check_back_space() abort
 endfunction
 
 " Code navigation shortcuts
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gy <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> gy <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
 " nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 " nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 " nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
