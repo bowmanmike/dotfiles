@@ -47,5 +47,3 @@ remap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { noremap=tru
 
 -- Ruby
 remap('n', '<leader>ss', ':call DispatchRspec()<cr>', { noremap=true })
-
-print('Sourced keybindings')
