@@ -125,7 +125,8 @@ let g:ale_linters = {}
 let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
 let g:ale_linters['scss'] = ['scsslint']
 let g:ale_linters['css'] = ['scsslint']
-let g:ale_linters['elixir'] = ['credo', 'mix', 'dogma']
+let g:ale_linters['elixir'] = []
+" let g:ale_linters['elixir'] = ['credo',  'elixir-ls', 'dogma']
 " let g:ale_linters['elixir'] = ['credo', 'elixir-ls']
 " let g:ale_linters['elixir'] = []
 " let g:ale_linters['elixir'] = ['elixir-ls']
@@ -147,8 +148,9 @@ let g:ale_fixers = {
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 0
+let g:ale_linters_explicit = 1
 
-" let g:ale_elixir_elixir_ls_release='~/.cache/nvim/nvim_lsp/elixirls/elixir-ls/release/language_server.sh'
+let g:ale_elixir_elixir_ls_release='~/.cache/nvim/nvim_lsp/elixirls/elixir-ls/release/language_server.sh'
 
 " NERDTree
 let g:NERDTreeShowHidden=1

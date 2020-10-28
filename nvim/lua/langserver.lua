@@ -11,7 +11,7 @@ end
 -- Enable lang servers
 nvim_lsp.cssls.setup({ on_attach=on_attach })
 nvim_lsp.dockerls.setup({ on_attach=on_attach })
-nvim_lsp.elixirls.setup({ on_attach=on_attach })
+nvim_lsp.elixirls.setup({ on_attach=on_attach, settings={ fetchDeps=false, dialyzerFormat='dialyxir_short' } })
 nvim_lsp.html.setup({ on_attach=on_attach })
 nvim_lsp.jedi_language_server.setup({ on_attach=on_attach }) -- python
 nvim_lsp.jsonls.setup({ on_attach=on_attach })
