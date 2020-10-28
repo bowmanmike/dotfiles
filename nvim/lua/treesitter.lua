@@ -5,5 +5,8 @@ treesitter.setup {
   },
   indent = {
     enable = true
+  },
+  fold = {
+    enable = true
   }
 }

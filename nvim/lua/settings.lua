@@ -54,5 +54,6 @@ local core_options = function()
 end
 
 -- vim.cmd('let mapleader = \"<space>\"')
-vim.cmd('colorscheme embark')
+-- vim.cmd('colorscheme embark')
+vim.cmd('colorscheme moonfly')
 core_options()

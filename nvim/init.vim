@@ -19,6 +19,8 @@ Plug 'janko/vim-test'
 Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
 Plug 'skbolton/embark'
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'bluz71/vim-moonfly-colors'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -95,7 +97,7 @@ let g:fzf_nvim_statusline = 0
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'embark',
+      \ 'colorscheme': 'moonfly',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
