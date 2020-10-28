@@ -1,0 +1,7 @@
+#!/bin/sh
+
+jq "." -C "$1" |
+  fzf --ansi --phony --reverse \
+  --bind "change:reload(jq {q} -C $1)" \
+  --bind "enter:execute-silent(echo {} | xsel)" \
+  --bind "ctrl-k:reload(jq {q}' | keys' -C $1)"
