@@ -29,7 +29,7 @@ remap('n', '<C-t>', ':Rg<cr>', { noremap=true, silent=true })
 
 -- NERDTree
 remap('n', '<C-n>', ':NERDTreeToggle<cr>', { noremap=true })
-remap('n', '<leader>n', 'NERDTreeFind<cr>', { noremap=true })
+remap('n', '<leader>n', ':NERDTreeFind<cr>', { noremap=true })
 
 -- VimTest
 remap('n', '<leader>tn', ':TestNearest<cr>', { noremap=true, silent=true })
