@@ -14,8 +14,8 @@ remap('', '<C-k>', '<C-w>k', { noremap=true })
 remap('', '<C-l>', '<C-w>l', { noremap=true })
 
 remap('t', '<C-o>', '<C-\\><C-n>', { noremap=true })
-remap('t', '<leader>th', ':split term://zsh<cr>', { noremap=true })
-remap('t', '<leader>tv', ':vsplit term://zsh<cr>', { noremap=true })
+remap('n', '<leader>th', ':split term://zsh<cr>', { noremap=true })
+remap('n', '<leader>tv', ':vsplit term://zsh<cr>', { noremap=true })
 
  -- Fugitive
 remap('n', '<leader>gs', ':Git<cr>', { noremap=true })
@@ -35,7 +35,7 @@ remap('n', '<leader>n', ':NERDTreeFind<cr>', { noremap=true })
 remap('n', '<leader>tn', ':TestNearest<cr>', { noremap=true, silent=true })
 remap('n', '<leader>tf', ':TestFile<cr>', { noremap=true, silent=true })
 remap('n', '<leader>tl', ':TestLast<cr>', { noremap=true, silent=true })
-remap('n', '<leader>tv', ':TestVisit<cr>', { noremap=true, silent=true })
+-- remap('n', '<leader>tv', ':TestVisit<cr>', { noremap=true, silent=true })
 
 -- LSP
 remap('n', 'g[', '<cmd>PrevDiagnosticCycle<cr>', { noremap=true, silent=true })

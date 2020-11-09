@@ -21,6 +21,7 @@ Plug 'morhetz/gruvbox'
 Plug 'skbolton/embark'
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'

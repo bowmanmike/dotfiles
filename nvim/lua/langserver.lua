@@ -13,8 +13,10 @@ nvim_lsp.cssls.setup({ on_attach=on_attach })
 nvim_lsp.dockerls.setup({ on_attach=on_attach })
 nvim_lsp.elixirls.setup({ on_attach=on_attach, settings={ fetchDeps=false, dialyzerFormat='dialyxir_short' } })
 nvim_lsp.html.setup({ on_attach=on_attach })
-nvim_lsp.jedi_language_server.setup({ on_attach=on_attach }) -- python
+nvim_lsp.gopls.setup({ on_attach=on_attach })
+-- nvim_lsp.jedi_language_server.setup({ on_attach=on_attach }) -- python
 nvim_lsp.jsonls.setup({ on_attach=on_attach })
+nvim_lsp.pyls.setup({ on_attach=on_attach })
 nvim_lsp.rust_analyzer.setup({ on_attach=on_attach, cmd={'/usr/local/bin/rust-analyzer'} })
 nvim_lsp.solargraph.setup({ on_attach=on_attach, cmd={'solargraph', 'stdio'} })
 nvim_lsp.sumneko_lua.setup({ on_attach=on_attach })
