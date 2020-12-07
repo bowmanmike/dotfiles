@@ -147,6 +147,7 @@ let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
 let g:ale_linters['scss'] = ['scsslint']
 let g:ale_linters['css'] = ['scsslint']
 let g:ale_linters['elixir'] = []
+let g:ale_linters['ruby'] = ['rubocop', 'solargraph']
 " let g:ale_linters['elixir'] = ['credo',  'elixir-ls', 'dogma']
 " let g:ale_linters['elixir'] = ['credo', 'elixir-ls']
 " let g:ale_linters['elixir'] = []
@@ -178,23 +179,36 @@ let g:NERDTreeShowHidden=1
 
 " VimTest
 let test#strategy = "neovim"
-" let b:in_sports_reop = split(execute("pwd"), "/")[-1] == sports
-"   let b:current_proj = split(expand("%"), "/")[0]
-" endif
+
 " function! SetCWDForTest()
+"     echo "running func"
 "     let b:cwd = execute("pwd")
 "     let b:current_proj = split(expand("%"), "/")[0]
 "     let b:sports_repo = split(b:cwd, "/")
 
-"     if b:sports_repo[-1] == "sports"
-"       let test#project_root = join([b:cwd, b:current_proj], "/")
-"       echo test#project_root
+"     if (b:sports_repo[-1] == "sports") == v:true
+"       let b:root = join([b:cwd, b:current_proj], "/")
+"       " let test#project_root = join([b:cwd, b:current_proj], "/")
+"       echo "root"
+"       echo b:root
+"       echo "cwd"
+"       echo b:cwd
+"       echo "current proj"
+"       echo b:current_proj
+"       " echo test#project_root
+"       let test#project_root = b:root
 "     endif
 
-"     " echo b:sports_repo[-1]
-"     " echo b:current_proj
+"     echo b:sports_repo[-1]
+"     echo b:current_proj
 " endfunction
+" " let test#project_root = "/Users/mbowman/Projects/sports/influx"
 
+" augroup SetTestDir
+"   echo "running augroup"
+"   call SetCWDForTest()
+" augroup END
+" " autocmd BufRead call SetCWDForTest()
 
 " ------ Language Settings ------
 
