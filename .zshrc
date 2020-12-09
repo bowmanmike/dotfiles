@@ -98,7 +98,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 # Unset $PAGER
-export PAGER="less"
+export PAGER="less -F -X"
 
 # Add score deploy key
 [[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key

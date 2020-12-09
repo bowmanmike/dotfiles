@@ -1,5 +1,5 @@
 -- LSP object
-local nvim_lsp = require('nvim_lsp')
+local nvim_lsp = require('lspconfig')
 
 -- function to attach completion and diagnostics
 -- when setting up lsp
