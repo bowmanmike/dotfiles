@@ -37,6 +37,7 @@ Plug 'hashivim/vim-terraform'
 " Experiments
 Plug 'rust-lang/rust.vim'
 Plug 'mbbill/undotree'
+" Plug 'zxqfl/tabnine-vim'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -254,8 +255,11 @@ autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add 
 
 " Use homebrew installs of python 2 and 3, I think ASDF versions are super
 " slow to startup
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '~/.asdf/shims/python3'
 let g:python_host_prog = '/usr/local/bin/python2'
+
+" Rust
+autocmd FileType rust nmap <leader>cc :Cargo check<cr>
 
 " Projectionist
 let g:projectionist_heuristics = {
