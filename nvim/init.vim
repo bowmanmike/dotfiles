@@ -37,6 +37,7 @@ Plug 'hashivim/vim-terraform'
 " Experiments
 Plug 'rust-lang/rust.vim'
 Plug 'mbbill/undotree'
+Plug 'RRethy/vim-illuminate'
 " Plug 'zxqfl/tabnine-vim'
 
 " LSP
@@ -354,5 +355,12 @@ endfunction
 " nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 let g:rustfmt_autosave = 1
+
+augroup illuminate_augroup
+  autocmd!
+  autocmd VimEnter * hi illuminatedWord cterm=underline,italic gui=underline,italic
+augroup END
+
+" highlight CursorLine ctermbg=blue guibg=blue ctermfg=yellow guifg=yellow
 
 lua require("init")

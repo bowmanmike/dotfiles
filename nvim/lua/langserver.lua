@@ -3,8 +3,18 @@ local nvim_lsp = require('lspconfig')
 
 -- function to attach completion and diagnostics
 -- when setting up lsp
+-- local illuminate_enabled = { rust_analyzer=true, gopls=true, solargraph=true }
+
 local on_attach = function(client)
-    require'completion'.on_attach(client)
+  require'completion'.on_attach(client)
+  -- require'illuminate'.on_attach(client)
+
+  -- client_name = client[name]
+  -- if illuminate_enabled[client_name] then
+  --   require'illuminate'.on_attach(client)
+
+  --   vim.api.nvim_command [[ hi def link LspReferenceText CursorLine ]]
+  -- end
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
