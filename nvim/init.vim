@@ -39,6 +39,12 @@ Plug 'rust-lang/rust.vim'
 Plug 'mbbill/undotree'
 Plug 'RRethy/vim-illuminate'
 " Plug 'zxqfl/tabnine-vim'
+" Plug 'ms-jpq/chadtree'
+" Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
+" Plug 'mattn/vim-lsp-settings'
+" Plug 'anott03/nvim-lspinstall' " linux only :(
+" Plug 'alexaandru/nvim-lspupdate'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -52,6 +58,17 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 
 call plug#end()
+
+" if exists('g:neovim')
+"   nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
+"   xnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
+"   nnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
+"   xnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
+"   nnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
+"   xnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
+"   nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
+"   xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
+" endif
 
 " Basic Settings
 
@@ -259,8 +276,8 @@ autocmd FileType python nmap <leader>pd oimport pdb; pdb.set_trace()<esc> " Add 
 
 " Use homebrew installs of python 2 and 3, I think ASDF versions are super
 " slow to startup
-let g:python3_host_prog = '~/.asdf/shims/python3'
-let g:python_host_prog = '/usr/local/bin/python2'
+" let g:python3_host_prog = '~/.asdf/shims/python3'
+" let g:python_host_prog = '/usr/local/bin/python2'
 
 " Rust
 autocmd FileType rust nmap <leader>cc :Cargo check<cr>
@@ -366,4 +383,11 @@ augroup END
 
 " highlight CursorLine ctermbg=blue guibg=blue ctermfg=yellow guifg=yellow
 
+let g:completion_chain_complete_list = {
+    \ 'default': [
+    \    {'complete_items': ['lsp', 'snippet', 'tabnine' ]},
+    \    {'mode': '<c-p>'},
+    \    {'mode': '<c-n>'}
+    \]
+\}
 lua require("init")
