@@ -262,6 +262,9 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/mikebowman/Library/Caches/heroku/autocomplete/zs
 # The next line updates PATH for Netlify's Git Credential Helper.
 if [ -f '/Users/mikebowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mikebowman/.netlify/helper/path.zsh.inc'; fi
 
+# Erlang install options
+export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl)"
+
 # # Vi mode
 # # bindkey -v
 # export KEYTIMEOUT=1
