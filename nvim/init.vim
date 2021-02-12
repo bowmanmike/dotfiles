@@ -44,6 +44,9 @@ Plug 'RRethy/vim-illuminate'
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
+" Can't get these working
+" Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+" Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
