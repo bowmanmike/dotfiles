@@ -22,6 +22,7 @@ Plug 'skbolton/embark'
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'dracula/vim'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'

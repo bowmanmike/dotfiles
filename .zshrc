@@ -299,3 +299,7 @@ export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openss
 
 # autoload edit-command-line; zle -N edit-command-line
 # bindkey '^e' edit-command-line
+
+export ITERM2_SQUELCH_MARK=1
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
