@@ -5,6 +5,9 @@ local nvim_lsp = require('lspconfig')
 -- when setting up lsp
 -- local illuminate_enabled = { rust_analyzer=true, gopls=true, solargraph=true }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local on_attach = function(client)
   require'completion'.on_attach(client)
   -- require'illuminate'.on_attach(client)
@@ -38,8 +41,13 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- Enable lang servers
 nvim_lsp.cssls.setup({ on_attach=on_attach })
 nvim_lsp.dockerls.setup({ on_attach=on_attach })
+<<<<<<< Updated upstream
 nvim_lsp.elixirls.setup({ on_attach=on_attach, settings={ fetchDeps=false, dialyzerFormat='dialyxir_short' }, cmd={'/Users/mikebowman/coding/elixir/elixir-ls/release/language_server.sh'} })
 nvim_lsp.html.setup({ on_attach=on_attach })
+=======
+nvim_lsp.elixirls.setup({ on_attach=on_attach, settings={ fetchDeps=false, dialyzerFormat='dialyxir_short' }, cmd={'/Users/mbowman/coding/elixir/elixir-ls/release/language_server.sh'} })
+nvim_lsp.html.setup({ on_attach=on_attach, capabilities = capabilities })
+>>>>>>> Stashed changes
 nvim_lsp.gopls.setup({ on_attach=on_attach })
 -- nvim_lsp.jedi_language_server.setup({ on_attach=on_attach }) -- python
 nvim_lsp.jsonls.setup({ on_attach=on_attach })
@@ -49,3 +57,5 @@ nvim_lsp.solargraph.setup({ on_attach=on_attach, cmd={'solargraph', 'stdio'} })
 nvim_lsp.sumneko_lua.setup({ on_attach=on_attach })
 nvim_lsp.tsserver.setup({ on_attach=on_attach })
 nvim_lsp.yamlls.setup({ on_attach=on_attach })
+
+-- vim.lsp.set_log_level("debug")

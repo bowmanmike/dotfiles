@@ -29,7 +29,7 @@ Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'elixir-editors/vim-elixir'
 Plug 'mattn/emmet-vim'
-Plug 'othree/html5-syntax.vim'
+" Plug 'othree/html5-syntax.vim'
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'cespare/vim-toml'
@@ -39,7 +39,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'rust-lang/rust.vim'
 Plug 'mbbill/undotree'
 Plug 'RRethy/vim-illuminate'
-" Plug 'zxqfl/tabnine-vim'
 " Plug 'ms-jpq/chadtree'
 " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
 Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
@@ -51,12 +50,9 @@ Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
-" Can't get these working
-" Plug 'aca/completion-tabnine', { 'do': './install.sh' }
-" Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
 
 " Treesitter
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 call plug#end()
 
