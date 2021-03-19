@@ -41,7 +41,7 @@ Plug 'mbbill/undotree'
 Plug 'RRethy/vim-illuminate'
 " Plug 'ms-jpq/chadtree'
 " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
-Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
+" Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
 " Plug 'mattn/vim-lsp-settings'
 " Plug 'anott03/nvim-lspinstall' " linux only :(
 " Plug 'alexaandru/nvim-lspupdate'
