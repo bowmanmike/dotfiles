@@ -45,7 +45,6 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'hrsh7th/nvim-compe'
 
-
 " Plug 'ms-jpq/chadtree'
 " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
 " Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
@@ -355,15 +354,15 @@ set shortmess+=c
 " \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
 
 " Trigger completion with <Tab>
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ completion#trigger_completion()
+" inoremap <silent><expr> <TAB>
+"   \ pumvisible() ? "\<C-n>" :
+"   \ <SID>check_back_space() ? "\<TAB>" :
+"   \ completion#trigger_completion()
 
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+" function! s:check_back_space() abort
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
 
 " Code navigation shortcuts
 " nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>

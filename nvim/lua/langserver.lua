@@ -53,7 +53,13 @@ nvim_lsp.jsonls.setup({ on_attach = on_attach })
 nvim_lsp.pyls.setup({ on_attach = on_attach })
 nvim_lsp.rust_analyzer.setup({ on_attach = on_attach, cmd={'/usr/local/bin/rust-analyzer'} })
 nvim_lsp.solargraph.setup({ on_attach = on_attach, cmd={'solargraph', 'stdio'} })
-nvim_lsp.sumneko_lua.setup({ on_attach = on_attach, cmd={sumneko_binary, '-E', sumneko_root_path .. '/main.lua'} })
+nvim_lsp.sumneko_lua.setup({ on_attach = on_attach, cmd={sumneko_binary, '-E', sumneko_root_path .. '/main.lua'}, settings = {
+  Lua = {
+    diagnostics = {
+      globals = { 'vim' }
+    }
+  }
+} })
 nvim_lsp.tsserver.setup({ on_attach = on_attach })
 nvim_lsp.yamlls.setup({ on_attach = on_attach })
 
