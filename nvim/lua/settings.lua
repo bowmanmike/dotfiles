@@ -40,14 +40,18 @@ local core_options = function()
     undofile = true,
 
     -- GitGutter
-    updatetime = 100,
+    -- updatetime = 100,
+    -- signcolumn = 'yes',
+    --
+    -- Gitsigns
     signcolumn = 'yes',
 
     -- Lightline
     showtabline=2,
 
     -- LSP
-    completeopt = 'menuone,noinsert,noselect'
+    -- completeopt = 'menuone,noinsert,noselect'
+    completeopt = 'menuone,noselect'
   }
 
   setOptions(options)

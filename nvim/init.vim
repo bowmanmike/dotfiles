@@ -1,6 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -39,6 +39,13 @@ Plug 'hashivim/vim-terraform'
 Plug 'rust-lang/rust.vim'
 Plug 'mbbill/undotree'
 Plug 'RRethy/vim-illuminate'
+
+" Lua
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'hrsh7th/nvim-compe'
+
+
 " Plug 'ms-jpq/chadtree'
 " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
 " Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
@@ -49,7 +56,7 @@ Plug 'RRethy/vim-illuminate'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
-Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/completion-nvim'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -380,11 +387,11 @@ augroup END
 
 " highlight CursorLine ctermbg=blue guibg=blue ctermfg=yellow guifg=yellow
 
-let g:completion_chain_complete_list = {
-    \ 'default': [
-    \    {'complete_items': ['lsp', 'snippet', 'tabnine' ]},
-    \    {'mode': '<c-p>'},
-    \    {'mode': '<c-n>'}
-    \]
-\}
+" let g:completion_chain_complete_list = {
+"     \ 'default': [
+"     \    {'complete_items': ['lsp', 'snippet', 'tabnine' ]},
+"     \    {'mode': '<c-p>'},
+"     \    {'mode': '<c-n>'}
+"     \]
+" \}
 lua require("init")
