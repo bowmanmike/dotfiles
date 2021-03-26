@@ -114,9 +114,9 @@ plugins=(
   # jira
   # pip
   # python
-  rails
-  ruby
-  taskwarrior
+  # rails
+  # ruby
+  # taskwarrior
   # thefuck
   # tmux
   # yarn
@@ -209,17 +209,11 @@ alias mc="mix compile"
 alias tf="mix test `pbpaste`"
 alias mflt="mix format && mix lint && mix test"
 alias mps="iex -S mix phx.server"
-alias mil='mix identity_login mike.bowman+2@thescore.com 12345678b! | sed -n '\''6p'\'' | jq '\''.["Authorization"] | split(" ")[1]'\'''
 
 # Better git shortcuts
 alias glog="git log --oneline --decorate --graph -15"
 alias gcos="git checkout staging"
 alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
-
-# theScore Aliases
-alias finv='./run filter-inventory'
-alias ars='cd thescore-api && rs'
-alias arc='cd thescore-api && rc'
 
 alias dc='docker-compose'
 
