@@ -1,7 +1,7 @@
 -- gitsigns
 require('gitsigns').setup {
   -- numhl = true,
-  linehl = true,
+  -- linehl = true,
   signs = {
     add          = {hl = 'GitGutterAdd'   },
     change       = {hl = 'GitGutterChange'},
