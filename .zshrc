@@ -146,9 +146,8 @@ export PATH=$PATH:$GOROOT/bin
 # Unset $PAGER
 export PAGER="less -F -X"
 
-# Add score deploy key
-[[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
-[[ -f ~/dotfiles/.digital_ocean_token ]] && source ~/dotfiles/.digital_ocean_token
+# Maybe don't need this?
+[[ -f ~/dotfiles/.pagerduty-github-token ]] && source ~/dotfiles/.pagerduty-github-token
 
 # Add Rust to path
 export PATH=$HOME/.cargo/bin:$PATH
