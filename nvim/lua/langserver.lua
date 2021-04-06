@@ -37,19 +37,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     update_in_insert = false
   })
 
-local sumneko_root_path = '/Users/mikebowman/coding/lua/lua-language-server'
-local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
+local sumneko_root_path = '/Users/mbowman/coding/lua/lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
 
 -- Enable lang servers
-nvim_lsp.cssls.setup({on_attach = on_attach})
-nvim_lsp.dockerls.setup({on_attach = on_attach})
-nvim_lsp.elixirls.setup({
-  on_attach = on_attach,
-  settings = {fetchDeps = false, dialyzerFormat = 'dialyxir_short'},
-  cmd = {'/Users/mikebowman/coding/elixir/elixir-ls/release/language_server.sh'}
-})
-nvim_lsp.html.setup({capabilities = capabilities})
-nvim_lsp.gopls.setup({on_attach = on_attach})
+nvim_lsp.cssls.setup({ on_attach = on_attach })
+nvim_lsp.dockerls.setup({ on_attach = on_attach })
+-- nvim_lsp.elixirls.setup({ on_attach = on_attach, settings={ fetchDeps=false, dialyzerFormat='dialyxir_short' }, cmd={'/Users/mbowman/coding/elixir/elixir-ls/release/language_server.sh'} })
+nvim_lsp.elixirls.setup({ on_attach = on_attach, settings={ fetchDeps=false, dialyzerFormat='dialyxir_short' }, cmd={'/Users/mbowman/coding/elixir/langserver/language_server.sh'} })
+nvim_lsp.html.setup({ capabilities = capabilities })
+nvim_lsp.gopls.setup({ on_attach = on_attach })
 -- nvim_lsp.jedi_language_server.setup({ on_attach=on_attach }) -- python
 nvim_lsp.jsonls.setup({on_attach = on_attach})
 -- nvim_lsp.pyls.setup({ on_attach = on_attach })
@@ -66,8 +63,13 @@ nvim_lsp.sumneko_lua.setup({
   cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
   settings = {Lua = {diagnostics = {globals = {'vim'}}}}
 })
-nvim_lsp.tsserver.setup({on_attach = on_attach})
-nvim_lsp.yamlls.setup({on_attach = on_attach})
+nvim_lsp.tsserver.setup({ on_attach = on_attach })
+nvim_lsp.yamlls.setup({ on_attach = on_attach })
+nvim_lsp.terraformls.setup({ on_attach = on_attach })
+
+-- local metals_config = require('metals').bare_config
+-- metals_config.settings = { }
+>>>>>>> 87c60b0 (Update for PD)
 
 -- vim.lsp.set_log_level("debug")
 

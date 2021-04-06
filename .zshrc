@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/mikebowman/.oh-my-zsh
+export ZSH=/Users/mbowman/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -253,10 +253,10 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/mikebowman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=/Users/mbowman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 # The next line updates PATH for Netlify's Git Credential Helper.
-if [ -f '/Users/mikebowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mikebowman/.netlify/helper/path.zsh.inc'; fi
+# if [ -f '/Users/mbowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mbowman/.netlify/helper/path.zsh.inc'; fi
 
 # Erlang install options
 export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl)"
@@ -295,6 +295,16 @@ export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openss
 
 # autoload edit-command-line; zle -N edit-command-line
 # bindkey '^e' edit-command-line
+
+# >>> JVM installed by coursier >>>
+# export JAVA_HOME="/Users/mbowman/Library/Caches/Coursier/jvm/adopt@1.8.0-272/Contents/Home"
+# <<< JVM installed by coursier <<<
+
+# >>> coursier install directory >>>
+# export PATH="$PATH:/Users/mbowman/Library/Application Support/Coursier/bin"
+# <<< coursier install directory <<<
+
+export SBT_CREDENTIALS=$HOME/.sbt/credentials
 
 export ITERM2_SQUELCH_MARK=1
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
