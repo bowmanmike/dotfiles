@@ -379,6 +379,7 @@ let g:projectionist_heuristics = {
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
+set shortmess-=F
 
 " Configure LSP
 " https://github.com/neovim/nvim-lspconfig#rust_analyzer

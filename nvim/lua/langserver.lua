@@ -66,10 +66,12 @@ nvim_lsp.sumneko_lua.setup({
 nvim_lsp.tsserver.setup({ on_attach = on_attach })
 nvim_lsp.yamlls.setup({ on_attach = on_attach })
 nvim_lsp.terraformls.setup({ on_attach = on_attach })
+-- nvim_lsp.metals.setup({on_attach = on_attach, cmd = {"/Users/mbowman/.cache/nvim/nvim-metals/metals"}, root_dir=require('lspconfig/util').root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml", "version.sbt")})
 
--- local metals_config = require('metals').bare_config
--- metals_config.settings = { }
->>>>>>> 87c60b0 (Update for PD)
+vim.cmd [[augroup lsp]]
+vim.cmd [[au!]]
+vim.cmd [[au FileType scala,sbt lua require("metals").initialize_or_attach({})]]
+vim.cmd [[augroup end]]
 
 -- vim.lsp.set_log_level("debug")
 
