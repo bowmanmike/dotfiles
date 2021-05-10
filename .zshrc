@@ -307,6 +307,8 @@ export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openss
 
 export SBT_CREDENTIALS=$HOME/.sbt/credentials
 
+. ~/.asdf/plugins/java/set-java-home.zsh
+
 export ITERM2_SQUELCH_MARK=1
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
