@@ -16,6 +16,7 @@ local core_options = function()
   local options = {
     backup = false,
     clipboard = 'unnamed',
+    cursorline = true,
     expandtab = true,
     hlsearch = false,
     ignorecase = true,

@@ -19,7 +19,7 @@ remap('n', '<leader>tv', ':vsplit term://zsh<cr>', { noremap=true })
 
  -- Fugitive
 remap('n', '<leader>gs', ':Git<cr>', { noremap=true })
-remap('n', '<leader>gd', ':Git diff<cr>', { noremap=true })
+remap('n', '<leader>gd', ':Gdiffsplit<cr>', { noremap=true })
 remap('n', '<leader>gb', ':Git blame<cr>', { noremap=true })
 
 -- FZF
