@@ -33,7 +33,10 @@ Plug 'mattn/emmet-vim'
 Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'cespare/vim-toml'
-Plug 'hashivim/vim-terraform'
+" Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-hashicorp-tools'
+" Plug 'derekwyatt/vim-scala'
+Plug 'kchmck/vim-coffee-script'
 
 " Experiments
 Plug 'rust-lang/rust.vim'
@@ -41,9 +44,15 @@ Plug 'mbbill/undotree'
 Plug 'RRethy/vim-illuminate'
 
 " Lua
-Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'hrsh7th/nvim-compe'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'scalameta/nvim-metals'
+Plug 'sudormrfbin/cheatsheet.nvim'
+Plug 'mizlan/iswap.nvim'
+Plug 'nvim-treesitter/playground'
 
 " Plug 'ms-jpq/chadtree'
 " Plug 'aca/completion-tabnine', { 'do': './install.sh' }

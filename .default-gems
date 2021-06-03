@@ -1,3 +1,5 @@
 bundler
 neovim
 pry
+solargraph
+pry-byebug

@@ -162,6 +162,7 @@ export PATH=$PATH:${ANDROID_SDK_ROOT}/emulator
 export PATH=$PATH:${ANDROID_SDK_ROOT}/tools
 export PATH=$PATH:${ANDROID_SDK_ROOT}/platform-tools
 
+export PATH=$PATH:/usr/local/sbin:$HOME/.local/bin
 # Set GPG stuff
 export GPG_TTY=$(tty)
 

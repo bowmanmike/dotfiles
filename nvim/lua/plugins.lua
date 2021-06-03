@@ -10,6 +10,7 @@ require('gitsigns').setup {
     changedelete = {hl = 'GitGutterChange'},
   }
 }
+vim.api.nvim_set_keymap("n", "<leader>gbl", ":Gitsigns blame_line<cr>", {noremap = true})
 
 -- nvim-compe
 require'compe'.setup {
