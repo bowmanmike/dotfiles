@@ -45,6 +45,7 @@ remap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { noremap=true, silent=true 
 remap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { noremap=true, silent=true })
 remap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { noremap=true, silent=true })
 remap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<cr>', { noremap=true, silent=true })
+remap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', { noremap=true, silent=true })
 
 -- Ruby
 remap('n', '<leader>ss', ':call DispatchRspec()<cr>', { noremap=true })
