@@ -10,3 +10,14 @@ treesitter.setup {
     enable = true
   }
 }
+
+TreesitterStatusLine = function()
+  local opts = {
+    indicator_size = 100,
+    type_patterns = { "module", "class", "function", "method" },
+    transform_fn = function(line) return line end,
+    separator = ' -> '
+  }
+
+  treesitter.statusline(opts)
+end

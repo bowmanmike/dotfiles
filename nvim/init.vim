@@ -129,15 +129,25 @@ let g:fzf_nvim_statusline = 0
 " GitGutter
 
 " Lightline
+function! StatuslineTransform(line)
+  return line
+endfunction
+
+let g:statusline_opts = {
+      \ 'type_patterns': ['module', 'class', 'function', 'method'],
+      \ 'transform_fn': 'StatuslineTransform'
+      \}
 let g:lightline = {
       \ 'colorscheme': 'moonfly',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'], ['treesitter-scope']]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
-      \   'filename': 'LightLineFilename'
+      \   'filename': 'LightLineFilename',
+      \   'treesitter-scope': 'TreeSitterStatus'
       \ },
       \ }
 
@@ -145,6 +155,11 @@ let g:lightline.tabline = {
       \'left': [ ['tabs'] ],
       \'right': [ ['close'] ]
       \}
+
+function! TreeSitterStatus()
+  return luaeval("require('nvim-treesitter').statusline({type_patterns = {'module', 'class', 'function_definition',  'call',  'call_expression', 'function', 'method'}, separator = ' > '})")
+  " return luaeval("require('nvim-treesitter').statusline({type_patterns = {'module', 'class', 'function_definition',  'do_block', 'function', 'method'}, transform_fn = function(line) return line end, separator = '>'})")
+endfunction
 
 function! LightLineFilename()
   return expand('%')
