@@ -50,18 +50,14 @@ nvim_lsp.gopls.setup({ on_attach = on_attach })
 -- nvim_lsp.jedi_language_server.setup({ on_attach=on_attach }) -- python
 nvim_lsp.jsonls.setup({on_attach = on_attach})
 -- nvim_lsp.pyls.setup({ on_attach = on_attach })
-nvim_lsp.rust_analyzer.setup({
-  on_attach = on_attach,
-  cmd = {
-    "/Users/mikebowman/Library/Application Support/Code/User/globalStorage/matklad.rust-analyzer/rust-analyzer-x86_64-apple-darwin"
+nvim_lsp.rust_analyzer.setup({ on_attach = on_attach, cmd={"/Users/mbowman/Library/Application Support/Code/User/globalStorage/matklad.rust-analyzer/rust-analyzer-x86_64-apple-darwin"} })
+nvim_lsp.solargraph.setup({ on_attach = on_attach, cmd={'solargraph', 'stdio'} })
+nvim_lsp.sumneko_lua.setup({ on_attach = on_attach, cmd={sumneko_binary, '-E', sumneko_root_path .. '/main.lua'}, settings = {
+  Lua = {
+    diagnostics = {
+      globals = { 'vim' }
+    }
   }
-})
-nvim_lsp.solargraph
-  .setup({on_attach = on_attach, cmd = {'solargraph', 'stdio'}})
-nvim_lsp.sumneko_lua.setup({
-  on_attach = on_attach,
-  cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
-  settings = {Lua = {diagnostics = {globals = {'vim'}}}}
 })
 nvim_lsp.tsserver.setup({ on_attach = on_attach })
 nvim_lsp.yamlls.setup({ on_attach = on_attach })
