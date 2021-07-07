@@ -50,7 +50,7 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'scalameta/nvim-metals'
-Plug 'sudormrfbin/cheatsheet.nvim'
+" Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'mizlan/iswap.nvim'
 Plug 'nvim-treesitter/playground'
 
@@ -68,6 +68,8 @@ Plug 'tjdevries/lsp_extensions.nvim'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+
+Plug 'kristijanhusak/orgmode.nvim'
 
 call plug#end()
 
@@ -89,9 +91,6 @@ let mapleader = "\<space>"
 " Let's save undo info!
 if !isdirectory($HOME."/.undodir")
     call mkdir($HOME."/.undodir", "", 0770)
-endif
-if !isdirectory($HOME."/.undodir")
-    call mkdir($HOME."/.undodir", "", 0700)
 endif
 
 " File Reloading

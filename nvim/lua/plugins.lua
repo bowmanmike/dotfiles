@@ -12,6 +12,11 @@ require('gitsigns').setup {
 }
 vim.api.nvim_set_keymap("n", "<leader>gbl", ":Gitsigns blame_line<cr>", {noremap = true})
 
+require('orgmode').setup({
+  org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
+  org_default_notes_file = '~/Dropbox/org/refile.org',
+})
+
 -- nvim-compe
 require'compe'.setup {
   enabled = true;
@@ -26,6 +31,7 @@ require'compe'.setup {
   max_menu_width = 100;
   documentation = true;
   preselect = true;
+  orgmode = true;
 
   source = {
     path = true;
