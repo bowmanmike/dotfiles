@@ -37,6 +37,7 @@ Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-hashicorp-tools'
 " Plug 'derekwyatt/vim-scala'
 Plug 'kchmck/vim-coffee-script'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Experiments
 Plug 'rust-lang/rust.vim'
@@ -65,6 +66,10 @@ Plug 'nvim-treesitter/playground'
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 " Plug 'nvim-lua/completion-nvim'
+" Plug 'folke/trouble.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'mhartington/formatter.nvim'
+" Plug 'iamcco/diagnostic-languageserver'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -176,6 +181,7 @@ let g:ale_linters['go'] = ['golint', 'go vet', 'go build']
 let g:ale_linters['scss'] = ['scsslint']
 let g:ale_linters['css'] = ['scsslint']
 let g:ale_linters['elixir'] = []
+let g:ale_linters['javascript'] = ['eslint']
 " let g:ale_linters['elixir'] = ['credo',  'elixir-ls', 'dogma']
 " let g:ale_linters['elixir'] = ['credo', 'elixir-ls']
 " let g:ale_linters['elixir'] = []
@@ -191,7 +197,7 @@ let g:ale_pattern_options = {
 " let g:ale_fixers = {}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint', 'prettier'],
 \   'elixir': ['mix_format']
 \}
 
