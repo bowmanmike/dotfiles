@@ -62,7 +62,7 @@ O.lang.python.analysis.use_library_code_types = true
 
 -- go
 -- To change default formatter from gofmt to goimports
--- O.lang.formatter.go.exe = "goimports"
+O.lang.go.formatter.exe = "goimports"
 
 -- javascript
 O.lang.tsserver.linter = nil
@@ -75,9 +75,17 @@ O.lang.tsserver.linter = nil
 -- }
 
 -- scala
--- O.lang.scala.metals.active = true
+O.lang.scala.metals.active = true
 -- O.lang.scala.metals.server_version = "0.10.5",
 
+-- elixir
+O.lang.elixir.format_on_save = false
+O.lang.elixir.formatter = {}
+
+O.lang.html.formatter = {
+  exe = "prettier",
+  format_on_save = true
+}
 --LaTeX
 -- Options: https://github.com/latex-lsp/texlab/blob/master/docs/options.md
 O.lang.latex.active = true
@@ -105,7 +113,12 @@ O.lang.latex.latexindent.modify_line_breaks = false
 --         event = "InsertEnter"
 --     }
 -- }
-
+O.user_plugins = {
+  {"jiangmiao/auto-pairs"},
+  {"tpope/vim-surround"},
+  {"mattn/emmet-vim"}
+}
+vim.cmd [[ let g:user_emmet_leader_key='<C-Z>' ]]
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- O.user_autocommands = {{ "BufWinEnter", "*", "echo \"hi again\""}}
 
