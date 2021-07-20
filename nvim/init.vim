@@ -76,6 +76,8 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 Plug 'kristijanhusak/orgmode.nvim'
 
+Plug 'ThePrimeagen/harpoon'
+
 call plug#end()
 
 " if exists('g:neovim')
