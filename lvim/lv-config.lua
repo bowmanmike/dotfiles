@@ -13,7 +13,8 @@ an executable
 O.format_on_save = true
 O.lint_on_save = true
 O.completion.autocomplete = true
-O.colorscheme = "spacegray"
+-- O.colorscheme = "spacegray"
+O.colorscheme = "moonfly"
 O.default_options.wrap = true
 O.default_options.timeoutlen = 100
 -- keymappings
@@ -33,6 +34,10 @@ O.keys.leader_key = "space"
 -- { "<C-s>", ":w<cr>" },
 -- { "<C-c>", "<ESC>" },
 -- })
+require("lv-utils").add_keymap_normal_mode({silent = true}, {
+  {"<Tab>", ":bnext<CR>"},
+  {"<S-Tab>", ":bprevious<CR>"},
+})
 -- you can also use the native vim way directly
 -- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
 
@@ -116,9 +121,13 @@ O.lang.latex.latexindent.modify_line_breaks = false
 O.user_plugins = {
   {"jiangmiao/auto-pairs"},
   {"tpope/vim-surround"},
-  {"mattn/emmet-vim"}
+  {"mattn/emmet-vim"},
+  {'bluz71/vim-moonfly-colors'},
+  {"tpope/vim-fugitive"}
 }
+-- O.user_emmet_leader_key = "<C-Z>"
 vim.cmd [[ let g:user_emmet_leader_key='<C-Z>' ]]
+
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- O.user_autocommands = {{ "BufWinEnter", "*", "echo \"hi again\""}}
 
