@@ -16,3 +16,5 @@
 
 .thescore_deploy_key
 .digital_ocean_token
+
+lvim/plugin/packer-compiled.lua
