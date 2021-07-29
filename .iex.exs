@@ -1,6 +1,12 @@
 import_if_available(Ecto.Query)
+import_if_available(Ecto.Changeset)
 
-import_file("~/.iex/prompt_iex.exs")
-# import_file("~/.iex/colours_iex.exs")
-import_file("~/.iex/inspect_iex.exs")
-import_file("~/.iex/aliases_iex.exs")
+IEx.configure(
+  inspect: [
+    limit: :infinity,
+    charlists: :as_lists,
+    pretty: true,
+    binaries: :as_strings,
+    printable_limit: :infinity
+  ]
+)
