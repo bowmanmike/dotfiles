@@ -1,7 +1,6 @@
 -- Install packer
 local install_path = '/Users/mikebowman/.local/share/nvim/site/pack/packer/start/packer.nvim'
 
-print(install_path)
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
