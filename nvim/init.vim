@@ -78,6 +78,8 @@ Plug 'kristijanhusak/orgmode.nvim'
 
 Plug 'ThePrimeagen/harpoon'
 
+Plug 'kdheepak/lazygit.nvim'
+
 call plug#end()
 
 " if exists('g:neovim')

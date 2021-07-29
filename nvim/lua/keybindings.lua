@@ -21,6 +21,7 @@ remap('n', '<leader>tv', ':vsplit term://zsh<cr>', { noremap=true })
 remap('n', '<leader>gs', ':Git<cr>', { noremap=true })
 remap('n', '<leader>gd', ':Gdiffsplit<cr>', { noremap=true })
 remap('n', '<leader>gb', ':Git blame<cr>', { noremap=true })
+remap('n', '<leader>gp', ':Git push<cr>', { noremap=true })
 
 -- FZF
 remap('n', '<C-p>', ':Files<cr>', { noremap=true, silent=true })
@@ -49,3 +50,6 @@ remap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', { noremap=true, sil
 
 -- Ruby
 remap('n', '<leader>ss', ':call DispatchRspec()<cr>', { noremap=true })
+
+-- Lazygit
+remap('n', '<leader>lg', ':LazyGit<cr>', { noremap=true, silent=true })
