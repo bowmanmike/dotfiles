@@ -124,3 +124,14 @@ augroup FormatAutogroup
   autocmd BufWritePre *.js,*.rs FormatWrite
 augroup END
 ]], true)
+
+-- Emmet
+vim.g.user_emmet_leader_key = '<C-Z>'
+
+-- Illuminate
+ vim.cmd [[
+  augroup illuminate_augroup
+    autocmd!
+    autocmd VimEnter * hi illuminatedWord cterm=underline,italic gui=underline,italic
+  augroup END
+]]

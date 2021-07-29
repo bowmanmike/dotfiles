@@ -26,14 +26,13 @@ require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'jiangmiao/auto-pairs'
 
-
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
   use { 'junegunn/fzf.vim', requires = { 'junegunn/fzf', run = function() vim.fn["fzf#install"]() end } }
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use 'kyazdani42/nvim-web-devicons'
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/playground'
 
@@ -61,7 +60,7 @@ require('packer').startup(function()
   use 'dense-analysis/ale'
   use { 'scrooloose/nerdtree', cmd = 'NERDTreeToggle' }
   use 'tpope/vim-projectionist'
-  use 'janko/vim-test'
+  use 'vim-test/vim-test'
 
 
   use 'vim-ruby/vim-ruby'
@@ -119,11 +118,66 @@ vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
 vim.cmd [[colorscheme moonfly]]
 
+vim.o.showcmd = false
+
+-- File Reloading
+vim.cmd [[
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+]]
+
+-- Strip trailing whitespace
+vim.cmd [[
+au BufWritePre *.rb :%s/\s\+$//e
+au BufWritePre *.go :%s/\s\+$//e
+au BufWritePre *.js :%s/\s\+$//e
+au BufWritePre *.html :%s/\s\+$//e
+au BufWritePre *.css :%s/\s\+$//e
+au BufWritePre *.scss :%s/\s\+$//e
+au BufWritePre *.yaml :%s/\s\+$//e
+au BufWritePre *.ex :%s/\s\+$//e
+au BufWritePre *.exs :%s/\s\+$//e
+au BufWritePre *.json :%s/\s\+$//e
+au BufWritePre *.py :%s/\s\+$//e
+au BufWritePre *.vim :%s/\s\+$//e
+au BufWritePre *.lua :%s/\s\+$//e
+au BufWritePre *.scala :%s/\s\+$//e
+]]
+
+vim.cmd [[
+command! Q q
+command! W w
+command! Wq wq
+command! WQ wq
+command! Qw wq
+command! QW wq
+command! SO source $MYVIMRC
+]]
+
 --Set statusbar
+-- local function Treesitter_status_line()
+--   return "hello!"
+-- end
+
+-- vim.g.lightline = {
+--   colorscheme = 'moonfly',
+--   active = {
+--     left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } },
+--     right = { {'lineinfo'}, {'percent'}, { 'fileformat', 'fileencoding', 'filetype' }, { 'treesitter_status_line' } }
+-- },
+--   component_function = { gitbranch = 'fugitive#head', tresitter_scope = require('nvim-treesitter').statusline },
+-- }
 vim.g.lightline = {
   colorscheme = 'moonfly',
-  active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
+  active = {
+    left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } },
+  },
   component_function = { gitbranch = 'fugitive#head' },
+}
+
+vim.g.lightline.tabline = {
+  left = { { 'tabs' } },
+  right = { { 'close' } }
 }
 
 --Remap space as leader key
@@ -143,26 +197,26 @@ vim.g.indent_blankline_char_highlight = 'LineNr'
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Telescope
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-}
---Add leader shortcuts
-vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>st', [[<cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
+--require('telescope').setup {
+--  defaults = {
+--    mappings = {
+--      i = {
+--        ['<C-u>'] = false,
+--        ['<C-d>'] = false,
+--      },
+--    },
+--  },
+--}
+----Add leader shortcuts
+--vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>st', [[<cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
 
 -- Highlight on yank
 vim.api.nvim_exec(
@@ -324,5 +378,44 @@ vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true 
 -- Map compe confirm and complete functions
 vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
 vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', { expr = true })
+
+
+-- ALE
+vim.g.ale_ruby_rubocop_executable = 'bundle'
+vim.g.ale_sign_column_always = true
+vim.g.ale_lint_on_enter = false
+vim.g.ale_lint_on_save = true
+vim.g.ale_fix_on_save = false
+vim.g.ale_linters_explicit = true
+vim.g.ale_elixir_elixir_ls_release='~/.cache/nvim/nvim_lsp/elixirls/elixir-ls/release/language_server.sh'
+
+vim.g.ale_pattern_options = {
+  ['.*/node_modules/*.js'] = {
+    ale_enabled = false
+  },
+  ['.*/schema.rb'] = {
+    ale_enabled = false
+  }
+}
+
+vim.g.ale_linters = {
+  go = { 'golint', 'go vet', 'go build' },
+  scss = { 'scsslint' },
+  css = { 'scsslint' },
+  elixir = {},
+  javascript = { 'eslint' }
+}
+
+vim.g.ale_fixers = {
+  ['*'] = { 'remove_trailing_lines', 'trim_whitespace' },
+  javascript = { 'eslint', 'prettier' },
+  elixir = { 'mix_format' }
+}
+
+-- vim-test
+vim.cmd [[let test#strategy = 'neovim']]
+
+-- NERDTree
+vim.g.NERDTreeShowHidden = true
 
 require('base')
