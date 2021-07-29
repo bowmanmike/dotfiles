@@ -18,3 +18,4 @@
 .digital_ocean_token
 
 lvim/plugin/packer-compiled.lua
+nvim/site/pack/
