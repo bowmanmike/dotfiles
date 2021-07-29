@@ -19,3 +19,4 @@
 
 lvim/plugin/packer-compiled.lua
 nvim/site/pack/
+nvim/plugin/packer_compiled.lua
