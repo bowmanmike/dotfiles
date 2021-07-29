@@ -31,6 +31,7 @@ Thumbs.db
 .metadata/
 .elixir_ls/
 .vs/
+.metals/
 
 # Ignore GIN hot-reload
 gin-bin
