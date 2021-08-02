@@ -135,3 +135,9 @@ vim.g.user_emmet_leader_key = '<C-Z>'
     autocmd VimEnter * hi illuminatedWord cterm=underline,italic gui=underline,italic
   augroup END
 ]]
+
+require('toggleterm').setup {
+  open_mapping = [[<c-\>]],
+  insert_mapping = false,
+  direction = 'float'
+}

@@ -31,6 +31,7 @@ require('packer').startup(function()
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use 'kyazdani42/nvim-web-devicons'
+  use {"akinsho/nvim-toggleterm.lua"}
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
