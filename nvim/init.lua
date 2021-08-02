@@ -42,6 +42,7 @@ require('packer').startup(function()
   use 'scalameta/nvim-metals'
   use 'mizlan/iswap.nvim'
   use 'tjdevries/lsp_extensions.nvim'
+  use 'mattn/efm-langserver'
 
   use 'mhartington/formatter.nvim'
 
