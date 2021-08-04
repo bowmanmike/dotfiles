@@ -38,30 +38,38 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   })
 
 local sumneko_root_path = '/Users/mbowman/coding/lua/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
 -- Enable lang servers
-nvim_lsp.cssls.setup({ on_attach = on_attach })
-nvim_lsp.dockerls.setup({ on_attach = on_attach })
+nvim_lsp.cssls.setup({on_attach = on_attach})
+nvim_lsp.dockerls.setup({on_attach = on_attach})
 -- nvim_lsp.elixirls.setup({ on_attach = on_attach, settings={ fetchDeps=false, dialyzerFormat='dialyxir_short' }, cmd={'/Users/mbowman/coding/elixir/elixir-ls/release/language_server.sh'} })
-nvim_lsp.elixirls.setup({ on_attach = on_attach, settings={ fetchDeps=false, dialyzerFormat='dialyxir_short' }, cmd={'/Users/mbowman/coding/elixir/langserver/language_server.sh'} })
-nvim_lsp.html.setup({ capabilities = capabilities })
-nvim_lsp.gopls.setup({ on_attach = on_attach })
+nvim_lsp.elixirls.setup({
+  on_attach = on_attach,
+  settings = {fetchDeps = false, dialyzerFormat = 'dialyxir_short'},
+  cmd = {'/Users/mbowman/coding/elixir/langserver/language_server.sh'}
+})
+nvim_lsp.html.setup({capabilities = capabilities})
+nvim_lsp.gopls.setup({on_attach = on_attach})
 -- nvim_lsp.jedi_language_server.setup({ on_attach=on_attach }) -- python
 nvim_lsp.jsonls.setup({on_attach = on_attach})
 -- nvim_lsp.pyls.setup({ on_attach = on_attach })
-nvim_lsp.rust_analyzer.setup({ on_attach = on_attach, cmd={"/Users/mbowman/Library/Application Support/Code/User/globalStorage/matklad.rust-analyzer/rust-analyzer-x86_64-apple-darwin"} })
-nvim_lsp.solargraph.setup({ on_attach = on_attach, cmd={'solargraph', 'stdio'} })
-nvim_lsp.sumneko_lua.setup({ on_attach = on_attach, cmd={sumneko_binary, '-E', sumneko_root_path .. '/main.lua'}, settings = {
-  Lua = {
-    diagnostics = {
-      globals = { 'vim' }
-    }
+nvim_lsp.rust_analyzer.setup({
+  on_attach = on_attach,
+  cmd = {
+    "/Users/mbowman/Library/Application Support/Code/User/globalStorage/matklad.rust-analyzer/rust-analyzer-x86_64-apple-darwin"
   }
 })
-nvim_lsp.tsserver.setup({ on_attach = on_attach })
-nvim_lsp.yamlls.setup({ on_attach = on_attach })
-nvim_lsp.terraformls.setup({ on_attach = on_attach })
+nvim_lsp.solargraph
+  .setup({on_attach = on_attach, cmd = {'solargraph', 'stdio'}})
+nvim_lsp.sumneko_lua.setup({
+  on_attach = on_attach,
+  cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
+  settings = {Lua = {diagnostics = {globals = {'vim'}}}}
+})
+nvim_lsp.tsserver.setup({on_attach = on_attach})
+nvim_lsp.yamlls.setup({on_attach = on_attach})
+nvim_lsp.terraformls.setup({on_attach = on_attach})
 -- nvim_lsp.metals.setup({on_attach = on_attach, cmd = {"/Users/mbowman/.cache/nvim/nvim-metals/metals"}, root_dir=require('lspconfig/util').root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml", "version.sbt")})
 
 vim.cmd [[augroup lsp]]
