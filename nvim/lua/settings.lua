@@ -48,7 +48,7 @@ local core_options = function()
     signcolumn = 'yes',
 
     -- Lightline
-    showtabline=2,
+    showtabline = 2,
 
     -- LSP
     -- completeopt = 'menuone,noinsert,noselect'

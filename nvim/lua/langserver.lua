@@ -9,35 +9,39 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(client)
-    -- require'completion'.on_attach(client)
-    -- require'illuminate'.on_attach(client)
+  -- require'completion'.on_attach(client)
+  -- require'illuminate'.on_attach(client)
 
-    -- client_name = client[name]
-    -- if illuminate_enabled[client_name] then
-    --   require'illuminate'.on_attach(client)
+  -- client_name = client[name]
+  -- if illuminate_enabled[client_name] then
+  --   require'illuminate'.on_attach(client)
 
-    --   vim.api.nvim_command [[ hi def link LspReferenceText CursorLine ]]
-    -- end
+  --   vim.api.nvim_command [[ hi def link LspReferenceText CursorLine ]]
+  -- end
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        -- This will disable virtual text, like doing:
-        -- let g:diagnostic_enable_virtual_text = 0
-        -- virtual_text = false,
+  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- This will disable virtual text, like doing:
+    -- let g:diagnostic_enable_virtual_text = 0
+    -- virtual_text = false,
 
-        -- This is similar to:
-        -- let g:diagnostic_show_sign = 1
-        -- To configure sign display,
-        --  see: ":help vim.lsp.diagnostic.set_signs()"
-        signs = true,
+    -- This is similar to:
+    -- let g:diagnostic_show_sign = 1
+    -- To configure sign display,
+    --  see: ":help vim.lsp.diagnostic.set_signs()"
+    signs = true,
 
-        -- This is similar to:
-        -- "let g:diagnostic_insert_delay = 1"
-        update_in_insert = false
-    })
+    -- This is similar to:
+    -- "let g:diagnostic_insert_delay = 1"
+    update_in_insert = false
+  })
 
+<<<<<<< Updated upstream
 local sumneko_root_path = '/Users/mikebowman/coding/lua/lua-language-server'
+=======
+local sumneko_root_path = '/Users/mbowman/coding/lua/lua-language-server'
+>>>>>>> Stashed changes
 local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
 -- Enable lang servers
@@ -74,16 +78,25 @@ nvim_lsp.yamlls.setup({on_attach = on_attach})
 -- vim.lsp.set_log_level("debug")
 
 -- EFM Setup
--- from https://github.com/tomaskallup/dotfiles
+-- from https://github.com/tomaskallup/dotfiles and https://github.com/alex-popov-tech/.dotfiles/blob/master/nvim/.config/nvim/lua/lsp/servers/efm.lua
 
-local efm_languages = {
-    lua = {formatCommand = "lua-format -i", formatStdin = true}
+local luaFormat = {
+  formatCommand = "lua-format -i --indent-width=2 --tab-width=2 --continuation-indent-width=2",
+  formatStdin = true
 }
+
+local yaml = {
+  lintCommand = "yamllint -f parsable -",
+  lintStdin = true,
+  formatCommand = "prettier --stdin-filepath ${INPUT}",
+  formatStdin = true
+}
+local efm_languages = {lua = {luaFormat}, yaml = {yaml}}
+
 nvim_lsp.efm.setup {
-      init_options = {documentFormatting = true},
-    settings = {
-        rootMarkers = {'.git/'},
-        filetypes = vim.tbl_keys(efm_languages),
-        languages = efm_languages
-    }
+  root_dir = nvim_lsp.util.root_pattern(".git"),
+  filetypes = vim.tbl_keys(efm_languages),
+  init_options = {documentFormatting = true, codeAction = true},
+  settings = {languages = efm_languages},
+  on_attach = on_attach
 }

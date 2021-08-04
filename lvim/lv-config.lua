@@ -5,11 +5,8 @@ Linters should be
 filled in as strings with either
 a global executable or a path to
 an executable
-]]
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
+]] -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 -- general
-
 O.format_on_save = true
 O.lint_on_save = true
 O.completion.autocomplete = true
@@ -35,8 +32,7 @@ O.keys.leader_key = "space"
 -- { "<C-c>", "<ESC>" },
 -- })
 require("lv-utils").add_keymap_normal_mode({silent = true}, {
-  {"<Tab>", ":bnext<CR>"},
-  {"<S-Tab>", ":bprevious<CR>"},
+  {"<Tab>", ":bnext<CR>"}, {"<S-Tab>", ":bprevious<CR>"}
 })
 -- you can also use the native vim way directly
 -- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
@@ -52,7 +48,7 @@ O.plugin.nvimtree.show_icons.git = 0
 
 -- if you don't want all the parsers change this to a table of the ones you want
 O.treesitter.ensure_installed = "maintained"
-O.treesitter.ignore_install = { "haskell" }
+O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
 
 -- python
@@ -87,16 +83,15 @@ O.lang.scala.metals.active = true
 O.lang.elixir.format_on_save = false
 O.lang.elixir.formatter = {}
 
-O.lang.html.formatter = {
-  exe = "prettier",
-  format_on_save = true
-}
---LaTeX
+O.lang.html.formatter = {exe = "prettier", format_on_save = true}
+-- LaTeX
 -- Options: https://github.com/latex-lsp/texlab/blob/master/docs/options.md
 O.lang.latex.active = true
 O.lang.latex.aux_directory = "."
 O.lang.latex.bibtex_formatter = "texlab"
-O.lang.latex.build.args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" }
+O.lang.latex.build.args = {
+  "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f"
+}
 O.lang.latex.build.executable = "latexmk"
 O.lang.latex.build.forward_search_after = false
 O.lang.latex.build.on_save = false
@@ -119,11 +114,8 @@ O.lang.latex.latexindent.modify_line_breaks = false
 --     }
 -- }
 O.user_plugins = {
-  {"jiangmiao/auto-pairs"},
-  {"tpope/vim-surround"},
-  {"mattn/emmet-vim"},
-  {'bluz71/vim-moonfly-colors'},
-  {"tpope/vim-fugitive"}
+  {"jiangmiao/auto-pairs"}, {"tpope/vim-surround"}, {"mattn/emmet-vim"},
+  {'bluz71/vim-moonfly-colors'}, {"tpope/vim-fugitive"}
 }
 -- O.user_emmet_leader_key = "<C-Z>"
 vim.cmd [[ let g:user_emmet_leader_key='<C-Z>' ]]
