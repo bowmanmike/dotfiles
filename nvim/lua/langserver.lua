@@ -44,11 +44,9 @@ local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 nvim_lsp.cssls.setup({on_attach = on_attach})
 nvim_lsp.dockerls.setup({on_attach = on_attach})
 nvim_lsp.elixirls.setup({
-    on_attach = on_attach,
-    settings = {fetchDeps = false, dialyzerFormat = 'dialyxir_short'},
-    cmd = {
-        '/Users/mikebowman/coding/elixir/elixir-ls/release/language_server.sh'
-    }
+  on_attach = on_attach,
+  settings = {fetchDeps = false, dialyzerFormat = 'dialyxir_short'},
+  cmd = {'/Users/mikebowman/coding/elixir/elixir-ls/release/language_server.sh'}
 })
 nvim_lsp.html.setup({capabilities = capabilities})
 nvim_lsp.gopls.setup({on_attach = on_attach})
@@ -56,17 +54,17 @@ nvim_lsp.gopls.setup({on_attach = on_attach})
 nvim_lsp.jsonls.setup({on_attach = on_attach})
 -- nvim_lsp.pyls.setup({ on_attach = on_attach })
 nvim_lsp.rust_analyzer.setup({
-    on_attach = on_attach,
-    cmd = {
-        "/Users/mikebowman/Library/Application Support/Code/User/globalStorage/matklad.rust-analyzer/rust-analyzer-x86_64-apple-darwin"
-    }
+  on_attach = on_attach,
+  cmd = {
+    "/Users/mikebowman/Library/Application Support/Code/User/globalStorage/matklad.rust-analyzer/rust-analyzer-x86_64-apple-darwin"
+  }
 })
 nvim_lsp.solargraph
-    .setup({on_attach = on_attach, cmd = {'solargraph', 'stdio'}})
+  .setup({on_attach = on_attach, cmd = {'solargraph', 'stdio'}})
 nvim_lsp.sumneko_lua.setup({
-    on_attach = on_attach,
-    cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
-    settings = {Lua = {diagnostics = {globals = {'vim'}}}}
+  on_attach = on_attach,
+  cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
+  settings = {Lua = {diagnostics = {globals = {'vim'}}}}
 })
 nvim_lsp.tsserver.setup({on_attach = on_attach})
 nvim_lsp.yamlls.setup({on_attach = on_attach})
@@ -77,7 +75,7 @@ nvim_lsp.yamlls.setup({on_attach = on_attach})
 -- from https://github.com/tomaskallup/dotfiles and https://github.com/alex-popov-tech/.dotfiles/blob/master/nvim/.config/nvim/lua/lsp/servers/efm.lua
 
 local luaFormat = {
-  formatCommand = "lua-format -i --indent-width=2 --tab-width=2 --continuation-indent-width=2",
+  formatCommand = "lua-format -i -c ~/.lua-format",
   formatStdin = true
 }
 
