@@ -37,11 +37,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     update_in_insert = false
   })
 
-<<<<<<< Updated upstream
 local sumneko_root_path = '/Users/mikebowman/coding/lua/lua-language-server'
-=======
-local sumneko_root_path = '/Users/mbowman/coding/lua/lua-language-server'
->>>>>>> Stashed changes
 local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
 -- Enable lang servers
