@@ -141,3 +141,10 @@ require('toggleterm').setup {
   insert_mapping = false,
   direction = 'float'
 }
+
+require('shade').setup {
+  overlay_opacity = 50,
+  opacity_step = 1,
+}
+
+require('twilight').setup {}

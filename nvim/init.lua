@@ -88,6 +88,8 @@ require('packer').startup(function()
 
   use 'kdheepak/lazygit.nvim'
 
+  use 'sunjon/Shade.nvim'
+  use 'folke/twilight.nvim'
 end)
 
 -- Incremental live completion
