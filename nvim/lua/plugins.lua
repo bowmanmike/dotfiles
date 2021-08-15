@@ -142,9 +142,10 @@ require('toggleterm').setup {
   direction = 'float'
 }
 
-require('shade').setup {
-  overlay_opacity = 50,
-  opacity_step = 1,
-}
+require('shade').setup {overlay_opacity = 80, opacity_step = 1}
 
-require('twilight').setup {}
+require('twilight').setup {
+  expand = {
+    "function_definition", "function", "method", "table", "if_statement"
+  }
+}
