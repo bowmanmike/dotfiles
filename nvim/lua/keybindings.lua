@@ -29,8 +29,12 @@ remap('n', '<C-b>', ':Buffers<cr>', {noremap = true, silent = true})
 remap('n', '<C-t>', ':Rg<cr>', {noremap = true, silent = true})
 
 -- NERDTree
-remap('n', '<C-n>', ':NERDTreeToggle<cr>', {noremap = true})
-remap('n', '<leader>n', ':NERDTreeFind<cr>', {noremap = true})
+-- remap('n', '<C-n>', ':NERDTreeToggle<cr>', {noremap = true})
+-- remap('n', '<leader>n', ':NERDTreeFind<cr>', {noremap = true})
+
+-- NVIMTree
+remap('n', '<C-n>', ':NvimTreeToggle<cr>', {noremap = true})
+remap('n', '<leader>n', ':NvimTreeFindFile<cr>', {noremap = true})
 
 -- VimTest
 remap('n', '<leader>tn', ':TestNearest<cr>', {noremap = true, silent = true})

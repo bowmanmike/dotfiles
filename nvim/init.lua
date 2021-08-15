@@ -66,6 +66,7 @@ require('packer').startup(function()
 
   use 'dense-analysis/ale'
   use {'scrooloose/nerdtree', cmd = 'NERDTreeToggle'}
+  use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
   use 'tpope/vim-projectionist'
   use 'vim-test/vim-test'
 
