@@ -85,7 +85,19 @@ local yaml = {
   formatCommand = "prettier --stdin-filepath ${INPUT}",
   formatStdin = true
 }
-local efm_languages = {lua = {luaFormat}, yaml = {yaml}}
+
+local javascript = {
+  formatCommand = "prettier --stdin-filepath ${INPUT}",
+  formatStdin = true
+}
+local efm_languages = {
+  lua = {luaFormat},
+  yaml = {yaml},
+  javascript = {javascript},
+  typescript = {javascript},
+  javascriptreact = {javascript},
+  typescriptreact = {javascript}
+}
 
 nvim_lsp.efm.setup {
   root_dir = nvim_lsp.util.root_pattern(".git"),

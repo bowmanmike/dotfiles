@@ -406,12 +406,18 @@ vim.g.ale_linters = {
   scss = {'scsslint'},
   css = {'scsslint'},
   elixir = {},
-  javascript = {'eslint'}
+  javascript = {'eslint'},
+  javascriptreact = {'eslint'},
+  typescript = {'tslint', 'tsserver'},
+  typescriptreact = {'tslint', 'tsserver'}
 }
 
 vim.g.ale_fixers = {
   ['*'] = {'remove_trailing_lines', 'trim_whitespace'},
   javascript = {'eslint', 'prettier'},
+  javascriptreact = {'eslint', 'prettier'},
+  typescript = {'prettier'},
+  typescriptreact = {'prettier'},
   elixir = {'mix_format'}
 }
 

@@ -88,6 +88,30 @@ vim.api.nvim_set_keymap("n", "<leader>f",
 require('formatter').setup({
   logging = false,
   filetype = {
+    typescript = {
+      -- prettier
+      function()
+        return {
+          exe = "prettier",
+          args = {
+            "--stdin-filepath", vim.api.nvim_buf_get_name(0) --, '--single-quote'
+          },
+          stdin = true
+        }
+      end
+    },
+    typescriptreact = {
+      -- prettier
+      function()
+        return {
+          exe = "prettier",
+          args = {
+            "--stdin-filepath", vim.api.nvim_buf_get_name(0) --, '--single-quote'
+          },
+          stdin = true
+        }
+      end
+    },
     javascript = {
       -- prettier
       function()
@@ -121,7 +145,7 @@ require('formatter').setup({
 vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePre *.js,*.rs FormatWrite
+  autocmd BufWritePre *.js,*.rs,*.tsx,*.ts FormatWrite
 augroup END
 ]], true)
 
