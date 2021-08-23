@@ -10,12 +10,11 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'filename'},
-    -- lualine_c = {'filename'},
-    lualine_c = {gps.get_location, condition = gps.is_available},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_b = {'filename'},
+    lualine_c = {{'diagnostics', sources = {'nvim_lsp'}}, {gps.get_location, condition = gps.is_available}},
+    lualine_x = {'filetype'},
+    lualine_y = {{'diff', colored = false}},
+    lualine_z = {'progress', 'location'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -25,8 +24,15 @@ require('lualine').setup({
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
-  extensions = {}
+  tabline = {
+    lualine_a = {},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {''},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  extensions = {'fugitive', 'nvim-tree', 'fzf'}
 })
 
 gps.setup({

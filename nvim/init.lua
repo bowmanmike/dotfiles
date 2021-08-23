@@ -52,12 +52,6 @@ require('packer').startup(function()
 
   use 'mhartington/formatter.nvim'
 
-  -- use 'ludovicchabant/vim-gutentags' -- Automatic tags management
-
-  use {
-    'hoob3rt/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
   use 'nanotech/jellybeans.vim'
   use 'morhetz/gruvbox'
   use 'skbolton/embark'
@@ -66,6 +60,12 @@ require('packer').startup(function()
   use 'christianchiarulli/nvcode-color-schemes.vim'
   use 'dracula/vim'
   use 'joshdick/onedark.vim' -- Theme inspired by Atom
+
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+  -- use {'romgrk/barbar.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
   use 'dense-analysis/ale'
   use {'scrooloose/nerdtree', cmd = 'NERDTreeToggle'}
@@ -134,6 +134,7 @@ vim.g.onedark_terminal_italics = 2
 vim.cmd [[colorscheme moonfly]]
 
 vim.o.showcmd = false
+vim.o.showmode = false
 
 -- File Reloading
 vim.cmd [[
@@ -168,32 +169,6 @@ command! Qw wq
 command! QW wq
 command! SO source $MYVIMRC
 ]]
-
--- Set statusbar
--- local function Treesitter_status_line()
---   return "hello!"
--- end
-
--- vim.g.lightline = {
---   colorscheme = 'moonfly',
---   active = {
---     left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } },
---     right = { {'lineinfo'}, {'percent'}, { 'fileformat', 'fileencoding', 'filetype' }, { 'treesitter_status_line' } }
--- },
---   component_function = { gitbranch = 'fugitive#head', tresitter_scope = require('nvim-treesitter').statusline },
--- }
-
-vim.g.lightline = {
-  colorscheme = 'moonfly',
-  active = {
-    left = {
-      {'mode', 'paste'}, {'gitbranch', 'readonly', 'filename', 'modified'}
-    }
-  },
-  component_function = {gitbranch = 'fugitive#head'}
-}
-
-vim.g.lightline.tabline = {left = {{'tabs'}}, right = {{'close'}}}
 
 -- Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', {noremap = true, silent = true})
