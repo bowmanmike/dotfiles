@@ -1,7 +1,55 @@
+-- lualine
+local gps = require('nvim-gps')
+require('lualine').setup({
+  options = {
+    icons_enabled = true,
+    theme = 'moonfly',
+    component_separators = {'', ''},
+    section_separators = {'', ''},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'filename'},
+    -- lualine_c = {'filename'},
+    lualine_c = {gps.get_location, condition = gps.is_available},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+})
+
+gps.setup({
+  icons = {
+    ["class-name"] = ' ', -- Classes and class-like objects
+    ["function-name"] = ' ', -- Functions
+    ["method-name"] = ' ' -- Methods (functions inside class-like objects)
+  },
+  languages = { -- You can disable any language individually here
+    ["c"] = true,
+    ["cpp"] = true,
+    ["go"] = true,
+    ["java"] = true,
+    ["javascript"] = true,
+    ["lua"] = true,
+    ["python"] = true,
+    ["rust"] = true
+  },
+  separator = ' > '
+})
+
 -- gitsigns
 require('gitsigns').setup {
-  -- numhl = true,
-  -- linehl = true,
   signs = {
     add = {hl = 'GitGutterAdd'},
     change = {hl = 'GitGutterChange'},
@@ -88,6 +136,30 @@ vim.api.nvim_set_keymap("n", "<leader>f",
 require('formatter').setup({
   logging = false,
   filetype = {
+    typescript = {
+      -- prettier
+      function()
+        return {
+          exe = "prettier",
+          args = {
+            "--stdin-filepath", vim.api.nvim_buf_get_name(0) -- , '--single-quote'
+          },
+          stdin = true
+        }
+      end
+    },
+    typescriptreact = {
+      -- prettier
+      function()
+        return {
+          exe = "prettier",
+          args = {
+            "--stdin-filepath", vim.api.nvim_buf_get_name(0) -- , '--single-quote'
+          },
+          stdin = true
+        }
+      end
+    },
     javascript = {
       -- prettier
       function()
@@ -121,7 +193,7 @@ require('formatter').setup({
 vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePre *.js,*.rs FormatWrite
+  autocmd BufWritePre *.js,*.rs,*.tsx,*.ts FormatWrite
 augroup END
 ]], true)
 
@@ -149,3 +221,5 @@ require('twilight').setup {
     "function_definition", "function", "method", "table", "if_statement"
   }
 }
+
+require('colorizer').setup({})

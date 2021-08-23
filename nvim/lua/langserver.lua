@@ -70,6 +70,8 @@ nvim_lsp.sumneko_lua.setup({
 nvim_lsp.tsserver.setup({on_attach = on_attach})
 nvim_lsp.yamlls.setup({on_attach = on_attach})
 nvim_lsp.terraformls.setup({on_attach = on_attach})
+nvim_lsp.tailwindcss.setup({on_attach = on_attach})
+
 -- nvim_lsp.metals.setup({on_attach = on_attach, cmd = {"/Users/mbowman/.cache/nvim/nvim-metals/metals"}, root_dir=require('lspconfig/util').root_pattern("build.sbt", "build.sc", "build.gradle", "pom.xml", "version.sbt")})
 
 vim.cmd [[augroup lsp]]
@@ -93,7 +95,19 @@ local yaml = {
   formatCommand = "prettier --stdin-filepath ${INPUT}",
   formatStdin = true
 }
-local efm_languages = {lua = {luaFormat}, yaml = {yaml}}
+
+local javascript = {
+  formatCommand = "prettier --stdin-filepath ${INPUT}",
+  formatStdin = true
+}
+local efm_languages = {
+  lua = {luaFormat},
+  yaml = {yaml},
+  javascript = {javascript},
+  typescript = {javascript},
+  javascriptreact = {javascript},
+  typescriptreact = {javascript}
+}
 
 nvim_lsp.efm.setup {
   root_dir = nvim_lsp.util.root_pattern(".git"),

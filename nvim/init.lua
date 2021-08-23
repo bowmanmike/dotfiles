@@ -54,7 +54,10 @@ require('packer').startup(function()
 
   -- use 'ludovicchabant/vim-gutentags' -- Automatic tags management
 
-  use 'itchyny/lightline.vim'
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
   use 'nanotech/jellybeans.vim'
   use 'morhetz/gruvbox'
   use 'skbolton/embark'
@@ -80,10 +83,13 @@ require('packer').startup(function()
   use 'cespare/vim-toml'
   use 'hashivim/vim-hashicorp-tools'
   use 'kchmck/vim-coffee-script'
+  use 'norcalli/nvim-colorizer.lua'
 
   use 'rust-lang/rust.vim'
   use 'mbbill/undotree'
   use 'RRethy/vim-illuminate'
+
+  use 'SmiteshP/nvim-gps'
 
   use 'ThePrimeagen/harpoon'
 
@@ -176,6 +182,7 @@ command! SO source $MYVIMRC
 -- },
 --   component_function = { gitbranch = 'fugitive#head', tresitter_scope = require('nvim-treesitter').statusline },
 -- }
+
 vim.g.lightline = {
   colorscheme = 'moonfly',
   active = {
@@ -406,12 +413,18 @@ vim.g.ale_linters = {
   scss = {'scsslint'},
   css = {'scsslint'},
   elixir = {},
-  javascript = {'eslint'}
+  javascript = {'eslint'},
+  javascriptreact = {'eslint'},
+  typescript = {'tslint', 'tsserver'},
+  typescriptreact = {'tslint', 'tsserver'}
 }
 
 vim.g.ale_fixers = {
   ['*'] = {'remove_trailing_lines', 'trim_whitespace'},
   javascript = {'eslint', 'prettier'},
+  javascriptreact = {'eslint', 'prettier'},
+  typescript = {'prettier'},
+  typescriptreact = {'prettier'},
   elixir = {'mix_format'}
 }
 
