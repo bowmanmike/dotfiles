@@ -54,7 +54,10 @@ require('packer').startup(function()
 
   -- use 'ludovicchabant/vim-gutentags' -- Automatic tags management
 
-  use 'itchyny/lightline.vim'
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
   use 'nanotech/jellybeans.vim'
   use 'morhetz/gruvbox'
   use 'skbolton/embark'
