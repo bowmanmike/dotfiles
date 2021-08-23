@@ -68,6 +68,7 @@ nvim_lsp.sumneko_lua.setup({
 })
 nvim_lsp.tsserver.setup({on_attach = on_attach})
 nvim_lsp.yamlls.setup({on_attach = on_attach})
+nvim_lsp.tailwindcss.setup({on_attach = on_attach})
 
 -- vim.lsp.set_log_level("debug")
 

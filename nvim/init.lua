@@ -80,10 +80,13 @@ require('packer').startup(function()
   use 'cespare/vim-toml'
   use 'hashivim/vim-hashicorp-tools'
   use 'kchmck/vim-coffee-script'
+  use 'norcalli/nvim-colorizer.lua'
 
   use 'rust-lang/rust.vim'
   use 'mbbill/undotree'
   use 'RRethy/vim-illuminate'
+
+  use 'SmiteshP/nvim-gps'
 
   use 'ThePrimeagen/harpoon'
 
@@ -176,6 +179,7 @@ command! SO source $MYVIMRC
 -- },
 --   component_function = { gitbranch = 'fugitive#head', tresitter_scope = require('nvim-treesitter').statusline },
 -- }
+
 vim.g.lightline = {
   colorscheme = 'moonfly',
   active = {

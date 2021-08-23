@@ -173,3 +173,5 @@ require('twilight').setup {
     "function_definition", "function", "method", "table", "if_statement"
   }
 }
+
+require('colorizer').setup({})
