@@ -10,8 +10,8 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', {'filename', file_status = true, path =1 }},
-    lualine_c = {{'diagnostics', sources = {'nvim_lsp'}}, {gps.get_location, condition = gps.is_available}},
+    lualine_b = {'branch', {'filename', file_status = true, path = 1}},
+    lualine_c = {{'diagnostics', sources = {'nvim_lsp'}}},
     -- GPS seems cool but I don't think it's quite ready for primetime yet
     -- lualine_c = {gps.get_location, condition = gps.is_available},
     lualine_x = {'filetype'},
