@@ -185,6 +185,15 @@ require('formatter').setup({
       function()
         return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
       end
+    },
+    css = {
+      function()
+        return {
+          exe = "prettier",
+          args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+          stdin = true
+        }
+      end
     }
     -- lua = {
     --     -- luafmt
@@ -230,4 +239,7 @@ require('twilight').setup {
   }
 }
 
-require('colorizer').setup({})
+require('colorizer').setup({
+  'css', 'javascript', 'html', 'javascriptreact', 'typescript',
+  'typescriptreact'
+})
