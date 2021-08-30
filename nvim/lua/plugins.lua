@@ -10,13 +10,13 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch'},
-    lualine_c = {{'filename', file_status = true, path = 1}},
+    lualine_b = {'branch', {'filename', file_status = true, path = 1}},
+    lualine_c = {{'diagnostics', sources = {'nvim_lsp'}}},
     -- GPS seems cool but I don't think it's quite ready for primetime yet
     -- lualine_c = {gps.get_location, condition = gps.is_available},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_x = {'filetype'},
+    lualine_y = {{'diff', colored = false}},
+    lualine_z = {'progress', 'location'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -26,8 +26,15 @@ require('lualine').setup({
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
-  extensions = {}
+  tabline = {
+    lualine_a = {},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {''},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  extensions = {'fugitive', 'nvim-tree', 'fzf'}
 })
 
 -- gps.setup({
@@ -178,6 +185,15 @@ require('formatter').setup({
       function()
         return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
       end
+    },
+    css = {
+      function()
+        return {
+          exe = "prettier",
+          args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+          stdin = true
+        }
+      end
     }
     -- lua = {
     --     -- luafmt
@@ -223,4 +239,7 @@ require('twilight').setup {
   }
 }
 
-require('colorizer').setup({})
+require('colorizer').setup({
+  'css', 'javascript', 'html', 'javascriptreact', 'typescript',
+  'typescriptreact'
+})
