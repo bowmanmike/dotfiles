@@ -49,6 +49,7 @@ require('packer').startup(function()
   use 'mizlan/iswap.nvim'
   use 'tjdevries/lsp_extensions.nvim'
   use 'mattn/efm-langserver'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   use 'mhartington/formatter.nvim'
 
