@@ -114,5 +114,8 @@ nvim_lsp.efm.setup {
   filetypes = vim.tbl_keys(efm_languages),
   init_options = {documentFormatting = true, codeAction = true},
   settings = {languages = efm_languages},
-  on_attach = on_attach
+  on_attach = on_attach,
+  formatOnSave = true
 }
+-- vim.api.nvim_exec(
+--   [[autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)]], true)

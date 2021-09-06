@@ -210,7 +210,7 @@ require('formatter').setup({
 vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePre *.js,*.rs,*.tsx,*.ts FormatWrite
+  autocmd BufWritePre *.rs,*.tsx,*.ts FormatWrite
 augroup END
 ]], true)
 
@@ -243,3 +243,18 @@ require('colorizer').setup({
   'css', 'javascript', 'html', 'javascriptreact', 'typescript',
   'typescriptreact'
 })
+
+require("nvim-treesitter.configs").setup {
+  context_commentstring = {
+    enable = true,
+    config = {
+      javascript = {
+        __default = '// %s',
+        jsx_element = '{/* %s */}',
+        jsx_fragment = '{/* %s */}',
+        jsx_attribute = '// %s',
+        comment = '// %s'
+      }
+    }
+  }
+}
