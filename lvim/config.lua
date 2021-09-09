@@ -98,6 +98,11 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   end
 -- end
 lvim.lsp.diagnostics.virtual_text = false
+lvim.builtin.lspinstall.on_config_done = function()
+	lvim.lang.tailwindcss.lsp.setup.filetypes = { "javascript", "javascriptreact" }
+	lvim.lang.tailwindcss.lsp.active = true
+	require("lsp").setup("tailwindcss")
+end
 
 -- set a formatter if you want to override the default lsp one (if it exists)
 lvim.lang.python.formatters = {
