@@ -10,22 +10,22 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["Y"] = "y$"
-lvim.keys.normal_mode["<leader>lg"] = ":LazyGit<cr>"
 lvim.keys.normal_mode["<leader>tn"] = ":TestNearest<cr>"
 lvim.keys.normal_mode["<leader>tf"] = ":TestFile<cr>"
 lvim.keys.normal_mode["<leader>ts"] = ":TestSuite<cr>"
-lvim.keys.normal_mode["<leader>gs"] = ":Git<cr>"
+-- lvim.keys.normal_mode["<leader>gs"] = ":Git<cr>"
 lvim.keys.normal_mode["<leader>gd"] = ":Gitdiffsplit<cr>"
 lvim.keys.normal_mode["<leader>gb"] = ":Git blame<cr>"
 lvim.keys.normal_mode["<leader>gp"] = ":Git push<cr>"
 lvim.keys.normal_mode["<leader>z"] = ":tabnew %<cr>"
+lvim.keys.normal_mode["<C-b>"] = ":Buffers<cr>"
 
 lvim.keys.visual_mode["<leader>P"] = '"_dP'
 
@@ -49,6 +49,7 @@ lvim.keys.term_mode["<C-o>"] = "<C-\\><C-n>"
 -- end
 
 -- Use which-key to add extra bindings with the leader-key prefix
+lvim.builtin.which_key.mappings["g"]["t"] = { "<cmd>Git<cr>", "Git Status" }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
@@ -72,6 +73,7 @@ lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
+-- lvim.builtin.lualine.sections.lualine_b = { "filename", file_status = true, path = 1 }
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
 -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
