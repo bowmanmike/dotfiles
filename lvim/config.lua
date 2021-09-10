@@ -50,6 +50,7 @@ lvim.keys.term_mode["<C-o>"] = "<C-\\><C-n>"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["g"]["t"] = { "<cmd>Git<cr>", "Git Status" }
+lvim.builtin.which_key.mappings["/"] = nil
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
@@ -67,11 +68,28 @@ lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.comment.active = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.playground.enable = true
+lvim.builtin.treesitter.context_commentstring = {
+	enable = true,
+	config = {
+		javascript = {
+			__default = "// %s",
+			jsx_element = "{/* %s */}",
+			jsx_fragment = "{/* %s */}",
+			jsx_attribute = "// %s",
+			comment = "// %s",
+		},
+	},
+}
+lvim.builtin.treesitter.rainbow = {
+	enable = true,
+}
 
 -- lvim.builtin.lualine.sections.lualine_b = { "filename", file_status = true, path = 1 }
 -- generic LSP settings
@@ -189,20 +207,6 @@ lvim.plugins = {
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		event = "BufRead",
-		setup = {
-			context_commentstring = {
-				enable = true,
-				config = {
-					javascript = {
-						__default = "// %s",
-						jsx_element = "{/* %s */}",
-						jsx_fragment = "{/* %s */}",
-						jsx_attribute = "// %s",
-						comment = "// %s",
-					},
-				},
-			},
-		},
 	},
 	{ "tpope/vim-projectionist" },
 	{ "vim-test/vim-test" },
@@ -232,6 +236,10 @@ lvim.plugins = {
 	},
 	{ "mattn/emmet-vim" },
 	{ "jiangmiao/auto-pairs" },
+	{
+		"nvim-treesitter/playground",
+		event = "BufRead",
+	},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
