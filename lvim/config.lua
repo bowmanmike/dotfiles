@@ -71,6 +71,8 @@ lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.comment.active = false
 lvim.builtin.lualine.options.theme = "moonfly"
 lvim.builtin.autopairs.active = false
+lvim.builtin.project.silent_chdir = false
+lvim.builtin.project.manual_mode = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = "maintained"
@@ -127,6 +129,11 @@ lvim.builtin.lspinstall.on_config_done = function()
 end
 
 -- set a formatter if you want to override the default lsp one (if it exists)
+lvim.lang.go.formatters = {
+	{
+		exe = "goimports",
+	},
+}
 lvim.lang.python.formatters = {
 	{
 		exe = "black",
@@ -242,6 +249,8 @@ lvim.plugins = {
 		"nvim-treesitter/playground",
 		event = "BufRead",
 	},
+	{ "elixir-editors/vim-elixir" },
+	{ "fatih/vim-go" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -284,3 +293,13 @@ command! SO source $MYVIMRC
 ]])
 
 vim.g.user_emmet_leader_key = "<C-Z>"
+
+vim.g.go_fmt_command = "goimports"
+vim.g.go_highlight_functions = true
+vim.g.go_highlight_function_calls = 1
+vim.g.go_highlight_fields = 1
+vim.g.go_highlight_types = 1
+vim.g.go_highlight_build_constraints = 1
+vim.g.go_fmt_fail_silently = 1
+vim.g.go_auto_sameids = 1
+vim.g.go_list_type = "quickfix"
