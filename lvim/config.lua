@@ -95,9 +95,8 @@ lvim.builtin.treesitter.context_commentstring = {
 		},
 	},
 }
-lvim.builtin.treesitter.rainbow = {
-	enable = true,
-}
+lvim.builtin.treesitter.rainbow = { enable = true }
+-- lvim.builtin.treesitter.autotag = { enable = true }
 
 -- lvim.builtin.lualine.sections.lualine_b = { "filename", file_status = true, path = 1 }
 -- generic LSP settings
@@ -133,43 +132,15 @@ lvim.builtin.lspinstall.on_config_done = function()
 end
 
 -- set a formatter if you want to override the default lsp one (if it exists)
-lvim.lang.go.formatters = {
-	{
-		exe = "goimports",
-	},
-}
-lvim.lang.python.formatters = {
-	{
-		exe = "black",
-	},
-}
-lvim.lang.lua.formatters = {
-	{
-		exe = "stylua",
-	},
-}
-lvim.lang.javascript.formatters = {
-	{
-		exe = "prettier",
-	},
-}
-lvim.lang.rust.formatters = {
-	{
-		exe = "rustfmt",
-	},
-}
+lvim.lang.go.formatters = { { exe = "goimports" } }
+lvim.lang.python.formatters = { { exe = "black" } }
+lvim.lang.lua.formatters = { { exe = "stylua" } }
+lvim.lang.javascript.formatters = { { exe = "prettier" } }
+lvim.lang.rust.formatters = { { exe = "rustfmt" } }
 
 -- set an additional linter
-lvim.lang.python.linters = {
-	{
-		exe = "flake8",
-	},
-}
-lvim.lang.lua.linters = {
-	{
-		exe = "luacheck",
-	},
-}
+lvim.lang.python.linters = { { exe = "flake8" } }
+lvim.lang.lua.linters = { { exe = "luacheck" } }
 
 -- Additional Plugins
 lvim.plugins = {
@@ -240,13 +211,13 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{
-		"windwp/nvim-ts-autotag",
-		event = "InsertEnter",
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
-	},
+	-- {
+	-- 	"windwp/nvim-ts-autotag",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("nvim-ts-autotag").setup()
+	-- 	end,
+	-- },
 	{ "mattn/emmet-vim" },
 	{ "jiangmiao/auto-pairs" },
 	{
