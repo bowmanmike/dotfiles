@@ -127,6 +127,11 @@ lvim.builtin.lspinstall.on_config_done = function()
 end
 
 -- set a formatter if you want to override the default lsp one (if it exists)
+lvim.lang.go.formatters = {
+  {
+    exe = "goimports"
+  }
+}
 lvim.lang.python.formatters = {
 	{
 		exe = "black",
