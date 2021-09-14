@@ -51,6 +51,10 @@ lvim.keys.term_mode["<C-o>"] = "<C-\\><C-n>"
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["g"]["t"] = { "<cmd>Git<cr>", "Git Status" }
 lvim.builtin.which_key.mappings["/"] = nil
+lvim.builtin.which_key.mappings["f"] = {
+	"<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>",
+	"Find Files",
+}
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
@@ -251,6 +255,9 @@ lvim.plugins = {
 	},
 	{ "elixir-editors/vim-elixir" },
 	{ "fatih/vim-go" },
+	{
+		"p00f/nvim-ts-rainbow",
+	},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
