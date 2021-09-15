@@ -49,10 +49,13 @@ lvim.keys.term_mode["<C-o>"] = "<C-\\><C-n>"
 -- end
 
 -- Use which-key to add extra bindings with the leader-key prefix
+lvim.builtin.telescope.defaults.path_display = function(opts, path)
+  return string.format("%s", path)
+end
 lvim.builtin.which_key.mappings["g"]["t"] = { "<cmd>Git<cr>", "Git Status" }
 lvim.builtin.which_key.mappings["/"] = nil
 lvim.builtin.which_key.mappings["f"] = {
-	"<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>",
+	"<cmd>Files<cr>",
 	"Find Files",
 }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
