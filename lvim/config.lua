@@ -141,12 +141,15 @@ end
 lvim.lang.go.formatters = { { exe = "goimports" } }
 lvim.lang.python.formatters = { { exe = "black" } }
 lvim.lang.lua.formatters = { { exe = "stylua" } }
-lvim.lang.javascript.formatters = { { exe = "prettier" } }
+lvim.lang.javascript.formatters = { { exe = "prettier" }, { exe = "eslint_d" } }
+lvim.lang.javascriptreact.formatters = lvim.lang.javascript.formatters
 lvim.lang.rust.formatters = { { exe = "rustfmt" } }
 
 -- set an additional linter
 lvim.lang.python.linters = { { exe = "flake8" } }
 lvim.lang.lua.linters = { { exe = "luacheck" } }
+lvim.lang.javascript.linters = { { exe = "eslint_d" } }
+lvim.lang.javascriptreact.linters = lvim.lang.javascript.linters
 
 -- Additional Plugins
 lvim.plugins = {
