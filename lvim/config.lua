@@ -311,3 +311,7 @@ vim.cmd([[
 ]])
 
 vim.cmd([[ let test#strategy = 'neovim' ]])
+vim.cmd [[
+  autocmd FileType elixir nmap <leader>rr orequire IEx; IEx.pry()<esc>
+  autocmd FileType elixir nnoremap <leader>in oIO.inspect()<esc>i
+]]
