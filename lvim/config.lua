@@ -29,7 +29,6 @@ lvim.keys.normal_mode["<leader>z"] = ":tabnew %<cr>"
 lvim.keys.normal_mode["<C-b>"] = ":Buffers<cr>"
 lvim.keys.normal_mode["<leader>cf"] = ":let @+ = expand('%')<cr>"
 
-
 lvim.keys.visual_mode["<leader>P"] = '"_dP'
 
 lvim.keys.term_mode["<C-o>"] = "<C-\\><C-n>"
@@ -53,7 +52,7 @@ lvim.keys.term_mode["<C-o>"] = "<C-\\><C-n>"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.telescope.defaults.path_display = function(opts, path)
-  return string.format("%s", path)
+	return string.format("%s", path)
 end
 lvim.builtin.which_key.mappings["g"]["t"] = { "<cmd>Git<cr>", "Git Status" }
 lvim.builtin.which_key.mappings["/"] = nil
@@ -144,12 +143,14 @@ lvim.lang.lua.formatters = { { exe = "stylua" } }
 lvim.lang.javascript.formatters = { { exe = "prettier" }, { exe = "eslint_d" } }
 lvim.lang.javascriptreact.formatters = lvim.lang.javascript.formatters
 lvim.lang.rust.formatters = { { exe = "rustfmt" } }
+lvim.lang.css.formatters = { { exe = "prettier" } }
 
 -- set an additional linter
 lvim.lang.python.linters = { { exe = "flake8" } }
 lvim.lang.lua.linters = { { exe = "luacheck" } }
 lvim.lang.javascript.linters = { { exe = "eslint_d" } }
 lvim.lang.javascriptreact.linters = lvim.lang.javascript.linters
+lvim.lang.css.linters = { { exe = "stylelint" } }
 
 -- Additional Plugins
 lvim.plugins = {
@@ -291,7 +292,7 @@ vim.g.go_fmt_fail_silently = 1
 vim.g.go_auto_sameids = 1
 vim.g.go_list_type = "quickfix"
 
-vim.cmd [[
+vim.cmd([[
   au FileType go nmap <leader>r <Plug>(go-run)
   autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
   au FileType go nmap <Leader>re <Plug>(go-rename)
@@ -307,6 +308,10 @@ vim.cmd [[
   autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-]]
+]])
 
-vim.cmd [[ let test#strategy = 'neovim' ]]
+vim.cmd([[ let test#strategy = 'neovim' ]])
+vim.cmd [[
+  autocmd FileType elixir nmap <leader>rr orequire IEx; IEx.pry()<esc>
+  autocmd FileType elixir nnoremap <leader>in oIO.inspect()<esc>i
+]]
