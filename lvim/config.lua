@@ -28,6 +28,7 @@ lvim.keys.normal_mode["<leader>gp"] = ":Git push<cr>"
 lvim.keys.normal_mode["<leader>z"] = ":tabnew %<cr>"
 lvim.keys.normal_mode["<C-b>"] = ":Buffers<cr>"
 lvim.keys.normal_mode["<leader>cf"] = ":let @+ = expand('%')<cr>"
+-- lvim.keys.normal_mode["<leader>rn"] = require('rest-nvim').run()
 
 lvim.keys.visual_mode["<leader>P"] = '"_dP'
 
@@ -60,6 +61,13 @@ lvim.builtin.which_key.mappings["f"] = {
 	"<cmd>Files<cr>",
 	"Find Files",
 }
+lvim.builtin.which_key.mappings["r"] = {}
+lvim.builtin.which_key.mappings["r"] = {
+  name = "REST.nvim",
+  n = { "<Plug>RestNvim", "Make Request" }
+}
+
+-- ["n"] = { "<Plug>RestNvim", "REST.nvim" }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
@@ -84,6 +92,14 @@ lvim.builtin.project.silent_chdir = false
 lvim.builtin.project.manual_mode = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
+local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+parser_configs.http = {
+	install_info = {
+		url = "https://github.com/NTBBloodbath/tree-sitter-http",
+		files = { "src/parser.c" },
+		branch = "main",
+	},
+}
 lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
@@ -234,6 +250,25 @@ lvim.plugins = {
 	{
 		"p00f/nvim-ts-rainbow",
 	},
+	{
+		"NTBBloodbath/rest.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("rest-nvim").setup({
+				-- Open request results in a horizontal split
+				result_split_horizontal = false,
+				-- Skip SSL verification, useful for unknown certificates
+				skip_ssl_verification = false,
+				-- Highlight request on run
+				highlight = {
+					enabled = true,
+					timeout = 150,
+				},
+				-- Jump to request line on run
+				jump_to_request = false,
+			})
+		end,
+	},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -306,7 +341,7 @@ vim.cmd([[
 ]])
 
 vim.cmd([[ let test#strategy = 'neovim' ]])
-vim.cmd [[
+vim.cmd([[
   autocmd FileType elixir nmap <leader>rr orequire IEx; IEx.pry()<esc>
   autocmd FileType elixir nnoremap <leader>in oIO.inspect()<esc>i
-]]
+]])
