@@ -149,7 +149,7 @@ lvim.lsp.diagnostics.virtual_text = false
 
 -- set a formatter if you want to override the default lsp one (if it exists)
 lvim.lang.go.formatters = { { exe = "goimports" } }
-lvim.lang.python.formatters = { { exe = "black" } }
+-- lvim.lang.python.formatters = { { exe = "black" } }
 lvim.lang.lua.formatters = { { exe = "stylua" } }
 lvim.lang.javascript.formatters = { { exe = "prettier" }, { exe = "eslint_d" } }
 lvim.lang.javascriptreact.formatters = lvim.lang.javascript.formatters
