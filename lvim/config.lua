@@ -40,16 +40,24 @@ lvim.keys.term_mode["<C-o>"] = "<C-\\><C-n>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 lvim.builtin.telescope.on_config_done = function()
-  local actions = require "telescope.actions"
-  lvim.builtin.telescope.defaults.mappings.i["<esc>"] = actions.close
-  -- for input mode
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
-  -- for normal mode
-  -- lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
-  -- lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
+	local actions = require("telescope.actions")
+	lvim.builtin.telescope.defaults.mappings = {
+		i = {
+			["<esc>"] = actions.close,
+			["<C-j>"] = actions.move_selection_next,
+			["<C-k>"] = actions.move_selection_previous,
+		},
+	}
+	-- for input mode
+  -- lvim.builtin.telescope.defaults.mappings = { i = {} }
+	-- lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
+	-- lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
+	-- lvim.builtin.telescope.defaults.mappings.i["<esc>"] = actions.close
+	-- lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
+	-- lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
+	-- for normal mode
+	-- lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
+	-- lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
 end
 
 -- Use which-key to add extra bindings with the leader-key prefix
@@ -64,8 +72,8 @@ lvim.builtin.which_key.mappings["f"] = {
 }
 lvim.builtin.which_key.mappings["r"] = {}
 lvim.builtin.which_key.mappings["r"] = {
-  name = "REST.nvim",
-  n = { "<Plug>RestNvim", "Make Request" }
+	name = "REST.nvim",
+	n = { "<Plug>RestNvim", "Make Request" },
 }
 
 -- ["n"] = { "<Plug>RestNvim", "REST.nvim" }
