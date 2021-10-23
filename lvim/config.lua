@@ -28,6 +28,8 @@ lvim.keys.normal_mode["<leader>gp"] = ":Git push<cr>"
 lvim.keys.normal_mode["<leader>z"] = ":tabnew %<cr>"
 lvim.keys.normal_mode["<C-b>"] = ":Buffers<cr>"
 lvim.keys.normal_mode["<leader>cf"] = ":let @+ = expand('%')<cr>"
+lvim.keys.normal_mode["j"] = "gj"
+lvim.keys.normal_mode["k"] = "gk"
 -- lvim.keys.normal_mode["<leader>rn"] = require('rest-nvim').run()
 
 lvim.keys.visual_mode["<leader>P"] = '"_dP'
