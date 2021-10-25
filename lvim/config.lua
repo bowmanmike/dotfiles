@@ -33,6 +33,7 @@ lvim.keys.normal_mode["k"] = "gk"
 -- lvim.keys.normal_mode["<leader>rn"] = require('rest-nvim').run()
 
 lvim.keys.visual_mode["<leader>P"] = '"_dP'
+lvim.builtin.notify.active = false
 
 lvim.keys.term_mode["<C-o>"] = "<C-\\><C-n>"
 -- unmap a default keymapping
@@ -162,7 +163,8 @@ lvim.lsp.diagnostics.virtual_text = false
 lvim.lang.go.formatters = { { exe = "goimports" } }
 -- lvim.lang.python.formatters = { { exe = "black" } }
 lvim.lang.lua.formatters = { { exe = "stylua" } }
-lvim.lang.javascript.formatters = { { exe = "prettier" }, { exe = "eslint_d" } }
+lvim.lang.javascript.formatters = { { exe = "prettier" } }
+-- lvim.lang.javascript.formatters = { { exe = "prettier" }, { exe = "eslint_d" } }
 lvim.lang.javascriptreact.formatters = lvim.lang.javascript.formatters
 lvim.lang.rust.formatters = { { exe = "rustfmt" } }
 lvim.lang.css.formatters = { { exe = "prettier" } }
@@ -170,7 +172,7 @@ lvim.lang.css.formatters = { { exe = "prettier" } }
 -- set an additional linter
 lvim.lang.python.linters = { { exe = "flake8" } }
 lvim.lang.lua.linters = { { exe = "luacheck" } }
-lvim.lang.javascript.linters = { { exe = "eslint_d" } }
+-- lvim.lang.javascript.linters = { { exe = "eslint_d" } }
 lvim.lang.javascriptreact.linters = lvim.lang.javascript.linters
 lvim.lang.css.linters = { { exe = "stylelint" } }
 
