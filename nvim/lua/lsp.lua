@@ -15,10 +15,11 @@ local sumneko_root_path = vim.fn.stdpath("data") .. "/lsp_servers/sumneko_lua"
 local sumneko_binary = sumneko_root_path .. "/extension/server/bin/" .. system_name .. "/lua-language-server"
 
 local custom_attach = function(client, bufnr)
-  local opts = { noremap = true, silent = true }
+	local opts = { noremap = true, silent = true }
 
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
 local servers = {
@@ -70,5 +71,39 @@ local function setup_server(server, config)
 end
 
 for server, cfg in pairs(servers) do
-  setup_server(server, cfg)
+	setup_server(server, cfg)
 end
+
+local null_ls = require("null-ls")
+
+local prettierd_filetypes = { unpack(null_ls.builtins.formatting.prettierd.filetypes) }
+table.insert(prettierd_filetypes, "graphql")
+table.insert(prettierd_filetypes, "jsonc")
+
+local null_ls_sources = {
+	null_ls.builtins.formatting.prettierd.with({
+		filetypes = prettierd_filetypes,
+	}),
+	-- null_ls.builtins.formatting.trim_whitespace.with({
+	-- 	filetypes = { "plantuml" },
+	-- }),
+	null_ls.builtins.formatting.stylua,
+	-- null_ls.builtins.diagnostics.selene,
+	null_ls.builtins.diagnostics.shellcheck,
+	null_ls.builtins.formatting.shfmt,
+	-- null_ls.builtins.diagnostics.hadolint,
+	null_ls.builtins.diagnostics.markdownlint,
+	-- null_ls.builtins.diagnostics.write_good,
+	-- null_ls.builtins.diagnostics.misspell,
+	-- null_ls.builtins.formatting.gofumpt,
+}
+null_ls.config({
+	sources = null_ls_sources,
+})
+
+require("null-ls").config({
+	sources = { require("null-ls").builtins.formatting.stylua },
+})
+require("lspconfig")["null-ls"].setup({
+	on_attach = custom_attach,
+})
