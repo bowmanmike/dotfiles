@@ -223,15 +223,6 @@ require("cmp").setup({
 	},
 })
 
-local lsp_config = require("lspconfig")
-
-local on_attach = function(client, bufnr)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-end
-
--- local servers = require('nvim-lsp-installer')
-
 -- Map blankline
 vim.g.indent_blankline_char = '┊'
 vim.g.indent_blankline_filetype_exclude = {'help', 'packer'}
@@ -250,4 +241,5 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- 		},
 -- 	},
 -- })
+
 require("base")
