@@ -68,6 +68,20 @@ require("packer").startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use("akinsho/nvim-toggleterm.lua")
 	use("lukas-reineke/indent-blankline.nvim")
+	use({
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({ "*" }, {
+				RGB = true, -- #RGB hex codes
+				RRGGBB = true, -- #RRGGBB hex codes
+				RRGGBBAA = true, -- #RRGGBBAA hex codes
+				rgb_fn = true, -- CSS rgb() and rgba() functions
+				hsl_fn = true, -- CSS hsl() and hsla() functions
+				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+			})
+		end,
+	})
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -81,6 +95,19 @@ require("packer").startup(function(use)
 				rainbow = { enable = true },
 			})
 		end,
+	})
+	use({
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		event = "BufRead",
+		config = {
+			javascript = {
+				__default = "// %s",
+				jsx_element = "{/* %s */}",
+				jsx_fragment = "{/* %s */}",
+				jsx_attribute = "// %s",
+				comment = "// %s",
+			},
+		},
 	})
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("nvim-treesitter/playground")
@@ -250,5 +277,32 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- 		},
 -- 	},
 -- })
+
+local null_ls = require('null-ls')
+
+local prettierd_filetypes = { unpack(null_ls.builtins.formatting.prettierd.filetypes) }
+table.insert(prettierd_filetypes, "graphql")
+table.insert(prettierd_filetypes, "jsonc")
+
+local null_ls_sources = {
+	null_ls.builtins.formatting.prettierd.with({
+		filetypes = prettierd_filetypes,
+	}),
+	-- null_ls.builtins.formatting.trim_whitespace.with({
+	-- 	filetypes = { "plantuml" },
+	-- }),
+	null_ls.builtins.formatting.stylua,
+	-- null_ls.builtins.diagnostics.selene,
+	null_ls.builtins.diagnostics.shellcheck,
+	null_ls.builtins.formatting.shfmt,
+	-- null_ls.builtins.diagnostics.hadolint,
+	null_ls.builtins.diagnostics.markdownlint,
+	-- null_ls.builtins.diagnostics.write_good,
+	-- null_ls.builtins.diagnostics.misspell,
+	-- null_ls.builtins.formatting.gofumpt,
+}
+null_ls.config({
+	sources = null_ls_sources,
+})
 
 require("base")

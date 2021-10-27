@@ -49,7 +49,7 @@ local servers = {
 	yamlls = true,
 }
 
-function setup_server(server, config)
+local function setup_server(server, config)
 	if not config then
 		return
 	end
