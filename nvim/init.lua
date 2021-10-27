@@ -24,6 +24,15 @@ require("packer").startup(function(use)
 		"nvim-lua/popup.nvim",
 	} })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", requires = { "nvim-telescope/telescope.nvim" } })
+	use({
+		"junegunn/fzf.vim",
+		requires = {
+			"junegunn/fzf",
+			run = function()
+				vim.fn["fzf#install"]()
+			end,
+		},
+	})
 
 	use("nanotech/jellybeans.vim")
 	use("morhetz/gruvbox")
@@ -58,7 +67,7 @@ require("packer").startup(function(use)
 	})
 	use("kyazdani42/nvim-web-devicons")
 	use("akinsho/nvim-toggleterm.lua")
-  use 'lukas-reineke/indent-blankline.nvim'
+	use("lukas-reineke/indent-blankline.nvim")
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -121,13 +130,13 @@ vim.o.termguicolors = true
 vim.cmd([[ colorscheme moonfly ]])
 
 -- File Reloading
-vim.cmd [[
+vim.cmd([[
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-]]
+]])
 
 -- Strip trailing whitespace
-vim.cmd [[
+vim.cmd([[
 au BufWritePre *.rb :%s/\s\+$//e
 au BufWritePre *.go :%s/\s\+$//e
 au BufWritePre *.js :%s/\s\+$//e
@@ -142,9 +151,9 @@ au BufWritePre *.py :%s/\s\+$//e
 au BufWritePre *.vim :%s/\s\+$//e
 au BufWritePre *.lua :%s/\s\+$//e
 au BufWritePre *.scala :%s/\s\+$//e
-]]
+]])
 
-vim.cmd [[
+vim.cmd([[
 command! Q q
 command! W w
 command! Wq wq
@@ -152,7 +161,7 @@ command! WQ wq
 command! Qw wq
 command! QW wq
 command! SO luafile $MYVIMRC
-]]
+]])
 
 --Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
@@ -205,7 +214,7 @@ require("cmp").setup({
 	},
 	formatting = {
 		-- Youtube: How to set up nice formatting for your sources.
-		format = require('lspkind').cmp_format({
+		format = require("lspkind").cmp_format({
 			with_text = true,
 			menu = {
 				buffer = "[buf]",
@@ -224,10 +233,10 @@ require("cmp").setup({
 })
 
 -- Map blankline
-vim.g.indent_blankline_char = '┊'
-vim.g.indent_blankline_filetype_exclude = {'help', 'packer'}
-vim.g.indent_blankline_buftype_exclude = {'terminal', 'nofile'}
-vim.g.indent_blankline_char_highlight = 'LineNr'
+vim.g.indent_blankline_char = "┊"
+vim.g.indent_blankline_filetype_exclude = { "help", "packer" }
+vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+vim.g.indent_blankline_char_highlight = "LineNr"
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- NOTE: Maybe I want to be able to navigate the Telescope prompt in normal mode
