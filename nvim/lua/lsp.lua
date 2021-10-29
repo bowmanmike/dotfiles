@@ -26,8 +26,10 @@ local servers = {
 	bashls = true,
 	cssls = true,
 	denols = true,
-	dockerls = true,
-	elixirls = true,
+  dockerls = true,
+	elixirls = {
+    cmd = { vim.fn.stdpath("data") .. "/lsp_servers/elixir/elixir-ls/language_server.sh" }
+  },
 	emmet_ls = true,
 	eslint = true,
 	gopls = true,

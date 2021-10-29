@@ -42,6 +42,15 @@ require("packer").startup(function(use)
 	use("christianchiarulli/nvcode-color-schemes.vim")
 	use("dracula/vim")
 	use("folke/tokyonight.nvim")
+	use("vim-ruby/vim-ruby")
+	use("tpope/vim-rails")
+	use("pangloss/vim-javascript")
+	use("elixir-editors/vim-elixir")
+	use("mattn/emmet-vim")
+	use({ "jparise/vim-graphql", ft = "graphql" })
+	use({ "fatih/vim-go", ft = "go" })
+	use("cespare/vim-toml")
+	use("hashivim/vim-hashicorp-tools")
 
 	use("tpope/vim-commentary")
 	use("tpope/vim-repeat")
@@ -124,6 +133,10 @@ require("packer").startup(function(use)
 		},
 	})
 	use("onsails/lspkind-nvim")
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()
@@ -188,6 +201,7 @@ command! WQ wq
 command! Qw wq
 command! QW wq
 command! SO luafile $MYVIMRC
+command! SF luafile %
 ]])
 
 --Remap space as leader key
@@ -277,5 +291,11 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- 		},
 -- 	},
 -- })
+--
+vim.api.nvim_set_keymap("t", "<C-o>", "<C-\\><C-n>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>th", ":split term://zsh<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit term://zsh<cr>", { noremap = true })
 
-require("base")
+vim.g.user_emmet_leader_key = "<C-Z>"
+
+require('base')
