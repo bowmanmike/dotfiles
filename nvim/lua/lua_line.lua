@@ -49,7 +49,7 @@ lualine.setup({
 				function()
 					return " "
 				end,
-				padding = { left = 0, right = 0 },
+				padding = { left = 1, right = 1 },
 				color = {},
 				cond = nil,
 			},
@@ -108,7 +108,7 @@ lualine.setup({
 						end
 						return msg
 					end
-					local buf_ft = vim.bo.filetype
+					-- local buf_ft = vim.bo.filetype
 					local buf_client_names = {}
 
 					-- add client
@@ -135,6 +135,7 @@ lualine.setup({
 			},
 			{ "filetype", cond = hide_in_width, color = {} },
 		},
+		lualine_y = {},
 		lualine_z = {
 			{
 				function()
@@ -179,9 +180,5 @@ lualine.setup({
 		lualine_z = { "tabs" },
 	},
 })
--- lualine_y = {
--- },
--- lualine_z = {
--- },
 
 return M
