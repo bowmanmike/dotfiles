@@ -165,14 +165,14 @@ lualine.setup({
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { "filename" },
+		lualine_c = { { "filename", path = 1 } },
 		lualine_x = { "location" },
 		lualine_y = {},
 		lualine_z = {},
 	},
 	extensions = {},
 	tabline = {
-		lualine_a = { "buffers" },
+		lualine_a = { { "buffers", show_filename_only = false } },
 		lualine_b = {},
 		lualine_c = {},
 		lualine_x = {},
