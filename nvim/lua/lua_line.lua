@@ -35,19 +35,24 @@ lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
+		-- component_separators = { left = "", right = "" },
+		-- section_separators = { left = "", right = "" },
 		disabled_filetypes = {},
 		always_divide_middle = true,
 	},
 	sections = {
 		lualine_a = {
-			function()
-				return " "
-			end,
-			padding = { left = 0, right = 0 },
-			color = {},
-			cond = nil,
+			{
+				"mode",
+				function()
+					return " "
+				end,
+				padding = { left = 0, right = 0 },
+				color = {},
+				cond = nil,
+			},
 		},
 		lualine_b = {
 			{
@@ -56,6 +61,9 @@ lualine.setup({
 				color = { gui = "bold" },
 				cond = hide_in_width,
 			},
+			{ "filename" },
+		},
+		lualine_c = {
 			{
 				"diff",
 				source = diff_source,
@@ -69,40 +77,88 @@ lualine.setup({
 				cond = nil,
 			},
 		},
-		lualine_c = {
-			"diagnostics",
-			sources = { "nvim_lsp" },
-			symbols = { error = " ", warn = " ", info = " ", hint = " " },
-			color = {},
-			-- This shows `true` in the status bar
-			-- cond = hide_in_width,
-		},
 		lualine_x = {
-			"treesitter",
-			function()
-				local b = vim.api.nvim_get_current_buf()
-				if next(vim.treesitter.highlighter.active[b]) then
-					return "  "
-				end
-				return ""
-			end,
-			color = { fg = colors.green, bg = colors.blue },
-			-- cond = hide_in_width,
+			{
+				"diagnostics",
+				sources = { "nvim_lsp" },
+				symbols = { error = " ", warn = " ", info = " ", hint = " " },
+				color = {},
+				-- This shows `true` in the status bar
+				cond = hide_in_width,
+			},
+			{
+				function()
+					local b = vim.api.nvim_get_current_buf()
+					if next(vim.treesitter.highlighter.active[b]) then
+						return "  "
+					end
+					return "treesuitter"
+				end,
+				color = { fg = colors.green },
+				cond = hide_in_width,
+			},
+			{
+				function(msg)
+					msg = msg or "LS Inactive"
+					local buf_clients = vim.lsp.buf_get_clients()
+					if next(buf_clients) == nil then
+						-- TODO: clean up this if statement
+						if type(msg) == "boolean" or #msg == 0 then
+							return "LS Inactive"
+						end
+						return msg
+					end
+					local buf_ft = vim.bo.filetype
+					local buf_client_names = {}
+
+					-- add client
+					for _, client in pairs(buf_clients) do
+						if client.name ~= "null-ls" then
+							table.insert(buf_client_names, client.name)
+						end
+					end
+
+					-- add formatter
+					-- local formatters = require("lvim.lsp.null-ls.formatters")
+					-- local supported_formatters = formatters.list_registered_providers(buf_ft)
+					-- vim.list_extend(buf_client_names, supported_formatters)
+
+					-- add linter
+					-- local linters = require("lvim.lsp.null-ls.linters")
+					-- local supported_linters = linters.list_registered_providers(buf_ft)
+					-- vim.list_extend(buf_client_names, supported_linters)
+
+					return table.concat(buf_client_names, ", ")
+				end,
+				icon = " ",
+				color = {},
+			},
+			{ "filetype", cond = hide_in_width, color = {} },
 		},
-		lualine_y = { "progress" },
 		lualine_z = {
-			"scrollbar",
-			function()
-				local current_line = vim.fn.line(".")
-				local total_lines = vim.fn.line("$")
-				local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-				local line_ratio = current_line / total_lines
-				local index = math.ceil(line_ratio * #chars)
-				return chars[index]
-			end,
-			padding = { left = 0, right = 0 },
-			color = { fg = colors.yellow, bg = colors.bg },
-			cond = nil,
+			{
+				function()
+					local current_line = vim.fn.line(".")
+					local total_lines = vim.fn.line("$")
+					local chars = {
+						"__",
+						"▁▁",
+						"▂▂",
+						"▃▃",
+						"▄▄",
+						"▅▅",
+						"▆▆",
+						"▇▇",
+						"██",
+					}
+					local line_ratio = current_line / total_lines
+					local index = math.ceil(line_ratio * #chars)
+					return chars[index]
+				end,
+				padding = { left = 0, right = 0 },
+				color = { fg = colors.yellow, bg = colors.bg },
+				cond = nil,
+			},
 		},
 	},
 	inactive_sections = {
@@ -123,5 +179,9 @@ lualine.setup({
 		lualine_z = { "tabs" },
 	},
 })
+-- lualine_y = {
+-- },
+-- lualine_z = {
+-- },
 
 return M
