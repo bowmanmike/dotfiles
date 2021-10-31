@@ -34,7 +34,7 @@ local servers = {
       }
     }
   },
-	denols = true,
+	denols = false,
 	dockerls = true,
 	elixirls = {
 		cmd = { vim.fn.stdpath("data") .. "/lsp_servers/elixir/elixir-ls/language_server.sh" },
@@ -60,7 +60,15 @@ local servers = {
 	},
 	svelte = true,
 	tailwindcss = true,
-	tsserver = true,
+  tsserver = true,
+  -- tsserver = {
+  --   filetypes = {
+  --     "javascript",
+  --     "javascriptreact",
+  --     "typescript",
+  --     "typescriptreact"
+  --   }
+  -- },
 	vimls = true,
 	volar = true,
 	vuels = true,
