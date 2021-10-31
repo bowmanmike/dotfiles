@@ -22,15 +22,24 @@ local custom_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
+updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local servers = {
 	bashls = true,
-	cssls = true,
+  cssls = {
+    settings = {
+      css = {
+        validate = true
+      }
+    }
+  },
 	denols = true,
 	dockerls = true,
 	elixirls = {
 		cmd = { vim.fn.stdpath("data") .. "/lsp_servers/elixir/elixir-ls/language_server.sh" },
 	},
-	emmet_ls = true,
+	emmet_ls = false,
 	eslint = true,
 	gopls = true,
 	graphql = true,
@@ -69,7 +78,7 @@ local function setup_server(server, config)
 
 	config = vim.tbl_deep_extend("force", {
 		on_attach = custom_attach,
-		-- capabilities = updated_capabilities,
+		capabilities = updated_capabilities,
 		flags = {
 			debounce_text_changes = 50,
 		},
@@ -95,7 +104,9 @@ local null_ls_sources = {
 	-- null_ls.builtins.formatting.trim_whitespace.with({
 	-- 	filetypes = { "plantuml" },
 	-- }),
-	null_ls.builtins.formatting.stylua,
+	null_ls.builtins.formatting.stylua.with({
+		filetypes = { "css", "scss" },
+	}),
 	-- null_ls.builtins.diagnostics.selene,
 	null_ls.builtins.diagnostics.shellcheck,
 	null_ls.builtins.formatting.shfmt,
