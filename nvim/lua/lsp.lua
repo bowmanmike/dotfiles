@@ -1,4 +1,19 @@
-local lsp_config = require("lspconfig")
+local lsp_installer = require("nvim-lsp-installer")
+
+local function dump(o)
+	if type(o) == "table" then
+		local s = "{ "
+		for k, v in pairs(o) do
+			if type(k) ~= "number" then
+				k = '"' .. k .. '"'
+			end
+			s = s .. "[" .. k .. "] = " .. dump(v) .. ","
+		end
+		return s .. "} "
+	else
+		return tostring(o)
+	end
+end
 
 local system_name
 if vim.fn.has("mac") == 1 then
@@ -20,84 +35,38 @@ local custom_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 end
 
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local servers = {
-	bashls = true,
-  cssls = {
-    settings = {
-      css = {
-        validate = true
-      }
-    }
-  },
-	denols = false,
-	dockerls = true,
-	elixirls = {
-		cmd = { vim.fn.stdpath("data") .. "/lsp_servers/elixir/elixir-ls/language_server.sh" },
-	},
-	emmet_ls = false,
-	eslint = true,
-	gopls = true,
-	graphql = true,
-	html = true,
-	jsonls = {
-		settings = {
-			json = {
-				schemas = require("nlspsettings.jsonls").get_default_schemas(),
-			},
-		},
-	},
-	rust_analyzer = true,
-	solargraph = true,
-	stylelint_lsp = true,
-	sumneko_lua = {
-		cmd = { sumneko_binary, "-E", sumneko_root_path .. "/extension/server/main.lua" },
-		settings = { Lua = { diagnostics = { globals = { "vim" } } } },
-	},
-	svelte = true,
-	tailwindcss = true,
-  tsserver = true,
-  -- tsserver = {
-  --   filetypes = {
-  --     "javascript",
-  --     "javascriptreact",
-  --     "typescript",
-  --     "typescriptreact"
-  --   }
-  -- },
-	vimls = true,
-	volar = true,
-	vuels = true,
-	yamlls = true,
-}
-
-local function setup_server(server, config)
-	if not config then
-		return
-	end
-
-	if type(config) ~= "table" then
-		config = {}
-	end
-
-	config = vim.tbl_deep_extend("force", {
+lsp_installer.on_server_ready(function(server)
+	local default_opts = {
 		on_attach = custom_attach,
 		capabilities = updated_capabilities,
-		flags = {
-			debounce_text_changes = 50,
-		},
-	}, config)
+	}
 
-	lsp_config[server].setup(config)
-end
+	-- Set custom server config here
+	local server_opts = {
+		sumneko_lua = function()
+			default_opts.cmd = { sumneko_binary, "-E", sumneko_root_path .. "/extension/server/main.lua" }
+			default_opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
 
-for server, cfg in pairs(servers) do
-	setup_server(server, cfg)
-end
+			default_opts.on_attach = custom_attach
+			default_opts.capabilities = updated_capabilities
+		end,
+		jsonls = function()
+			default_opts.settings = {
+				json = {
+					schemas = require("nlspsettings.jsonls").get_default_schemas(),
+				},
+			}
+		end,
+	}
+
+	server:setup(server_opts[server.name] and server_opts[server.name]() or default_opts)
+end)
 
 local null_ls = require("null-ls")
 
@@ -109,21 +78,12 @@ local null_ls_sources = {
 	null_ls.builtins.formatting.prettierd.with({
 		filetypes = prettierd_filetypes,
 	}),
-	-- null_ls.builtins.formatting.trim_whitespace.with({
-	-- 	filetypes = { "plantuml" },
-	-- }),
-	null_ls.builtins.formatting.stylua.with({
-		filetypes = { "css", "scss" },
-	}),
-	-- null_ls.builtins.diagnostics.selene,
+	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.diagnostics.shellcheck,
 	null_ls.builtins.formatting.shfmt,
-	-- null_ls.builtins.diagnostics.hadolint,
 	null_ls.builtins.diagnostics.markdownlint,
-	-- null_ls.builtins.diagnostics.write_good,
-	-- null_ls.builtins.diagnostics.misspell,
-	-- null_ls.builtins.formatting.gofumpt,
 }
+
 null_ls.config({
 	sources = null_ls_sources,
 })
