@@ -1,20 +1,5 @@
 local lsp_installer = require("nvim-lsp-installer")
 
-local function dump(o)
-	if type(o) == "table" then
-		local s = "{ "
-		for k, v in pairs(o) do
-			if type(k) ~= "number" then
-				k = '"' .. k .. '"'
-			end
-			s = s .. "[" .. k .. "] = " .. dump(v) .. ","
-		end
-		return s .. "} "
-	else
-		return tostring(o)
-	end
-end
-
 local system_name
 if vim.fn.has("mac") == 1 then
 	system_name = "macOS"
@@ -51,6 +36,7 @@ lsp_installer.on_server_ready(function(server)
 	local server_opts = {
 		sumneko_lua = function()
 			default_opts.cmd = { sumneko_binary, "-E", sumneko_root_path .. "/extension/server/main.lua" }
+
 			default_opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
 
 			default_opts.on_attach = custom_attach
