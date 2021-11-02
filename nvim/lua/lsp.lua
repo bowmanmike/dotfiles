@@ -1,4 +1,5 @@
 local lsp_installer = require("nvim-lsp-installer")
+-- require("nvim-lsp-installer").settings { log_level = vim.log.levels.DEBUG }
 
 local system_name
 if vim.fn.has("mac") == 1 then
@@ -48,10 +49,18 @@ lsp_installer.on_server_ready(function(server)
 					schemas = require("nlspsettings.jsonls").get_default_schemas(),
 				},
 			}
+			default_opts.on_attach = custom_attach
+			default_opts.capabilities = updated_capabilities
 		end,
+		-- cssls = function()
+		-- 	default_opts.filetypes = { "css", "scss", "javascript" }
+		-- end,
 	}
 
-	server:setup(server_opts[server.name] and server_opts[server.name]() or default_opts)
+	-- local result = (server_opts[server.name] and server_opts[server.name]()) or default_opts
+	-- print(require('utils').dump(result))
+	server:setup((server_opts[server.name] and server_opts[server.name]()) or default_opts)
+	vim.cmd([[ do User LspAttachBuffers ]])
 end)
 
 local null_ls = require("null-ls")
@@ -61,22 +70,24 @@ table.insert(prettierd_filetypes, "graphql")
 table.insert(prettierd_filetypes, "jsonc")
 
 local null_ls_sources = {
-	null_ls.builtins.formatting.prettierd.with({
-		filetypes = prettierd_filetypes,
-	}),
-	null_ls.builtins.formatting.stylua,
-	null_ls.builtins.diagnostics.shellcheck,
-	null_ls.builtins.formatting.shfmt,
+	-- null_ls.builtins.diagnostics.eslint_d,
+	null_ls.builtins.diagnostics.luacheck,
 	null_ls.builtins.diagnostics.markdownlint,
+	null_ls.builtins.diagnostics.shellcheck,
+	null_ls.builtins.diagnostics.stylelint,
+	null_ls.builtins.formatting.eslint_d,
+	-- null_ls.builtins.formatting.prettierd.with({
+	-- 	filetypes = prettierd_filetypes,
+	-- }),
+	null_ls.builtins.formatting.shfmt,
+	null_ls.builtins.formatting.stylua,
 }
 
 null_ls.config({
 	sources = null_ls_sources,
 })
 
-require("null-ls").config({
-	sources = { require("null-ls").builtins.formatting.stylua },
-})
 require("lspconfig")["null-ls"].setup({
 	on_attach = custom_attach,
+	capabilities = updated_capabilities,
 })
