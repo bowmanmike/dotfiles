@@ -1,5 +1,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_bootstrap
+
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap = fn.system({
 		"git",
@@ -136,6 +138,13 @@ require("packer").startup(function(use)
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+	use({
+		"kyazdani42/nvim-tree.lua",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("nvim-tree").setup({})
+		end,
 	})
 
 	if packer_bootstrap then
@@ -298,4 +307,7 @@ vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit term://zsh<cr>", { noremap =
 
 vim.g.user_emmet_leader_key = "<C-Z>"
 
-require('base')
+vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFile<cr>", {noremap = true, silent = true})
+
+require("base")
