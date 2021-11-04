@@ -73,7 +73,7 @@ local null_ls_sources = {
 	-- null_ls.builtins.diagnostics.eslint_d,
 	null_ls.builtins.diagnostics.luacheck,
 	null_ls.builtins.diagnostics.markdownlint,
-	null_ls.builtins.diagnostics.shellcheck,
+	-- null_ls.builtins.diagnostics.shellcheck,
 	null_ls.builtins.diagnostics.stylelint,
 	null_ls.builtins.formatting.eslint_d,
 	-- null_ls.builtins.formatting.prettierd.with({
@@ -85,6 +85,7 @@ local null_ls_sources = {
 
 null_ls.config({
 	sources = null_ls_sources,
+	debug = false,
 })
 
 require("lspconfig")["null-ls"].setup({
