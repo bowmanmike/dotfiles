@@ -61,12 +61,12 @@ lsp_installer.on_server_ready(function(server)
 				format = { enable = true },
 			}
 		end,
-    tsserver = function()
-      default_opts.on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        custom_attach(client, bufnr)
-      end
-    end
+		tsserver = function()
+			default_opts.on_attach = function(client, bufnr)
+				client.resolved_capabilities.document_formatting = false
+				custom_attach(client, bufnr)
+			end
+		end,
 		-- cssls = function()
 		-- 	default_opts.filetypes = { "css", "scss", "javascript" }
 		-- end,
@@ -89,11 +89,11 @@ local null_ls_sources = {
 	null_ls.builtins.diagnostics.luacheck,
 	null_ls.builtins.diagnostics.markdownlint,
 	-- null_ls.builtins.diagnostics.shellcheck,
-	null_ls.builtins.diagnostics.stylelint,
+	-- null_ls.builtins.diagnostics.stylelint,
 	-- null_ls.builtins.formatting.eslint_d,
-	-- null_ls.builtins.formatting.prettierd.with({
-	-- 	filetypes = prettierd_filetypes,
-	-- }),
+	null_ls.builtins.formatting.prettierd.with({
+		filetypes = { "html", "css" },
+	}),
 	null_ls.builtins.formatting.shfmt,
 	null_ls.builtins.formatting.stylua,
 }

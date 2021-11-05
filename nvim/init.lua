@@ -25,7 +25,7 @@ require("packer").startup(function(use)
 		"nvim-lua/plenary.nvim",
 		"nvim-lua/popup.nvim",
 	} })
-	use({ "nvim-telescope/telescope-fzf-native.nvim", requires = { "nvim-telescope/telescope.nvim" } })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", requires = { "nvim-telescope/telescope.nvim" } })
 	use({
 		"junegunn/fzf.vim",
 		requires = {
@@ -146,6 +146,16 @@ require("packer").startup(function(use)
 			require("nvim-tree").setup({})
 		end,
 	})
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+			})
+		end,
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()
@@ -242,13 +252,19 @@ vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
 -- -- vim.cmd('let g:nvcode_termcolors=256')
 -- -- vim.cmd('hi LineNr ctermbg=NONE guibg=NONE')
 -- core_options()
+
+local telescope = require("telescope")
+telescope.setup({})
+telescope.load_extension("fzf")
+
 vim.api.nvim_set_keymap("n", "<C-P>", ":Telescope find_files<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-B>", ":Telescope buffers<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-T>", ":Telescope live_grep<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>gs", ":Git<cr>", { noremap = true })
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
-require("cmp").setup({
+local cmp = require("cmp")
+cmp.setup({
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
@@ -261,6 +277,11 @@ require("cmp").setup({
 		{ name = "path" },
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 5 },
+	},
+	mapping = {
+		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	},
 	formatting = {
 		-- Youtube: How to set up nice formatting for your sources.
@@ -307,7 +328,9 @@ vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit term://zsh<cr>", { noremap =
 
 vim.g.user_emmet_leader_key = "<C-Z>"
 
-vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<cr>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFile<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFile<cr>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { noremap = true, silent = true })
 
 require("base")
