@@ -330,6 +330,7 @@ vim.g.user_emmet_leader_key = "<C-Z>"
 
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFile<cr>", { noremap = true, silent = true })
+-- TODO: Write a lua function to duplicate a file with a new path
 
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { noremap = true, silent = true })
 
