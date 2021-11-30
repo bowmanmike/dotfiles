@@ -96,6 +96,7 @@ require("packer").startup(function(use)
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		opt = false,
 		run = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
@@ -104,6 +105,15 @@ require("packer").startup(function(use)
 				context_commentstring = { enable = true },
 				highlight = { enable = true },
 				rainbow = { enable = true },
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "<leader>is",
+						scope_incremental = "<leader>is",
+						node_incremental = "<TAB>",
+						node_decremental = "<S-TAB>",
+					},
+				},
 			})
 		end,
 	})
@@ -156,6 +166,7 @@ require("packer").startup(function(use)
 			})
 		end,
 	})
+	use("kdheepak/lazygit.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
@@ -333,5 +344,7 @@ vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFile<cr>", { noremap = t
 -- TODO: Write a lua function to duplicate a file with a new path
 
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { noremap = true, silent = true })
+
+  vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>LazyGit<cr>", { noremap = true, silent = true })
 
 require("base")

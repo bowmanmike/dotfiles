@@ -107,3 +107,5 @@ require("lspconfig")["null-ls"].setup({
 	on_attach = custom_attach,
 	capabilities = updated_capabilities,
 })
+
+require('nlspsettings').setup()
