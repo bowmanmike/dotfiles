@@ -33,6 +33,18 @@ lsp_installer.on_server_ready(function(server)
 		capabilities = updated_capabilities,
 	}
 
+	-- JSON schemas
+	local nlsp_default_schemas = require("nlspsettings.jsonls").get_default_schemas()
+  local schemastore_schemas = require("schemastore").json.schemas {
+    select = {
+      'package.json',
+      '.eslintrc'
+    }
+  }
+	local json_schemas = {
+		unpack(nlsp_default_schemas),
+    unpack(schemastore_schemas)
+	}
 	-- Set custom server config here
 	local server_opts = {
 		sumneko_lua = function()
@@ -46,7 +58,7 @@ lsp_installer.on_server_ready(function(server)
 		jsonls = function()
 			default_opts.settings = {
 				json = {
-					schemas = require("nlspsettings.jsonls").get_default_schemas(),
+					schemas = json_schemas,
 				},
 			}
 			default_opts.on_attach = custom_attach
@@ -108,4 +120,4 @@ require("lspconfig")["null-ls"].setup({
 	capabilities = updated_capabilities,
 })
 
-require('nlspsettings').setup()
+require("nlspsettings").setup()

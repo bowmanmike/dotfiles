@@ -167,6 +167,7 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("kdheepak/lazygit.nvim")
+	use("b0o/schemastore.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
@@ -345,6 +346,6 @@ vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFile<cr>", { noremap = t
 
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { noremap = true, silent = true })
 
-  vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>LazyGit<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>LazyGit<cr>", { noremap = true, silent = true })
 
 require("base")
