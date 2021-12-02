@@ -168,6 +168,7 @@ require("packer").startup(function(use)
 	})
 	use("kdheepak/lazygit.nvim")
 	use("b0o/schemastore.nvim")
+	use("vim-test/vim-test")
 
 	if packer_bootstrap then
 		require("packer").sync()
@@ -347,5 +348,15 @@ vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFile<cr>", { noremap = t
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>LazyGit<cr>", { noremap = true, silent = true })
+
+vim.cmd([[ let test#strategy = 'neovim' ]])
+vim.api.nvim_set_keymap("n", "<leader>tn", ":TestNearest<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>tf", ":TestFile<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>tl", ":TestLast<cr>", { noremap = true, silent = true })
+
+vim.cmd([[
+  autocmd FileType elixir nmap <leader>pr orequire IEx; IEx.pry()<esc>
+  autocmd FileType elixir nnoremap <leader>in oIO.inspect()<esc>i
+  ]])
 
 require("base")
