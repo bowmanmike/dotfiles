@@ -1,3 +1,4 @@
 {
-  "elixirLS.fetchDeps": false
+  "elixirLS.fetchDeps": false,
+  "elixirLS.dialyzerEnabled": false
 }

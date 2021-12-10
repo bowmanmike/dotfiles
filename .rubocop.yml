@@ -121,4 +121,3 @@ RSpec/VerifiedDoubles:
 
 Bundler/OrderedGems:
   Enabled: false
-require: rubocop-rspec
