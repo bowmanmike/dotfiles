@@ -18,7 +18,9 @@ require("packer").startup(function(use)
 
 	use("neovim/nvim-lspconfig")
 	use("tamago324/nlsp-settings.nvim")
-	use("jose-elias-alvarez/null-ls.nvim")
+	use({ "jose-elias-alvarez/null-ls.nvim", requires = {
+		"nvim-lua/plenary.nvim",
+	} })
 	use("antoinemadec/FixCursorHold.nvim")
 	use("williamboman/nvim-lsp-installer")
 	use({ "nvim-telescope/telescope.nvim", requires = {
@@ -364,7 +366,7 @@ vim.cmd([[
   ]])
 
 -- Go
-vim.g.go_fmt_command = 'goimports'
+vim.g.go_fmt_command = "goimports"
 vim.g.go_highlight_functions = true
 vim.g.go_highlight_function_calls = 1
 vim.g.go_highlight_fields = 1
@@ -374,7 +376,7 @@ vim.g.go_fmt_fail_silently = 1
 vim.g.go_auto_sameids = 1
 vim.g.go_list_type = "quickfix"
 
-vim.cmd [[
+vim.cmd([[
   au FileType go nmap <leader>r <Plug>(go-run)
   autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
   au FileType go nmap <Leader>e <Plug>(go-rename)
@@ -390,6 +392,6 @@ vim.cmd [[
   autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-]]
+]])
 
 require("base")
