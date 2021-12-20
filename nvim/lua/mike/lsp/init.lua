@@ -42,7 +42,7 @@ lsp_installer.on_server_ready(function(server)
 			"tsconfig.json",
 		},
 	})
-	local json_schemas = require("utils").table_merge(nlsp_default_schemas, schemastore_schemas)
+	local json_schemas = require("mike.utils").table_merge(nlsp_default_schemas, schemastore_schemas)
 
 	-- Set custom server config here
 	local server_opts = {
