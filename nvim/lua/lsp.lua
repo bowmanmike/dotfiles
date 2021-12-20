@@ -113,10 +113,10 @@ null_ls.setup({
 	-- debug = true,
 })
 
-require("lspconfig")["null-ls"].setup({
-	on_attach = custom_attach,
-	capabilities = updated_capabilities,
-})
+-- require("lspconfig")["null-ls"].setup({
+-- 	on_attach = custom_attach,
+-- 	capabilities = updated_capabilities,
+-- })
 
 vim.diagnostic.config({
 	virtual_text = false,
