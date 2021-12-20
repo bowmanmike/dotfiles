@@ -3,6 +3,8 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/mikebowman/.oh-my-zsh
+# export SHELL=$(brew --prefix zsh)
+export SHELL=/bin/zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -206,8 +208,8 @@ alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 alias dc='docker-compose'
 
 # FZF config
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/"'
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function fco {
   local filter
