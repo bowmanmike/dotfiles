@@ -46,6 +46,8 @@ require("packer").startup(function(use)
 	use("christianchiarulli/nvcode-color-schemes.vim")
 	use("dracula/vim")
 	use("folke/tokyonight.nvim")
+	use("lunarvim/colorschemes")
+
 	use("vim-ruby/vim-ruby")
 	use("tpope/vim-rails")
 	use("pangloss/vim-javascript")
