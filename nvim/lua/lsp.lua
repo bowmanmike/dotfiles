@@ -85,40 +85,32 @@ lsp_installer.on_server_ready(function(server)
 				custom_attach(client, bufnr)
 			end
 		end,
-		-- cssls = function()
-		-- 	default_opts.filetypes = { "css", "scss", "javascript" }
-		-- end,
+		stylelint_lsp = function()
+			default_opts.on_attach = function(client, bufnr)
+				client.resolved_capabilities.document_formatting = false
+				custom_attach(client, bufnr)
+			end
+		end,
 	}
 
-	-- local result = (server_opts[server.name] and server_opts[server.name]()) or default_opts
-	-- print(require('utils').dump(result))
 	server:setup((server_opts[server.name] and server_opts[server.name]()) or default_opts)
 	vim.cmd([[ do User LspAttachBuffers ]])
 end)
 
 local null_ls = require("null-ls")
 
-local prettierd_filetypes = { unpack(null_ls.builtins.formatting.prettierd.filetypes) }
-table.insert(prettierd_filetypes, "graphql")
-table.insert(prettierd_filetypes, "jsonc")
-
-local null_ls_sources = {
-	-- null_ls.builtins.diagnostics.eslint_d,
-	null_ls.builtins.diagnostics.luacheck,
-	null_ls.builtins.diagnostics.markdownlint,
-	-- null_ls.builtins.diagnostics.shellcheck,
-	-- null_ls.builtins.diagnostics.stylelint,
-	-- null_ls.builtins.formatting.eslint_d,
-	null_ls.builtins.formatting.prettierd.with({
-		filetypes = { "html", "css" },
-	}),
-	null_ls.builtins.formatting.shfmt,
-	null_ls.builtins.formatting.stylua,
-}
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
-	sources = null_ls_sources,
-	debug = true,
+	sources = {
+		formatting.prettierd.with({ filetypes = { "html", "css" } }),
+		formatting.shfmt,
+		formatting.stylua,
+		diagnostics.luacheck,
+		diagnostics.markdownlint,
+	},
+	-- debug = true,
 })
 
 require("lspconfig")["null-ls"].setup({
