@@ -38,15 +38,15 @@ lsp_installer.on_server_ready(function(server)
 			default_opts.on_attach = handlers.on_attach
 			default_opts.capabilities = handlers.capabilities
 		end,
-		eslint = function()
-			default_opts.on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = true
-				handlers.on_attach(client, bufnr)
-			end
-			default_opts.settings = {
-				format = { enable = true },
-			}
-		end,
+		-- eslint = function()
+		-- 	default_opts.on_attach = function(client, bufnr)
+		-- 		client.resolved_capabilities.document_formatting = true
+		-- 		handlers.on_attach(client, bufnr)
+		-- 	end
+		-- 	default_opts.settings = {
+		-- 		format = { enable = false },
+		-- 	}
+		-- end,
 		tsserver = function()
 			default_opts.on_attach = function(client, bufnr)
 				client.resolved_capabilities.document_formatting = false
