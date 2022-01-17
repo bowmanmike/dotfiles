@@ -92,7 +92,7 @@ lualine.setup({
 					if next(vim.treesitter.highlighter.active[b]) then
 						return "  "
 					end
-					return "treesuitter"
+					return "treesitter"
 				end,
 				color = { fg = colors.green },
 				cond = hide_in_width,
