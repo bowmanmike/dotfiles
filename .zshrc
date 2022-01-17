@@ -3,6 +3,8 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/mikebowman/.oh-my-zsh
+# export SHELL=$(brew --prefix zsh)
+export SHELL=/bin/zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -136,13 +138,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR='nvim --noplugin'
 
-# Configure golang
-export GOPATH=$HOME/golang
-export GOROOT=/usr/local/opt/go/libexec
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-
 # Unset $PAGER
 export PAGER="less -F -X"
 
@@ -154,15 +149,8 @@ export PAGER="less -F -X"
 export PATH=$HOME/.cargo/bin:$PATH
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
+# export SSH_KEY_PATH="~/.ssh/id_rsa"
 
-# Android emulator settings
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-export PATH=$PATH:${ANDROID_SDK_ROOT}/emulator
-export PATH=$PATH:${ANDROID_SDK_ROOT}/tools
-export PATH=$PATH:${ANDROID_SDK_ROOT}/platform-tools
-
-export PATH=$PATH:/usr/local/sbin:$HOME/.local/bin
 # Set GPG stuff
 export GPG_TTY=$(tty)
 
@@ -193,7 +181,7 @@ alias rg='rg -i'
 alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
 alias fv='vim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes' --color always {}")'
-alias fl='lvim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes' --color always {}")'
+# alias fl='lvim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes' --color always {}")'
 alias be='bundle exec'
 alias als='alias | rg'
 alias t='task'
@@ -220,8 +208,8 @@ alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 alias dc='docker-compose'
 
 # FZF config
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/"'
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function fco {
   local filter
@@ -235,20 +223,14 @@ function fco {
   [[ -n "$branch" ]] && git checkout "$branch"
 }
 
-# Gcloud
-# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
 # Direnv
 eval "$(direnv hook zsh)"
 
 # ASDF
-# export ASDF_DATA_DIR=$HOME/Projects/asdf
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # ZSH Autocomplete
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
@@ -259,45 +241,9 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/mikebowman/Library/Caches/heroku/autocomplete/zs
 if [ -f '/Users/mikebowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mikebowman/.netlify/helper/path.zsh.inc'; fi
 
 # Erlang install options
-export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl)"
-
-# # Vi mode
-# # bindkey -v
-# export KEYTIMEOUT=1
-
-# # Use vim keys in tab complete menu:
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
-# bindkey -v '^?' backward-delete-char
-
-# # Change cursor shape for different vi modes.
-# function zle-keymap-select {
-#   if [[ ${KEYMAP} == vicmd ]] ||
-#      [[ $1 = 'block' ]]; then
-#     echo -ne '\e[1 q'
-#   elif [[ ${KEYMAP} == main ]] ||
-#        [[ ${KEYMAP} == viins ]] ||
-#        [[ ${KEYMAP} = '' ]] ||
-#        [[ $1 = 'beam' ]]; then
-#     echo -ne '\e[5 q'
-#   fi
-# }
-# zle -N zle-keymap-select
-# zle-line-init() {
-#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-#     echo -ne "\e[5 q"
-# }
-# zle -N zle-line-init
-# echo -ne '\e[5 q' # Use beam shape cursor on startup.
-# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
-# autoload edit-command-line; zle -N edit-command-line
-# bindkey '^e' edit-command-line
+export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl@1.1)"
 
 export ITERM2_SQUELCH_MARK=1
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 autoload zmv
-
