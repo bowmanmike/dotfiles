@@ -5,14 +5,16 @@ local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
 	sources = {
-		formatting.prettierd, -- .with({ filetypes = { "html", "css" } }),
+		formatting.prettierd.with({ filetypes = { "html", "css" } }),
 		formatting.shfmt,
-		-- formatting.eslint_d,
+		formatting.eslint_d,
+    formatting.standardrb,
 		formatting.stylua,
 		formatting.rustywind,
 		diagnostics.eslint_d,
 		diagnostics.luacheck,
 		diagnostics.markdownlint,
+    diagnostics.standardrb
 	},
 	-- debug = true,
 })

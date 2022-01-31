@@ -55,10 +55,14 @@ lsp_installer.on_server_ready(function(server)
 		end,
 		solargraph = function()
 			default_opts.on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = true
+				client.resolved_capabilities.document_formatting = false
 				client.resolved_capabilities.diagnostics = true
+				-- client.diagnostics = false
 				handlers.on_attach(client, bufnr)
+        -- default_opts.settings.solargraph.diagnostics = false
 			end
+      -- print("HERE")
+			-- default_opts.settings.diagnostics = false
 		end,
 		stylelint_lsp = function()
 			default_opts.on_attach = function(client, bufnr)
