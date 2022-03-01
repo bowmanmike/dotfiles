@@ -9,7 +9,8 @@ lsp_installer.on_server_ready(function(server)
 	}
 
 	-- JSON schemas
-	local nlsp_default_schemas = require("nlspsettings.jsonls").get_default_schemas()
+	-- local nlsp_default_schemas = require("nlspsettings.jsonls").get_default_schemas()
+  local nlsp_default_schemas = require("nlspsettings").get_default_schemas()
 	local schemastore_schemas = require("schemastore").json.schemas({
 		select = {
 			"package.json",

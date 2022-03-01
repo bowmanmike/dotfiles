@@ -23,3 +23,5 @@ vim.api.nvim_set_keymap("t", "<C-o>", "<C-\\><C-n>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>th", ":split term://zsh<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit term://zsh<cr>", { noremap = true })
 
+-- vim.api.nvim_set_keymap("n", "<C-\\>", ":ToggleTerm<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("t", "<C-\\>", "<C-o>:ToggleTerm<CR>", { noremap = true, silent = true })
