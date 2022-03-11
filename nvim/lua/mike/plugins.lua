@@ -174,6 +174,14 @@ require("packer").startup(function(use)
 	use("b0o/schemastore.nvim")
 	use("vim-test/vim-test")
 
+	use({
+		"phaazon/hop.nvim",
+		branch = "v1.3",
+		config = function()
+			require("hop").setup()
+		end,
+	})
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

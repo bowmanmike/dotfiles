@@ -7,17 +7,32 @@ local diagnostics = null_ls.builtins.diagnostics
 -- figure this out later
 -- local eslint_d_diagnostics = utls.table_merge(diagnostics.eslint_d, {"svelte"})
 
+-- utils.dump(formatting.prettierd)
 null_ls.setup({
 	sources = {
 		formatting.prettierd.with({ filetypes = { "html", "css" } }),
 		formatting.shfmt,
-		formatting.eslint_d,
+		formatting.eslint_d.with({
+			condition = function(utils)
+				return not utils.root_matches("Enlistly")
+			end,
+		}),
 		formatting.standardrb,
 		formatting.stylua,
 		formatting.rustywind.with({
 			filetypes = { "html", "css", "javacsript", "javascriptreact", "typescript", "typescriptreact" },
 		}),
-		diagnostics.eslint_d,
+		formatting.prettierd.with({
+			condition = function(utils)
+				return utils.root_matches("Enlistly")
+			end,
+		}),
+		diagnostics.eslint_d.with({
+			condition = function(utils)
+				return not utils.root_matches("Enlistly")
+			end,
+		}),
+
 		-- diagnostics.eslint_d.with({ filetypes = { "svelte" } }),
 		diagnostics.luacheck,
 		diagnostics.markdownlint,
