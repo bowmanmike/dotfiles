@@ -25,3 +25,16 @@ vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit term://zsh<cr>", { noremap =
 
 -- vim.api.nvim_set_keymap("n", "<C-\\>", ":ToggleTerm<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("t", "<C-\\>", "<C-o>:ToggleTerm<CR>", { noremap = true, silent = true })
+
+vim.cmd([[
+  function PrettyPrintJSON()
+    :%!jq '.' -M
+  endfunction
+
+  function! MinifyJSON()
+    :%!jq '.' -cM
+  endfunction
+
+  autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
+  autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
+]])
