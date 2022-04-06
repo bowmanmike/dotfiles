@@ -38,3 +38,6 @@ vim.cmd([[
   autocmd FileType json nmap <leader>pj :call PrettyPrintJSON()<cr>
   autocmd FileType json nmap <leader>mj :call MinifyJSON()<cr>
 ]])
+
+vim.api.nvim_set_keymap("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
+vim.api.nvim_set_keymap("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })

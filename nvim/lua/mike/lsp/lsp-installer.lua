@@ -10,7 +10,7 @@ lsp_installer.on_server_ready(function(server)
 
 	-- JSON schemas
 	-- local nlsp_default_schemas = require("nlspsettings.jsonls").get_default_schemas()
-  local nlsp_default_schemas = require("nlspsettings").get_default_schemas()
+	local nlsp_default_schemas = require("nlspsettings").get_default_schemas()
 	local schemastore_schemas = require("schemastore").json.schemas({
 		select = {
 			"package.json",
@@ -60,9 +60,9 @@ lsp_installer.on_server_ready(function(server)
 				client.resolved_capabilities.diagnostics = true
 				-- client.diagnostics = false
 				handlers.on_attach(client, bufnr)
-        -- default_opts.settings.solargraph.diagnostics = false
+				-- default_opts.settings.solargraph.diagnostics = false
 			end
-      -- print("HERE")
+			-- print("HERE")
 			-- default_opts.settings.diagnostics = false
 		end,
 		stylelint_lsp = function()
@@ -70,6 +70,67 @@ lsp_installer.on_server_ready(function(server)
 				client.resolved_capabilities.document_formatting = false
 				handlers.on_attach(client, bufnr)
 			end
+		end,
+		tailwindcss = function()
+			return {
+				cmd = { "tailwindcss-language-server", "--stdio" },
+				init_options = {
+					userLanguages = {
+						elixir = "phoenix-heex",
+						eruby = "erb",
+						heex = "phoenix-heex",
+					},
+				},
+				handlers = {
+					["tailwindcss/getConfiguration"] = function(_, _, params, _, bufnr, _)
+						vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", { _id = params._id })
+					end,
+				},
+				settings = {
+					includeLanguages = {
+						typescript = "javascript",
+						typescriptreact = "javascript",
+						["html-eex"] = "html",
+						["phoenix-heex"] = "html",
+						heex = "html",
+						eelixir = "html",
+						elm = "html",
+						erb = "html",
+					},
+					tailwindCSS = {
+						lint = {
+							cssConflict = "warning",
+							invalidApply = "error",
+							invalidConfigPath = "error",
+							invalidScreen = "error",
+							invalidTailwindDirective = "error",
+							invalidVariant = "error",
+							recommendedVariantOrder = "warning",
+						},
+						experimental = {
+							classRegex = {
+								[[class= "([^"]*)]],
+								[[class: "([^"]*)]],
+								'~H""".*class="([^"]*)".*"""',
+							},
+						},
+						validate = true,
+					},
+				},
+				filetypes = {
+					"css",
+					"scss",
+					"sass",
+					"html",
+					"heex",
+					"elixir",
+          "eruby",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+				},
+			}
 		end,
 	}
 

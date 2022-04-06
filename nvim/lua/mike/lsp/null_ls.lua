@@ -27,6 +27,7 @@ null_ls.setup({
 				return utils.root_matches("Enlistly")
 			end,
 		}),
+    formatting.stylelint,
 		diagnostics.eslint_d.with({
 			condition = function(utils)
 				return not utils.root_matches("Enlistly")
@@ -37,6 +38,7 @@ null_ls.setup({
 		diagnostics.luacheck,
 		diagnostics.markdownlint,
 		diagnostics.standardrb,
+    -- diagnostics.stylelint
 	},
 	-- debug = true,
 })

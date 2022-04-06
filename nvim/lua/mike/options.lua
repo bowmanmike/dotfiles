@@ -58,3 +58,12 @@ vim.api.nvim_exec(
 ]],
 	false
 )
+
+vim.cmd([[
+" Let's save undo info!
+if !isdirectory($HOME."/nobackup/nvim-undodir")
+    call mkdir($HOME."/nobackup/nvim-undodir", "", 0770)
+endif
+set undodir=~/nobackup/nvim-undodir
+set undofile
+]])
