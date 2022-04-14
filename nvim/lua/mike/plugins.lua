@@ -109,24 +109,6 @@ require("packer").startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		opt = false,
 		run = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = "all",
-				disable = { "haskell" },
-				context_commentstring = { enable = true },
-				highlight = { enable = true },
-				rainbow = { enable = true },
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection = "<leader>is",
-						scope_incremental = "<leader>is",
-						node_incremental = "<TAB>",
-						node_decremental = "<S-TAB>",
-					},
-				},
-			})
-		end,
 	})
 	use({
 		"JoosepAlviste/nvim-ts-context-commentstring",
@@ -148,11 +130,13 @@ require("packer").startup(function(use)
 		"hrsh7th/nvim-cmp",
 		requires = {
 			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-path",
+			"neovim/nvim-lspconfig",
+			"saadparwaiz1/cmp_luasnip",
 		},
 	})
 	use("onsails/lspkind-nvim")

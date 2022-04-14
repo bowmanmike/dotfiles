@@ -1,6 +1,7 @@
 require("mike.options")
 require("mike.keymaps")
 require("mike.plugins")
+require("mike.treesitter")
 require("mike.colorscheme")
 require("mike.nvim-cmp")
 require("mike.lsp")

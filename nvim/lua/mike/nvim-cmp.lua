@@ -18,6 +18,12 @@ cmp.setup({
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<C-n>"] = {
+			i = cmp.mapping.select_next_item(),
+		},
+		["<C-p>"] = {
+			i = cmp.mapping.select_prev_item(),
+		},
 	},
 	formatting = {
 		-- Youtube: How to set up nice formatting for your sources.
@@ -38,4 +44,3 @@ cmp.setup({
 		ghost_text = true,
 	},
 })
-
