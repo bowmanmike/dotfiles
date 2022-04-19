@@ -15,7 +15,6 @@ vim.o.scrolloff = 5
 vim.o.shiftround = true
 vim.o.shiftwidth = 2
 vim.o.showcmd = false
-vim.wo.signcolumn = "yes"
 vim.o.smartcase = true
 vim.o.smarttab = true
 vim.o.splitbelow = true
@@ -23,6 +22,7 @@ vim.o.splitright = true
 vim.o.swapfile = false
 vim.o.tabstop = 2
 vim.o.termguicolors = true
+vim.wo.signcolumn = "yes"
 
 -- Strip trailing whitespace
 vim.cmd([[

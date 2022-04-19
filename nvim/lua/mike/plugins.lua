@@ -77,13 +77,13 @@ require("packer").startup(function(use)
 					topdelete = { hl = "GitGutterDelete" },
 					changedelete = { hl = "GitGutterChange" },
 				},
-				-- current_line_blame = true,
-				-- current_line_blame_opts = {
-				-- 	virt_text = true,
-				-- 	virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-				-- 	delay = 300,
-				-- 	ignore_whitespace = false,
-				-- },
+				current_line_blame = true,
+				current_line_blame_opts = {
+					virt_text = true,
+					virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+					delay = 100,
+					ignore_whitespace = false,
+				},
 			})
 		end,
 	})
@@ -172,6 +172,8 @@ require("packer").startup(function(use)
 			require("hop").setup()
 		end,
 	})
+
+  use("mizlan/iswap.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
