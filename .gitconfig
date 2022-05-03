@@ -22,7 +22,7 @@
   browser = chrome
 [core]
   excludesfile = /Users/mikebowman/.gitignore
-  editor = /usr/local/bin/nvim --noplugin
+  editor = nvim --noplugin
 	; pager = diff-so-fancy | less --tabs=4 -RFX
 ; [url "git@github.com:"]
 ;   insteadOf = https://github.com/
