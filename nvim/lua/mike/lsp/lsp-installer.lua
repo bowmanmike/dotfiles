@@ -50,13 +50,13 @@ lsp_installer.on_server_ready(function(server)
 		-- end,
 		tsserver = function()
 			default_opts.on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = false
+				-- client.resolved_capabilities.document_formatting = false
 				handlers.on_attach(client, bufnr)
 			end
 		end,
 		solargraph = function()
 			default_opts.on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = false
+				-- client.resolved_capabilities.document_formatting = false
 				client.resolved_capabilities.diagnostics = true
 				-- client.diagnostics = false
 				handlers.on_attach(client, bufnr)
@@ -67,7 +67,7 @@ lsp_installer.on_server_ready(function(server)
 		end,
 		stylelint_lsp = function()
 			default_opts.on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = false
+				-- client.resolved_capabilities.document_formatting = false
 				handlers.on_attach(client, bufnr)
 			end
 		end,
@@ -79,6 +79,7 @@ lsp_installer.on_server_ready(function(server)
 						elixir = "phoenix-heex",
 						eruby = "erb",
 						heex = "phoenix-heex",
+            svelte = "html"
 					},
 				},
 				handlers = {
@@ -96,6 +97,7 @@ lsp_installer.on_server_ready(function(server)
 						eelixir = "html",
 						elm = "html",
 						erb = "html",
+            svelte = "html"
 					},
 					tailwindCSS = {
 						lint = {
@@ -129,6 +131,7 @@ lsp_installer.on_server_ready(function(server)
 					"javascriptreact",
 					"typescript",
 					"typescriptreact",
+          "svelte",
 				},
 			}
 		end,
