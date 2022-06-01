@@ -181,6 +181,8 @@ require("packer").startup(function(use)
     end,
   })
 
+  use("pantharshit00/vim-prisma")
+
   if packer_bootstrap then
     require("packer").sync()
   end

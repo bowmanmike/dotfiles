@@ -10,7 +10,7 @@ local diagnostics = null_ls.builtins.diagnostics
 -- utils.dump(formatting.prettierd)
 null_ls.setup({
 	sources = {
-		formatting.prettierd.with({ filetypes = { "html", "css" } }),
+		-- formatting.prettierd.with({ filetypes = { "html", "css" } }),
 		formatting.shfmt,
 		formatting.eslint_d.with({
 			condition = function(utils)
