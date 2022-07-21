@@ -148,6 +148,9 @@ export PAGER="less -F -X"
 # Add Rust to path
 export PATH=$HOME/.cargo/bin:$PATH
 
+# Add lvim to path
+export PATH=$PATH:$HOME/.local/bin
+
 # ssh
 # export SSH_KEY_PATH="~/.ssh/id_rsa"
 

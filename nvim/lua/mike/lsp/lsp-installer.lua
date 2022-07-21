@@ -48,6 +48,7 @@ lspconfig.tsserver.setup({
 
 lspconfig.solargraph.setup({
 	on_attach = function(client, bufnr)
+    -- client.server_capabilities.document_formatting = false
 		client.server_capabilities.diagnostics = true
 		default_opts.on_attach(client, bufnr)
 	end,

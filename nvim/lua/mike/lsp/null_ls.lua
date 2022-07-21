@@ -12,33 +12,24 @@ null_ls.setup({
 	sources = {
 		-- formatting.prettierd.with({ filetypes = { "html", "css" } }),
 		formatting.shfmt,
-		formatting.eslint_d.with({
-			condition = function(utils)
-				return not utils.root_matches("Enlistly")
-			end,
-		}),
+		-- formatting.eslint_d.with({
+		-- 	condition = function(utils)
+		-- 		return not utils.root_matches("Enlistly")
+		-- 	end,
+		-- }),
 		formatting.standardrb,
 		formatting.stylua,
 		formatting.rustywind.with({
 			filetypes = { "html", "css", "javacsript", "javascriptreact", "typescript", "typescriptreact" },
 		}),
-		formatting.prettierd.with({
-			condition = function(utils)
-				return utils.root_matches("Enlistly")
-			end,
-		}),
-    formatting.stylelint,
-		diagnostics.eslint_d.with({
-			condition = function(utils)
-				return not utils.root_matches("Enlistly")
-			end,
-		}),
+		formatting.prettierd,
+		formatting.stylelint,
 
-		-- diagnostics.eslint_d.with({ filetypes = { "svelte" } }),
+		diagnostics.eslint_d,
 		diagnostics.luacheck,
 		diagnostics.markdownlint,
 		diagnostics.standardrb,
-    -- diagnostics.stylelint
+		-- diagnostics.stylelint
 	},
-	-- debug = true,
+	debug = true,
 })
