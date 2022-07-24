@@ -195,7 +195,7 @@ require("packer").startup(function(use)
 		end,
 	})
 
-  use("rafamadriz/friendly-snippets")
+	use("rafamadriz/friendly-snippets")
 
 	if packer_bootstrap then
 		require("packer").sync()

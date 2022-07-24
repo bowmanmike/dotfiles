@@ -24,6 +24,13 @@ vim.o.tabstop = 2
 vim.o.termguicolors = true
 vim.wo.signcolumn = "yes"
 
+-- Use global statusline
+vim.o.laststatus = 3
+
+-- Hide window separator
+
+vim.cmd([[autocmd ColorScheme * highlight WinSeparator guibg=NONE]])
+
 -- Strip trailing whitespace
 vim.cmd([[
 au BufWritePre *.rb :%s/\s\+$//e

@@ -26,6 +26,10 @@ vim.api.nvim_set_keymap("n", "<leader>tv", ":vsplit term://zsh<cr>", { noremap =
 -- vim.api.nvim_set_keymap("n", "<C-\\>", ":ToggleTerm<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("t", "<C-\\>", "<C-o>:ToggleTerm<CR>", { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap("n", "<leader>gs", ":Git<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-P>", ":Files<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-B>", ":Buffers<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-T>", ":Rg<cr>", { noremap = true, silent = true })
 vim.cmd([[
   function PrettyPrintJSON()
     :%!jq '.' -M
