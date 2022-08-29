@@ -1,8 +1,10 @@
-local lsp_installer = require("nvim-lsp-installer")
+local mason = require("mason")
+local mason_config = require("mason-lspconfig")
 local handlers = require("mike.lsp.handlers")
 local lspconfig = require("lspconfig")
 
-lsp_installer.setup()
+mason.setup()
+mason_config.setup()
 
 local default_opts = {
 	on_attach = handlers.on_attach,
@@ -48,7 +50,7 @@ lspconfig.tsserver.setup({
 
 lspconfig.solargraph.setup({
 	on_attach = function(client, bufnr)
-		-- client.server_capabilities.document_formatting = false
+    -- client.server_capabilities.document_formatting = false
 		client.server_capabilities.diagnostics = true
 		default_opts.on_attach(client, bufnr)
 	end,
@@ -128,4 +130,5 @@ lspconfig.html.setup({ on_attach = default_opts.on_attach })
 lspconfig.prismals.setup({ on_attach = default_opts.on_attach })
 lspconfig.svelte.setup({ on_attach = default_opts.on_attach })
 lspconfig.volar.setup({ on_attach = default_opts.on_attach })
-lspconfig.astro_language_server.setup({ on_attach = default_opts.on_attach })
+lspconfig.sorbet.setup({ on_attach = default_opts.on_attach })
+lspconfig.sorbet.setup({ on_attach = default_opts.on_attach })

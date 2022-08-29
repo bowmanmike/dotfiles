@@ -1,5 +1,6 @@
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
+    "astro",
 		"bash",
 		"comment",
 		"cmake",
@@ -53,5 +54,8 @@ require("nvim-treesitter.configs").setup({
 			node_incremental = "<TAB>",
 			node_decremental = "<S-TAB>",
 		},
+	},
+	autotag = {
+		enable = true,
 	},
 })

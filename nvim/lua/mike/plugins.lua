@@ -22,7 +22,9 @@ require("packer").startup(function(use)
 		"nvim-lua/plenary.nvim",
 	} })
 	use("antoinemadec/FixCursorHold.nvim")
-	use("williamboman/nvim-lsp-installer")
+	-- use("williamboman/nvim-lsp-installer")
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	use({ "nvim-telescope/telescope.nvim", requires = {
 		"nvim-lua/plenary.nvim",
 		"nvim-lua/popup.nvim",
@@ -196,6 +198,10 @@ require("packer").startup(function(use)
 	})
 
 	use("rafamadriz/friendly-snippets")
+
+	use("windwp/nvim-ts-autotag")
+
+	use("wuelnerdotexe/vim-astro")
 
 	if packer_bootstrap then
 		require("packer").sync()

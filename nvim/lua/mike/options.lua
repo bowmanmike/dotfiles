@@ -24,6 +24,12 @@ vim.o.tabstop = 2
 vim.o.termguicolors = true
 vim.wo.signcolumn = "yes"
 
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- vim.cmd([[autocmd BufReadPost,FileReadPost * normal zR]])
+-- vim.o.foldlevelstart = 1
+
 -- Use global statusline
 vim.o.laststatus = 3
 
