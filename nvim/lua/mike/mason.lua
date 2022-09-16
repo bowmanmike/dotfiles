@@ -49,11 +49,13 @@ lspconfig.tsserver.setup({
 })
 
 lspconfig.solargraph.setup({
-	on_attach = function(client, bufnr)
-    -- client.server_capabilities.document_formatting = false
-		client.server_capabilities.diagnostics = true
-		default_opts.on_attach(client, bufnr)
-	end,
+  settings = {
+    solargraph = {
+      diagnostics = true,
+
+    }
+  },
+  on_attach = default_opts.on_attach
 })
 
 lspconfig.stylelint_lsp.setup({
@@ -130,5 +132,5 @@ lspconfig.html.setup({ on_attach = default_opts.on_attach })
 lspconfig.prismals.setup({ on_attach = default_opts.on_attach })
 lspconfig.svelte.setup({ on_attach = default_opts.on_attach })
 lspconfig.volar.setup({ on_attach = default_opts.on_attach })
-lspconfig.sorbet.setup({ on_attach = default_opts.on_attach })
-lspconfig.sorbet.setup({ on_attach = default_opts.on_attach })
+-- lspconfig.sorbet.setup({ on_attach = default_opts.on_attach })
+-- lspconfig.sorbet.setup({ on_attach = default_opts.on_attach })

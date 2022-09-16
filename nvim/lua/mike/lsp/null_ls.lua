@@ -19,9 +19,9 @@ null_ls.setup({
 		-- }),
 		formatting.standardrb,
 		formatting.stylua,
-		formatting.rustywind.with({
-			filetypes = { "html", "css", "javacsript", "javascriptreact", "typescript", "typescriptreact" },
-		}),
+		-- formatting.rustywind.with({
+		-- 	filetypes = { "html", "css", "javacsript", "javascriptreact", "typescript", "typescriptreact" },
+		-- }),
 		formatting.prettierd,
 		formatting.stylelint,
 

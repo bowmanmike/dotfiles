@@ -28,7 +28,7 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- vim.cmd([[autocmd BufReadPost,FileReadPost * normal zR]])
--- vim.o.foldlevelstart = 1
+vim.o.foldlevelstart = 99999
 
 -- Use global statusline
 vim.o.laststatus = 3
