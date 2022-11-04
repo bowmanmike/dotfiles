@@ -1,6 +1,6 @@
 [user]
-  name = Mike Bowman
-  email = mbowman2@gmail.com
+	name = Mike Bowman
+	email = mike@mikebowman.dev
 	signingkey = B50D67EACD725134
 [alias]
   co = checkout

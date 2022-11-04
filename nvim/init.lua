@@ -18,4 +18,5 @@ if not vim.g.vscode then
 	require("mike.toggle-term")
 	require("mike.hop")
 	require("mike.luasnip")
+  -- require("mike.elixir")
 end
