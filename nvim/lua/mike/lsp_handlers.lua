@@ -21,7 +21,9 @@ local M = {
     vim.keymap.set('n', '<leader>gca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format() end, bufopts)
-  end
+  end,
+
+  capabilities = require("cmp_nvim_lsp").default_capabilities()
 }
 
 return M

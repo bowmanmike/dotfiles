@@ -1,5 +1,6 @@
 local elixir = require("elixir")
 local on_attach = require("mike.lsp_handlers").on_attach
+local capabilities = require("mike.lsp_handlers").capabilities
 
 elixir.setup({
   cmd = "/Users/mikebowman/.local/share/nvim/mason/bin/elixir-ls",
@@ -20,5 +21,6 @@ elixir.setup({
     vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", map_opts)
 
     on_attach(client, bufnr)
-  end
+  end,
+  capabilities = capabilities
 })

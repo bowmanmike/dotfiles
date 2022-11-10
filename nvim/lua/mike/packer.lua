@@ -158,6 +158,18 @@ return require("packer").startup(function(use)
   use({ "mhanberg/elixir.nvim", requires = { "nvim-lua/plenary.nvim" } })
   use("mattn/emmet-vim")
 
+  use("onsails/lspkind-nvim")
+  use({ 'hrsh7th/nvim-cmp', requires = {
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+  } })
+
+  -- For vsnip users.
+  -- use('hrsh7th/cmp-vsnip')
+  -- use('hrsh7th/vim-vsnip')
+
   if packer_bootstrap then
     require('packer').sync()
   end

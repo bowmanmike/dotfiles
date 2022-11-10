@@ -21,3 +21,49 @@ vim.o.termguicolors = true
 vim.wo.signcolumn = "yes"
 
 vim.g.mapleader = " "
+
+vim.cmd([[autocmd ColorScheme * highlight WinSeparator guibg=NONE]])
+
+-- Strip trailing whitespace
+vim.cmd([[
+au BufWritePre *.rb :%s/\s\+$//e
+au BufWritePre *.go :%s/\s\+$//e
+au BufWritePre *.js :%s/\s\+$//e
+au BufWritePre *.html :%s/\s\+$//e
+au BufWritePre *.css :%s/\s\+$//e
+au BufWritePre *.scss :%s/\s\+$//e
+au BufWritePre *.yaml :%s/\s\+$//e
+au BufWritePre *.ex :%s/\s\+$//e
+au BufWritePre *.exs :%s/\s\+$//e
+au BufWritePre *.json :%s/\s\+$//e
+au BufWritePre *.py :%s/\s\+$//e
+au BufWritePre *.vim :%s/\s\+$//e
+au BufWritePre *.lua :%s/\s\+$//e
+au BufWritePre *.scala :%s/\s\+$//e
+]])
+
+-- File Reloading
+vim.cmd([[
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+]])
+
+-- Highlight on yank
+vim.api.nvim_exec(
+  [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]] ,
+  false
+)
+
+vim.cmd([[
+" Let's save undo info!
+if !isdirectory($HOME."/nobackup/nvim-undodir")
+    call mkdir($HOME."/nobackup/nvim-undodir", "", 0770)
+endif
+set undodir=~/nobackup/nvim-undodir
+set undofile
+]])

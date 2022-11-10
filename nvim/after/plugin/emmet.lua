@@ -1,2 +1,1 @@
-print("emmet")
 vim.g.user_emmet_leader_key = "<C-Z>"

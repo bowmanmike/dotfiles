@@ -2,6 +2,7 @@ local lsp_config = require("lspconfig")
 require("mason").setup()
 require("mason-lspconfig").setup()
 local on_attach = require("mike.lsp_handlers").on_attach
+local capabilities = require("mike.lsp_handlers").capabilities
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -20,6 +21,7 @@ local lsp_flags = {
 lsp_config["sumneko_lua"].setup({
   on_attach = on_attach,
   flags = lsp_flags,
+  capabilities = capabilities,
   settings = {
     Lua = {
       diagnostics = {
@@ -31,7 +33,9 @@ lsp_config["sumneko_lua"].setup({
 lsp_config["tsserver"].setup({
   on_attach = on_attach,
   flags = lsp_flags,
+  capabilities = capabilities,
 })
+-- NOTE: Handled specifically by the elixir.nvim plugin
 -- lsp_config["elixirls"].setup({
 --   on_attach = on_attach,
 --   flags = lsp_flags
@@ -39,7 +43,8 @@ lsp_config["tsserver"].setup({
 
 lsp_config["solargraph"].setup({
   on_attach = on_attach,
-  flags = lsp_flags
+  flags = lsp_flags,
+  capabilities = capabilities,
 })
 
 -- require('lspconfig')['pyright'].setup{
