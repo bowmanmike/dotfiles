@@ -137,6 +137,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR='nvim --noplugin'
+export ELIXIR_EDITOR="code --goto __FILE__:__LINE__"
 
 # Unset $PAGER
 export PAGER="less -F -X"

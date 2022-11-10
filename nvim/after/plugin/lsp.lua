@@ -31,11 +31,13 @@ lsp_config["sumneko_lua"].setup({
 lsp_config["tsserver"].setup({
   on_attach = on_attach,
   flags = lsp_flags,
-  -- settings = {
-
-  -- }
 })
 lsp_config["elixirls"].setup({
+  on_attach = on_attach,
+  flags = lsp_flags
+})
+
+lsp_config["solargraph"].setup({
   on_attach = on_attach,
   flags = lsp_flags
 })
