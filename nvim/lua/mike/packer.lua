@@ -1,8 +1,8 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -38,6 +38,7 @@ return require("packer").startup(function(use)
   use("tpope/vim-rhubarb")
   use("tpope/vim-dispatch")
   use("tpope/vim-fugitive")
+  use("tpope/vim-projectionist")
   use("jiangmiao/auto-pairs")
   use({
     "lewis6991/gitsigns.nvim",
@@ -100,50 +101,50 @@ return require("packer").startup(function(use)
   use("nvim-treesitter/nvim-treesitter-textobjects")
   use("nvim-treesitter/playground")
   use({ "p00f/nvim-ts-rainbow" })
-	use("windwp/nvim-ts-autotag")
+  use("windwp/nvim-ts-autotag")
 
-	use("kdheepak/lazygit.nvim")
-	use("vim-test/vim-test")
-
-	use({
-		"phaazon/hop.nvim",
-		branch = "v2",
-		config = function()
-			require("hop").setup()
-		end,
-	})
-
-	use("mizlan/iswap.nvim")
-	use({
-		"akinsho/git-conflict.nvim",
-		config = function()
-			require("git-conflict").setup()
-		end,
-	})
+  use("kdheepak/lazygit.nvim")
+  use("vim-test/vim-test")
 
   use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+    "phaazon/hop.nvim",
+    branch = "v2",
+    config = function()
+      require("hop").setup()
+    end,
+  })
 
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("nvim-tree").setup({})
-		end,
-	})
+  use("mizlan/iswap.nvim")
+  use({
+    "akinsho/git-conflict.nvim",
+    config = function()
+      require("git-conflict").setup()
+    end,
+  })
 
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		-- config = function()
-		--  require("trouble").setup({
-		--    -- your configuration comes here
-		--    -- or leave it empty to use the default settings
-		--  })
-		-- end,
-	})
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+  })
+
+  use({
+    "kyazdani42/nvim-tree.lua",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("nvim-tree").setup({})
+    end,
+  })
+
+  use({
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    -- config = function()
+    --  require("trouble").setup({
+    --    -- your configuration comes here
+    --    -- or leave it empty to use the default settings
+    --  })
+    -- end,
+  })
 
   use("neovim/nvim-lspconfig")
   use("williamboman/mason.nvim")
@@ -152,7 +153,10 @@ return require("packer").startup(function(use)
   use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-})
+  })
+
+  use({ "mhanberg/elixir.nvim", requires = { "nvim-lua/plenary.nvim" } })
+  use("mattn/emmet-vim")
 
   if packer_bootstrap then
     require('packer').sync()
