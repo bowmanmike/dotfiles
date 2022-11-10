@@ -9,8 +9,9 @@ null_ls.setup({
   on_attach = on_attach,
   sources = {
     formatting.prettierd,
+
+    diagnostics.credo,
     diagnostics.eslint_d,
-    diagnostics.rubocop,
-    diagnostics.credo
+    diagnostics.standardrb,
   }
 })
