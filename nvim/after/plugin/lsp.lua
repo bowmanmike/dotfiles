@@ -47,6 +47,35 @@ lsp_config["solargraph"].setup({
   capabilities = capabilities,
 })
 
+lsp_config["tailwindcss"].setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+  init_options = {
+    userLanguages = {
+      eelixir = "html-eex",
+      eruby = "erb",
+      heex = "phoenix-heex",
+      svelte = "html"
+    }
+  },
+  setings = {
+    tailwindCSS = {
+      classAttributes = { "class", "className", "classList", "ngClass" },
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning"
+      },
+      validate = true
+    }
+  }
+})
+
 -- require('lspconfig')['pyright'].setup{
 --     on_attach = on_attach,
 --     flags = lsp_flags,

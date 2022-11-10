@@ -8,10 +8,17 @@ null_ls.setup({
   -- debug = true,
   on_attach = on_attach,
   sources = {
-    formatting.prettierd,
-
     diagnostics.credo,
     diagnostics.eslint_d,
+    diagnostics.jsonlint,
+    diagnostics.luacheck,
+    diagnostics.markdownlint,
     diagnostics.standardrb,
+    diagnostics.yamllint,
+
+    formatting.jq,
+    formatting.markdownlint,
+    formatting.prettierd,
+    formatting.yamlfmt,
   }
 })
