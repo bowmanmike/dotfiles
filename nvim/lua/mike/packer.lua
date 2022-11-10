@@ -145,6 +145,15 @@ return require("packer").startup(function(use)
 		-- end,
 	})
 
+  use("neovim/nvim-lspconfig")
+  use("williamboman/mason.nvim")
+  use("williamboman/mason-lspconfig.nvim")
+
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+})
+
   if packer_bootstrap then
     require('packer').sync()
   end
