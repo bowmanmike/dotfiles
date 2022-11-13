@@ -170,6 +170,11 @@ return require("packer").startup(function(use)
   -- use('hrsh7th/cmp-vsnip')
   -- use('hrsh7th/vim-vsnip')
 
+  -- For luasnip users.
+  use('L3MON4D3/LuaSnip')
+  use('saadparwaiz1/cmp_luasnip')
+
+
   if packer_bootstrap then
     require('packer').sync()
   end

@@ -29,3 +29,5 @@ command! QW wq
 command! SO luafile $MYVIMRC
 command! SF luafile %
 ]])
+
+nnoremap("<leader>cf", ':let @+ = expand("%")<cr>')
