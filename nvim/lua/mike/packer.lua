@@ -130,9 +130,9 @@ return require("packer").startup(function(use)
   use({
     "kyazdani42/nvim-tree.lua",
     requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("nvim-tree").setup({})
-    end,
+    -- config = function()
+    --   require("nvim-tree").setup({})
+    -- end,
   })
 
   use({
@@ -157,6 +157,9 @@ return require("packer").startup(function(use)
 
   use({ "mhanberg/elixir.nvim", requires = { "nvim-lua/plenary.nvim" } })
   use("mattn/emmet-vim")
+  use("vim-ruby/vim-ruby")
+  use("tpope/vim-rails")
+  use("fatih/vim-go")
 
   use("onsails/lspkind-nvim")
   use({ 'hrsh7th/nvim-cmp', requires = {
@@ -173,7 +176,14 @@ return require("packer").startup(function(use)
   -- For luasnip users.
   use('L3MON4D3/LuaSnip')
   use('saadparwaiz1/cmp_luasnip')
+  use('rafamadriz/friendly-snippets')
 
+  use({ 'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim' })
+
+  use('RRethy/vim-illuminate')
+
+  use({'scalameta/nvim-metals', requires = { 'nvim-lua/plenary.nvim' }})
 
   if packer_bootstrap then
     require('packer').sync()

@@ -2,9 +2,9 @@ vim.diagnostic.config({
 	virtual_text = false,
 })
 
-vim.cmd([[
-  autocmd CursorHold * lua vim.diagnostic.open_float()
-]])
+-- vim.cmd([[
+--   autocmd CursorHold * lua vim.diagnostic.open_float()
+-- ]])
 
 vim.o.updatetime = 300
 -- Show all diagnostics on current line in floating window

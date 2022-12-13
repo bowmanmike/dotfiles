@@ -76,6 +76,12 @@ lsp_config["tailwindcss"].setup({
   }
 })
 
+lsp_config["gopls"].setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities
+})
+
 -- require('lspconfig')['pyright'].setup{
 --     on_attach = on_attach,
 --     flags = lsp_flags,
@@ -84,11 +90,12 @@ lsp_config["tailwindcss"].setup({
 --     on_attach = on_attach,
 --     flags = lsp_flags,
 -- }
--- require('lspconfig')['rust_analyzer'].setup{
---     on_attach = on_attach,
---     flags = lsp_flags,
---     -- Server-specific settings...
---     settings = {
---       ["rust-analyzer"] = {}
---     }
--- }
+lsp_config['rust_analyzer'].setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities
+  -- Server-specific settings...
+  -- settings = {
+  --   ["rust-analyzer"] = {}
+  -- }
+}

@@ -250,6 +250,12 @@ export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openss
 export ITERM2_SQUELCH_MARK=1
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+export PATH="$PATH:/Users/mikebowman/Library/Application Support/Coursier/bin"
+
+# >>> JVM installed by coursier >>>
+export JAVA_HOME="/Users/mikebowman/Library/Caches/Coursier/arc/https/github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11%252B28/OpenJDK11-jdk_x64_mac_hotspot_11_28.tar.gz/jdk-11+28/Contents/Home"
+# <<< JVM installed by coursier <<<
+
 eval $(thefuck --alias)
 
 autoload zmv

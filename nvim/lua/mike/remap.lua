@@ -31,3 +31,5 @@ command! SF luafile %
 ]])
 
 nnoremap("<leader>cf", ':let @+ = expand("%")<cr>')
+
+vim.api.nvim_set_keymap("t", "<C-o>", "<C-\\><C-n>", { noremap = true })

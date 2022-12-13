@@ -1,0 +1,12 @@
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'machakann/vim-highlightedyank'
+Plug 'preservim/nerdtree'
+
+packadd matchit
+
+set sneak
+set ignorecase
+set smartcase
+
+set NERDTree

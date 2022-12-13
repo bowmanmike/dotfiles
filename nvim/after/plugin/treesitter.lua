@@ -2,8 +2,8 @@ require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "astro",
     "bash",
-    "comment",
     "cmake",
+    "comment",
     "css",
     "dockerfile",
     "eex",
@@ -57,9 +57,9 @@ require("nvim-treesitter.configs").setup({
   },
   autotag = {
     enable = true,
-    filetypes = {
-      'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript',
-      'xml', 'php', 'markdown', 'glimmer', 'handlebars', 'hbs', 'heex', 'html-eex', 'phoenix-heex'
-    }
+    -- filetypes = {
+    --   'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript',
+    --   'xml', 'php', 'markdown', 'glimmer', 'handlebars', 'hbs', 'heex', 'html-eex', 'phoenix-heex'
+    -- }
   },
 })
