@@ -1,3 +1,8 @@
+local lsp = require('lsp-zero')
+
+lsp.preset('recommended')
+lsp.setup()
+
 -- NOTE: Disabled while I try lsp-zero
 
 -- local lsp_config = require("lspconfig")
