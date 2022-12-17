@@ -185,6 +185,8 @@ return require("packer").startup(function(use)
 
   use({'scalameta/nvim-metals', requires = { 'nvim-lua/plenary.nvim' }})
 
+  use("mbbill/undotree")
+
   if packer_bootstrap then
     require('packer').sync()
   end
