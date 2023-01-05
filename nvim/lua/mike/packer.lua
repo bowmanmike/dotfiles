@@ -100,7 +100,7 @@ return require("packer").startup(function(use)
   })
   use("nvim-treesitter/nvim-treesitter-textobjects")
   use("nvim-treesitter/playground")
-  use({ "p00f/nvim-ts-rainbow", commit="064fd6c" })
+  use({ "p00f/nvim-ts-rainbow", commit = "064fd6c" })
   use("windwp/nvim-ts-autotag")
 
   use("kdheepak/lazygit.nvim")
