@@ -62,4 +62,7 @@ require("nvim-treesitter.configs").setup({
     --   'xml', 'php', 'markdown', 'glimmer', 'handlebars', 'hbs', 'heex', 'html-eex', 'phoenix-heex'
     -- }
   },
+  indent = {
+    enable = true
+  }
 })
