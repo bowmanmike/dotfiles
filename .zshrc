@@ -109,7 +109,7 @@ plugins=(
   # asdf
   # aws
   brew
-  fzf
+  # fzf
   git
   github
   # httpie
@@ -212,8 +212,8 @@ alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 alias dc='docker-compose'
 
 # FZF config
-# export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/"'
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/"'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function fco {
   local filter
