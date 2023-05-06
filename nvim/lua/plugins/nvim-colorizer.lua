@@ -1,8 +1,10 @@
 return {
-  "norcalli/nvim-colorizer.lua",
-  config = function()
-    require("colorizer").setup({
-      css = { hsl_fn = true, rgb_fn = true },
-    })
-  end,
+  "NvChad/nvim-colorizer.lua",
+  opts = {
+    user_default_options = {
+      tailwind = true,
+      css = true,
+      css_fn = true,
+    },
+  },
 }
