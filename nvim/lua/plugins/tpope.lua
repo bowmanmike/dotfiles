@@ -5,5 +5,6 @@ return {
     keys = {
       { "<leader>gs", "<cmd>Git<cr>", desc = "Fugitive Status" },
     },
+    cmd = "BufRead",
   },
 }
