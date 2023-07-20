@@ -62,6 +62,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
+--    [[ Plugins ]]
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
@@ -141,6 +142,7 @@ require('lazy').setup({
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
+    opts = {}
   },
 
   {
@@ -236,18 +238,15 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
--- [[ Setting options ]]
+-- [[ Settings/Options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
 
--- Enable mouse mode
-vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -258,14 +257,18 @@ vim.o.clipboard = 'unnamedplus'
 vim.o.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.cmd([[
+" Let's save undo info!
+if !isdirectory($HOME."/nobackup/nvim-undodir")
+call mkdir($HOME."/nobackup/nvim-undodir", "", 0770)
+endif
+set undodir=~/nobackup/nvim-undodir
+set undofile
+]])
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
 vim.o.updatetime = 250
@@ -275,10 +278,30 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
 
+vim.o.backup = false
+vim.o.cursorline = true
+vim.o.expandtab = true
+vim.o.hlsearch = false
+vim.o.ignorecase = true
+vim.o.inccommand = "nosplit"
+vim.o.listchars = "tab:»·,trail:·,nbsp:·"
+vim.o.scrolloff = 5
+vim.o.shiftround = true
+vim.o.shiftwidth = 2
+vim.o.showcmd = false
+vim.o.smartcase = true
+vim.o.smarttab = true
+vim.o.splitbelow = true
 vim.o.splitright = true
-vim.o.splitdown = true
+vim.o.swapfile = false
+vim.o.tabstop = 2
+vim.o.termguicolors = true
+vim.wo.signcolumn = "yes"
+
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevel = 100
 
 -- [[ Basic Keymaps ]]
 
@@ -345,18 +368,45 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
     "astro",
+    "bash",
+    "comment",
+    "cmake",
+    "css",
+    "dockerfile",
     "eex",
     "elixir",
+    "erlang",
+    "gleam",
+    "go",
+    "gomod",
+    "graphql",
+    "hcl",
     "heex",
+    "hjson",
+    "html",
+    "http",
     "javascript",
+    "jsdoc",
+    "json",
+    "json5",
+    "jsonc",
+    "lua",
+    "make",
+    "markdown",
+    "python",
+    "regex",
     "ruby",
-    'go',
-    'lua',
-    'python',
-    'rust',
-    'tsx',
-    'typescript',
-    'vim',
+    "rust",
+    "scss",
+    "surface",
+    "svelte",
+    "todotxt",
+    "toml",
+    "tsx",
+    "typescript",
+    "vim",
+    "vue",
+    "yaml",
   },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -367,10 +417,10 @@ require('nvim-treesitter.configs').setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
+      init_selection = '<leader>is',
+      scope_incremental = "<leader>is",
+      node_incremental = "<TAB>",
+      node_decremental = "<S-TAB>",
     },
   },
   textobjects = {
@@ -497,6 +547,7 @@ local servers = {
       format = true
     },
   },
+  -- solargraph = {}
 }
 
 -- Setup neovim lua configuration
