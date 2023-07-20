@@ -113,10 +113,10 @@ if !isdirectory($HOME."/nobackup/nvim-undodir")
         "junegunn/fzf"
       }
     },
-    { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+    -- { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
   })
 
 
   require("lazy").setup(plugins, opts)
 
-  vim.cmd("colorscheme kanagawa")
+  vim.cmd("colorscheme tokyonight")
