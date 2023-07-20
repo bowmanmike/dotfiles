@@ -5,6 +5,7 @@ return {
       "bash",
       "css",
       "elixir",
+      "heex",
       "html",
       "javascript",
       "json",

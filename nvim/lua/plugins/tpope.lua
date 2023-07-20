@@ -3,7 +3,7 @@ return {
   {
     "tpope/vim-fugitive",
     keys = {
-      { "n", "<leader>gs", "<cmd>Git<cr>", { silent = true, noremap = true } },
+      { "<leader>gs", "<cmd>Git<cr>", desc = "Fugitive Status" },
     },
   },
 }
