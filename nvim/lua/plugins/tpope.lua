@@ -7,4 +7,5 @@ return {
     },
     cmd = "BufRead",
   },
+  "tpope/vim-projectionist",
 }
