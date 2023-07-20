@@ -1,0 +1,12 @@
+{
+  "fzf": { "branch": "master", "commit": "3c09c77269d848f5e7dd8f350a90e8d7ed760845" },
+  "fzf.vim": { "branch": "master", "commit": "e0d131d95364edf940a70127fcb5748b86e6955e" },
+  "kanagawa.nvim": { "branch": "master", "commit": "1749cea392acb7d1548a946fcee1e6f1304cd3cb" },
+  "lazy.nvim": { "branch": "main", "commit": "0d61488b89a570415177f75a36ef93616aac6c77" },
+  "moonfly": { "branch": "master", "commit": "2583b326640ff1d6335a4e78b095203653871c68" },
+  "nvim-autopairs": { "branch": "master", "commit": "ae5b41ce880a6d850055e262d6dfebd362bb276e" },
+  "tokyonight.nvim": { "branch": "main", "commit": "d785293494c59ce0940c00b8b044fc672d2902b1" },
+  "vim-commentary": { "branch": "master", "commit": "e87cd90dc09c2a203e13af9704bd0ef79303d755" },
+  "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" },
+  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" }
+}
