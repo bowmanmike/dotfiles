@@ -30,6 +30,7 @@ Thumbs.db
 .vscode/
 .metadata/
 .elixir_ls/
+.elixir-tools/
 .vs/
 .metals/
 
