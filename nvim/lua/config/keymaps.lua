@@ -30,4 +30,4 @@ command! SO luafile $MYVIMRC
 command! SF luafile %
 ]])
 
-vim.api.nvim_set_keymap("n", "<leader>cf", ':let @+ = expand("%")<cr>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>cf", ':let @+ = expand("%")<cr>', { noremap = true, silent = true })

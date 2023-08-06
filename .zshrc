@@ -184,7 +184,7 @@ alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.ignore'
 alias rg='rg -i'
 alias weather='curl -4 wttr.in/Toronto'
 alias mux='tmuxinator'
-alias fv='vim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes' --color always {}")'
+alias fv='vim -O $(fzf -m --preview "bat --theme='OneHalfDark' --style='numbers,changes' --color always {}")'
 # alias fl='lvim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes' --color always {}")'
 alias be='bundle exec'
 alias als='alias | rg'
@@ -232,6 +232,7 @@ eval "$(direnv hook zsh)"
 
 # ASDF
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+# . ~/.asdf/plugins/golang/set-env.zsh
 
 # ZSH Autocomplete
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -257,6 +258,10 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # <<< JVM installed by coursier <<<
 
 eval $(thefuck --alias)
+# export ASDF_GOLANG_MOD_VERSION_ENABLED=true
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$(go env GOPATH)/bin # <---- Confirm this line in you profile!!!
 
 # add flutter
 export PATH=$PATH:~/flutter/bin/

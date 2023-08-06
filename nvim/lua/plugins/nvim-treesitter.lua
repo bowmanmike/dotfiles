@@ -18,6 +18,7 @@ return {
       "ruby",
       "scss",
       "svelte",
+      "sql",
       "tsx",
       "typescript",
       "vim",
