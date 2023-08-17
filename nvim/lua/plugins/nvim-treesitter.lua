@@ -17,12 +17,18 @@ return {
       "regex",
       "ruby",
       "scss",
-      "svelte",
       "sql",
+      "svelte",
       "tsx",
       "typescript",
       "vim",
       "yaml",
+    },
+    highlight = {
+      enable = true,
+    },
+    indent = {
+      enable = true,
     },
   },
 }

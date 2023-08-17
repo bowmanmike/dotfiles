@@ -1,6 +1,6 @@
 return {
   "phaazon/hop.nvim",
-  cmd = "VeryLazy",
+  cmd = "BufRead",
   keys = {
     { "S", "<cmd>HopChar2<cr>" },
     { "s", "<cmd>HopWord<cr>" },
