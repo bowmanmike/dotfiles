@@ -23,11 +23,13 @@
 [core]
   excludesfile = /Users/mikebowman/.gitignore
   editor = nvim --noplugin
+  pager = delta
 	; pager = diff-so-fancy | less --tabs=4 -RFX
 ; [url "git@github.com:"]
 ;   insteadOf = https://github.com/
 [diff]
-    tool = default-difftool
+    ; tool = default-difftool
+  colorMoved = default
 [difftool "default-difftool"]
     cmd = code --wait --diff $LOCAL $REMOTE
 [pager]
@@ -62,3 +64,10 @@
 	protocol = ssh
 [init]
 	defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  light = false
+[merge]
+  conflictstyle = diff3
