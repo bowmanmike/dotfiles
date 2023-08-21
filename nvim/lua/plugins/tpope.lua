@@ -3,9 +3,10 @@ return {
   {
     "tpope/vim-fugitive",
     keys = {
-      { "<leader>gi", "<cmd>Git<cr>", desc = "Fugitive Status" },
+      -- { "<leader>gi", "<cmd>Git<cr>", desc = "Fugitive Status" },
+      { "<leader>gs", "<cmd>Git<cr>", desc = "Fugitive Status" },
     },
-    cmd = "VimEnter",
+    cmd = "VeryLazy",
   },
   "tpope/vim-projectionist",
 }
