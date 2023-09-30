@@ -46,6 +46,7 @@ return {
         },
       },
     },
+    solargraph = {},
     setup = {
       gopls = function(_, opts)
         -- workaround for gopls not supporting semanticTokensProvider
