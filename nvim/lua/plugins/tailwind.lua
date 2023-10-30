@@ -3,7 +3,9 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        tailwindcss = {},
+        tailwindcss = {
+          filetypes_include = { "eruby" },
+        },
       },
     },
   },

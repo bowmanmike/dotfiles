@@ -5,6 +5,7 @@ return {
     opts = {
       autotag = {
         enable = true,
+        -- filetypes = { "eruby" },
       },
     },
   },

@@ -5,6 +5,7 @@ return {
       "bash",
       "css",
       "elixir",
+      "embedded_template",
       "heex",
       "html",
       "javascript",
