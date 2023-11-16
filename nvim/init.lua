@@ -151,7 +151,7 @@ require('lazy').setup({
       --   topdelete = { text = '‾' },
       --   changedelete = { text = '~' },
       -- },
-      --     current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+      current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
       current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
@@ -275,7 +275,8 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'HiPhish/rainbow-delimiters.nvim'
+      'HiPhish/rainbow-delimiters.nvim',
+      'windwp/nvim-ts-autotag'
     },
     build = ':TSUpdate',
   },
@@ -291,6 +292,69 @@ require('lazy').setup({
     end,
 
   },
+  { "jiangmiao/auto-pairs" },
+  {
+    "norcalli/nvim-colorizer.lua",
+    opts = {
+      user_default_options = {
+        tailwind = true,
+        css = true,
+        css_fn = true
+      }
+    }
+  },
+  {
+    "smoka7/hop.nvim",
+    version = "*",
+    config = function()
+      require('hop').setup()
+      vim.keymap.set('n', "s", vim.cmd.HopWord, { silent = true, noremap = true })
+    end,
+    opts = {}
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+      vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle, { silent = true, noremap = true })
+      vim.keymap.set("n", "<leader>n", ":NvimTreeFindFile<cr>", { noremap = true, silent = true })
+    end,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      vim.keymap.set('n', '<leader>gg', vim.cmd.LazyGit, { silent = true, noremap = true })
+    end
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+    config = function()
+      vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
+    end
+  },
+  {
+    "vim-test/vim-test",
+    config = function()
+      vim.cmd([[ let test#strategy="neovim"]])
+    end,
+    keys = {
+      { "<leader>tn", ":TestNearest<cr>", desc = "[T]est [N]earest" },
+      { "<leader>tf", ":TestFile<cr>",    desc = "[T]est [F]ile" },
+      { "<leader>tl", ":TestLast<cr>",    desc = "[T]est [L]ast" },
+      { "<leader>ts", ":TestSuite<cr>",   desc = "[T]est [S]uite" },
+    },
+  },
   {
     "elixir-tools/elixir-tools.nvim",
     version = "*",
@@ -299,79 +363,44 @@ require('lazy').setup({
       local elixir = require("elixir")
       local elixirls = require("elixir.elixirls")
 
-      elixir.setup({
+      elixir.setup {
         nextls = { enable = false },
-        credo = { enable = true },
+        credo = {},
         elixirls = {
-          tag = "v0.15.1", -- defaults to nil, mutually exclusive with the `branch` option
           enable = true,
-          settings = elixirls.settings({
+          settings = elixirls.settings {
             dialyzerEnabled = false,
             enableTestLenses = false,
-          }),
+          },
           on_attach = function(client, bufnr)
-            vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })
-            vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
+            vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>",
+              { buffer = true, noremap = true, desc = "[F]rom [P]ipe" })
+            vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true, desc = "[T]o [P]ipe" })
             vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
           end,
-        },
-      })
+        }
+      }
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    { "jiangmiao/auto-pairs" },
-    {
-      "norcalli/nvim-colorizer.lua",
-      opts = {
-        user_default_options = {
-          tailwind = true,
-          css = true,
-          css_fn = true
-        }
-      }
-    },
-    {
-      "smoka7/hop.nvim",
-      version = "*",
-      config = function()
-        require('hop').setup()
-        vim.keymap.set('n', "S", vim.cmd.HopWord, { silent = true, noremap = true })
-      end,
-      opts = {}
-    },
-    {
-      "nvim-tree/nvim-tree.lua",
-      version = "*",
-      lazy = false,
-      dependencies = {
-        "nvim-tree/nvim-web-devicons",
-      },
-      config = function()
-        require("nvim-tree").setup {}
-        vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle, { silent = true, noremap = true })
-      end,
-    },
-    {
-      "kdheepak/lazygit.nvim",
-      -- optional for floating window border decoration
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-      },
-      config = function()
-        vim.keymap.set('n', '<leader>gg', vim.cmd.LazyGit, { silent=  true, noremap = true })
-      end
-    },
-    -- {
-    --   "emmanueltouzery/elixir-extras.nvim",
-    --   config = function()
-    --     local extras = require('elixir-extras')
-    --     extras.setup_multiple_clause_gutter()
-    --     vim.keymap.set('n', '<leader>do', extras.elixir_view_docs({ include_mix_libs = true }),
-    --       { silent = true, noremap = true })
-    --   end
-    -- }
+  },
+  {
+    "mattn/emmet-vim",
+    config = function()
+      vim.cmd [[let g:user_emmet_leader_key='<C-Z>']]
+    end
   }
+
+  -- {
+  --   "emmanueltouzery/elixir-extras.nvim",
+  --   config = function()
+  --     local extras = require('elixir-extras')
+  --     extras.setup_multiple_clause_gutter()
+  --     vim.keymap.set('n', '<leader>do', extras.elixir_view_docs({ include_mix_libs = true }),
+  --       { silent = true, noremap = true })
+  --   end
+  -- }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -399,7 +428,7 @@ vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menuone,noselect"
 vim.o.cursorline = true
 vim.o.expandtab = true
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 100
 vim.o.foldmethod = "expr"
 vim.o.hlsearch = false
@@ -517,7 +546,7 @@ vim.keymap.set('n', '<c-p>', require('telescope.builtin').find_files, { desc = '
 vim.keymap.set('n', '<c-b>', require('telescope.builtin').buffers, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<c-t>', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
@@ -535,6 +564,7 @@ vim.defer_fn(function()
 
     highlight = { enable = true },
     indent = { enable = true },
+    autotag = { enable = true },
     incremental_selection = {
       enable = true,
       keymaps = {

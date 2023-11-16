@@ -210,6 +210,7 @@ alias gcos="git checkout staging"
 alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 
 alias dc='docker-compose'
+alias lg='lazygit'
 
 # FZF config
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/"'
