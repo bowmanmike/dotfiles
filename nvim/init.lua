@@ -390,6 +390,13 @@ require('lazy').setup({
     config = function()
       vim.cmd [[let g:user_emmet_leader_key='<C-Z>']]
     end
+  },
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+
   }
 
   -- {
@@ -810,6 +817,8 @@ cmp.setup {
 cmp.config.formatting = {
   format = require("tailwindcss-colorizer-cmp").formatter
 }
+
+vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
