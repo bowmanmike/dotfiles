@@ -71,9 +71,13 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-surround',
+  'tpope/vim-repeat',
+  -- 'tpope/vim-projectionist',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  'tpope/vim-rails',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -145,11 +149,12 @@ require('lazy').setup({
     opts = {
       -- See `:help gitsigns.txt`
       -- signs = {
-      --   add = { text = '+' },
-      --   change = { text = '~' },
-      --   delete = { text = '_' },
-      --   topdelete = { text = '‾' },
+      --   add          = { text = '│' },
+      --   change       = { text = '│' },
+      --   delete       = { text = '_' },
+      --   topdelete    = { text = '‾' },
       --   changedelete = { text = '~' },
+      --   untracked    = { text = '┆' },
       -- },
       current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
       current_line_blame_opts = {
@@ -161,6 +166,7 @@ require('lazy').setup({
 
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+        vim.keymap.set('n', '<leader>hu', require('gitsigns').reset_hunk, { buffer = bufnr, desc = 'Undo git hunk' })
 
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
@@ -519,11 +525,17 @@ command! SF luafile %
 
 vim.keymap.set('n', '<leader>gs', '<cmd>Git<cr>', { silent = true, noremap = true, desc = "Fugitive Status" })
 
+vim.keymap.set('n', '<leader>cp', ':let @+ = expand("%")<cr>')
 
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
+  pickers = {
+    colorscheme = {
+      enable_preview = true
+    }
+  },
   defaults = {
     mappings = {
       i = {
@@ -579,6 +591,7 @@ vim.defer_fn(function()
       'ruby',
       'rust',
       'scss',
+      'templ',
       'tsx',
       'typescript',
       'vim',
@@ -731,7 +744,12 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs', 'eruby', 'heex' } },
+  html = { filetypes = { 'html', 'twig', 'hbs', 'eruby', 'heex', 'templ' } },
+  htmx = { filetypes = { 'html', 'templ' } },
+  tailwindcss = {
+    filetypes = { 'templ', 'astro', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'html', 'eruby',
+      'heex', 'eex' }
+  },
 
   lua_ls = {
     Lua = {
@@ -819,6 +837,8 @@ cmp.config.formatting = {
 }
 
 vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+
+vim.filetype.add({ extension = { templ = "templ" } })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
