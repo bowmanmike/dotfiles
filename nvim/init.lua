@@ -302,6 +302,9 @@ require('lazy').setup({
   {
     "norcalli/nvim-colorizer.lua",
     opts = {
+      'templ',
+      'css',
+      'javascript',
       user_default_options = {
         tailwind = true,
         css = true,
@@ -338,7 +341,7 @@ require('lazy').setup({
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      vim.keymap.set('n', '<leader>gg', vim.cmd.LazyGit, { silent = true, noremap = true })
+      vim.keymap.set('n', '<leader>gg', vim.cmd.LazyGit, { silent = true, noremap = true , desc = "Open LazyGit"})
     end
   },
   {
@@ -574,6 +577,9 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
+    modules = {},
+    sync_install = false,
+    ignore_install = {},
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = {
       'bash',
@@ -748,7 +754,8 @@ local servers = {
   htmx = { filetypes = { 'html', 'templ' } },
   tailwindcss = {
     filetypes = { 'templ', 'astro', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'html', 'eruby',
-      'heex', 'eex' }
+      'heex', 'eex' },
+    init_options = { userLanguages = { templ = "html", eruby = "html", heex = "html", eex = "html" } }
   },
 
   lua_ls = {

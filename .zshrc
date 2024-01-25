@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -111,7 +112,7 @@ plugins=(
   brew
   # fzf
   git
-  github
+  # github
   # httpie
   # jira
   # pip
@@ -209,7 +210,7 @@ alias glog="git log --oneline --decorate --graph -15"
 alias gcos="git checkout staging"
 alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 
-alias dc='docker-compose'
+alias dc='docker compose'
 alias lg='lazygit'
 
 # FZF config
@@ -247,7 +248,8 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/mikebowman/Library/Caches/heroku/autocomplete/zs
 if [ -f '/Users/mikebowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mikebowman/.netlify/helper/path.zsh.inc'; fi
 
 # Erlang install options
-export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl@1.1)"
+export BREW_OPENSSL=$(brew --prefix openssl@1.1)
+export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$BREW_OPENSSL"
 
 export ITERM2_SQUELCH_MARK=1
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
