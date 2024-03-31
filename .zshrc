@@ -1,4 +1,4 @@
-# zmodload zsh/zprof
+zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -106,25 +106,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  # asdf
-  # aws
-  brew
-  # fzf
-  git
-  # github
-  # httpie
-  # jira
-  # pip
-  # python
-  # rails
-  # ruby
-  # taskwarrior
-  # thefuck
-  # tmux
-  # yarn
-  z
-)
+plugins=( evalcache brew git z )
+
 
 source $ZSH/oh-my-zsh.sh
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -137,14 +120,13 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # export LANG=en_US.UTF-8
 
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
-export EDITOR='nvim --noplugin'
+export EDITOR='nvim' # --noplugin'
 export ELIXIR_EDITOR="code --goto __FILE__:__LINE__"
 
 # Unset $PAGER
 export PAGER="less -F -X"
 
 # Add score deploy key
-[[ -f ~/dotfiles/.thescore_deploy_key ]] && source ~/dotfiles/.thescore_deploy_key
 [[ -f ~/dotfiles/.digital_ocean_token ]] && source ~/dotfiles/.digital_ocean_token
 
 # Add Rust to path
@@ -230,7 +212,7 @@ function fco {
 }
 
 # Direnv
-eval "$(direnv hook zsh)"
+_evalcache direnv hook zsh
 
 # ASDF
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
@@ -260,7 +242,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # export JAVA_HOME="/Users/mikebowman/Library/Caches/Coursier/arc/https/github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11%252B28/OpenJDK11-jdk_x64_mac_hotspot_11_28.tar.gz/jdk-11+28/Contents/Home"
 # <<< JVM installed by coursier <<<
 
-eval $(thefuck --alias)
+_evalcache thefuck --alias
 # export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
