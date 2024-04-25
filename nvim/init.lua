@@ -136,7 +136,9 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- python = { "isort", "black" },
-				javascript = { { "prettierd", "prettier" } },
+				javascript = { { "prettierd" } },
+				handlebars = { { "prettierd" } },
+				ruby = { "rubyfmt" },
 			},
 			-- Set up format-on-save
 			format_on_save = { timeout_ms = 500, lsp_fallback = true },
@@ -266,6 +268,7 @@ require("lazy").setup({
 			vim.cmd.colorscheme("onedark")
 		end,
 	},
+	{ "catppuccin/nvim" },
 
 	{
 		-- Set lualine as statusline
@@ -388,6 +391,7 @@ require("lazy").setup({
 		config = function()
 			require("hop").setup()
 			vim.keymap.set("n", "s", vim.cmd.HopWord, { silent = true, noremap = true })
+			vim.keymap.set("n", "S", vim.cmd.HopChar2, { silent = true, noremap = true })
 		end,
 		opts = {},
 	},
@@ -808,6 +812,11 @@ local on_attach = function(_, bufnr)
 	--     -- end
 	--   end
 	-- })
+
+	vim.keymap.set("n", "<leader>ih", function()
+		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+	end, { silent = true, noremap = true, desc = "Toggle [I]nlay [H]ints" })
+	-- nmap("<leader>ih", vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()), "Toggle [I]nlay [H]ints")
 end
 
 -- document existing key chains
@@ -839,7 +848,32 @@ local servers = {
 	gopls = {},
 	-- pyright = {},
 	-- rust_analyzer = {},
-	tsserver = {},
+	tsserver = {
+		typescript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+		javascript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+	},
 	html = { filetypes = { "html", "twig", "hbs", "eruby", "heex", "templ" } },
 	htmx = { filetypes = { "html", "templ" } },
 	tailwindcss = {
@@ -847,6 +881,7 @@ local servers = {
 			"astro",
 			"eex",
 			"eruby",
+			"handlebars",
 			"heex",
 			"html",
 			"javascript",
