@@ -874,7 +874,8 @@ local servers = {
 			},
 		},
 	},
-	html = { filetypes = { "html", "twig", "hbs", "eruby", "heex", "templ" } },
+	-- html = { filetypes = { "html", "twig", "hbs", "eruby", "heex", "templ" } },
+	html = { filetypes = { "html", "twig", "hbs", "heex", "templ" } },
 	htmx = { filetypes = { "html", "templ" } },
 	tailwindcss = {
 		filetypes = {
