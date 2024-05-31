@@ -13,4 +13,6 @@ return {
 	{ "tpope/vim-rhubarb" },
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
+	{ "tpope/vim-sleuth" },
+	{ "tpope/vim-rails" },
 }
