@@ -7,7 +7,11 @@ return {
 		--       If we don't populate the `config` field in the plugin spec,
 		--       it calls the setup function by default.
 		--       Since we're overriding the `config` field, we need to manually call setup
-		require("oil").setup()
+		require("oil").setup({
+			view_options = {
+				show_hidden = true,
+			},
+		})
 
 		vim.keymap.set(
 			"n",

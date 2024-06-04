@@ -5,6 +5,10 @@ return {
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
 
+			cmp.config.formatting = {
+				format = require("tailwindcss-colorizer-cmp").formatter,
+			}
+
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -30,8 +34,16 @@ return {
 				}, {
 					{ name = "buffer" },
 				}),
+				formatting = {
+					format = require("tailwindcss-colorizer-cmp").formatter,
+				},
 			})
 		end,
+		dependencies = {
+			{
+				"roobert/tailwindcss-colorizer-cmp.nvim",
+			},
+		},
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",

@@ -10,9 +10,14 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					"astro",
 					"lua_ls",
 					"tsserver",
 					"gopls",
+					"solargraph",
+					"rust_analyzer",
+					"tailwindcss",
+					"eslint",
 				},
 			})
 		end,
@@ -84,6 +89,31 @@ return {
 						},
 					},
 				},
+			})
+			lspconfig.solargraph.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				settings = {
+					tailwindCSS = {
+						validate = true,
+					},
+				},
+			})
+			lspconfig.eslint.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+			lspconfig.astro.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 		end,
 	},

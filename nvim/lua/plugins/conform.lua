@@ -24,8 +24,9 @@ return {
 			typescriptreact = { { "prettierd" } },
 			handlebars = { { "prettierd" } },
 			ruby = { "rubyfmt" },
-			eruby = { "erb-format" },
+			eruby = { "erb_format" },
 			go = { "goimports" },
+			rust = { "rustfmt" },
 		},
 		-- Set up format-on-save
 		format_on_save = { async = false, timeout_ms = 500, lsp_fallback = true },
