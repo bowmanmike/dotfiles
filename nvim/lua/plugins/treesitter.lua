@@ -13,6 +13,7 @@ return {
 					"lua",
 					"ruby",
 					"rust",
+					"templ",
 				},
 				auto_install = true,
 				highlight = { enable = true },
