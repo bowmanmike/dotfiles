@@ -1,7 +1,8 @@
+-- slows things down a bit, even in non-elixir files
 return {
 	"elixir-tools/elixir-tools.nvim",
 	version = "*",
-	event = { "BufReadPre", "BufNewFile" },
+	-- event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local elixir = require("elixir")
 		local elixirls = require("elixir.elixirls")

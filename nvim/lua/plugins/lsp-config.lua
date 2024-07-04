@@ -1,4 +1,7 @@
 return {
+	-- think this is the culprit
+	-- maybe not, i'm stumped
+	-- without this, every so often it hangs for over 5 seconds
 	{
 		"williamboman/mason.nvim",
 		config = function()
