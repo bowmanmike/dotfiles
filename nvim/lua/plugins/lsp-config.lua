@@ -1,7 +1,4 @@
 return {
-	-- think this is the culprit
-	-- maybe not, i'm stumped
-	-- without this, every so often it hangs for over 5 seconds
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -16,6 +13,7 @@ return {
 					"astro",
 					"eslint",
 					"gopls",
+					"jsonls",
 					"lua_ls",
 					"rust_analyzer",
 					"solargraph",
@@ -120,6 +118,10 @@ return {
 				on_attach = on_attach,
 			})
 			lspconfig.templ.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})

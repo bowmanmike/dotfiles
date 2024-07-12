@@ -27,6 +27,7 @@ return {
 			-- eruby = { "erb_format" },
 			go = { "goimports" },
 			rust = { "rustfmt" },
+			json = { "jq" },
 		},
 		-- Set up format-on-save
 		format_on_save = { async = false, timeout_ms = 500, lsp_fallback = true },
