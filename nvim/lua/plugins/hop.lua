@@ -1,5 +1,6 @@
 return {
 	"smoka7/hop.nvim",
+	enabled = false,
 	version = "*",
 	config = function()
 		require("hop").setup()
