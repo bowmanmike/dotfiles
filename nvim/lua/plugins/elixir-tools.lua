@@ -8,10 +8,10 @@ return {
 		local elixirls = require("elixir.elixirls")
 
 		elixir.setup({
-			nextls = { enable = true },
+			nextls = { enable = false },
 			credo = { enable = true },
 			elixirls = {
-				enable = true,
+				enable = false,
 				settings = elixirls.settings({
 					dialyzerEnabled = false,
 					enableTestLenses = false,

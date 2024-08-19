@@ -14,7 +14,9 @@ return {
 					"eslint",
 					"gopls",
 					"jsonls",
+					"lexical",
 					"lua_ls",
+					"ruby_lsp",
 					"rust_analyzer",
 					"solargraph",
 					"tailwindcss",
@@ -122,6 +124,15 @@ return {
 				on_attach = on_attach,
 			})
 			lspconfig.jsonls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+			lspconfig.lexical.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				cmd = { "~/.local/share/nvim/mason/bin/lexical" },
+			})
+			lspconfig.ruby_lsp.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})

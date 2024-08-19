@@ -23,7 +23,7 @@ return {
 			javascriptreact = { { "prettierd" } },
 			typescriptreact = { { "prettierd" } },
 			handlebars = { { "prettierd" } },
-			-- ruby = { "rubyfmt" },
+			-- ruby = { "standardrb" },
 			-- eruby = { "erb_format" },
 			go = { "goimports" },
 			rust = { "rustfmt" },
