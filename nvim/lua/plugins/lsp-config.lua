@@ -14,11 +14,12 @@ return {
 					"eslint",
 					"gopls",
 					"jsonls",
-					"lexical",
+					-- "lexical",
 					"lua_ls",
 					"ruby_lsp",
 					"rust_analyzer",
 					"solargraph",
+					"sorbet",
 					"tailwindcss",
 					"templ",
 					"tsserver",
@@ -40,6 +41,11 @@ return {
 				vim.keymap.set("n", "<leader>ih", function()
 					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 				end, { silent = true, noremap = true, desc = "Toggle [I]nlay [H]ints" })
+			end
+
+			local function sorbet_root_pattern(...)
+				local patterns = { "sorbet/config" }
+				return require("lspconfig.util").root_pattern(unpack(patterns))(...)
 			end
 
 			local lspconfig = require("lspconfig")
@@ -127,14 +133,23 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			lspconfig.lexical.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-				cmd = { "~/.local/share/nvim/mason/bin/lexical" },
-			})
+			-- lspconfig.lexical.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- 	cmd = { "~/.local/share/nvim/mason/bin/lexical" },
+			-- })
 			lspconfig.ruby_lsp.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
+			})
+			lspconfig.sorbet.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				cmd = { "srb", "tc", "--lsp" },
+				filetypes = { "ruby" },
+				root_dir = function(fname)
+					return sorbet_root_pattern(fname)
+				end,
 			})
 		end,
 	},

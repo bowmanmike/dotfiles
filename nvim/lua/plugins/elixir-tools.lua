@@ -11,7 +11,7 @@ return {
 			nextls = { enable = false },
 			credo = { enable = true },
 			elixirls = {
-				enable = false,
+				enable = true,
 				settings = elixirls.settings({
 					dialyzerEnabled = false,
 					enableTestLenses = false,
