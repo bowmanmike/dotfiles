@@ -1,5 +1,6 @@
 return {
 	"ggandor/flit.nvim",
+	enabled = false,
 	dependencies = {
 		"ggandor/leap.nvim",
 		"tpope/vim-repeat",

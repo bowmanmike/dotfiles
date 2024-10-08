@@ -7,14 +7,13 @@
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "conform.nvim": { "branch": "master", "commit": "cd75be867f2331b22905f47d28c0c270a69466aa" },
   "elixir-tools.nvim": { "branch": "main", "commit": "ab10b425a4d4b34447b0699bd93aa42f97bdf4b5" },
-  "flit.nvim": { "branch": "main", "commit": "a9be4e76c30a128f1e51af448c8321bf8366bcd4" },
   "friendly-snippets": { "branch": "main", "commit": "682157939e57bd6a2c86277dfd4d6fbfce63dbac" },
   "gitsigns.nvim": { "branch": "main", "commit": "39b5b6f48bde0595ce68007ffce408c5d7ac1f79" },
   "harpoon": { "branch": "harpoon2", "commit": "0378a6c428a0bed6a2781d459d7943843f374bce" },
+  "hop.nvim": { "branch": "master", "commit": "8f51ef02700bb3cdcce94e92eff16170a6343c4f" },
   "indent-blankline.nvim": { "branch": "master", "commit": "65e20ab94a26d0e14acac5049b8641336819dfc7" },
   "lazy.nvim": { "branch": "main", "commit": "cea5920abb202753004440f94ec39bcf2927e02e" },
   "lazygit.nvim": { "branch": "main", "commit": "ad3e1ea592f9d13e86e0d4e850224d9d78069508" },
-  "leap.nvim": { "branch": "main", "commit": "3b1d76ee9cd5a12a8f7a42f0e91124332860205c" },
   "lualine.nvim": { "branch": "master", "commit": "0a5a66803c7407767b799067986b4dc3036e1983" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "37a336b653f8594df75c827ed589f1c91d91ff6c" },
   "mason.nvim": { "branch": "main", "commit": "0950b15060067f752fde13a779a994f59516ce3d" },
@@ -46,5 +45,6 @@
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
-  "vim-test": { "branch": "master", "commit": "34aab77f7a63f20a623df45684156915f6182a55" }
+  "vim-test": { "branch": "master", "commit": "34aab77f7a63f20a623df45684156915f6182a55" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "a9b52e7d36114d40350099f254b5f299a35df978" }
 }
