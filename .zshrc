@@ -108,7 +108,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( evalcache brew git z )
+# plugins=( evalcache brew git z )
+plugins=( brew git z )
 
 
 source $ZSH/oh-my-zsh.sh
@@ -214,7 +215,7 @@ function fco {
 }
 
 # Direnv
-_evalcache direnv hook zsh
+# _evalcache direnv hook zsh
 
 # ASDF
 # . /opt/homebrew/opt/asdf/libexec/asdf.sh
@@ -244,11 +245,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # export JAVA_HOME="/Users/mikebowman/Library/Caches/Coursier/arc/https/github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11%252B28/OpenJDK11-jdk_x64_mac_hotspot_11_28.tar.gz/jdk-11+28/Contents/Home"
 # <<< JVM installed by coursier <<<
 
-_evalcache thefuck --alias
+# _evalcache thefuck --alias
 # export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export PATH=$PATH:$(go env GOPATH)/bin # <---- Confirm this line in you profile!!!
+# export GOPATH=$HOME/go
+# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# export PATH=$PATH:$(go env GOPATH)/bin # <---- Confirm this line in you profile!!!
 
 # add flutter
 export PATH=$PATH:~/flutter/bin/
@@ -264,3 +265,4 @@ eval "$(~/.local/bin/mise activate zsh)"
 # This section can be safely removed at any time if needed.
 [[ ! -r '/Users/mikebowman/.opam/opam-init/init.zsh' ]] || source '/Users/mikebowman/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+

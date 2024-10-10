@@ -2466,3 +2466,9 @@ shell_integration no-cursor
 #: }}}
 
 #: }}}
+
+
+# BEGIN_KITTY_THEME
+# One Dark
+include current-theme.conf
+# END_KITTY_THEME
