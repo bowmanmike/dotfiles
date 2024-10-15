@@ -1,4 +1,6 @@
-zmodload zsh/zprof
+# For profiling slow zsh stuff
+# zmodload zsh/zprof
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
