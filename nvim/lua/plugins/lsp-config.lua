@@ -43,6 +43,27 @@ return {
 				end, { silent = true, noremap = true, desc = "Toggle [I]nlay [H]ints" })
 			end
 
+			local diagnostics = {
+				underline = true,
+				update_in_insert = true,
+				virtual_text = {
+					spacing = 4,
+					source = "if_many",
+					prefix = "●",
+				},
+				severity_sort = true,
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = " ",
+						[vim.diagnostic.severity.WARN] = " ",
+						[vim.diagnostic.severity.HINT] = " ",
+						[vim.diagnostic.severity.INFO] = " ",
+					},
+				},
+			}
+
+			vim.diagnostic.config(vim.deepcopy(diagnostics))
+
 			local function sorbet_root_pattern(...)
 				local patterns = { "sorbet/config" }
 				return require("lspconfig.util").root_pattern(unpack(patterns))(...)
