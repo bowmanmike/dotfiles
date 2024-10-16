@@ -8,9 +8,12 @@ return {
 				ensure_installed = {
 					"astro",
 					"elixir",
+					"html",
 					"javascript",
 					"json",
 					"lua",
+					"markdown",
+					"markdown_inline",
 					"ruby",
 					"rust",
 					"templ",
