@@ -1,6 +1,8 @@
 # For profiling slow zsh stuff
 # zmodload zsh/zprof
 
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/mikebowman/.zsh/completions:"* ]]; then export FPATH="/Users/mikebowman/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -266,3 +268,7 @@ eval "$(~/.local/bin/mise activate zsh)"
 [[ ! -r '/Users/mikebowman/.opam/opam-init/init.zsh' ]] || source '/Users/mikebowman/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
 
+[[ ! -r "/Users/mikebowman/.deno/env" ]] && . "/Users/mikebowman/.deno/env"
+# Initialize zsh completions (added by deno install script)
+autoload -Uz compinit
+compinit
