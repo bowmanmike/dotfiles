@@ -217,7 +217,7 @@ function fco {
 _evalcache direnv hook zsh
 
 # ASDF
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# . /opt/homebrew/opt/asdf/libexec/asdf.sh
 # . ~/.asdf/plugins/golang/set-env.zsh
 
 # ZSH Autocomplete
@@ -254,3 +254,13 @@ export PATH=$PATH:$(go env GOPATH)/bin # <---- Confirm this line in you profile!
 export PATH=$PATH:~/flutter/bin/
 
 autoload zmv
+eval "$(~/.local/bin/mise activate zsh)"
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/Users/mikebowman/.opam/opam-init/init.zsh' ]] || source '/Users/mikebowman/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
