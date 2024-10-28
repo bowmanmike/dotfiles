@@ -28,6 +28,7 @@ return {
 			go = { "goimports" },
 			rust = { "rustfmt" },
 			json = { "jq" },
+			markdown = { "deno_fmt" },
 		},
 		-- Set up format-on-save
 		format_on_save = { async = false, timeout_ms = 500, lsp_fallback = false },

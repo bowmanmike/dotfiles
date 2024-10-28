@@ -39,3 +39,9 @@ command! SF luafile %
 ]])
 
 vim.keymap.set("n", "<leader>cp", ':let @+ = expand("%")<cr>')
+
+-- Map *.erb.yaml files to .yaml
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "eruby.yaml",
+	command = "set filetype=yaml",
+})
