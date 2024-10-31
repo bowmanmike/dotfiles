@@ -14,10 +14,10 @@ return {
 			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end)
 		vim.keymap.set("n", "<leader>hp", function()
-			harpoon:list():prev()
+			harpoon:list():prev({ ui_nav_wrap = true })
 		end)
 		vim.keymap.set("n", "<leader>hn", function()
-			harpoon:list():next()
+			harpoon:list():next({ ui_nav_wrap = true })
 		end)
 	end,
 }
