@@ -41,6 +41,7 @@ return {
 			vim.keymap.set("n", "<C-b>", builtin.buffers, { noremap = true, silent = true })
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { noremap = true, silent = true })
 			vim.keymap.set("n", "<leader>tg", builtin.git_status, { noremap = true, silent = true })
+			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, { noremap = true, silent = true })
 			vim.api.nvim_create_user_command(
 				"Rg",
 				require("telescope.builtin").live_grep,
