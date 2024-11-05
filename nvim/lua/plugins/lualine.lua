@@ -1,9 +1,12 @@
 return {
-  'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  opts = {
-    options ={
-      theme = 'onedark'
-    }
-  }
+	"nvim-lualine/lualine.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	opts = {
+		options = {
+			theme = "onedark",
+		},
+		sections = {
+			lualine_x = { "aerial", "filetype" },
+		},
+	},
 }
