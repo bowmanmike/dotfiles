@@ -62,3 +62,7 @@ tags.*
 
 # vim-projectionist configs
 .projections.json
+
+# Sorbet stuff
+sorbet/data.mdb
+sorbet/lock.mdb

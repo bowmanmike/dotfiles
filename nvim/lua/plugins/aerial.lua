@@ -4,7 +4,12 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-tree/nvim-web-devicons",
 	},
-	opts = {},
+	opts = {
+		layout = {
+			max_width = { 200, 0.2 },
+			min_width = 30,
+		},
+	},
 	cmd = { "AerialToggle" },
 	-- config = function()
 	-- 	require("aerial").setup({
