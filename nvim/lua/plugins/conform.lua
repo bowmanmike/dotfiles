@@ -18,11 +18,11 @@ return {
 		-- Define your formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = { { "prettierd" } },
-			typescript = { { "prettierd" } },
-			javascriptreact = { { "prettierd" } },
-			typescriptreact = { { "prettierd" } },
-			handlebars = { { "prettierd" } },
+			javascript = { "prettierd" },
+			typescript = { "prettierd" },
+			javascriptreact = { "prettierd" },
+			typescriptreact = { "prettierd" },
+			handlebars = { "prettierd" },
 			-- ruby = { "standardrb" },
 			-- eruby = { "erb_format" },
 			go = { "goimports" },
