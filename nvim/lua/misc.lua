@@ -46,4 +46,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "set filetype=yaml",
 })
 
-vim.cmd([[set undofile]])
+vim.opt.undofile = true
+vim.opt.undolevels = 1000
+vim.opt.undoreload = 10000
