@@ -12,5 +12,9 @@ return {
 			-- See Configuration section for rest
 		},
 		-- See Commands section for default commands if you want to lazy load on them
+		event = "VeryLazy",
+		keys = {
+			{ "<leader>cc", "<cmd>CopilotChatToggle<CR>", { noremap = true, silent = true } },
+		},
 	},
 }
