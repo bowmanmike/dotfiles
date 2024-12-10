@@ -6,7 +6,8 @@ return {
 	},
 	opts = {
 		layout = {
-			max_width = { 200, 0.2 },
+			max_width = { 300, 0.25 },
+			width = 0.5,
 			min_width = 30,
 		},
 	},
