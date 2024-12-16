@@ -13,3 +13,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "<leader>pr", "obinding.break<esc>", { noremap = true, silent = true })
 	end,
 })
+
+-- create autocommand to set .rabl files to use filetype=ruby
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.rabl",
+	callback = function()
+		vim.bo.filetype = "ruby"
+	end,
+})
