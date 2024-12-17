@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Check if gh and fzf are installed
+command -v gh >/dev/null 2>&1 || { echo >&2 "GitHub CLI (gh) is not installed. Exiting."; exit 1; }
+command -v fzf >/dev/null 2>&1 || { echo >&2 "fzf is not installed. Exiting."; exit 1; }
+
+# Check if we're in a git repository
+git rev-parse --is-inside-work-tree >/dev/null 2>&1 || { echo >&2 "Not in a git repository. Exiting."; exit 1; }
+
+# Get the current repository name
+REPO=$(gh repo view --json nameWithOwner --jq .nameWithOwner)
+
+# Fetch and select open PRs using fzf
+selected_pr=$(gh pr list --repo "$REPO" --state open | fzf \
+    --header "Select a PR to checkout" \
+    --preview 'gh pr view $(echo {} | cut -f1)' \
+    --preview-window=right:65% \
+    --height 80% \
+    --layout=reverse \
+    | awk '{print $1}')
+
+# Exit if no PR was selected
+if [ -z "$selected_pr" ]; then
+    echo "No PR selected. Exiting."
+    exit 0
+fi
+
+# Checkout the selected PR
+gh pr checkout "$selected_pr"
