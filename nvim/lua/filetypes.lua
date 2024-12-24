@@ -14,6 +14,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "elixir",
+	callback = function()
+		vim.keymap.set("n", "<leader>pr", "orequire IEx; IEx.pry()<esc>", { noremap = true, silent = true })
+	end,
+})
+
 -- create autocommand to set .rabl files to use filetype=ruby
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = "*.rabl",
