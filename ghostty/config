@@ -1,0 +1,7 @@
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+
+font-size = 15
+font-family = FiraCode Nerd Font Mono
