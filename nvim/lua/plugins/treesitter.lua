@@ -85,6 +85,7 @@ return {
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		opts = {},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",

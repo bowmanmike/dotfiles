@@ -173,6 +173,25 @@ return {
 				root_dir = function(fname)
 					return sorbet_root_pattern(fname)
 				end,
+			lspconfig.emmet_ls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				filetypes = {
+					"css",
+					"elixir",
+					"eruby",
+					"heex",
+					"html",
+					"javascript",
+					"javascriptreact",
+					"less",
+					"sass",
+					"scss",
+					"svelte",
+					"pug",
+					"typescriptreact",
+					"vue",
+				},
 			})
 		end,
 	},
