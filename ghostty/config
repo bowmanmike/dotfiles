@@ -8,3 +8,6 @@ font-size = 15
 font-family = FiraCode Nerd Font Mono
 
 macos-titlebar-style = tabs
+
+bold-is-bright = true
+copy-on-select = true
