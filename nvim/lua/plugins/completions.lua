@@ -48,6 +48,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
+					{ name = "emoji" },
 				}, {
 					{ name = "buffer" },
 				}),
@@ -62,9 +63,8 @@ return {
 			},
 		},
 	},
-	{
-		"hrsh7th/cmp-nvim-lsp",
-	},
+	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/cmp-emoji" },
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = {
