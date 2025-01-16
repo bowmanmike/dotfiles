@@ -272,3 +272,5 @@ eval "$(~/.local/bin/mise activate zsh)"
 # Initialize zsh completions (added by deno install script)
 autoload -Uz compinit
 compinit
+
+eval "$(starship init zsh)"

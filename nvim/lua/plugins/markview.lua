@@ -1,6 +1,6 @@
 return {
 	"OXY2DEV/markview.nvim",
-	enabled = false,
+	enabled = true,
 	lazy = false,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
@@ -9,7 +9,7 @@ return {
 	config = function()
 		local presets = require("markview.presets")
 		require("markview").setup({
-			hybrid_modes = { "n" },
+			-- hybrid_modes = { "n" },
 			checkboxes = presets.checkboxes.nerd,
 			headings = presets.headings.marker,
 		})
