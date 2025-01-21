@@ -36,6 +36,10 @@ command! Qw wq
 command! QW wq
 command! SO luafile $MYVIMRC
 command! SF luafile %
+command! Wa wa
+command! WA wa
+command! Qa qa
+command! QA qa
 ]])
 
 vim.keymap.set("n", "<leader>cp", ':let @+ = expand("%")<cr>')
