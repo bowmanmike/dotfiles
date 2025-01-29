@@ -32,7 +32,14 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local on_attach = function()
+			local on_attach = function(client, bufnr)
+				-- Disable lsp semantic highlighting, because it was overriding treesitter and giving worse highlighting for ruby.
+				-- In the future it might make sense to enable both but write the config to ensure that treesitter takes priority,
+				-- but that only seems relevant if there's no treesitter parser for the language in question.
+				if client.server_capabilities.semanticTokensProvider then
+					client.server_capabilities.semanticTokensProvider = nil
+				end
+
 				local opts = { noremap = true, silent = true }
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
