@@ -9,7 +9,10 @@ return {
 	config = function()
 		local presets = require("markview.presets")
 		require("markview").setup({
-			-- hybrid_modes = { "n" },
+			hybrid_modes = { "n", "i" },
+			preview = {
+				enable = false,
+			},
 			checkboxes = presets.checkboxes.nerd,
 			headings = presets.headings.marker,
 		})
