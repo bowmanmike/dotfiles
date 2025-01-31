@@ -14,7 +14,6 @@ return {
 					"eslint",
 					"gopls",
 					"jsonls",
-					-- "lexical",
 					"lua_ls",
 					"ruby_lsp",
 					"rust_analyzer",
@@ -163,11 +162,6 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			-- lspconfig.lexical.setup({
-			-- 	capabilities = capabilities,
-			-- 	on_attach = on_attach,
-			-- 	cmd = { "~/.local/share/nvim/mason/bin/lexical" },
-			-- })
 			lspconfig.ruby_lsp.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -180,6 +174,7 @@ return {
 				root_dir = function(fname)
 					return sorbet_root_pattern(fname)
 				end,
+			})
 			lspconfig.emmet_ls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
