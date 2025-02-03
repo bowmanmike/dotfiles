@@ -17,8 +17,8 @@ return {
 					"lua_ls",
 					"ruby_lsp",
 					"rust_analyzer",
-					"solargraph",
-					"sorbet",
+					-- "solargraph",
+					-- "sorbet",
 					"tailwindcss",
 					"templ",
 					"tsserver",
@@ -129,10 +129,10 @@ return {
 					},
 				},
 			})
-			lspconfig.solargraph.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
+			-- lspconfig.solargraph.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- })
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
