@@ -2,7 +2,8 @@ cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 
-theme = Iterm2 Default
+# theme = Iterm2 Default
+# theme = One Dark Pro
 
 font-size = 15
 font-family = FiraCode Nerd Font Mono
