@@ -10,18 +10,21 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"astro",
-					"eslint",
-					"gopls",
-					"jsonls",
-					"lua_ls",
-					"ruby_lsp",
-					"rust_analyzer",
+					-- "astro",
+					-- "eslint",
+					-- "gopls",
+					-- "jsonls",
+					-- "lua_ls",
+					-- DO NOT USE MASON TO INSTALL RUBY_LSP, IT'S BROKEN
+					-- https://shopify.github.io/ruby-lsp/editors.html#neovim
+					-- "ruby_lsp",
+					-- "rust_analyzer",
 					-- "solargraph",
 					-- "sorbet",
-					"tailwindcss",
-					"templ",
-					"tsserver",
+					-- "tailwindcss",
+					-- "templ",
+					-- "tsserver",
+					-- "vtsls",
 				},
 			})
 		end,
