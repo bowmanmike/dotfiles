@@ -13,10 +13,11 @@ function symlink {
   local source=$1
   local destination=$2
   if [ -e $destination ]; then
-    echo "$destination already exists, skipping"
-  else
-    ln -s $source $destination
+    echo "$destination already exists, backing up and replacing"
+    mv $destination $destination.bak
   fi
+
+  ln -s $source $destination
 }
 
 symlink $(pwd)/.zshrc ~/.zshrc
@@ -27,3 +28,8 @@ symlink $(pwd)/ghostty ~/.config/ghostty
 symlink $(pwd)/.tmux.conf ~/.tmux.conf
 # ln -s $(pwd)/.zshrc ~/.zshrc
 # ln -s 
+
+# determine current shell and set to zsh if not already
+if [ $SHELL != "/bin/zsh" ]; then
+  sudo chsh "$(id -un)" --shell "/usr/bin/zsh"
+fi
