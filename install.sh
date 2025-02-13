@@ -1,4 +1,4 @@
-#! /bin/env bash
+#! /usr/bin/env bash
 
 # bash strict mode
 set -euo pipefail
