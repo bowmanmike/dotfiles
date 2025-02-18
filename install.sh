@@ -48,22 +48,25 @@ install_neovim() {
         brew install neovim
     elif [[ $OS == "linux" ]]; then
         # Get the latest release version
-        local nvim_version=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
-        echo "Latest Neovim version: $nvim_version"
+        # local nvim_version=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
+        # echo "Latest Neovim version: $nvim_version"
+        sudo add-apt-repository ppa:neovim-ppa/stable
+        sudo apt-get update
+        sudo apt-get install neovim
 
         # Download and extract the appimage
-        curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-        chmod u+x nvim.appimage
+        # curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+        # chmod u+x nvim.appimage
 
         # Move to a directory in PATH
-        sudo mkdir -p /usr/local/bin
-        sudo mv nvim.appimage /usr/local/bin/nvim
+        # sudo mkdir -p /usr/local/bin
+        # sudo mv nvim.appimage /usr/local/bin/nvim
 
         # Create required directories
-        mkdir -p ~/.config/nvim
-        mkdir -p ~/.local/share/nvim
-        mkdir -p ~/.local/state/nvim
-        mkdir -p ~/.cache/nvim
+        # mkdir -p ~/.config/nvim
+        # mkdir -p ~/.local/share/nvim
+        # mkdir -p ~/.local/state/nvim
+        # mkdir -p ~/.cache/nvim
     fi
 }
 
