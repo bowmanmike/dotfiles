@@ -1,6 +1,6 @@
 return {
 	"OXY2DEV/markview.nvim",
-	enabled = true,
+	enabled = vim.loop.os_uname().sysname == "Darwin",
 	lazy = false,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",

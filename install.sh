@@ -69,7 +69,7 @@ install_tools() {
                 case $tool in
                     "ripgrep") sudo -E apt-get install -y ripgrep;;
                     "fd") sudo -E apt-get install -y fd-find;;
-                    "bat") sudo -E apt-get install -y bat;;
+                    "bat") sudo -E apt-get install -y bat; mkdir -p ~/.local/bin; ln -s /usr/bin/batcat ~/.local/bin/bat;;
                     "gh") sudo -E apt-get install -y gh;; 
                     "starship") curl -sS https://starship.rs/install.sh | sh -s -- --yes;;  # Added --yes flag
                     "fzf") git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install --all;;
@@ -139,7 +139,7 @@ create_platform_zshrc() {
     if [[ $OS == "linux" ]]; then
         # Add Linux-specific modifications
         echo "Adjusting .zshrc for Linux..."
-        sed -i 's|/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh|source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh|g' "$zshrc"
+        sed -i 's|/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh|$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh|g' "$zshrc"
         # Comment out Mac-specific paths and configurations
         sed -i 's|^export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:\$PATH|# export PATH=/Applications/Postgres.app/Contents/latest/bin:\$PATH|g' "$zshrc"
     fi

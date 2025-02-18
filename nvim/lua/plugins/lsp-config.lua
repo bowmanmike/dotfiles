@@ -23,7 +23,6 @@ return {
 					-- "rust_analyzer",
 					-- "solargraph",
 					-- "sorbet",
-					"prettierd",
 					"tailwindcss",
 					-- "templ",
 					"tsserver",

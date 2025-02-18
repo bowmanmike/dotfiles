@@ -2,7 +2,7 @@
 # zmodload zsh/zprof
 
 # Add deno completions to search path
-if [[ ":$FPATH:" != *":/Users/mikebowman/.zsh/completions:"* ]]; then export FPATH="/Users/mikebowman/.zsh/completions:$FPATH"; fi
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -229,10 +229,10 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/mikebowman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 # The next line updates PATH for Netlify's Git Credential Helper.
-if [ -f '/Users/mikebowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mikebowman/.netlify/helper/path.zsh.inc'; fi
+if [ -f '$HOME/.netlify/helper/path.zsh.inc' ]; then source '$HOME/.netlify/helper/path.zsh.inc'; fi
 
 # Erlang install options
 # export BREW_OPENSSL=$(brew --prefix openssl@1.1)
@@ -241,10 +241,10 @@ if [ -f '/Users/mikebowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/
 export ITERM2_SQUELCH_MARK=1
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# export PATH="$PATH:/Users/mikebowman/Library/Application Support/Coursier/bin"
+# export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
 
 # >>> JVM installed by coursier >>>
-# export JAVA_HOME="/Users/mikebowman/Library/Caches/Coursier/arc/https/github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11%252B28/OpenJDK11-jdk_x64_mac_hotspot_11_28.tar.gz/jdk-11+28/Contents/Home"
+# export JAVA_HOME="$HOME/Library/Caches/Coursier/arc/https/github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11%252B28/OpenJDK11-jdk_x64_mac_hotspot_11_28.tar.gz/jdk-11+28/Contents/Home"
 # <<< JVM installed by coursier <<<
 
 # _evalcache thefuck --alias
@@ -269,10 +269,10 @@ fi
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
-[[ ! -r '/Users/mikebowman/.opam/opam-init/init.zsh' ]] || source '/Users/mikebowman/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+[[ ! -r '$HOME/.opam/opam-init/init.zsh' ]] || source '$HOME/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
 
-[[ ! -r "/Users/mikebowman/.deno/env" ]] && . "/Users/mikebowman/.deno/env"
+[[ ! -r "$HOME/.deno/env" ]] && . "$HOME/.deno/env"
 # Initialize zsh completions (added by deno install script)
 autoload -Uz compinit
 compinit
