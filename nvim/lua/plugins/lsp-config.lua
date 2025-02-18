@@ -11,8 +11,8 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"astro",
-					"deno",
-					"emmet-ls",
+					"denols",
+					"emmet_ls",
 					"eslint",
 					-- "gopls",
 					"jsonls",
