@@ -24,6 +24,7 @@ TOOLS=(
     "fzf"
     "tmux"
     "starship"
+    "neovim"
 )
 
 # Install package managers if needed
@@ -35,6 +36,7 @@ install_package_managers() {
         fi
     elif [[ $OS == "linux" ]]; then
         if command -v apt-get &> /dev/null; then
+            sudo add-apt-repository ppa:neovim-ppa/unstable
             sudo apt-get update
             sudo apt-get install -y curl
         fi
@@ -50,9 +52,6 @@ install_neovim() {
         # Get the latest release version
         # local nvim_version=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
         # echo "Latest Neovim version: $nvim_version"
-        sudo add-apt-repository ppa:neovim-ppa/unstable
-        sudo apt-get update
-        sudo apt-get install neovim
 
         # Download and extract the appimage
         # curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
@@ -171,7 +170,7 @@ main() {
     echo "Starting dotfiles installation..."
     install_package_managers
     install_tools
-    install_neovim
+    # install_neovim
     create_symlinks
     setup_shell
     create_platform_zshrc
