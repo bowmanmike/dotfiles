@@ -8,6 +8,7 @@ return {
 				ensure_installed = {
 					"astro",
 					"elixir",
+					"embedded_template",
 					"html",
 					"javascript",
 					"json",
@@ -17,6 +18,7 @@ return {
 					"ruby",
 					"rust",
 					"templ",
+					"typescript",
 				},
 				auto_install = true,
 				highlight = { enable = true },

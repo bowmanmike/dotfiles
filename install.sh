@@ -36,9 +36,10 @@ install_package_managers() {
         fi
     elif [[ $OS == "linux" ]]; then
         if command -v apt-get &> /dev/null; then
-            sudo add-apt-repository ppa:neovim-ppa/unstable
-            sudo apt-get update
-            sudo apt-get install -y curl
+            export DEBIAN_FRONTEND=noninteractive
+            sudo -E add-apt-repository ppa:neovim-ppa/unstable
+            sudo -E apt-get update
+            sudo -E apt-get install -y curl wget
         fi
     fi
 }
@@ -60,23 +61,23 @@ install_tools() {
             echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
         fi
 
-        sudo apt-get update
+        export DEBIAN_FRONTEND=noninteractive
+        sudo -E apt-get update
         for tool in "${TOOLS[@]}"; do
             if ! command -v "$tool" &> /dev/null; then
                 echo "Installing $tool..."
                 case $tool in
-                    "ripgrep") sudo apt-get install -y ripgrep;;
-                    "fd") sudo apt-get install -y fd-find;;
-                    "bat") sudo apt-get install -y bat;;
-                    "gh") sudo apt-get install -y gh;;
+                    "ripgrep") sudo -E apt-get install -y ripgrep;;
+                    "fd") sudo -E apt-get install -y fd-find;;
+                    "bat") sudo -E apt-get install -y bat;;
+                    "gh") sudo -E apt-get install -y gh;; 
                     "starship") curl -sS https://starship.rs/install.sh | sh -s -- --yes;;  # Added --yes flag
-                    "fzf") git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install;;
+                    "fzf") git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install --all;;
                     "zsh-autosuggestions") git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions;;
-                    *) sudo apt-get install -y "$tool";;
+                    *) sudo -E apt-get install -y "$tool";;
                 esac
             fi
         done
-        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     fi
 }
 
