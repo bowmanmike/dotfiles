@@ -44,30 +44,30 @@ install_package_managers() {
 }
 
 # Install latest stable Neovim
-install_neovim() {
-    echo "Installing latest stable Neovim..."
-    if [[ $OS == "macos" ]]; then
-        brew install neovim
-    elif [[ $OS == "linux" ]]; then
-        # Get the latest release version
-        # local nvim_version=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
-        # echo "Latest Neovim version: $nvim_version"
-
-        # Download and extract the appimage
-        # curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-        # chmod u+x nvim.appimage
-
-        # Move to a directory in PATH
-        # sudo mkdir -p /usr/local/bin
-        # sudo mv nvim.appimage /usr/local/bin/nvim
-
-        # Create required directories
-        # mkdir -p ~/.config/nvim
-        # mkdir -p ~/.local/share/nvim
-        # mkdir -p ~/.local/state/nvim
-        # mkdir -p ~/.cache/nvim
-    fi
-}
+# install_neovim() {
+#     echo "Installing latest stable Neovim..."
+#     if [[ $OS == "macos" ]]; then
+#         brew install neovim
+#     elif [[ $OS == "linux" ]]; then
+#         # Get the latest release version
+#         local nvim_version=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
+#         echo "Latest Neovim version: $nvim_version"
+#
+#         # Download and extract the appimage
+#         curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+#         chmod u+x nvim.appimage
+#
+#         # Move to a directory in PATH
+#         sudo mkdir -p /usr/local/bin
+#         sudo mv nvim.appimage /usr/local/bin/nvim
+#
+#         # Create required directories
+#         mkdir -p ~/.config/nvim
+#         mkdir -p ~/.local/share/nvim
+#         mkdir -p ~/.local/state/nvim
+#         mkdir -p ~/.cache/nvim
+#     fi
+# }
 
 # Install required tools
 install_tools() {
