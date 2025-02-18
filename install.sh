@@ -50,7 +50,7 @@ install_neovim() {
         # Get the latest release version
         # local nvim_version=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
         # echo "Latest Neovim version: $nvim_version"
-        sudo add-apt-repository ppa:neovim-ppa/stable
+        sudo add-apt-repository ppa:neovim-ppa/unstable
         sudo apt-get update
         sudo apt-get install neovim
 
