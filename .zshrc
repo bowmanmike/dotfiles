@@ -235,8 +235,8 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/mikebowman/Library/Caches/heroku/autocomplete/zs
 if [ -f '/Users/mikebowman/.netlify/helper/path.zsh.inc' ]; then source '/Users/mikebowman/.netlify/helper/path.zsh.inc'; fi
 
 # Erlang install options
-export BREW_OPENSSL=$(brew --prefix openssl@1.1)
-export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$BREW_OPENSSL"
+# export BREW_OPENSSL=$(brew --prefix openssl@1.1)
+# export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$BREW_OPENSSL"
 
 export ITERM2_SQUELCH_MARK=1
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
