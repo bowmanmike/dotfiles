@@ -135,6 +135,7 @@ create_symlinks() {
 # Set up shell
 setup_shell() {
     # Install oh-my-zsh if not already installed
+    echo "Setting up shell..."
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo "Installing oh-my-zsh..."
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

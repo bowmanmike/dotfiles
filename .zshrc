@@ -7,7 +7,7 @@ if [[ ":$FPATH:" != *":/Users/mikebowman/.zsh/completions:"* ]]; then export FPA
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/mikebowman/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 # export SHELL=$(brew --prefix zsh)
 export SHELL=/bin/zsh
 
@@ -167,28 +167,28 @@ alias tat='tmux attach -t'
 # alias tns='tmux -CC new -A -s'
 # alias tat='tmux -CC attach -t'
 alias tls='tmux ls'
-alias git='hub'
-alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.ignore'
+# alias git='hub'
+# alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.ignore'
 alias rg='rg -i'
-alias weather='curl -4 wttr.in/Toronto'
-alias mux='tmuxinator'
-alias fv='vim -O $(fzf -m --preview "bat --theme='Dracula' --style='numbers,changes' --color always {}")'
+# alias weather='curl -4 wttr.in/Toronto'
+# alias mux='tmuxinator'
+# alias fv='vim -O $(fzf -m --preview "bat --theme='Dracula' --style='numbers,changes' --color always {}")'
 # alias fl='lvim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes' --color always {}")'
 alias be='bundle exec'
 alias als='alias | rg'
-alias t='task'
+# alias t='task'
 # alias t='todo.sh'
-alias k='kubectl'
+# alias k='kubectl'
 alias cat='bat'
-alias kc='kubectx'
-alias kns='kubens'
-alias repry='fc -e - mix\ test=iex\ -S\ mix\ test\ --trace mix\ test'
-alias mt="mix test"
-alias mtt="mix test --trace"
-alias ml="mix lint"
-alias mf="mix format"
-alias mc="mix compile"
-alias tf="mix test `pbpaste`"
+# alias kc='kubectx'
+# alias kns='kubens'
+# alias repry='fc -e - mix\ test=iex\ -S\ mix\ test\ --trace mix\ test'
+# alias mt="mix test"
+# alias mtt="mix test --trace"
+# alias ml="mix lint"
+# alias mf="mix format"
+# alias mc="mix compile"
+# alias tf="mix test `pbpaste`"
 alias mflt="mix format && mix lint && mix test"
 alias mps="iex -S mix phx.server"
 
@@ -257,7 +257,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH=$PATH:~/flutter/bin/
 
 autoload zmv
-eval "$(~/.local/bin/mise activate zsh)"
+
+# only run this if mise is available
+if [ -f ~/.local/bin/mise ]; then
+  eval "$(~/.local/bin/mise activate zsh)"
+fi
 
 
 # BEGIN opam configuration
