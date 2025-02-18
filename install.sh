@@ -12,7 +12,6 @@ case "$(uname -s)" in
     *)          echo "Unsupported OS: $(uname -s)"; exit 1
 esac
 
-# Required tools (removing neovim as we'll handle it separately)
 TOOLS=(
     "zsh"
     "git"
@@ -25,6 +24,7 @@ TOOLS=(
     "tmux"
     "starship"
     "neovim"
+    "zsh-autosuggestions"
 )
 
 # Install package managers if needed
@@ -42,32 +42,6 @@ install_package_managers() {
         fi
     fi
 }
-
-# Install latest stable Neovim
-# install_neovim() {
-#     echo "Installing latest stable Neovim..."
-#     if [[ $OS == "macos" ]]; then
-#         brew install neovim
-#     elif [[ $OS == "linux" ]]; then
-#         # Get the latest release version
-#         local nvim_version=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
-#         echo "Latest Neovim version: $nvim_version"
-#
-#         # Download and extract the appimage
-#         curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-#         chmod u+x nvim.appimage
-#
-#         # Move to a directory in PATH
-#         sudo mkdir -p /usr/local/bin
-#         sudo mv nvim.appimage /usr/local/bin/nvim
-#
-#         # Create required directories
-#         mkdir -p ~/.config/nvim
-#         mkdir -p ~/.local/share/nvim
-#         mkdir -p ~/.local/state/nvim
-#         mkdir -p ~/.cache/nvim
-#     fi
-# }
 
 # Install required tools
 install_tools() {
@@ -96,10 +70,13 @@ install_tools() {
                     "bat") sudo apt-get install -y bat;;
                     "gh") sudo apt-get install -y gh;;
                     "starship") curl -sS https://starship.rs/install.sh | sh -s -- --yes;;  # Added --yes flag
+                    "fzf") git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install;;
+                    "zsh-autosuggestions") git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions;;
                     *) sudo apt-get install -y "$tool";;
                 esac
             fi
         done
+        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     fi
 }
 
@@ -161,7 +138,7 @@ create_platform_zshrc() {
     if [[ $OS == "linux" ]]; then
         # Add Linux-specific modifications
         echo "Adjusting .zshrc for Linux..."
-        sed -i 's|/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh|/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh|g' "$zshrc"
+        sed -i 's|/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh|source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh|g' "$zshrc"
         # Comment out Mac-specific paths and configurations
         sed -i 's|^export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:\$PATH|# export PATH=/Applications/Postgres.app/Contents/latest/bin:\$PATH|g' "$zshrc"
     fi
@@ -171,7 +148,6 @@ main() {
     echo "Starting dotfiles installation..."
     install_package_managers
     install_tools
-    # install_neovim
     create_symlinks
     setup_shell
     create_platform_zshrc
