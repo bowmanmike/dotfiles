@@ -93,7 +93,7 @@ install_tools() {
                     "fd") sudo apt-get install -y fd-find;;
                     "bat") sudo apt-get install -y bat;;
                     "gh") sudo apt-get install -y gh;;
-                    "starship") curl -sS https://starship.rs/install.sh | sh;;
+                    "starship") curl -sS https://starship.rs/install.sh | sh -s -- --yes;;  # Added --yes flag
                     *) sudo apt-get install -y "$tool";;
                 esac
             fi
