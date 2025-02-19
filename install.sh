@@ -54,7 +54,10 @@ install_tools() {
             if ! command -v "$tool" &> /dev/null; then
                 echo "Installing $tool..."
                 case $tool in
-                    "tpm") git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;;
+                    "tpm")
+                        if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+                            git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;;
+                        fi
                     *) brew install "$tool"
                 esac
             fi
@@ -77,10 +80,19 @@ install_tools() {
                     # "bat") sudo -E apt-get install -y bat; mkdir -p ~/.local/bin; ln -s /usr/bin/batcat ~/.local/bin/bat;;
                     "gh") sudo -E apt-get install -y gh;; 
                     "starship") curl -sS https://starship.rs/install.sh | sh -s -- --yes;;  # Added --yes flag
-                    "fzf") git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install --all;;
-                    "zsh-autosuggestions") git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions;;
+                    "fzf")
+                        if [[ ! -d "$HOME/.fzf" ]]; then
+                            git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install --all;;
+                        fi
+                    "zsh-autosuggestions")
+                        if [[ ! -d "$HOME/.zsh/zsh-autosuggestions" ]];; then
+                            git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions;;
+                        fi
                     "mise") curl https://mise.run | sh;;
-                    "tpm") git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;;
+                    "tpm")
+                        if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+                            git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;;
+                        fi
                     *) sudo -E apt-get install -y "$tool";;
                 esac
             fi
