@@ -272,7 +272,7 @@ fi
 [[ ! -r '$HOME/.opam/opam-init/init.zsh' ]] || source '$HOME/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
 
-[[ ! -r "$HOME/.deno/env" ]] && . "$HOME/.deno/env"
+[[ -f "$HOME/.deno/env" ]] && . "$HOME/.deno/env"
 # Initialize zsh completions (added by deno install script)
 autoload -Uz compinit
 compinit

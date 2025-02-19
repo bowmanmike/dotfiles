@@ -25,6 +25,7 @@ TOOLS=(
     "starship"
     "neovim"
     "zsh-autosuggestions"
+    "mise"
 )
 
 # Install package managers if needed
@@ -74,6 +75,7 @@ install_tools() {
                     "starship") curl -sS https://starship.rs/install.sh | sh -s -- --yes;;  # Added --yes flag
                     "fzf") git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install --all;;
                     "zsh-autosuggestions") git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions;;
+                    "mise") curl https://mise.run | sh;;
                     *) sudo -E apt-get install -y "$tool";;
                 esac
             fi
