@@ -26,6 +26,7 @@ TOOLS=(
     "neovim"
     "zsh-autosuggestions"
     "mise"
+    "tpm" # tmux plugin manager
 )
 
 # Install package managers if needed
@@ -76,6 +77,7 @@ install_tools() {
                     "fzf") git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install --all;;
                     "zsh-autosuggestions") git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions;;
                     "mise") curl https://mise.run | sh;;
+                    "tpm") git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;;
                     *) sudo -E apt-get install -y "$tool";;
                 esac
             fi
