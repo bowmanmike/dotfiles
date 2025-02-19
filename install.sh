@@ -57,7 +57,8 @@ install_tools() {
                     "tpm")
                         if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
                             git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-                        fi;;
+                        fi
+                        ;;
                     *) brew install "$tool"
                 esac
             fi
@@ -83,16 +84,19 @@ install_tools() {
                     "fzf")
                         if [[ ! -d "$HOME/.fzf" ]]; then
                             git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install --all
-                        fi;;
+                        fi
+                        ;;
                     "zsh-autosuggestions")
                         if [[ ! -d "$HOME/.zsh/zsh-autosuggestions" ]];; then
                             git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-                        fi;;
+                        fi
+                        ;;
                     "mise") curl https://mise.run | sh;;
                     "tpm")
                         if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
                             git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-                        fi;;
+                        fi
+                        ;;
                     *) sudo -E apt-get install -y "$tool";;
                 esac
             fi
