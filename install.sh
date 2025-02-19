@@ -112,7 +112,7 @@ install_neovim() {
         elif [[ $OS == "linux" ]]; then
             curl -L -o nvim-linux64.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
             tar xzvf nvim-linux64.tar.gz -C ~/.local
-            mv ~/.local/nvim-linux64/bin/nvim /usr/local/bin
+            mv ~/.local/nvim-linux-x84_64/bin/nvim /usr/local/bin
             chmod +x /usr/local/bin/nvim
         fi
     fi
