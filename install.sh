@@ -110,10 +110,17 @@ install_neovim() {
         if [[ $OS == "macos" ]]; then
             brew install neovim
         elif [[ $OS == "linux" ]]; then
-            curl -L -o nvim-linux64.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-            tar xzvf nvim-linux64.tar.gz -C ~/.local
-            sudo -E mv ~/.local/nvim-linux-x86_64/bin/nvim /usr/local/bin
-            chmod +x /usr/local/bin/nvim
+            echo "Building from source..."
+            git clone https://github.com/neovim/neovim ~/neovim
+            cd ~/neovim
+            git checkout stable
+            sudo -E apt-get update -y && sudo -E apt-get install -y ninja-build gettext cmake curl build-essential
+            make CMAKE_BUILD_TYPE=RelWithDebInfo
+            sudo -E make install
+            # curl -L -o nvim-linux64.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+            # tar xzvf nvim-linux64.tar.gz -C ~/.local
+            # sudo -E mv ~/.local/nvim-linux-x86_64/bin/nvim /usr/local/bin
+            # chmod +x /usr/local/bin/nvim
         fi
     fi
 }
