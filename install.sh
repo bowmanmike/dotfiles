@@ -19,7 +19,7 @@ TOOLS=(
     "ripgrep"
     "fd"
     "gh"
-    "bat"
+    # "bat"
     "fzf"
     "tmux"
     "starship"
@@ -62,8 +62,8 @@ install_tools() {
     elif [[ $OS == "linux" ]]; then
         # Install GitHub CLI repository
         if ! command -v gh &> /dev/null; then
-            curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+            curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo -E dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo -E tee /etc/apt/sources.list.d/github-cli.list > /dev/null
         fi
 
         export DEBIAN_FRONTEND=noninteractive
@@ -74,7 +74,7 @@ install_tools() {
                 case $tool in
                     "ripgrep") sudo -E apt-get install -y ripgrep;;
                     "fd") sudo -E apt-get install -y fd-find;;
-                    "bat") sudo -E apt-get install -y bat; mkdir -p ~/.local/bin; ln -s /usr/bin/batcat ~/.local/bin/bat;;
+                    # "bat") sudo -E apt-get install -y bat; mkdir -p ~/.local/bin; ln -s /usr/bin/batcat ~/.local/bin/bat;;
                     "gh") sudo -E apt-get install -y gh;; 
                     "starship") curl -sS https://starship.rs/install.sh | sh -s -- --yes;;  # Added --yes flag
                     "fzf") git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install --all;;
@@ -148,7 +148,7 @@ setup_shell() {
     elif [[ $OS == "linux" ]]; then
         if [[ $SHELL != "/usr/bin/zsh" ]]; then
             echo "Setting zsh as default shell..."
-            sudo chsh -s "$(which zsh)" "$(whoami)"
+            sudo -E chsh -s "$(which zsh)" "$(whoami)"
         fi
     fi
 }
