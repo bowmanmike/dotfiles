@@ -87,7 +87,7 @@ install_tools() {
                         fi
                         ;;
                     "zsh-autosuggestions")
-                        if [[ ! -d "$HOME/.zsh/zsh-autosuggestions" ]];; then
+                        if [[ ! -d "$HOME/.zsh/zsh-autosuggestions" ]]; then
                             git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
                         fi
                         ;;
