@@ -53,7 +53,10 @@ install_tools() {
         for tool in "${TOOLS[@]}"; do
             if ! command -v "$tool" &> /dev/null; then
                 echo "Installing $tool..."
-                brew install "$tool"
+                case $tool in
+                    "tpm") git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;;
+                    *) brew install "$tool"
+                esac
             fi
         done
     elif [[ $OS == "linux" ]]; then
