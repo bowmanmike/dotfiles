@@ -130,6 +130,11 @@ install_neovim() {
 create_symlinks() {
     echo "Creating symlinks..."
     local dotfiles_dir=$(pwd)
+    if [ -n "$CODESPACES" ]; then
+        local dotfiles_dir="/workspaces/.codespaces/.persistedshare/dotfiles"
+    else
+        local dotfiles_dir="$HOME/dotfiles"
+    fi
 
     # Create config directory if it doesn't exist
     mkdir -p ~/.config
