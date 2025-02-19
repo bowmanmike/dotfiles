@@ -6,6 +6,11 @@ if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.z
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# if CODESPACES variable is true, set TERM to something normal
+if [[ -n $CODESPACES ]]; then
+  export TERM=xterm-256color
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 # export SHELL=$(brew --prefix zsh)
