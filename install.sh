@@ -105,6 +105,7 @@ install_tools() {
 }
 
 install_neovim() {
+    echo "Trying to install neovim"
     if ! command -v "nvim" &> /dev/null; then
         echo "Installing latest stable Neovim..."
         if [[ $OS == "macos" ]]; then
