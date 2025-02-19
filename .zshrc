@@ -184,7 +184,9 @@ alias als='alias | rg'
 # alias t='task'
 # alias t='todo.sh'
 # alias k='kubectl'
-alias cat='bat'
+if !command -v "bat" &> /dev/null; then
+  alias cat='bat'
+fi
 # alias kc='kubectx'
 # alias kns='kubens'
 # alias repry='fc -e - mix\ test=iex\ -S\ mix\ test\ --trace mix\ test'
