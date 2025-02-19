@@ -110,7 +110,7 @@ install_neovim() {
         if [[ $OS == "macos" ]]; then
             brew install neovim
         elif [[ $OS == "linux" ]]; then
-            curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+            curl -L -o https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
             tar xzvf nvim-linux64.tar.gz -C ~/.local
             # mv nvim-osx64/bin/nvim ~/.local/bin
             # chmod +x ~/.local/bin/nvim
