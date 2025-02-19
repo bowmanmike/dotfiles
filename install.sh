@@ -23,7 +23,7 @@ TOOLS=(
     "fzf"
     "tmux"
     "starship"
-    "neovim"
+    # "neovim"
     "zsh-autosuggestions"
     "mise"
     "tpm" # tmux plugin manager
@@ -39,7 +39,7 @@ install_package_managers() {
     elif [[ $OS == "linux" ]]; then
         if command -v apt-get &> /dev/null; then
             export DEBIAN_FRONTEND=noninteractive
-            sudo -E add-apt-repository ppa:neovim-ppa/stable
+            # sudo -E add-apt-repository ppa:neovim-ppa/stable
             sudo -E apt-get update
             sudo -E apt-get install -y curl wget
         fi
@@ -85,6 +85,15 @@ install_tools() {
                 esac
             fi
         done
+    fi
+}
+
+install_neovim() {
+    if ! command -v "nvim" &> /dev/null; then
+        echo "Installing latest stable Neovim..."
+        curl https://github.com/neovim/neovim/releases/latest/download/nvim-macos-x86_64.tar.gz | tar xzvf
+        mv nvim-osx64/bin/nvim ~/.local/bin
+        chmod +x ~/.local/bin/nvim
     fi
 }
 
@@ -156,6 +165,7 @@ main() {
     echo "Starting dotfiles installation..."
     install_package_managers
     install_tools
+    install_neovim
     create_symlinks
     setup_shell
     create_platform_zshrc
