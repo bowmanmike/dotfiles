@@ -76,10 +76,10 @@ install_tools() {
             if ! command -v "$tool" &> /dev/null; then
                 echo "Installing $tool..."
                 case $tool in
-                    "ripgrep") sudo -E apt-get install -y ripgrep;;
+                    # "ripgrep") sudo -E apt-get install -y ripgrep;;
                     "fd") sudo -E apt-get install -y fd-find;;
                     # "bat") sudo -E apt-get install -y bat; mkdir -p ~/.local/bin; ln -s /usr/bin/batcat ~/.local/bin/bat;;
-                    "gh") sudo -E apt-get install -y gh;; 
+                    # "gh") sudo -E apt-get install -y gh;; 
                     "starship") curl -sS https://starship.rs/install.sh | sh -s -- --yes;;  # Added --yes flag
                     "fzf")
                         if [[ ! -d "$HOME/.fzf" ]]; then
