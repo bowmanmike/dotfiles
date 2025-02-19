@@ -39,7 +39,7 @@ install_package_managers() {
     elif [[ $OS == "linux" ]]; then
         if command -v apt-get &> /dev/null; then
             export DEBIAN_FRONTEND=noninteractive
-            sudo -E add-apt-repository ppa:neovim-ppa/unstable
+            sudo -E add-apt-repository ppa:neovim-ppa/stable
             sudo -E apt-get update
             sudo -E apt-get install -y curl wget
         fi
