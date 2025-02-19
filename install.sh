@@ -133,28 +133,17 @@ create_symlinks() {
     # Create config directory if it doesn't exist
     mkdir -p ~/.config
 
-echo "HERE"
     # Array of files to symlink
-#     declare -A SYMLINKS=(
-#         ["$dotfiles_dir/.zshrc"]="$HOME/.zshrc"
-#         ["$dotfiles_dir/.gitconfig"]="$HOME/.gitconfig"
-#         ["$dotfiles_dir/.gitignore_global"]="$HOME/.gitignore"
-#         ["$dotfiles_dir/nvim"]="$HOME/.config/nvim"
-#         ["$dotfiles_dir/ghostty"]="$HOME/.config/ghostty"
-#         ["$dotfiles_dir/.tmux.conf"]="$HOME/.tmux.conf"
-#     )
-
-local SYMLINKS=(
-        "$dotfiles_dir/.zshrc:$HOME/.zshrc"
-        "$dotfiles_dir/.gitconfig:$HOME/.gitconfig"
-        "$dotfiles_dir/.gitignore_global:$HOME/.gitignore"
-        "$dotfiles_dir/nvim:$HOME/.config/nvim"
-        "$dotfiles_dir/ghostty:$HOME/.config/ghostty"
-        "$dotfiles_dir/.tmux.conf:$HOME/.tmux.conf"
+    local SYMLINKS=(
+    "$dotfiles_dir/.zshrc:$HOME/.zshrc"
+    "$dotfiles_dir/.gitconfig:$HOME/.gitconfig"
+    "$dotfiles_dir/.gitignore_global:$HOME/.gitignore"
+    "$dotfiles_dir/nvim:$HOME/.config/nvim"
+    "$dotfiles_dir/ghostty:$HOME/.config/ghostty"
+    "$dotfiles_dir/.tmux.conf:$HOME/.tmux.conf"
     )
 
-echo "HERE"
-for entry in "${SYMLINKS[@]}"; do
+    for entry in "${SYMLINKS[@]}"; do
         IFS=":" read -r source dest <<< "$entry"
         if [ -e "$dest" ]; then
             echo "Backing up existing $dest to $dest.bak"
@@ -163,15 +152,6 @@ for entry in "${SYMLINKS[@]}"; do
         echo "Creating symlink: $source -> $dest"
         ln -sf "$source" "$dest"
     done
-#     for source in "${!SYMLINKS[@]}"; do
-#         local dest=${SYMLINKS[$source]}
-#         if [ -e "$dest" ]; then
-#             echo "Backing up existing $dest to $dest.bak"
-#             mv "$dest" "$dest.bak"
-#         fi
-#         echo "Creating symlink: $source -> $dest"
-#         ln -sf "$source" "$dest"
-#     done
 }
 
 # Set up shell
