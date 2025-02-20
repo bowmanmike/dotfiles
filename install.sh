@@ -99,13 +99,14 @@ install_tools() {
                         ;;
                     *) sudo -E apt-get install -y "$tool";;
                 esac
+            else
+                echo "$tool is already installed"
             fi
         done
     fi
 }
 
 install_neovim() {
-    echo "Trying to install neovim"
     if ! command -v "nvim" &> /dev/null; then
         echo "Installing latest stable Neovim..."
         if [[ $OS == "macos" ]]; then
@@ -118,11 +119,9 @@ install_neovim() {
             sudo -E apt-get update -y && sudo -E apt-get install -y ninja-build gettext cmake curl build-essential
             make CMAKE_BUILD_TYPE=RelWithDebInfo
             sudo -E make install
-            # curl -L -o nvim-linux64.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-            # tar xzvf nvim-linux64.tar.gz -C ~/.local
-            # sudo -E mv ~/.local/nvim-linux-x86_64/bin/nvim /usr/local/bin
-            # chmod +x /usr/local/bin/nvim
         fi
+    else
+        echo "Neovim is already installed"
     fi
 }
 
