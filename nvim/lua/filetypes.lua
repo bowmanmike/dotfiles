@@ -10,7 +10,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "ruby",
 	callback = function()
-		vim.keymap.set("n", "<leader>pr", "obinding.break<esc>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>pr", "obinding.pry<esc>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>br", "obinding.break<esc>", { noremap = true, silent = true })
 	end,
 })
 
