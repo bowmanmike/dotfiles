@@ -77,7 +77,7 @@ install_tools() {
                 echo "Installing $tool..."
                 case $tool in
                     # "ripgrep") sudo -E apt-get install -y ripgrep;;
-                    "fd") sudo -E apt-get install -y fdfind; sudo -E ln -s /usr/bin/fd-find /usr/bin/fd;;
+                    "fd") sudo -E apt-get install -y fd-find; sudo -E ln -s /usr/bin/fdfind /usr/bin/fd;;
                     # "bat") sudo -E apt-get install -y bat; mkdir -p ~/.local/bin; ln -s /usr/bin/batcat ~/.local/bin/bat;;
                     # "gh") sudo -E apt-get install -y gh;; 
                     "starship") curl -sS https://starship.rs/install.sh | sh -s -- --yes;;  # Added --yes flag
