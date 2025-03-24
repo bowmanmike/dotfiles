@@ -6,17 +6,23 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
-	config = function()
-		require("neo-tree").setup({
-			filesystem = {
-				filtered_items = {
-					visible = true,
-					hide_dotfiles = false,
-					hide_gitignored = false,
-				},
+	opts = {
+		close_if_last_window = true,
+		filesystem = {
+			filtered_items = {
+				visible = true,
+				hide_dotfiles = false,
+				hide_gitignored = false,
 			},
-		})
-		vim.keymap.set("n", "<c-n>", ":Neotree toggle filesystem reveal left<CR>", { noremap = true, silent = true })
-		vim.keymap.set("n", "<leader>n", ":Neotree reveal<CR>", { noremap = true, silent = true })
-	end,
+			follow_current_file = { enabled = true },
+		},
+	},
+	keys = {
+		{
+			"<c-n>",
+			"<cmd>Neotree toggle filesystem reveal left<cr>",
+			{ noremap = true, silent = true, desc = "Toggle NeoTree" },
+		},
+		{ "<leader>n", "<cmd>Neotree reveal<CR>", { noremap = true, silent = true } },
+	},
 }
