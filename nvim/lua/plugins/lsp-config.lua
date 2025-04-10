@@ -35,6 +35,9 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			if capabilities.textDocument then
+				capabilities.textDocument.semanticTokens = nil
+			end
 
 			local on_attach = function(client, bufnr)
 				-- Disable lsp semantic highlighting, because it was overriding treesitter and giving worse highlighting for ruby.
