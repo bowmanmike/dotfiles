@@ -59,11 +59,19 @@ return {
 					format = require("tailwindcss-colorizer-cmp").formatter,
 				},
 			})
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" },
+				}, {
+					{ name = "cmdline" },
+				}),
+				matching = { disallow_symbol_nonprefix_matching = false },
+			})
 		end,
 		dependencies = {
-			{
-				"roobert/tailwindcss-colorizer-cmp.nvim",
-			},
+			"roobert/tailwindcss-colorizer-cmp.nvim",
+			"hrsh7th/cmp-cmdline",
 		},
 	},
 	{ "hrsh7th/cmp-nvim-lsp" },
