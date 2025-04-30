@@ -284,4 +284,8 @@ fi
 autoload -Uz compinit
 compinit
 
+if [ -f ~/.config/secrets/anthropic_api_key ]; then
+  export ANTHROPIC_API_KEY=$(cat ~/.config/secrets/anthropic_api_key)
+fi
+
 eval "$(starship init zsh)"
