@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
 vim.api.nvim_create_autocmd("FileChangedShellPost", {
 	pattern = "*",
 	callback = function()
-		vim.notify("File changed on disk. Buffer reloaded.", vim.log.levels.WARN)
+		vim.notify("File '" .. vim.fn.expand("%") .. "' changed on disk. Buffer reloaded.", vim.log.levels.WARN)
 	end,
 })
 
