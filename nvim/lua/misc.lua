@@ -50,6 +50,25 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "set filetype=yaml",
 })
 
+-- Auto-reload files when they change on disk
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+	pattern = "*",
+	callback = function()
+		if vim.api.nvim_get_mode().mode ~= "c" then
+			vim.cmd("checktime")
+		end
+	end,
+})
+
+-- Notification after file change
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+	pattern = "*",
+	callback = function()
+		vim.notify("File changed on disk. Buffer reloaded.", vim.log.levels.WARN)
+	end,
+})
+
 vim.opt.undofile = true
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
