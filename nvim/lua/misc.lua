@@ -69,6 +69,3 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
 	end,
 })
 
-vim.opt.undofile = true
-vim.opt.undolevels = 1000
-vim.opt.undoreload = 10000
