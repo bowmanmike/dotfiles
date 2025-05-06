@@ -17,6 +17,7 @@ return {
 			-- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
 		},
 	},
+	tag = "v15.3.0",
 	opts = {
 		strategies = {
 			chat = {

@@ -7,29 +7,29 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"astro",
-					"denols",
-					"emmet_ls",
-					"eslint",
-					-- "gopls",
-					"jsonls",
-					-- "lua_ls",
-					-- DO NOT USE MASON TO INSTALL RUBY_LSP, IT'S BROKEN
-					-- https://shopify.github.io/ruby-lsp/editors.html#neovim
-					-- "ruby_lsp",
-					-- "rust_analyzer",
-					-- "solargraph",
-					-- "sorbet",
-					"tailwindcss",
-					-- "templ",
-					"tsserver",
-					-- "vtsls",
-				},
-			})
-		end,
+		-- config = function()
+		-- 	require("mason-lspconfig").setup({
+		-- 		ensure_installed = {
+		-- 			"astro",
+		-- 			"denols",
+		-- 			"emmet_ls",
+		-- 			"eslint",
+		-- 			-- "gopls",
+		-- 			"jsonls",
+		-- 			-- "lua_ls",
+		-- 			-- DO NOT USE MASON TO INSTALL RUBY_LSP, IT'S BROKEN
+		-- 			-- https://shopify.github.io/ruby-lsp/editors.html#neovim
+		-- 			-- "ruby_lsp",
+		-- 			-- "rust_analyzer",
+		-- 			-- "solargraph",
+		-- 			-- "sorbet",
+		-- 			"tailwindcss",
+		-- 			-- "templ",
+		-- 			"ts_ls",
+		-- 			-- "vtsls",
+		-- 		},
+		-- 	})
+		-- end,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -90,7 +90,7 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 				settings = {
