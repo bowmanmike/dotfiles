@@ -1,0 +1,7 @@
+[
+  {
+    "label": "test $ZED_RELATIVE_FILE:$ZED_ROW",
+    "command": "bin/rails test $ZED_RELATIVE_FILE:$ZED_ROW",
+    "tags": ["ruby-test"]
+  }
+]

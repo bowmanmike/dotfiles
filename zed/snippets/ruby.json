@@ -1,0 +1,6 @@
+{
+  "Breakpoint": {
+    "prefix": "pry",
+    "body": "binding.pry"
+  }
+}
