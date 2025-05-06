@@ -15,7 +15,7 @@
   {
     "context": "Editor",
     "bindings": {
-      "space c p": "editor::CopyFileLocation"
+      "shift c p": "editor::CopyFileLocation"
     }
   }
   // {

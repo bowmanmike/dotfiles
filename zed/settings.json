@@ -8,8 +8,9 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "assistant": {
+    "default_profile": "ask",
     "default_model": {
-      "provider": "anthropic",
+      "provider": "zed.dev",
       "model": "claude-3-7-sonnet-latest"
     },
     "version": "2"
