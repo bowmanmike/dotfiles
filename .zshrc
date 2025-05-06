@@ -289,3 +289,6 @@ if [ -f ~/.config/secrets/anthropic_api_key ]; then
 fi
 
 eval "$(starship init zsh)"
+
+# Added by Windsurf
+export PATH="/Users/mikebowman/.codeium/windsurf/bin:$PATH"
