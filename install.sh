@@ -146,6 +146,7 @@ create_symlinks() {
     "$dotfiles_dir/nvim:$HOME/.config/nvim"
     "$dotfiles_dir/ghostty:$HOME/.config/ghostty"
     "$dotfiles_dir/.tmux.conf:$HOME/.tmux.conf"
+    "$dotfiles_dir/zed:$HOME/.config/zed"
     )
 
     for entry in "${SYMLINKS[@]}"; do
