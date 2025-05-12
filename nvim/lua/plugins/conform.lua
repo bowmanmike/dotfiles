@@ -29,6 +29,7 @@ return {
 			rust = { "rustfmt" },
 			json = { "jq" },
 			markdown = { "deno_fmt" },
+			ruby = { "syntax_tree" },
 		},
 		-- Set up format-on-save
 		format_on_save = { async = false, timeout_ms = 500, lsp_fallback = false },
@@ -37,6 +38,10 @@ return {
 			shfmt = {
 				prepend_args = { "-i", "2" },
 			},
+			-- Rather than configuring it here, we can use a `~/.streerc` file
+			-- syntax_tree = {
+			-- 	append_args = { (is_gifthealth and "--plugins=plugin/single_quotes") or "" },
+			-- },
 		},
 	},
 	init = function()
