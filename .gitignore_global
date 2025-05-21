@@ -71,3 +71,5 @@ sorbet/lock.mdb
 CLAUDE.local.md
 
 .zed
+
+.conform*

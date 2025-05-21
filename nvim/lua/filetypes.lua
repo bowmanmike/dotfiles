@@ -22,6 +22,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "codecompanion",
+	callback = function()
+		vim.opt_local.number = false
+	end,
+})
+
 -- create autocommand to set .rabl files to use filetype=ruby
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = "*.rabl",

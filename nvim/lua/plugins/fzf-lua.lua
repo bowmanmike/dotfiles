@@ -18,11 +18,12 @@ return {
 				{ noremap = true, silent = true, desc = "FZF History" },
 			},
 			{
-				"<leader>rr",
+				"<leader>gr",
 				"<cmd>FzfLua lsp_references<cr>",
 				{ noremap = true, silent = true, desc = "FZF LSP References" },
 			},
 			{ "<leader>fh", "<cmd>FzfLua help_tags<cr>", { noremap = true, silent = true, desc = "FZF Help" } },
+			{ "<leader>fr", "<cmd>FzfLua resume<cr>", { noremap = true, silent = true, desc = "FZF Resume" } },
 			-- {
 			-- 	"<leader>gt",
 			-- 	"<cmd>FzfLua git_status<cr>",
