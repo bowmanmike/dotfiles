@@ -65,10 +65,5 @@
 	protocol = ssh
 [init]
 	defaultBranch = main
-[interactive]
-  diffFilter = delta --color-only
-[delta]
-  navigate = true
-  light = false
 [merge]
   conflictstyle = diff3
