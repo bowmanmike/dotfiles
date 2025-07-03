@@ -288,8 +288,19 @@ compinit
 if [ -f ~/.config/secrets/anthropic_api_key ]; then
   export ANTHROPIC_API_KEY=$(cat ~/.config/secrets/anthropic_api_key)
 fi
+if [ -f ~/.config/secrets/gemini_api_key ]; then
+  export GEMINI_API_KEY=$(cat ~/.config/secrets/gemini_api_key)
+fi
 
 eval "$(starship init zsh)"
 
 # Added by Windsurf
 export PATH="/Users/mikebowman/.codeium/windsurf/bin:$PATH"
+
+# Added by Windsurf
+export PATH="/Users/mikebowman/.codeium/windsurf/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mikebowman/.lmstudio/bin"
+# End of LM Studio CLI section
+
