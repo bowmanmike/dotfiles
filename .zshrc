@@ -291,6 +291,9 @@ fi
 if [ -f ~/.config/secrets/gemini_api_key ]; then
   export GEMINI_API_KEY=$(cat ~/.config/secrets/gemini_api_key)
 fi
+if [ -f ~/.config/secrets/google_project_id ]; then
+  export GOOGLE_CLOUD_PROJECT=$(cat ~/.config/secrets/google_project_id)
+fi
 
 eval "$(starship init zsh)"
 
