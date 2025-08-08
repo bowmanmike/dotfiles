@@ -47,7 +47,6 @@ return {
 					per_filetype = {
 						codecompanion = { "codecompanion" },
 					},
-					{ name = "codeium" },
 					{ name = "copilot", group_index = 2 },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },

@@ -69,3 +69,4 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
 	end,
 })
 
+vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"

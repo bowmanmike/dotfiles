@@ -173,6 +173,15 @@ return {
 			lspconfig.ruby_lsp.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
+				settings = {
+					rubyLsp = {
+						addonSettings = {
+							["Ruby LSP Rails"] = {
+								enablePendingMigrationsPrompt = false,
+							},
+						},
+					},
+				},
 			})
 			lspconfig.sorbet.setup({
 				capabilities = capabilities,

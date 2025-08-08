@@ -73,3 +73,5 @@ CLAUDE.local.md
 .zed
 
 .conform*
+
+.claude/settings.local.json
