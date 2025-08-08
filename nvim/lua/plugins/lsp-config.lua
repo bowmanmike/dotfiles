@@ -173,12 +173,10 @@ return {
 			lspconfig.ruby_lsp.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
-				settings = {
-					rubyLsp = {
-						addonSettings = {
-							["Ruby LSP Rails"] = {
-								enablePendingMigrationsPrompt = false,
-							},
+				init_options = {
+					addonSettings = {
+						["Ruby LSP Rails"] = {
+							enablePendingMigrationsPrompt = false,
 						},
 					},
 				},
