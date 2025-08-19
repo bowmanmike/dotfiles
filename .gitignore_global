@@ -75,3 +75,4 @@ CLAUDE.local.md
 .conform*
 
 .claude/settings.local.json
+.playwright-mcp/
