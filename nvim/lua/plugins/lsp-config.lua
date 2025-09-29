@@ -1,6 +1,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		lazy = false,
 		config = function()
 			require("mason").setup()
 		end,
@@ -33,6 +34,8 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		-- event = "VeryLazy",
+		lazy = false,
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			if capabilities.textDocument then
@@ -209,6 +212,10 @@ return {
 					"typescriptreact",
 					"vue",
 				},
+			})
+			lspconfig.herb_ls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 		end,
 	},

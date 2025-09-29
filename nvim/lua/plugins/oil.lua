@@ -1,6 +1,7 @@
 return {
 	"stevearc/oil.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	keys = { "-", "<CMD>Oil --float<CR>" },
 	opts = {},
 	config = function()
 		-- NOTE: Not sure why this is required here but not for other plugins

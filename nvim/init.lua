@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 
 require("lazy").setup("plugins", {
+	defaults = { lazy = true },
 	change_detection = {
 		enabled = false,
 	},

@@ -5,6 +5,7 @@ return {
 	-- See `:help ibl`
 	main = "ibl",
 	opts = {},
+	event = "VeryLazy",
 	config = function()
 		local highlight = {
 			"RainbowRed",

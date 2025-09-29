@@ -1,6 +1,7 @@
 return {
 	{
 		"tpope/vim-fugitive",
+		lazy = false,
 		config = function()
 			vim.keymap.set(
 				"n",
@@ -10,9 +11,9 @@ return {
 			)
 		end,
 	},
-	{ "tpope/vim-rhubarb" },
-	{ "tpope/vim-surround" },
-	{ "tpope/vim-repeat" },
-	{ "tpope/vim-sleuth" },
-	{ "tpope/vim-rails" },
+	{ "tpope/vim-rhubarb", lazy = false },
+	{ "tpope/vim-surround", lazy = false },
+	{ "tpope/vim-repeat", lazy = false },
+	{ "tpope/vim-sleuth", lazy = false },
+	{ "tpope/vim-rails", lazy = false },
 }

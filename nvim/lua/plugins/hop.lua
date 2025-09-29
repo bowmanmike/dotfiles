@@ -1,7 +1,11 @@
 return {
 	"smoka7/hop.nvim",
-	enabled = true,
+	event = "BufReadPre",
 	version = "*",
+	-- keys = {
+	-- 	{ "s", mode = { "n", "x", "o" }, desc = "Hop Word" },
+	-- 	{ "S", mode = { "n", "x", "o" }, desc = "Hop Char2" },
+	-- },
 	config = function()
 		require("hop").setup()
 		vim.keymap.set("n", "s", vim.cmd.HopWord, { silent = true, noremap = true })
