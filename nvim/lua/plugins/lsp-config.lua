@@ -88,12 +88,13 @@ return {
 				return require("lspconfig.util").root_pattern(unpack(patterns))(...)
 			end
 
-			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({
+			-- Use new Neovim 0.11 native LSP configuration
+			-- Configure servers using vim.lsp.config
+			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			lspconfig.ts_ls.setup({
+			vim.lsp.config("ts_ls", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 				settings = {
@@ -123,7 +124,7 @@ return {
 					},
 				},
 			})
-			lspconfig.gopls.setup({
+			vim.lsp.config("gopls", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 				settings = {
@@ -144,11 +145,11 @@ return {
 			-- 	capabilities = capabilities,
 			-- 	on_attach = on_attach,
 			-- })
-			lspconfig.rust_analyzer.setup({
+			vim.lsp.config("rust_analyzer", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			lspconfig.tailwindcss.setup({
+			vim.lsp.config("tailwindcss", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 				settings = {
@@ -157,23 +158,23 @@ return {
 					},
 				},
 			})
-			lspconfig.eslint.setup({
+			vim.lsp.config("eslint", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			lspconfig.astro.setup({
+			vim.lsp.config("astro", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			lspconfig.templ.setup({
+			vim.lsp.config("templ", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			lspconfig.jsonls.setup({
+			vim.lsp.config("jsonls", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			lspconfig.ruby_lsp.setup({
+			vim.lsp.config("ruby_lsp", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 				init_options = {
@@ -184,7 +185,7 @@ return {
 					},
 				},
 			})
-			lspconfig.sorbet.setup({
+			vim.lsp.config("sorbet", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 				cmd = { "srb", "tc", "--lsp" },
@@ -193,7 +194,7 @@ return {
 					return sorbet_root_pattern(fname)
 				end,
 			})
-			lspconfig.emmet_ls.setup({
+			vim.lsp.config("emmet_ls", {
 				capabilities = capabilities,
 				on_attach = on_attach,
 				filetypes = {
@@ -213,9 +214,26 @@ return {
 					"vue",
 				},
 			})
-			lspconfig.herb_ls.setup({
+			vim.lsp.config("herb_ls", {
 				capabilities = capabilities,
 				on_attach = on_attach,
+			})
+
+			-- Enable all configured LSP servers
+			vim.lsp.enable({
+				"lua_ls",
+				"ts_ls",
+				"gopls",
+				"rust_analyzer",
+				"tailwindcss",
+				"eslint",
+				"astro",
+				"templ",
+				"jsonls",
+				"ruby_lsp",
+				"sorbet",
+				"emmet_ls",
+				"herb_ls",
 			})
 		end,
 	},
