@@ -82,15 +82,19 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		lazy = false,
 	},
 	{
 		"HiPhish/rainbow-delimiters.nvim",
+		lazy = false,
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		lazy = false,
 		opts = {},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
+		lazy = false,
 	},
 }
