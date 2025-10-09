@@ -1,5 +1,9 @@
 return {
-	"jiangmiao/auto-pairs",
-	lazy = false,
-	-- event = "VeryLazy",
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	},
 }

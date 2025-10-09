@@ -4,16 +4,13 @@ return {
 	event = "InsertEnter",
 	dependencies = {
 		{
-			"zbirenbaum/copilot-cmp",
-			config = function()
-				require("copilot_cmp").setup()
-			end,
+			"giuxtaposition/blink-cmp-copilot",
 		},
 	},
 	config = function()
 		require("copilot").setup({
-			suggestion = { enable = false },
-			panel = { enable = false },
+			suggestion = { enabled = false },
+			panel = { enabled = false },
 		})
 	end,
 }
