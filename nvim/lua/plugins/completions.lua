@@ -119,19 +119,7 @@ return {
 			-- C-k: Toggle signature help (if signature.enabled = true)
 			--
 			-- See :h blink-cmp-config-keymap for defining your own keymap
-			keymap = {
-				preset = "enter", -- Use 'enter' preset for <CR> to accept completions
-				["<Tab>"] = {
-					"snippet_forward",
-					function() -- sidekick next edit suggestion
-						return require("sidekick").nes_jump_or_apply()
-					end,
-					-- function() -- if you are using Neovim's native inline completions
-					-- 	return vim.lsp.inline_completion.get()
-					-- end,
-					"fallback",
-				},
-			},
+			keymap = { preset = "enter" },
 
 			appearance = {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -168,6 +156,8 @@ return {
 							CompletionItemKind[kind_idx] = "Copilot"
 							for _, item in ipairs(items) do
 								item.kind = kind_idx
+								item.kind_icon = ""
+								item.kind_name = "Copilot"
 							end
 							return items
 						end,
