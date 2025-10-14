@@ -294,6 +294,9 @@ fi
 if [ -f ~/.config/secrets/google_project_id ]; then
   export GOOGLE_CLOUD_PROJECT=$(cat ~/.config/secrets/google_project_id)
 fi
+if [ -f ~/.config/secrets/openai_api_key ]; then
+  export OPENAI_API_KEY=$(cat ~/.config/secrets/openai_api_key)
+fi
 
 eval "$(starship init zsh)"
 
