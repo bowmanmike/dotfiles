@@ -310,3 +310,25 @@ export PATH="/Users/mikebowman/.codeium/windsurf/bin:$PATH"
 export PATH="$PATH:/Users/mikebowman/.lmstudio/bin"
 # End of LM Studio CLI section
 
+export PATH="$PATH:$HOME/dotfiles/bin"
+
+# Fun Aliases and functions
+# from https://evanhahn.com/scripts-i-wrote-that-i-use-all-the-time/
+
+# Create and cd to a temp directory
+tempe () {
+  cd "$(mktemp -d)"
+  chmod -R 0700 .
+  if [[ $# -eq 1 ]]; then
+    \mkdir -p "$1"
+    cd "$1"
+    chmod -R 0700 .
+  fi
+}
+
+# Make a directory and change into it
+mkcd () {
+  \mkdir -p "$1"
+  cd "$1"
+}
+
