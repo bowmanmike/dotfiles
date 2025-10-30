@@ -300,12 +300,6 @@ fi
 
 eval "$(starship init zsh)"
 
-# Added by Windsurf
-export PATH="/Users/mikebowman/.codeium/windsurf/bin:$PATH"
-
-# Added by Windsurf
-export PATH="/Users/mikebowman/.codeium/windsurf/bin:$PATH"
-
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/mikebowman/.lmstudio/bin"
 # End of LM Studio CLI section
