@@ -18,10 +18,10 @@ return {
 		-- Define your formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = { "prettierd" },
-			typescript = { "prettierd" },
-			javascriptreact = { "prettierd" },
-			typescriptreact = { "prettierd" },
+			javascript = { "biome", "prettierd" },
+			typescript = { "biome", "prettierd" },
+			javascriptreact = { "biome", "prettierd" },
+			typescriptreact = { "biome", "prettierd" },
 			handlebars = { "prettierd" },
 			-- ruby = { "standardrb" },
 			-- eruby = { "erb_format" },
@@ -30,6 +30,7 @@ return {
 			json = { "jq" },
 			markdown = { "deno_fmt" },
 			ruby = { "syntax_tree" },
+			-- elixir = { "lsp" },
 		},
 		-- Set up format-on-save
 		format_on_save = { async = false, timeout_ms = 500, lsp_fallback = false },
@@ -38,6 +39,7 @@ return {
 			shfmt = {
 				prepend_args = { "-i", "2" },
 			},
+			elixir = { lsp_fallback = true },
 			-- Rather than configuring it here, we can use a `~/.streerc` file
 			-- syntax_tree = {
 			-- 	append_args = { (is_gifthealth and "--plugins=plugin/single_quotes") or "" },

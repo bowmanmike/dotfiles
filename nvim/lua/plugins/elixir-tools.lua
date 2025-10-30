@@ -4,14 +4,13 @@ return {
 	-- event = "VeryLazy",
 	ft = { "elixir", "eelixir" },
 	version = "*",
-	-- event = { "BufReadPre", "BufNewFile" },
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local elixir = require("elixir")
 		local elixirls = require("elixir.elixirls")
 
 		elixir.setup({
-			nextls = { enable = false },
-			credo = { enable = true },
+			nextls = { enable = true },
 			elixirls = {
 				enable = true,
 				settings = elixirls.settings({
@@ -23,6 +22,9 @@ return {
 					vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
 					vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
 				end,
+			},
+			projectionist = {
+				enable = true,
 			},
 		})
 	end,
