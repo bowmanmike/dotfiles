@@ -2,13 +2,15 @@
 # Backup of previous config: ~/.zshrc.backup-omz
 
 #=============================================================================
-# PERFORMANCE: Completion caching (run compinit once daily)
+# PERFORMANCE: Completion caching (skip rebuild if dump exists)
 #=============================================================================
 autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-  compinit
-else
+# Always use -C (skip security check and use cache) if dump file exists
+# Delete ~/.zcompdump to force a rebuild when needed
+if [[ -f ~/.zcompdump ]]; then
   compinit -C
+else
+  compinit
 fi
 
 #=============================================================================
