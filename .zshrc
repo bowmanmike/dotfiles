@@ -1,316 +1,332 @@
-# For profiling slow zsh stuff
-# zmodload zsh/zprof
+# Lean zshrc - no oh-my-zsh
+# Backup of previous config: ~/.zshrc.backup-omz
 
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# if CODESPACES variable is true, set TERM to something normal
-if [[ -n $CODESPACES ]]; then
-  export TERM=xterm-256color
+#=============================================================================
+# PERFORMANCE: Completion caching (run compinit once daily)
+#=============================================================================
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
 fi
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-# export SHELL=$(brew --prefix zsh)
+#=============================================================================
+# EVALCACHE: Cache expensive eval commands
+#=============================================================================
+export ZSH_EVALCACHE_DIR="${ZSH_EVALCACHE_DIR:-$HOME/.zsh-evalcache}"
+
+_evalcache() {
+  local cmdHash="nohash" data="$*" name
+  for name in $@; do
+    [[ "${name}" = "${name#[A-Za-z_][A-Za-z0-9_]*=}" ]] && break
+  done
+  if typeset -f "${name}" > /dev/null; then
+    data=${data}$(typeset -f "${name}")
+  fi
+  if builtin command -v md5 > /dev/null; then
+    cmdHash=$(echo -n "${data}" | md5)
+  elif builtin command -v md5sum > /dev/null; then
+    cmdHash=$(echo -n "${data}" | md5sum | cut -d' ' -f1)
+  fi
+  local cacheFile="$ZSH_EVALCACHE_DIR/init-${name##*/}-${cmdHash}.sh"
+  if [[ "$ZSH_EVALCACHE_DISABLE" = "true" ]]; then
+    eval ${(q)@}
+  elif [[ -s "$cacheFile" ]]; then
+    source "$cacheFile"
+  else
+    if type "${name}" > /dev/null; then
+      mkdir -p "$ZSH_EVALCACHE_DIR"
+      eval ${(q)@} > "$cacheFile"
+      source "$cacheFile"
+    fi
+  fi
+}
+
+_evalcache_clear() { rm -i "$ZSH_EVALCACHE_DIR"/init-*.sh 2>/dev/null; }
+
+#=============================================================================
+# ENVIRONMENT
+#=============================================================================
 export SHELL=/bin/zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
-# Run these commands to install spaceship
-# git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-# ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-# ZSH_THEME="spaceship"
-
-# SPACESHIP_TIME_SHOW=true
-# SPACESHIP_DIR_PREFIX=""
-# SPACESHIP_KUBECTL_SHOW=true
-# SPACESHIP_PROMPT_ORDER=(
-#   time          # Time stamps section
-#   user          # Username section
-#   dir           # Current directory section
-#   host          # Hostname section
-#   git           # Git section (git_branch + git_status)
-#   # hg            # Mercurial section (hg_branch  + hg_status)
-#   # package       # Package version
-#   # node          # Node.js section
-#   # ruby          # Ruby section
-#   # elixir        # Elixir section
-#   # xcode         # Xcode section
-#   # swift         # Swift section
-#   # golang        # Go section
-#   # php           # PHP section
-#   # rust          # Rust section
-#   # haskell       # Haskell Stack section
-#   # julia         # Julia section
-#   # docker        # Docker section
-#   # aws           # Amazon Web Services section
-#   # gcloud        # Google Cloud Platform section
-#   # venv          # virtualenv section
-#   # conda         # conda virtualenv section
-#   # pyenv         # Pyenv section
-#   # dotnet        # .NET section
-#   # ember         # Ember.js section
-#   kubectl       # Kubectl context section
-#   # terraform     # Terraform workspace section
-#   exec_time     # Execution time
-#   line_sep      # Line break
-#   battery       # Battery level and status
-#   vi_mode       # Vi-mode indicator
-#   jobs          # Background jobs indicator
-#   exit_code     # Exit code section
-#   char          # Prompt character
-# )
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=( evalcache brew git z )
-plugins=( brew git z )
-
-
-source $ZSH/oh-my-zsh.sh
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
-export EDITOR='nvim' # --noplugin'
+export EDITOR='nvim'
 export ELIXIR_EDITOR="code --goto __FILE__:__LINE__"
-
-# Unset $PAGER
 export PAGER="less -F -X"
-
-# Add score deploy key
-[[ -f ~/dotfiles/.digital_ocean_token ]] && source ~/dotfiles/.digital_ocean_token
-
-# Add Rust to path
-export PATH=$HOME/.cargo/bin:$PATH
-
-# Add lvim to path
-export PATH=$PATH:$HOME/.local/bin
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/id_rsa"
-
-# Set GPG stuff
 export GPG_TTY=$(tty)
-
-# Preserve iex history across sessions
 export ERL_AFLAGS="-kernel shell_history enabled"
+export ITERM2_SQUELCH_MARK=1
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/"'
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
+# Codespaces terminal fix
+[[ -n $CODESPACES ]] && export TERM=xterm-256color
 
-if type nvim > /dev/null 2>&1; then
-  alias vim='nvim'
-fi
-alias vimr='vimr -n'
-alias fvr='vimr -n $(fzf)'
-alias vimr="vimr -n"
-alias ll="ls -lahG"
-alias cl="clear"
-alias tns='tmux new -s'
-alias tat='tmux attach -t'
-# alias tns='tmux -CC new -A -s'
-# alias tat='tmux -CC attach -t'
-alias tls='tmux ls'
-# alias git='hub'
-# alias ag='ag --skip-vcs-ignores --path-to-ignore ~/.ignore'
-alias rg='rg -i'
-# alias weather='curl -4 wttr.in/Toronto'
-# alias mux='tmuxinator'
-# alias fv='vim -O $(fzf -m --preview "bat --theme='Dracula' --style='numbers,changes' --color always {}")'
-# alias fl='lvim -O $(fzf -m --preview "bat --theme='1337' --style='numbers,changes' --color always {}")'
-alias be='bundle exec'
-alias als='alias | rg'
-# alias t='task'
-# alias t='todo.sh'
-# alias k='kubectl'
-if !command -v "bat" &> /dev/null; then
-  alias cat='bat'
-fi
-# alias kc='kubectx'
-# alias kns='kubens'
-# alias repry='fc -e - mix\ test=iex\ -S\ mix\ test\ --trace mix\ test'
-# alias mt="mix test"
-# alias mtt="mix test --trace"
-# alias ml="mix lint"
-# alias mf="mix format"
-# alias mc="mix compile"
-# alias tf="mix test `pbpaste`"
-alias mflt="mix format && mix lint && mix test"
-alias mps="iex -S mix phx.server"
+#=============================================================================
+# PATH (consolidated, deduplicated)
+#=============================================================================
+typeset -U PATH  # Auto-remove duplicates
 
-# Better git shortcuts
+export PNPM_HOME="$HOME/Library/pnpm"
+export BUN_INSTALL="$HOME/.bun"
+
+path=(
+  $HOME/.cargo/bin
+  $HOME/.local/bin
+  $HOME/.bun/bin
+  $HOME/.lmstudio/bin
+  $HOME/dotfiles/bin
+  $HOME/flutter/bin
+  $PNPM_HOME
+  /Applications/Postgres.app/Contents/Versions/latest/bin
+  $path
+)
+
+#=============================================================================
+# COMPLETIONS
+#=============================================================================
+fpath=(/opt/homebrew/share/zsh/site-functions $HOME/.zsh/completions $fpath)
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+#=============================================================================
+# GIT HELPER FUNCTIONS (needed by aliases)
+#=============================================================================
+function git_current_branch() {
+  local ref
+  ref=$(git symbolic-ref --quiet HEAD 2>/dev/null)
+  local ret=$?
+  [[ $ret != 0 ]] && return
+  echo ${ref#refs/heads/}
+}
+
+function git_main_branch() {
+  command git rev-parse --git-dir &>/dev/null || return
+  local ref
+  for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk,mainline,default,stable,master}; do
+    if command git show-ref -q --verify $ref; then
+      echo ${ref:t}
+      return 0
+    fi
+  done
+  echo master
+  return 1
+}
+
+function git_develop_branch() {
+  command git rev-parse --git-dir &>/dev/null || return
+  local branch
+  for branch in dev devel develop development; do
+    if command git show-ref -q --verify refs/heads/$branch; then
+      echo $branch
+      return 0
+    fi
+  done
+  echo develop
+  return 1
+}
+
+#=============================================================================
+# GIT ALIASES (from oh-my-zsh git plugin)
+#=============================================================================
+alias g='git'
+alias ga='git add'
+alias gaa='git add --all'
+alias gapa='git add --patch'
+alias gau='git add --update'
+alias gav='git add --verbose'
+alias gb='git branch'
+alias gba='git branch --all'
+alias gbd='git branch --delete'
+alias gbD='git branch --delete --force'
+alias gbl='git blame -w'
+alias gbm='git branch --move'
+alias gbnm='git branch --no-merged'
+alias gbr='git branch --remote'
+alias gbs='git bisect'
+alias gbsb='git bisect bad'
+alias gbsg='git bisect good'
+alias gbsr='git bisect reset'
+alias gbss='git bisect start'
+alias gc='git commit --verbose'
+alias gc!='git commit --verbose --amend'
+alias gca='git commit --verbose --all'
+alias gca!='git commit --verbose --all --amend'
+alias gcam='git commit --all --message'
+alias gcan!='git commit --verbose --all --no-edit --amend'
+alias gcann!='git commit --verbose --all --date=now --no-edit --amend'
+alias gcb='git checkout -b'
+alias gcB='git checkout -B'
+alias gcd='git checkout $(git_develop_branch)'
+alias gcf='git config --list'
+alias gcl='git clone --recurse-submodules'
+alias gclean='git clean --interactive -d'
+alias gcm='git checkout $(git_main_branch)'
+alias gcmsg='git commit --message'
+alias gcn!='git commit --verbose --no-edit --amend'
+alias gco='git checkout'
+alias gcor='git checkout --recurse-submodules'
+alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
+alias gcpc='git cherry-pick --continue'
+alias gcs='git commit --gpg-sign'
+alias gcsm='git commit --signoff --message'
+alias gd='git diff'
+alias gdca='git diff --cached'
+alias gds='git diff --staged'
+alias gdw='git diff --word-diff'
+alias gf='git fetch'
+alias gfo='git fetch origin'
+alias ggpull='git pull origin "$(git_current_branch)"'
+alias ggpush='git push origin "$(git_current_branch)"'
+alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias ghh='git help'
+alias gl='git pull'
+alias glg='git log --stat'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glgm='git log --graph --max-count=10'
+alias glgp='git log --stat --patch'
+alias glo='git log --oneline --decorate'
+alias glod='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset"'
+alias glods='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short'
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+alias glol='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
+alias glola='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --all'
+alias glols='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --stat'
+alias gm='git merge'
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
+alias gmom='git merge origin/$(git_main_branch)'
+alias gms='git merge --squash'
+alias gmum='git merge upstream/$(git_main_branch)'
+alias gp='git push'
+alias gpd='git push --dry-run'
+alias gpf='git push --force-with-lease --force-if-includes'
+alias gpf!='git push --force'
+alias gpoat='git push origin --all && git push origin --tags'
+alias gpod='git push origin --delete'
+alias gpr='git pull --rebase'
+alias gpra='git pull --rebase --autostash'
+alias gprav='git pull --rebase --autostash -v'
+alias gprv='git pull --rebase -v'
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
+alias gpu='git push upstream'
+alias gpv='git push --verbose'
+alias gr='git remote'
+alias gra='git remote add'
+alias grb='git rebase'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias grbi='git rebase --interactive'
+alias grbd='git rebase $(git_develop_branch)'
+alias grbm='git rebase $(git_main_branch)'
+alias grbo='git rebase --onto'
+alias grbom='git rebase origin/$(git_main_branch)'
+alias grbs='git rebase --skip'
+alias grbum='git rebase upstream/$(git_main_branch)'
+alias grev='git revert'
+alias greva='git revert --abort'
+alias grevc='git revert --continue'
+alias grf='git reflog'
+alias grh='git reset'
+alias grhh='git reset --hard'
+alias grhs='git reset --soft'
+alias grm='git rm'
+alias grmc='git rm --cached'
+alias grmv='git remote rename'
+alias groh='git reset origin/$(git_current_branch) --hard'
+alias grrm='git remote remove'
+alias grs='git restore'
+alias grset='git remote set-url'
+alias grss='git restore --source'
+alias grst='git restore --staged'
+alias grt='cd "$(git rev-parse --show-toplevel || echo .)"'
+alias gru='git reset --'
+alias grup='git remote update'
+alias grv='git remote --verbose'
+alias gsb='git status --short --branch'
+alias gsh='git show'
+alias gsi='git submodule init'
+alias gss='git status --short'
+alias gst='git status'
+alias gsta='git stash push'
+alias gstaa='git stash apply'
+alias gstall='git stash --all'
+alias gstc='git stash clear'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash show --patch'
+alias gstu='git stash push --include-untracked'
+alias gsu='git submodule update'
+alias gsw='git switch'
+alias gswc='git switch --create'
+alias gswd='git switch $(git_develop_branch)'
+alias gswm='git switch $(git_main_branch)'
+alias gta='git tag --annotate'
+alias gts='git tag --sign'
+alias gtv='git tag | sort -V'
+alias gwch='git log --patch --abbrev-commit --pretty=medium --raw'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'
+alias gwipe='git reset --hard && git clean --force -df'
+alias gwt='git worktree'
+alias gwta='git worktree add'
+alias gwtls='git worktree list'
+alias gwtmv='git worktree move'
+alias gwtrm='git worktree remove'
+
+#=============================================================================
+# CUSTOM ALIASES (your overrides)
+#=============================================================================
+# Better git shortcuts (override some defaults)
 alias glog="git log --oneline --decorate --graph -15"
 alias gcos="git checkout staging"
 alias gstt="git status -s | cut -d' ' -f3 | rg --color never spec"
 
+# Editor
+if command -v nvim &>/dev/null; then
+  alias vim='nvim'
+fi
+
+# General
+alias ll="ls -lahG"
+alias cl="clear"
+alias rg='rg -i'
+alias be='bundle exec'
+alias als='alias | rg'
+if command -v bat &>/dev/null; then
+  alias cat='bat'
+fi
+
+# Tmux
+alias tns='tmux new -s'
+alias tat='tmux attach -t'
+alias tls='tmux ls'
+
+# Docker & tools
 alias dc='docker compose'
 alias lg='lazygit'
 alias rt='bin/rails test'
 
-# FZF config
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/"'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Elixir/Phoenix
+alias mflt="mix format && mix lint && mix test"
+alias mps="iex -S mix phx.server"
 
-function fco {
-  local filter
-  if ! which fzf > /dev/null 2>&1; then
+#=============================================================================
+# FUNCTIONS
+#=============================================================================
+# FZF git checkout
+fco() {
+  if ! command -v fzf &>/dev/null; then
     echo "FZF not installed!"
     return 1
   fi
-
-  branch=`git branch --list | fzf --height=7 --min-height=5 --reverse --query="$1" --select-1 | sed -e 's/^[[:space:]\*]*//'`
-
+  local branch
+  branch=$(git branch --list | fzf --height=7 --min-height=5 --reverse --query="$1" --select-1 | sed -e 's/^[[:space:]\*]*//')
   [[ -n "$branch" ]] && git checkout "$branch"
 }
 
-# Direnv
-# _evalcache direnv hook zsh
-
-# ASDF
-# . /opt/homebrew/opt/asdf/libexec/asdf.sh
-# . ~/.asdf/plugins/golang/set-env.zsh
-
-# ZSH Autocomplete
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-
-# The next line updates PATH for Netlify's Git Credential Helper.
-if [ -f '$HOME/.netlify/helper/path.zsh.inc' ]; then source '$HOME/.netlify/helper/path.zsh.inc'; fi
-
-# Erlang install options
-# export BREW_OPENSSL=$(brew --prefix openssl@1.1)
-# export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$BREW_OPENSSL"
-
-export ITERM2_SQUELCH_MARK=1
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
-
-# >>> JVM installed by coursier >>>
-# export JAVA_HOME="$HOME/Library/Caches/Coursier/arc/https/github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11%252B28/OpenJDK11-jdk_x64_mac_hotspot_11_28.tar.gz/jdk-11+28/Contents/Home"
-# <<< JVM installed by coursier <<<
-
-# _evalcache thefuck --alias
-# export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-# export GOPATH=$HOME/go
-# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-# export PATH=$PATH:$(go env GOPATH)/bin # <---- Confirm this line in you profile!!!
-
-# add flutter
-export PATH=$PATH:~/flutter/bin/
-
-autoload zmv
-
-# only run this if mise is available
-if [ -f ~/.local/bin/mise ]; then
-  eval "$(~/.local/bin/mise activate zsh)"
-fi
-
-
-# BEGIN opam configuration
-# This is useful if you're using opam as it adds:
-#   - the correct directories to the PATH
-#   - auto-completion for the opam binary
-# This section can be safely removed at any time if needed.
-[[ ! -r '$HOME/.opam/opam-init/init.zsh' ]] || source '$HOME/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
-# END opam configuration
-
-[[ -f "$HOME/.deno/env" ]] && . "$HOME/.deno/env"
-# Initialize zsh completions (added by deno install script)
-autoload -Uz compinit
-compinit
-
-if [ -f ~/.config/secrets/anthropic_api_key ]; then
-  export ANTHROPIC_API_KEY=$(cat ~/.config/secrets/anthropic_api_key)
-fi
-if [ -f ~/.config/secrets/gemini_api_key ]; then
-  export GEMINI_API_KEY=$(cat ~/.config/secrets/gemini_api_key)
-fi
-if [ -f ~/.config/secrets/google_project_id ]; then
-  export GOOGLE_CLOUD_PROJECT=$(cat ~/.config/secrets/google_project_id)
-fi
-if [ -f ~/.config/secrets/openai_api_key ]; then
-  export OPENAI_API_KEY=$(cat ~/.config/secrets/openai_api_key)
-fi
-
-eval "$(starship init zsh)"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/mikebowman/.lmstudio/bin"
-# End of LM Studio CLI section
-
-export PATH="$PATH:$HOME/dotfiles/bin"
-
-# Fun Aliases and functions
-# from https://evanhahn.com/scripts-i-wrote-that-i-use-all-the-time/
-
 # Create and cd to a temp directory
-tempe () {
+tempe() {
   cd "$(mktemp -d)"
   chmod -R 0700 .
   if [[ $# -eq 1 ]]; then
@@ -321,23 +337,52 @@ tempe () {
 }
 
 # Make a directory and change into it
-mkcd () {
+mkcd() {
   \mkdir -p "$1"
   cd "$1"
 }
 
+autoload zmv
 
-# pnpm
-export PNPM_HOME="/Users/mikebowman/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+#=============================================================================
+# TOOL INITIALIZATION (using evalcache for speed)
+#=============================================================================
+# Mise (runtime version manager)
+[[ -f ~/.local/bin/mise ]] && _evalcache ~/.local/bin/mise activate zsh
 
-# bun completions
-[ -s "/Users/mikebowman/.bun/_bun" ] && source "/Users/mikebowman/.bun/_bun"
+# Zoxide (fast directory jumping - replacement for z)
+command -v zoxide &>/dev/null && _evalcache zoxide init zsh
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# Starship prompt
+command -v starship &>/dev/null && _evalcache starship init zsh
+
+# FZF
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
+# Zsh autosuggestions
+[[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+#=============================================================================
+# SECRETS & TOKENS (fast file reading)
+#=============================================================================
+[[ -f ~/dotfiles/.digital_ocean_token ]] && source ~/dotfiles/.digital_ocean_token
+[[ -f ~/.config/secrets/anthropic_api_key ]] && export ANTHROPIC_API_KEY=$(<~/.config/secrets/anthropic_api_key)
+[[ -f ~/.config/secrets/gemini_api_key ]] && export GEMINI_API_KEY=$(<~/.config/secrets/gemini_api_key)
+[[ -f ~/.config/secrets/google_project_id ]] && export GOOGLE_CLOUD_PROJECT=$(<~/.config/secrets/google_project_id)
+[[ -f ~/.config/secrets/openai_api_key ]] && export OPENAI_API_KEY=$(<~/.config/secrets/openai_api_key)
+
+#=============================================================================
+# OPTIONAL INTEGRATIONS (loaded if present)
+#=============================================================================
+# Deno
+[[ -f "$HOME/.deno/env" ]] && . "$HOME/.deno/env"
+
+# Heroku autocomplete
+[[ -f "$HOME/Library/Caches/heroku/autocomplete/zsh_setup" ]] && source "$HOME/Library/Caches/heroku/autocomplete/zsh_setup"
+
+# Bun completions
+[[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
+
+# Opam (OCaml)
+[[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" 2>/dev/null
