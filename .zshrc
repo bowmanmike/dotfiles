@@ -388,3 +388,6 @@ command -v starship &>/dev/null && _evalcache starship init zsh
 
 # Opam (OCaml)
 [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" 2>/dev/null
+
+# Ensure vim mode is disabled
+bindkey -e
