@@ -389,5 +389,15 @@ command -v starship &>/dev/null && _evalcache starship init zsh
 # Opam (OCaml)
 [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" 2>/dev/null
 
+# FZF Integration
+command -v zsh &> /dev/null && source <(fzf --zsh)
+
 # Ensure vim mode is disabled
 bindkey -e
+
+# Key bindings
+bindkey "^[[3~" delete-char       # Delete
+bindkey "^[[5~" up-line-or-history  # Page Up
+bindkey "^[[6~" down-line-or-history  # Page Down
+bindkey "^[[H" beginning-of-line  # Home
+bindkey "^[[F" end-of-line        # End
