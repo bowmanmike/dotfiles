@@ -3,6 +3,7 @@ return {
 		"folke/sidekick.nvim",
 		event = "InsertEnter",
 		opts = {
+			nes = { enabled = false },
 			cli = {
 				mux = {
 					backend = "tmux",

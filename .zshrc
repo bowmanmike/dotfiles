@@ -294,6 +294,7 @@ alias ll="ls -lahG"
 alias cl="clear"
 alias rg='rg -i'
 alias be='bundle exec'
+alias br='bin/rails'
 alias als='alias | rg'
 if command -v bat &>/dev/null; then
   alias cat='bat'
