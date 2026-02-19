@@ -1,7 +1,6 @@
 -- slows things down a bit, even in non-elixir files
 return {
 	"elixir-tools/elixir-tools.nvim",
-	-- event = "VeryLazy",
 	ft = { "elixir", "eelixir" },
 	version = "*",
 	event = { "BufReadPre", "BufNewFile" },

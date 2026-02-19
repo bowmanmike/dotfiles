@@ -79,6 +79,7 @@ path=(
   $HOME/flutter/bin
   $PNPM_HOME
   /Applications/Postgres.app/Contents/Versions/latest/bin
+  $HOME/go/bin
   $path
 )
 
@@ -87,6 +88,9 @@ path=(
 #=============================================================================
 fpath=(/opt/homebrew/share/zsh/site-functions $HOME/.zsh/completions $fpath)
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+# Case-insensitive completions
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
 
 #=============================================================================
 # GIT HELPER FUNCTIONS (needed by aliases)
