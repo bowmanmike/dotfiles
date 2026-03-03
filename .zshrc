@@ -299,6 +299,10 @@ alias cl="clear"
 alias rg='rg -i'
 alias be='bundle exec'
 alias br='bin/rails'
+alias brs='bin/rails server'
+alias brt='bin/rails test'
+alias brc='bin/rails console'
+alias brdm='bin/rails db:migrate'
 alias als='alias | rg'
 if command -v bat &>/dev/null; then
   alias cat='bat'
