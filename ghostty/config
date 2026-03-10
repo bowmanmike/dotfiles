@@ -5,7 +5,7 @@ shell-integration-features = no-cursor
 # theme = Iterm2 Default
 # theme = One Dark Pro
 
-font-size = 15
+font-size = 16
 font-family = FiraCode Nerd Font Mono
 
 macos-titlebar-style = tabs
