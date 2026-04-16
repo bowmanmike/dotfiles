@@ -293,6 +293,11 @@ if command -v nvim &>/dev/null; then
   alias vim='nvim'
 fi
 
+# Directory navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 # General
 alias ll="ls -lahG"
 alias cl="clear"
