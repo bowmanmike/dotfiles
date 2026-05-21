@@ -327,6 +327,8 @@ alias rt='bin/rails test'
 alias mflt="mix format && mix lint && mix test"
 alias mps="iex -S mix phx.server"
 
+alias t='todo.sh'
+
 #=============================================================================
 # FUNCTIONS
 #=============================================================================
