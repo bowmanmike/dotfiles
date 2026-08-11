@@ -65,7 +65,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/"'
 #=============================================================================
 # PATH (consolidated, deduplicated)
 #=============================================================================
-typeset -U PATH  # Auto-remove duplicates
+typeset -U path PATH  # Auto-remove duplicates
 
 export PNPM_HOME="$HOME/Library/pnpm"
 export BUN_INSTALL="$HOME/.bun"
@@ -366,6 +366,7 @@ autoload zmv
 # TOOL INITIALIZATION (using evalcache for speed)
 #=============================================================================
 # Mise (runtime version manager)
+unset MISE_SHELL __MISE_DIFF __MISE_ORIG_PATH __MISE_SESSION
 [[ -f ~/.local/bin/mise ]] && _evalcache ~/.local/bin/mise activate zsh
 
 # Zoxide (fast directory jumping - replacement for z)
